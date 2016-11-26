@@ -271,7 +271,6 @@ img{
 
 #menu-area{
 	float: left;
-	display: inline;
 	width: 100%;
 }
 .main-navbar {
@@ -279,7 +278,7 @@ img{
 	border-radius: 0;
 	border-bottom: 1px solid #e7e7e7;  
 	border-right: medium none;
-	height: 100px;
+	height: 80px;
 	margin-bottom: 0;
 	-webkit-box-shadow: 0px 2px 4px 0px #f3f3f3;
 	-moz-box-shadow: 0px 2px 4px 0px #f3f3f3;
@@ -294,10 +293,8 @@ img{
 	transition: all 0.5s;
 }
 .logo {
-	height: 100px;  
-	width: 85px;
-	margin-right: 45px;
-	margin-top: -1px;
+	height: 80px;
+	width: 65px;
 	padding: 0;
 }
 .logo  span{
@@ -308,7 +305,7 @@ img{
 }
 .logo-compressed {
 	height: 80px;  
-	width: 70px;
+	width: 65px;
 }
 .logo-compressed span{
 	padding-top: 30px;	
@@ -319,25 +316,24 @@ img{
 }
 #navbar {
 	float: left;
-	width: 83%;
+	width: 94%;
 }
 .main-nav {
 	display: inline-block;
-	text-align: right;
 	width: 100%;
 }
 .main-nav li {
 	display: inline-block;
-	float: none;
+	float: left;
 }
 .main-nav li a {
 	color: #636363;
-	font-size: 15px;
-	padding: 39px 20px;
+	font-size: 13px;
+	padding: 30px 10px;
 	text-transform: uppercase;
 }
 .less-padding{
-	padding: 30px 20px !important;
+	padding: 30px 10px !important;
 }
 
 .navbar-default .navbar-nav > li > a {
