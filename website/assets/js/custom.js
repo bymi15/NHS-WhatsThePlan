@@ -1,12 +1,12 @@
-/**	
+/**
 	* Template Name: Rex
-	* Version: 1.0	
+	* Version: 1.0
 	* Template Scripts
 	* Author: MarkUps
 	* Author URI: http://www.markups.io/
 
 	Custom JS
-	
+
 	1. HEADER CONTENT SLIDE
 	2. FIXED MENU
 	3. COUNTER
@@ -14,12 +14,12 @@
 	5. CLIENT SLIDE (SLICK SLIDER)
 	6. SCROLL TOP BUTTON
 	7. MENU SMOOTH SCROLLING
-	8. LIGHTBOX ( FOR PORTFOLIO POPUP VIEW ) 
-	9. MOBILE MENU CLOSE 
-	10. PRELOADER 
+	8. LIGHTBOX ( FOR PORTFOLIO POPUP VIEW )
+	9. MOBILE MENU CLOSE
+	10. PRELOADER
 	11. INSTAGRAM SLIDER (SLICK SLIDER)
-	12. WOW ANIMATION 	
-	
+	12. WOW ANIMATION
+
 **/
 
 jQuery(function($){
@@ -33,8 +33,8 @@ jQuery(function($){
 		dots: false,
 		infinite: true,
 		speed: 500,
-		arrows:false, 
-		autoplay: true,     
+		arrows:false,
+		autoplay: true,
       	slidesToShow: 1,
 		slide: 'span',
 		fade: true,
@@ -53,8 +53,8 @@ jQuery(function($){
         $('.main-nav li a').addClass('less-padding');
         $('.search-area').css('height','44');
         $('.search-area input[type="text"]').css('top','35%');
-        
-        
+
+
 	    } else {
 	        $('.main-navbar').removeClass('navbar-fixed-top');
 	        $('.logo').removeClass('logo-compressed');
@@ -82,10 +82,10 @@ jQuery(function($){
 		dots: false,
 		infinite: true,
 		speed: 500,
-		arrows:true, 
-		autoplay: true,     
+		arrows:true,
+		autoplay: true,
       	slidesToShow: 1,
-		slide: 'div',		
+		slide: 'div',
 		cssEase: 'linear'
 	});
 
@@ -96,9 +96,9 @@ jQuery(function($){
 	$('.client-table').slick({
 	  dots: false,
 	  infinite: true,
-	  arrows:false, 
+	  arrows:false,
 	  speed: 300,
-	  autoplay: true,     
+	  autoplay: true,
 	  slidesToShow: 6,
 	  slidesToScroll: 6,
 	  responsive: [
@@ -144,7 +144,7 @@ jQuery(function($){
 	      $('.scrollToTop').fadeOut();
 	    }
 	  });
-	   
+
 	  //Click event to scroll to top
 
 	  jQuery('.scrollToTop').click(function(){
@@ -154,8 +154,8 @@ jQuery(function($){
 
 	/* ----------------------------------------------------------- */
 	/*  7. MENU SMOOTH SCROLLING
-	/* ----------------------------------------------------------- */ 
-	
+	/* ----------------------------------------------------------- */
+
 		//MENU SCROLLING WITH ACTIVE ITEM SELECTED
 
 		// Cache selectors
@@ -175,7 +175,7 @@ jQuery(function($){
 		menuItems.click(function(e){
 		  var href = $(this).attr("href"),
 		      offsetTop = href === "#" ? 0 : $(href).offset().top-topMenuHeight+32;
-		  jQuery('html, body').stop().animate({ 
+		  jQuery('html, body').stop().animate({
 		      scrollTop: offsetTop
 		  }, 1500);
 		  e.preventDefault();
@@ -185,7 +185,7 @@ jQuery(function($){
 		jQuery(window).scroll(function(){
 		   // Get container scroll position
 		   var fromTop = $(this).scrollTop()+topMenuHeight;
-		   
+
 		   // Get id of current scroll item
 		   var cur = scrollItems.map(function(){
 		     if ($(this).offset().top < fromTop)
@@ -194,59 +194,59 @@ jQuery(function($){
 		   // Get the id of the current element
 		   cur = cur[cur.length-1];
 		   var id = cur && cur.length ? cur[0].id : "";
-		   
+
 		   if (lastId !== id) {
 		       lastId = id;
 		       // Set/remove active class
 		       menuItems
 		         .parent().removeClass("active")
 		         .end().filter("[href=\\#"+id+"]").parent().addClass("active");
-		   }           
+		   }
 		})
 
 	/* ----------------------------------------------------------- */
-	/*  8. LIGHTBOX ( FOR PORTFOLIO POPUP VIEW ) 
-	/* ----------------------------------------------------------- */ 
-	
+	/*  8. LIGHTBOX ( FOR PORTFOLIO POPUP VIEW )
+	/* ----------------------------------------------------------- */
+
 	$('body').append("<div id='portfolio-popup'><div class='portfolio-popup-area'><div class='portfolio-popup-inner'></div></div></div>");
-	
-	// WHEN CLICK PLAY BUTTON 
-	
+
+	// WHEN CLICK PLAY BUTTON
+
     jQuery('.portfolio-social-icon').on('click', function(event) {
       event.preventDefault();
       $('#portfolio-popup').addClass("portfolio-popup-show");
       $('#portfolio-popup').animate({
 	      "opacity": 1
-      },500);   
+      },500);
       var portfolio_detailscontent = $(this).parent(".single-item-content").find(".portfolio-detail").html();
-	  $(".portfolio-popup-inner").html(portfolio_detailscontent);     
+	  $(".portfolio-popup-inner").html(portfolio_detailscontent);
 
-    });  
-           
+    });
+
     // WHEN CLICK CLOSE BUTTON
-    
-    $(document).on('click','.modal-close-btn', function(event) {     
+
+    $(document).on('click','.modal-close-btn', function(event) {
 	    event.preventDefault();
 		$('#portfolio-popup').removeClass("portfolio-popup-show");
 		$('#portfolio-popup').animate({
 		      "opacity": 0
-	    },500);  
+	    },500);
 
     });
-    
+
 
 
 	/* ----------------------------------------------------------- */
-	/*  9. MOBILE MENU CLOSE 
-	/* ----------------------------------------------------------- */ 
+	/*  9. MOBILE MENU CLOSE
+	/* ----------------------------------------------------------- */
 
 	jQuery('.navbar-nav').on('click', 'li a', function() {
 	  $('.in').collapse('hide');
 	});
 
 	/* ----------------------------------------------------------- */
-	/*  10. PRELOADER 
-	/* ----------------------------------------------------------- */ 
+	/*  10. PRELOADER
+	/* ----------------------------------------------------------- */
 
 	jQuery(window).load(function() { // makes sure the whole site is loaded
       jQuery('.loader').fadeOut(); // will first fade out the loading animation
@@ -256,22 +256,22 @@ jQuery(function($){
 
     /* ----------------------------------------------------------- */
 	/*  11. INSTAGRAM SLIDER (SLICK SLIDER)
-	/* ----------------------------------------------------------- */ 
+	/* ----------------------------------------------------------- */
 
 	jQuery('.instagram-feed').slick({
 		dots: true,
 		infinite: true,
 		speed: 500,
-		arrows:true, 
-		autoplay: true,     
+		arrows:true,
+		autoplay: true,
       	slidesToShow: 1,
-		slide: 'div',		
+		slide: 'div',
 		cssEase: 'linear'
 	});
 
 	/* ----------------------------------------------------------- */
 	/*  12. WOW ANIMATION
-	/* ----------------------------------------------------------- */ 
+	/* ----------------------------------------------------------- */
 
 	wow = new WOW(
       {
@@ -283,5 +283,17 @@ jQuery(function($){
       }
     );
     wow.init();
+
+	/* ----------------------------------------------------------- */
+	/*  13. FIND OUT MORE BUTTON SMOOTH SCROLLING
+	/* ----------------------------------------------------------- */
+		$("#findoutmore").click(function(e){
+		  var href = $(this).attr("href"),
+		      offsetTop = href === "#" ? 0 : $(href).offset().top-topMenuHeight+32;
+		  jQuery('html, body').stop().animate({
+		      scrollTop: offsetTop
+		  }, 1500);
+		  e.preventDefault();
+		});
 
 });
