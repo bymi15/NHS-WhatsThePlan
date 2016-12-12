@@ -94,9 +94,11 @@
           <!-- Start section area -->
           <div class="welcome-area">
             <div class="title-area">
-              <h2 class="tittle"><span>TESTING</span></h2>
+              <h2 class="tittle"><span>TESTING</span></h2><p> Click the following buttons to jump to the corresponding sections below: </p>
+			  <a class="btn btn-primary" href="#Unit and Integration Testing">Unit and Integration Testing</a>
+              <a class="btn btn-primary" href="#Automated Testing">Automated and User Acceptance Testing</a><br><br>
 			  <br>
-			  <h2 class="tittle" style="font-size:35px">Unit Testing and Integration Testing</h2>
+			  <h2 id="Unit and Integration Testing" class="tittle" style="font-size:35px">Unit and Integration Testing</h2>
 			    <span class="tittle-line"></span>
 				<p>Unit testing is responsible for testing the individual components of the app to ensure that they work as expected. The unit testing will be performed on both the backend (Firebase) and the frontend (Ionic) of the app.<br>Unit testing will be performed after any change is made to the code, to ensure that the changes do not break the app.</p>
             <p>Integration testing is where we will write end-to-end tests which perform a sequence of a use case and will ensure that the app is functioning properly as a whole – each component is working properly together as a connected system.<br>These tests will usually take longer to perform and will be done after unit testing. </p>
@@ -106,7 +108,7 @@
 				<br>
                
                <br>
-				<h2 class="tittle" style="font-size:35px">Automated Testing</h2>
+				<h2 class="tittle" id="Automated Testing"style="font-size:35px">Automated Testing</h2>
 			    <span class="tittle-line"></span>
 				<p>Both the unit tests and integration tests will be automated as they will need to be performed frequently throughout the development of the system. For automating the tests, we will be using Grunt.</p>
             <br>
@@ -115,7 +117,7 @@
 				<br>
                <br>
                
-            <h2 class="tittle" style="font-size:35px">User Acceptance Testing (UAT)</h2>
+            <h2 class="tittle" id="User Acceptance Testing" style="font-size:35px">User Acceptance Testing (UAT)</h2>
 			    <span class="tittle-line"></span>
 				<p>UAT is the final stage of testing that occurs after all the previous tests: unit tests and integrations tests have passed. For our project, we will be using <strong>alpha-beta testing</strong>.<br><br>
             Alpha testing will take place in the development environment and will be performed by us, the developers.<br><br>
