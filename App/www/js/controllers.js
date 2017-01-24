@@ -5,30 +5,114 @@ angular.module('app.controllers', ['ionic', 'firebase'])
 
 })
 
-.controller('loginCtrl', function ($scope, $stateParams, $state) {
+.controller('loginCtrl', function ($scope, $ionicPopup, $state) {
 
     $scope.goSignUp = function()
     {
         $state.go("signup");
     };
 
+    $scope.data = {};
+
+    $scope.signInEmail = function(){
+      var email = $scope.data.email;
+      var password = $scope.data.password;
+
+        //validate
+        var constraints = {
+          email: {
+            presence: true,
+            email: true
+          },
+          password: {
+            presence: true,
+            length: {
+              minimum: 6,
+              message: "must be at least 6 characters long"
+            }
+          }
+        };
+
+        var validation = validate({email: email, password: password}, constraints);
+        if(validation){
+          var alertPopup = $ionicPopup.alert({
+            title: 'Error!',
+            template: validation.email + "<br>" + validation.password
+          });
+          alertPopup.then();
+          return;
+        }
+
+      firebase.auth().signInWithEmailAndPassword(email, password).then(function() {
+        // user successfully registered
+        $state.go("main");
+      }).catch(function(error) {
+          // Handle Errors here./
+          /*
+          var errorCode = error.code;
+          var errorMessage = error.message;
+          console.log(errorMessage);*/
+
+          var alertPopup = $ionicPopup.alert({
+             title: 'Error!',
+             template: error.message
+          });
+          alertPopup.then(function(res) {
+            console.log('done');
+          });
+      });
+    };
 })
 
-.controller('signupCtrl', function ($scope, $stateParams) {
+.controller('signupCtrl', function ($scope, $ionicPopup, $state) {
+    $scope.data = {};
 
     $scope.signupEmail = function(){
+      var email = $scope.data.email;
+      var password = $scope.data.password;
 
-      var ref = firebase.database().ref();//new Firebase("https://whatstheplan-47a75.firebaseio.com");
+        //validate
+        var constraints = {
+          email: {
+            presence: true,
+            email: true
+          },
+          password: {
+            presence: true,
+            length: {
+              minimum: 6,
+              message: "must be at least 6 characters long"
+            }
+          }
+        };
 
-      ref.createUser({
-        email    : $scope.email,
-        password : $scope.password
-      }, function(error, userData) {
-        if (error) {
-          console.log("Error creating user:", error);
-        } else {
-          console.log("Successfully created user account with uid:", userData.uid);
+        var validation = validate({email: email, password: password}, constraints);
+        if(validation){
+          var alertPopup = $ionicPopup.alert({
+            title: 'Error!',
+            template: validation.email + "<br>" + validation.password
+          });
+          alertPopup.then();
+          return;
         }
+
+      firebase.auth().createUserWithEmailAndPassword(email, password).then(function() {
+        // user successfully registered
+        $state.go("main");
+      }).catch(function(error) {
+          // Handle Errors here./
+          /*
+          var errorCode = error.code;
+          var errorMessage = error.message;
+          console.log(errorMessage);*/
+
+          var alertPopup = $ionicPopup.alert({
+             title: 'Error!',
+             template: error.message
+          });
+          alertPopup.then(function(res) {
+            console.log('done');
+          });
       });
 
     };

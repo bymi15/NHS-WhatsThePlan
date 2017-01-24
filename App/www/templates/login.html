@@ -6,15 +6,15 @@
       <div class="spacer" style="width: 300px; height: 21px;"></div>
       <ion-list id="login-list2">
         <label class="item item-input" id="login-input1">
-          <span class="input-label">Username</span>
-          <input type="text" placeholder="">
+          <span class="input-label">Email</span>
+          <input ng-model="data.email" type="text" placeholder="" value="">
         </label>
         <label class="item item-input" id="login-input2">
           <span class="input-label">Password</span>
-          <input type="password" placeholder="">
+          <input ng-model="data.password" type="password" placeholder="" value="">
         </label>
       </ion-list>
-      <button id="login-button1" class="button button-light button-large button-block">Login</button>
+      <button ng-click="signInEmail()" id="login-button1" class="button button-light button-large button-block">Login</button>
       <a ng-click="goSignUp()" id="login-button2" class="button button-light  button-block button-clear">Or create an account</a>
     </form>
   </ion-content>
