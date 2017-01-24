@@ -1,18 +1,42 @@
-angular.module('app.controllers', [])
-  
-.controller('menuCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-// You can include any angular dependencies as parameters for this function
-// TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams) {
+angular.module('app.controllers', ['ionic', 'firebase'])
+
+.controller('menuCtrl', function ($scope, $stateParams) {
 
 
-}])
-   
-.controller('loginCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-// You can include any angular dependencies as parameters for this function
-// TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams) {
+})
+
+.controller('loginCtrl', function ($scope, $stateParams, $state) {
+
+    $scope.goSignUp = function()
+    {
+        $state.go("signup");
+    };
+
+})
+
+.controller('signupCtrl', function ($scope, $stateParams) {
+
+    $scope.signupEmail = function(){
+
+      var ref = firebase.database().ref();//new Firebase("https://whatstheplan-47a75.firebaseio.com");
+
+      ref.createUser({
+        email    : $scope.email,
+        password : $scope.password
+      }, function(error, userData) {
+        if (error) {
+          console.log("Error creating user:", error);
+        } else {
+          console.log("Successfully created user account with uid:", userData.uid);
+        }
+      });
+
+    };
+
+})
+
+.controller('mainCtrl', function ($scope, $stateParams) {
 
 
-}])
- 
+})
+
