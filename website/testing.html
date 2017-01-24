@@ -94,33 +94,35 @@
           <!-- Start section area -->
           <div class="welcome-area">
             <div class="title-area">
-              <h2 class="tittle"><span>TESTING</span></h2>
+              <h2 class="tittle"><span>TESTING</span></h2><p> Click the following buttons to jump to the corresponding sections below: </p>
+			  <a class="smoothscrolldown btn btn-primary" href="#unit">Unit and Integration Testing</a>
+              <a class="smoothscrolldown btn btn-primary" href="#auto">Automated and User Acceptance Testing</a><br><br>
 			  <br>
-			  <h2 class="tittle" style="font-size:35px">Unit Testing and Integration Testing</h2>
+			  <h2 id="unit" class="tittle" style="font-size:35px">Unit and Integration Testing</h2>
 			    <span class="tittle-line"></span>
-				<p>Unit testing is responsible for testing the individual components of the app to ensure that they work as expected. The unit testing will be performed on both the backend (Firebase) and the frontend (Ionic) of the app.<br>Unit testing will be performed after any change is made to the code, to ensure that the changes do not break the app.</p>
-            <p>Integration testing is where we will write end-to-end tests which perform a sequence of a use case and will ensure that the app is functioning properly as a whole – each component is working properly together as a connected system.<br>These tests will usually take longer to perform and will be done after unit testing. </p>
-            <h3 style="font-weight: bold;">Jasmine and Karma:</h3><p>
-            <img src="logos/jasmineandkarma-testing.jpg" class="img-responsive">
-            Jasmine is a behaviour driven development framework for testing JavaScript code so it is suitable for testing Ionic apps, as Ionic is built with AngularJS, a JavaScript framework.<br><br>Karma is a tool built by the Angular team for running unit tests on a browser, so Karma can be used to run the tests written in Jasmine.</p>
+				<p><strong>Unit testing</strong> is responsible for testing the <strong>individual components</strong> of the app to ensure that they work as expected. The unit testing will be performed on both the <strong>backend (Firebase)</strong> and the <strong>frontend (Ionic)</strong> of the app.<br>Unit testing will be performed after <strong>any change</strong> is made to the code, to ensure that the changes do not break the app.</p>
+            <p><strong>Integration testing</strong> is where we will write <strong>end-to-end tests</strong> which perform a sequence of a use case and will ensure that the app is <strong>functioning properly</strong> <strong>as a whole</strong> – each component is working properly together as a <strong>connected system</strong>.<br>These tests will usually take longer to perform and will be done after unit testing. </p>
+  
+           <img src="testing/Jasmine.PNG" height="75" width="300" align="middle"> <br>
+            <strong>Jasmine</strong> is a <strong>behaviour driven development framework</strong> for testing JavaScript code so it is suitable for testing Ionic apps, as Ionic is built with AngularJS, a JavaScript framework.<br><br><img src="testing/Karma.PNG" height="75" width="200" align="middle"> <br><strong>Karma</strong> is a tool built by the Angular team for running unit tests on a browser, so Karma can be used to run the tests written in Jasmine.</p>
 				<br>
                
-               
-				<h2 class="tittle" style="font-size:35px">Automated Testing</h2>
+               <br>
+				<h2 class="tittle" id="auto"style="font-size:35px">Automated Testing</h2>
 			    <span class="tittle-line"></span>
-				<p>Both the unit tests and integration tests will be automated as they will need to be performed frequently throughout the development of the system. For automating the tests, we will be using Grunt.</p>
-            <h3 style="font-weight: bold;">Grunt:</h3><p>
-            <img src="logos/grunt-testing.jpg" class="img-responsive">
-            Grunt is a task runner which allows us to build and perform tests automatically.<br>It also allows us to install all the testing frameworks such as Jasmine and Karma in a single command and then execute the tests in a project during the build process, so all the tests are run automatically after the project code is built.</p>
+				<p>Both the unit tests and integration tests will be <strong>automated</strong> as they will need to be performed <strong>frequently</strong> throughout the development of the system. For automating the tests, we will be using <strong>Grunt</strong>.</p>
+            <br>
+            <img src="testing/Grunt.PNG" height="90" width="300" align="middle"> <br>
+            <strong>Grunt</strong> is a <strong>task runner</strong> which allows us to <strong>build and perform tests automatically</strong>.<br>It also allows us to install all the testing frameworks such as Jasmine and Karma in a single command and then execute the tests in a project during the build process, so all the tests are run automatically after the project code is built.</p>
 				<br>
+               <br>
                
-               
-            <h2 class="tittle" style="font-size:35px">User Acceptance Testing (UAT)</h2>
+            <h2 class="tittle" id="User Acceptance Testing" style="font-size:35px">User Acceptance Testing (UAT)</h2>
 			    <span class="tittle-line"></span>
-				<p>UAT is the final stage of testing that occurs after all the previous tests: unit tests and integrations tests have passed. For our project, we will be using <strong>alpha-beta testing</strong>.<br><br>
-            Alpha testing will take place in the development environment and will be performed by us, the developers.<br><br>
-            Beta testing will take place in an external environment. We will be communicating closely with our client to perform beta testing with our client after every major iteration of the development process and ensure that our client is satisfied with the product.<br><br>
-            Feedback from the alpha-beta testing will be used to make improvements to the product.</p>
+				<p><strong>UAT</strong> is the final stage of testing that occurs <strong>after</strong> all the previous tests: unit tests and integrations tests have <strong>passed</strong>. For our project, we will be using <strong>alpha-beta testing</strong>.<br><br>
+            <strong>Alpha testing</strong> will take place in the <strong>development</strong> <strong>environment</strong> and will be performed by us, the developers.<br><br>
+            <strong>Beta testing</strong> will take place in an <strong>external environment</strong>. We will be communicating closely with our client to perform <strong>beta</strong> <strong>testing</strong> with our client after every <strong>major iteration</strong> of the <strong>development process</strong> and ensure that our client is satisfied with the product.<br><br>
+            <strong>Feedback</strong> from the <strong>alpha-beta testing</strong> will be used to make improvements to the product.</p>
 				<br>
                
 		  </div>
