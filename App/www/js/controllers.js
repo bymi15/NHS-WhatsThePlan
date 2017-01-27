@@ -7,11 +7,6 @@ angular.module('app.controllers', ['ionic', 'firebase'])
 
 .controller('loginCtrl', function ($scope, $ionicPopup, $state) {
 
-    $scope.goSignUp = function()
-    {
-        $state.go("signup");
-    };
-
     $scope.data = {};
 
     $scope.signInEmail = function(){
@@ -25,22 +20,27 @@ angular.module('app.controllers', ['ionic', 'firebase'])
             email: true
           },
           password: {
-            presence: true,
-            length: {
-              minimum: 6,
-              message: "must be at least 6 characters long"
-            }
+            presence: true
           }
         };
 
         var validation = validate({email: email, password: password}, constraints);
         if(validation){
-          var alertPopup = $ionicPopup.alert({
-            title: 'Error!',
-            template: validation.email + "<br>" + validation.password
-          });
-          alertPopup.then();
-          return;
+            if(validation.email){
+              var alertPopup = $ionicPopup.alert({
+                title: 'Error!',
+                template: validation.email
+              });
+              alertPopup.then();
+              return;
+            }else if(validation.password){
+                var alertPopup = $ionicPopup.alert({
+                  title: 'Error!',
+                  template: validation.password
+                });
+                alertPopup.then();
+                return;
+            }
         }
 
       firebase.auth().signInWithEmailAndPassword(email, password).then(function() {
@@ -64,7 +64,19 @@ angular.module('app.controllers', ['ionic', 'firebase'])
     };
 })
 
-.controller('signupCtrl', function ($scope, $ionicPopup, $state) {
+.controller('signupCtrl', function ($scope, $ionicPopup, $ionicSlideBoxDelegate, $state) {
+    $scope.disableSwipe = function() {
+        $ionicSlideBoxDelegate.enableSlide(false);
+    }
+
+    $scope.nextSlide = function() {
+        $ionicSlideBoxDelegate.next();
+    }
+
+    $scope.previousSlide = function() {
+        $ionicSlideBoxDelegate.previous();
+    }
+
     $scope.data = {};
 
     $scope.signupEmail = function(){
@@ -88,24 +100,27 @@ angular.module('app.controllers', ['ionic', 'firebase'])
 
         var validation = validate({email: email, password: password}, constraints);
         if(validation){
-          var alertPopup = $ionicPopup.alert({
-            title: 'Error!',
-            template: validation.email + "<br>" + validation.password
-          });
-          alertPopup.then();
-          return;
+            if(validation.email){
+              var alertPopup = $ionicPopup.alert({
+                title: 'Error!',
+                template: validation.email
+              });
+              alertPopup.then();
+              return;
+            }else if(validation.password){
+                var alertPopup = $ionicPopup.alert({
+                  title: 'Error!',
+                  template: validation.password
+                });
+                alertPopup.then();
+                return;
+            }
         }
 
       firebase.auth().createUserWithEmailAndPassword(email, password).then(function() {
         // user successfully registered
         $state.go("main");
       }).catch(function(error) {
-          // Handle Errors here./
-          /*
-          var errorCode = error.code;
-          var errorMessage = error.message;
-          console.log(errorMessage);*/
-
           var alertPopup = $ionicPopup.alert({
              title: 'Error!',
              template: error.message
