@@ -29,7 +29,7 @@ angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.directives
     }
   });
 
-  $state.go('app.login');
+  $state.go('login');
 })
 
 /*

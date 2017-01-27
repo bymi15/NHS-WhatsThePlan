@@ -32,6 +32,12 @@ angular.module('app.routes', [])
     controller: 'mainCtrl'
   })
 
+  .state('profile', {
+    url: '/profile',
+    templateUrl: 'templates/profile.html',
+    controller: 'profileCtrl'
+  })
+
 $urlRouterProvider.otherwise('/login')
 
 });

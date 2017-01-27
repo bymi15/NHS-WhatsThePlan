@@ -5,66 +5,43 @@ angular.module('app.controllers', ['ionic', 'firebase'])
 
 })
 
-.controller('loginCtrl', function ($scope, $ionicPopup, $state) {
+.controller('loginCtrl', function ($scope, $state, $ionicHistory, utils, validater) {
 
     $scope.data = {};
 
     $scope.signInEmail = function(){
-      var email = $scope.data.email;
-      var password = $scope.data.password;
+        utils.showLoading();
 
-        //validate
-        var constraints = {
-          email: {
-            presence: true,
-            email: true
-          },
-          password: {
-            presence: true
-          }
-        };
+        var email = $scope.data.email;
+        var password = $scope.data.password;
 
-        var validation = validate({email: email, password: password}, constraints);
+        var validation = validater.validateLogin(email, password);
+
         if(validation){
+            utils.hideLoading();
             if(validation.email){
-              var alertPopup = $ionicPopup.alert({
-                title: 'Error!',
-                template: validation.email
-              });
-              alertPopup.then();
-              return;
+                utils.showAlert('Error!', 'Invalid email address');
+                return;
             }else if(validation.password){
-                var alertPopup = $ionicPopup.alert({
-                  title: 'Error!',
-                  template: validation.password
-                });
-                alertPopup.then();
+                utils.showAlert('Error!', 'Please enter your password');
                 return;
             }
         }
 
-      firebase.auth().signInWithEmailAndPassword(email, password).then(function() {
-        // user successfully registered
-        $state.go("main");
-      }).catch(function(error) {
-          // Handle Errors here./
-          /*
-          var errorCode = error.code;
-          var errorMessage = error.message;
-          console.log(errorMessage);*/
-
-          var alertPopup = $ionicPopup.alert({
-             title: 'Error!',
-             template: error.message
-          });
-          alertPopup.then(function(res) {
-            console.log('done');
-          });
-      });
+        firebase.auth().signInWithEmailAndPassword(email, password).then(function() {
+            // user successfully registered
+            utils.hideLoading();
+            $ionicHistory.clearHistory();
+            $ionicHistory.clearCache();
+            $state.go("main");
+        }).catch(function(error) {
+            utils.hideLoading();
+            utils.showAlert('Error!', 'Incorrect login details. Please try again.');
+        });
     };
 })
 
-.controller('signupCtrl', function ($scope, $ionicPopup, $ionicSlideBoxDelegate, $state) {
+.controller('signupCtrl', function ($scope, $ionicHistory, $ionicSlideBoxDelegate, $state, utils, validater, User) {
     $scope.disableSwipe = function() {
         $ionicSlideBoxDelegate.enableSlide(false);
     }
@@ -80,62 +57,63 @@ angular.module('app.controllers', ['ionic', 'firebase'])
     $scope.data = {};
 
     $scope.signupEmail = function(){
-      var email = $scope.data.email;
-      var password = $scope.data.password;
+        utils.showLoading();
 
-        //validate
-        var constraints = {
-          email: {
-            presence: true,
-            email: true
-          },
-          password: {
-            presence: true,
-            length: {
-              minimum: 6,
-              message: "must be at least 6 characters long"
-            }
-          }
-        };
+        var email = $scope.data.email;
+        var password = $scope.data.password;
+        var confirmPassword = $scope.data.confirmPassword;
+        var fullName = $scope.data.fullName;
+        var gender = $scope.data.gender;
+        var dateOfBirth = $scope.data.dateOfBirth;
+        var nationality = $scope.data.nationality;
+        var maritalStatus = $scope.data.maritalStatus;
+        var nhsNumber = $scope.data.nhsNumber;
+        var gpName = $scope.data.gpName;
+        var gpSurgery = $scope.data.gpSurgery;
 
-        var validation = validate({email: email, password: password}, constraints);
+
+        utils.showLoading();
+        var validation = validater.validateSignup(email, password, confirmPassword);
         if(validation){
+            utils.hideLoading();
+
             if(validation.email){
-              var alertPopup = $ionicPopup.alert({
-                title: 'Error!',
-                template: validation.email
-              });
-              alertPopup.then();
-              return;
+                utils.showAlert('Error!', validation.email);
+                return;
             }else if(validation.password){
-                var alertPopup = $ionicPopup.alert({
-                  title: 'Error!',
-                  template: validation.password
-                });
-                alertPopup.then();
+                utils.showAlert('Error!', validation.password);
+                return;
+            }else if(validation.confirmPassword){
+                utils.showAlert('Error!', validation.confirmPassword);
                 return;
             }
         }
 
-      firebase.auth().createUserWithEmailAndPassword(email, password).then(function() {
-        // user successfully registered
-        $state.go("main");
-      }).catch(function(error) {
-          var alertPopup = $ionicPopup.alert({
-             title: 'Error!',
-             template: error.message
-          });
-          alertPopup.then(function(res) {
-            console.log('done');
-          });
-      });
+        firebase.auth().createUserWithEmailAndPassword(email, password).then(function(result) {
+            //success
 
+            //add the user entry in firebase
+            User.createUser(result.uid, fullName, gender, dateOfBirth, nationality, maritalStatus, nhsNumber, gpName, gpSurgery);
+
+            utils.hideLoading();
+            $ionicHistory.clearHistory();
+            $ionicHistory.clearCache();
+
+            $state.go("main");
+        }).catch(function(error) {
+            utils.hideLoading();
+            utils.showAlert('Error!', error.message);
+        });
     };
 
 })
 
 .controller('mainCtrl', function ($scope, $stateParams) {
 
+
+})
+
+.controller('profileCtrl', function ($scope) {
 
 })
 
