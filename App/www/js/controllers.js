@@ -108,12 +108,43 @@ angular.module('app.controllers', ['ionic', 'firebase'])
 
 })
 
-.controller('mainCtrl', function ($scope, $stateParams) {
+.controller('mainCtrl', function ($scope, User) {
+     //Check if user is logged in
+    firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+            User.getUser(user.uid).then(function(snapshot) {
+                $scope.userProfile = snapshot.val();
 
+                utils.hideLoading();
+            });
+        }else{
+            $state.go("login");
+        }
+    });
 
+    $scope.logout = function(){
+        firebase.auth().signOut();
+
+        $state.go("login");
+    }
 })
 
-.controller('profileCtrl', function ($scope) {
+.controller('profileCtrl', function ($scope, $state, utils, User) {
+    utils.showLoading();
 
+    //Check if user is logged in
+    firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+            User.getUser(user.uid).then(function(snapshot) {
+                $scope.userProfile = snapshot.val();
+
+                console.log($scope.userProfile);
+
+                utils.hideLoading();
+            });
+        }else{
+            $state.go("login");
+        }
+    });
 })
 

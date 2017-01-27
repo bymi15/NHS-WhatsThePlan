@@ -1,9 +1,14 @@
 angular.module('app.services', ['firebase'])
 
-.factory('User', [function($firebase){
+.factory('User', [function(){
     var ref = firebase.database().ref('users');
 
     var func = {};
+
+    //returns a promise
+    func.getUser = function(uid){
+        return ref.child(uid).once('value');
+    }
 
     func.createUser = function(uid, fullName, gender, dateOfBirth, nationality, maritalStatus, nhsNumber, gpName, gpSurgery){
         ref.child(uid).set({
@@ -15,20 +20,6 @@ angular.module('app.services', ['firebase'])
             nhsNumber: nhsNumber,
             gpName: gpName,
             gpSurgery: gpSurgery
-        });
-    }
-
-    func.updateUser = function(data){
-        ref.child(data.uid).push({
-            email: data.email,
-            fullName: data.fullName,
-            gender: data.gender,
-            dateOfBirth: data.dateOfBirth,
-            nationality: data.nationality,
-            maritalStatus: data.maritalStatus,
-            nhsNumber: data.nhsNumber,
-            gpName: data.gpName,
-            gpSurgery: data.gpSurgery
         });
     }
 

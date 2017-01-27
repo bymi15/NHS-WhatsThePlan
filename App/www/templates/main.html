@@ -1,4 +1,7 @@
-<ion-view title="Main" hide-nav-bar="true" hide-back-button="true" id="page6" style="background-color:#3FA9F5;">
+<ion-view title="What's The Plan" hide-back-button="true" id="page6" style="background-color:#3FA9F5;">
+  <ion-nav-buttons side="right" class="has-header">
+    <button class="button button-stable icon ion-navicon-round"></button>
+  </ion-nav-buttons>
   <ion-content padding="true" class="manual-ios-statusbar-padding" scroll="false">
     <form id="main-form5" class="list row">
       <div class="col col-50">
@@ -7,7 +10,9 @@
         </a>
       </div>
       <div class="col col-50">
-        <img src="img/nV7FoppMReuAnTs3uebQ_icon_records.png" style="display: block; width: 100%; height: auto; margin-left: auto;">
+        <a style="display:block;" ng-click="logout()">
+          <img src="img/nV7FoppMReuAnTs3uebQ_icon_records.png" style="display: block; width: 100%; height: auto; margin-left: auto;">
+        </a>
       </div>
     </form>
     <form id="main-form6" class="list row">

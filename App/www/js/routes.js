@@ -29,15 +29,17 @@ angular.module('app.routes', [])
   .state('main', {
     url: '/main',
     templateUrl: 'templates/main.html',
-    controller: 'mainCtrl'
+    controller: 'mainCtrl',
+    authRequired: true
   })
 
   .state('profile', {
     url: '/profile',
     templateUrl: 'templates/profile.html',
-    controller: 'profileCtrl'
+    controller: 'profileCtrl',
+    authRequired: true
   })
 
-$urlRouterProvider.otherwise('/login')
+$urlRouterProvider.otherwise('/main')
 
 });

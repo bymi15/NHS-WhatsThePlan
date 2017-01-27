@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.directives','app.services'])
+angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.directives','app.services', 'firebase'])
 
 .config(function($ionicConfigProvider, $sceDelegateProvider){
 
@@ -14,7 +14,7 @@ angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.directives
 
 })
 
-.run(function($ionicPlatform, $state) {
+.run(function($ionicPlatform, $state, $rootScope) {
 
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -29,7 +29,19 @@ angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.directives
     }
   });
 
-  $state.go('login');
+  if (firebase.auth().currentUser){
+        $state.go("main");
+  }
+
+  //stateChange event
+  $rootScope.$on("$stateChangeStart", function(event, toState, toParams, fromState, fromParams){
+    var user = firebase.auth().currentUser;
+    if (toState.authRequired && !user){
+        // User is not authenticated
+        $state.transitionTo("login");
+        event.preventDefault();
+    }
+  });
 })
 
 /*

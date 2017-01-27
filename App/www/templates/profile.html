@@ -6,26 +6,26 @@
     <div>
       <img src="img/EQuQPBLOSLqYlBeb9JIb_icon_avatar.png" style="display: block; width: 50%; height: auto; margin-left: auto; margin-right: auto;">
     </div>
-    <h3 id="myProfile-heading5" style="color:#3FA9F5;font-weight:300;text-align:center;">Jerry Thompson</h3>
-    <h4 id="myProfile-heading6" style="color:#54AA3B;font-weight:400;text-align:center;">NHS Number: 450 877 7534</h4>
+    <h3 id="myProfile-heading5" style="color:#3FA9F5;font-weight:300;text-align:center;">{{userProfile.fullName}}</h3>
+    <h4 id="myProfile-heading6" style="color:#54AA3B;font-weight:400;text-align:center;">NHS Number: {{userProfile.nhsNumber}}</h4>
     <div id="myProfile-markdown1" class="show-list-numbers-and-dots">
       <p style="color:#3F3F3F;font-size:17px;">
-        <strong>Gender:</strong> Male</p>
+        <strong>Gender:</strong> {{userProfile.gender}}</p>
 
       <p style="color:#3F3F3F;font-size:17px;">
-        <strong>Date of Birth:</strong> 17/06/1997</p>
+        <strong>Date of Birth:</strong> {{userProfile.dateOfBirth}}</p>
 
       <p style="color:#3F3F3F;font-size:17px;">
-        <strong>Nationality:</strong> British</p>
+        <strong>Nationality:</strong> {{userProfile.nationality}}</p>
 
       <p style="color:#3F3F3F;font-size:17px;">
-        <strong>Marital Status:</strong> Married</p>
+        <strong>Marital Status:</strong> {{userProfile.maritalStatus}}</p>
 
       <p style="color:#3F3F3F;font-size:17px;">
-        <strong>GP Name:</strong> Dr Ken Thompson</p>
+        <strong>GP Name:</strong> {{userProfile.gpName}}</p>
 
       <p style="color:#3F3F3F;font-size:17px;">
-        <strong>GP Surgery:</strong> Primrose Hill Surgery</p>
+        <strong>GP Surgery:</strong> {{userProfile.gpSurgery}}</p>
     </div>
   </ion-content>
 </ion-view>
