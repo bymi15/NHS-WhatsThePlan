@@ -41,7 +41,7 @@ angular.module('app.controllers', ['ionic', 'firebase'])
     };
 })
 
-.controller('signupCtrl', function ($scope, $ionicHistory, $ionicSlideBoxDelegate, $state, utils, validater, User) {
+.controller('signupCtrl', function ($scope, $ionicHistory, $ionicSlideBoxDelegate, $state, utils, validater, User, $filter) {
     $scope.disableSwipe = function() {
         $ionicSlideBoxDelegate.enableSlide(false);
     }
@@ -65,6 +65,8 @@ angular.module('app.controllers', ['ionic', 'firebase'])
         var fullName = $scope.data.fullName;
         var gender = $scope.data.gender;
         var dateOfBirth = $scope.data.dateOfBirth;
+        dateOfBirth = $filter('date')(dateOfBirth, 'dd/MM/yyyy');
+
         var nationality = $scope.data.nationality;
         var maritalStatus = $scope.data.maritalStatus;
         var nhsNumber = $scope.data.nhsNumber;
@@ -108,16 +110,10 @@ angular.module('app.controllers', ['ionic', 'firebase'])
 
 })
 
-.controller('mainCtrl', function ($scope, User) {
+.controller('mainCtrl', function ($scope, $state, User) {
      //Check if user is logged in
     firebase.auth().onAuthStateChanged(function(user) {
-        if (user) {
-            User.getUser(user.uid).then(function(snapshot) {
-                $scope.userProfile = snapshot.val();
-
-                utils.hideLoading();
-            });
-        }else{
+        if (!user) {
             $state.go("login");
         }
     });
@@ -137,8 +133,6 @@ angular.module('app.controllers', ['ionic', 'firebase'])
         if (user) {
             User.getUser(user.uid).then(function(snapshot) {
                 $scope.userProfile = snapshot.val();
-
-                console.log($scope.userProfile);
 
                 utils.hideLoading();
             });
