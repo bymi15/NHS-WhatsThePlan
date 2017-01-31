@@ -65,7 +65,7 @@ angular.module('app.controllers', ['ionic', 'firebase'])
         var fullName = $scope.data.fullName;
         var gender = $scope.data.gender;
         var dateOfBirth = $scope.data.dateOfBirth;
-        dateOfBirth = $filter('date')(dateOfBirth, 'dd/MM/yyyy');
+        dateOfBirth = $filter('date')(dateOfBirth, 'dd-MM-yyyy');
 
         var nationality = $scope.data.nationality;
         var maritalStatus = $scope.data.maritalStatus;
@@ -75,7 +75,8 @@ angular.module('app.controllers', ['ionic', 'firebase'])
 
 
         utils.showLoading();
-        var validation = validater.validateSignup(email, password, confirmPassword);
+        var validation = validater.validateSignup(email, password, confirmPassword, fullName, gender, dateOfBirth, nationality, maritalStatus, nhsNumber, gpName, gpSurgery);
+
         if(validation){
             utils.hideLoading();
 
@@ -87,6 +88,33 @@ angular.module('app.controllers', ['ionic', 'firebase'])
                 return;
             }else if(validation.confirmPassword){
                 utils.showAlert('Error!', validation.confirmPassword);
+                return;
+            }else if(validation.fullName){
+                utils.showAlert('Error!', validation.fullName);
+                return;
+            }else if(validation.gender){
+                utils.showAlert('Error!', validation.gender);
+                return;
+            }else if(validation.dateOfBirth){
+                utils.showAlert('Error!', validation.dateOfBirth);
+                return;
+            }else if(validation.nationality){
+                utils.showAlert('Error!', validation.nationality);
+                return;
+            }else if(validation.maritalStatus){
+                utils.showAlert('Error!', validation.maritalStatus);
+                return;
+            }else if(validation.nhsNumber){
+                utils.showAlert('Error!', validation.nhsNumber);
+                return;
+            }else if(validation.gpName){
+                utils.showAlert('Error!', validation.gpName);
+                return;
+            }else if(validation.gpSurgery){
+                utils.showAlert('Error!', validation.gpSurgery);
+                return;
+            }else{
+                utils.showAlert('Error!', "An error has occured. Please try again.");
                 return;
             }
         }
