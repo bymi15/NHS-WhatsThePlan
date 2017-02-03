@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.directives','app.services', 'firebase'])
+angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.directives','app.services', 'firebase', 'angularMoment'])
 
 .config(function($ionicConfigProvider, $sceDelegateProvider){
 
@@ -28,10 +28,6 @@ angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.directives
       StatusBar.styleDefault();
     }
   });
-
-  if (firebase.auth().currentUser){
-        $state.go("main");
-  }
 
   //stateChange event
   $rootScope.$on("$stateChangeStart", function(event, toState, toParams, fromState, fromParams){

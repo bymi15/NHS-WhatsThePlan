@@ -40,6 +40,8 @@ angular.module('app.routes', [])
     authRequired: true
   })
 
-$urlRouterProvider.otherwise('/main')
-
+  $urlRouterProvider.otherwise(function($injector, $location) {
+    var $state = $injector.get("$state");
+    $state.go("main");
+  });
 });
