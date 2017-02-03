@@ -26,6 +26,32 @@ angular.module('app.services', ['firebase'])
     return func;
 }])
 
+.factory('Appointment', [function(){
+    var ref = firebase.database().ref('appointments');
+
+    var func = {};
+
+    //returns a promise
+    func.getAppointment = function(uid){
+        return ref.child(uid).once('value');
+    }
+
+    func.createAppointment = function(uid, fullName, gender, dateOfBirth, nationality, maritalStatus, nhsNumber, gpName, gpSurgery){
+        ref.child(uid).set({
+            fullName: fullName,
+            gender: gender,
+            dateOfBirth: dateOfBirth,
+            nationality: nationality,
+            maritalStatus: maritalStatus,
+            nhsNumber: nhsNumber,
+            gpName: gpName,
+            gpSurgery: gpSurgery
+        });
+    }
+
+    return func;
+}])
+
 .factory('validater', ['moment', function(moment){
     var func = {};
 
@@ -179,7 +205,3 @@ angular.module('app.services', ['firebase'])
     return func;
 
 }])
-
-.service('BlankService', [function(){
-
-}]);

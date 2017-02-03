@@ -1,0 +1,820 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"html",
+				"htmlspecialchars"
+			],
+			[
+				"btn-",
+				"btn-success"
+			],
+			[
+				"btnJoinp",
+				"btnJoinPrivate"
+			],
+			[
+				"channels",
+				"channelsTab"
+			],
+			[
+				"messageH",
+				"messageHistoryUsr"
+			],
+			[
+				"message",
+				"messageForm"
+			],
+			[
+				"asser_",
+				"assert_response"
+			],
+			[
+				"assert",
+				"assert_response"
+			],
+			[
+				"board",
+				"board_filename"
+			],
+			[
+				"uclks_g",
+				"uclks_gallery_categories"
+			],
+			[
+				"registeredusers_",
+				"registeredusers_username"
+			],
+			[
+				"uclks_gal",
+				"uclks_gallery_photos"
+			],
+			[
+				"current",
+				"currentPageTag"
+			],
+			[
+				"background-",
+				"background-color"
+			],
+			[
+				"view",
+				"view_filename"
+			],
+			[
+				"process_",
+				"process_reply_suggestion"
+			],
+			[
+				"inlin",
+				"inline-block"
+			],
+			[
+				"ample",
+				"ampleSwarms"
+			],
+			[
+				"confli",
+				"conflictBooking1"
+			],
+			[
+				"conflic",
+				"conflictBooking"
+			],
+			[
+				"shiftEnding",
+				"shiftEndingBooking"
+			],
+			[
+				"sear",
+				"search_query"
+			],
+			[
+				"text-",
+				"text-align"
+			],
+			[
+				"-",
+				"ime-mode"
+			],
+			[
+				"backgro",
+				"background-color"
+			],
+			[
+				"get",
+				"getDOMNode"
+			],
+			[
+				"render",
+				"renderEditForm"
+			],
+			[
+				"glp",
+				"glyphicon"
+			],
+			[
+				"Death",
+				"DeathSnowball"
+			],
+			[
+				"Dea",
+				"DeathSnowball"
+			],
+			[
+				"tex",
+				"text-align"
+			],
+			[
+				"text",
+				"text-align"
+			],
+			[
+				"a",
+				"vertical-align"
+			],
+			[
+				"margin",
+				"margin-bottom"
+			],
+			[
+				"size",
+				"font-size"
+			],
+			[
+				"searc",
+				"searchQuery"
+			],
+			[
+				"d",
+				"display"
+			],
+			[
+				"font",
+				"font-size"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "App/www/index.html",
+			"settings":
+			{
+				"buffer_size": 3078,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "App/www/js/controllers.js",
+			"settings":
+			{
+				"buffer_size": 5558,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "App/www/js/services.js",
+			"settings":
+			{
+				"buffer_size": 5234,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "App/www/templates/signup.html",
+			"settings":
+			{
+				"buffer_size": 4673,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "App/www/templates/login.html",
+			"settings":
+			{
+				"buffer_size": 1297,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+		[
+			[
+				[
+					"Packages/Python/Python.sublime-build",
+					""
+				],
+				[
+					"Packages/Python/Python.sublime-build",
+					"Syntax Check"
+				]
+			],
+			[
+				"Packages/Python/Python.sublime-build",
+				""
+			]
+		]
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 191.0,
+		"last_filter": "install",
+		"selected_items":
+		[
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 647.0
+	},
+	"console":
+	{
+		"height": 162.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '2915d1851351e5ee549c20394736b442' + '8bc59f460fa1548d1514676163dafc88'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by) "
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates"
+	],
+	"file_history":
+	[
+		"/C/wamp/www/server.php",
+		"/C/wamp/www/lib/inc/functions.php",
+		"/C/wamp/scripts/config.inc.php",
+		"/C/wamp/www/test.php",
+		"/C/wamp/www/lib/inc/config.php",
+		"/C/wamp/www/uclks/include/config.php",
+		"/C/wamp/www/lib/nxs-api/nxs-http.php",
+		"/C/Users/sakan_000/Documents/Github/InstagramVision/index.php",
+		"/C/Users/sakan_000/Documents/Github/InstagramVision/server.php",
+		"/C/Users/sakan_000/Documents/Github/InstagramVision/js/app.js",
+		"/C/wamp/www/css/rangeslider.css",
+		"/C/wamp/www/index.php",
+		"/C/wamp/www/js/app.js",
+		"/C/wamp/www/processUploadImage.php",
+		"/C/wamp/www/lib/nxs-api/nxs-api.php",
+		"/C/Users/sakan_000/Documents/Github/InstagramVision/lib/inc/nxs-functions.php",
+		"/C/wamp/www/lib/inc/nxs-functions.php",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/js/app.js",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/index.html",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/bower.json",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/gulpfile.js",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/js/directives.js",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/package.json",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/profile.html",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/login.html",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/main.html",
+		"/C/Users/sakan_000/Desktop/rangeslider/index.html",
+		"/C/Users/sakan_000/Desktop/rangeslider/js/index.js",
+		"/C/Users/sakan_000/AppData/Local/Temp/Temp1_rangeslider-js-add-remove-classes-depending-on-value.zip/js/index.js",
+		"/C/Users/sakan_000/AppData/Local/Temp/Temp1_rangeslider-js-add-remove-classes-depending-on-value.zip/css/style.css",
+		"/C/wamp/www/js/rangeslider.min.js",
+		"/C/Users/sakan_000/Documents/Github/InstagramVision/css/bootstrap.min.css",
+		"/C/Users/sakan_000/Documents/Github/InstagramVision/processUploadImage.php",
+		"/C/Users/sakan_000/Documents/Github/InstagramVision/path.php",
+		"/C/Users/sakan_000/Documents/Github/AWS_VM_References/webapp/app/assets/javascripts/application.js",
+		"/C/Users/sakan_000/Documents/Github/WebsiteSecurity/secure_app/resources/js/custom.js",
+		"/C/wamp/www/path.php",
+		"/C/wamp/www/uclks/include/path.php",
+		"/C/wamp/www/viewImage.php",
+		"/C/wamp/www/app.js",
+		"/C/Users/sakan_000/Documents/Github/WebsiteSecurity/secure_app/controllers/file_controller.php",
+		"/C/Users/sakan_000/Documents/Github/WebsiteSecurity/secure_app/include/path.php",
+		"/C/Users/sakan_000/Documents/Github/UCLKSWeb/controllers/c_gallery.php",
+		"/C/Users/sakan_000/Documents/Github/UCLKSWeb/controllers/c_post.php",
+		"/C/Users/sakan_000/Documents/Github/UCLKSWeb/views/v_createpost.php",
+		"/C/Users/sakan_000/Documents/Github/UCLKSWeb/resources/js/form.js",
+		"/C/Users/sakan_000/Documents/Github/UCLKSWeb/resources/js/functions.js",
+		"/C/Users/sakan_000/Documents/Github/UCLKSWeb/views/v_post.php",
+		"/C/Users/sakan_000/Documents/Github/UCLKSWeb/resources/js/ajax/reply.js",
+		"/C/Users/sakan_000/Documents/Github/UCLKSWeb/resources/js/ajax/board.js",
+		"/C/Users/sakan_000/Documents/Github/UCLKSWeb/resources/js/ajax/post.js",
+		"/C/Users/sakan_000/Documents/Github/UCLKSWeb/committeeboard.php",
+		"/C/Users/sakan_000/Documents/Github/UCLKSWeb/committee.php",
+		"/C/Users/sakan_000/Documents/Github/WebsiteSecurity/secure_app/views/myfiles.php",
+		"/C/wamp/www/nxs-api/nxs-api.php",
+		"/C/Users/sakan_000/Documents/Github/InstagramVision/uploadImage.php",
+		"/C/Users/sakan_000/Documents/Github/InstagramVision/nxs-api/nxs-api.php",
+		"/C/wamp/www/uclks/views/v_login.php",
+		"/C/wamp/www/uclks/login.php",
+		"/C/Users/sakan_000/Desktop/NXS SNAP/nxs-api/nxs-api.php",
+		"/C/Users/sakan_000/Desktop/NXS SNAP/nxs-api/nxs-http.php",
+		"/C/Users/sakan_000/Desktop/nxs-api.php",
+		"/C/Users/sakan_000/Desktop/nxs-http.php",
+		"/C/Users/sakan_000/Desktop/example-new-post-form.php",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/css/ionic.app.css",
+		"/C/Users/sakan_000/Documents/Github/SocketLiveVideo/app.js",
+		"/C/Users/sakan_000/Documents/Github/SocketLiveVideo/app/notification/notify.js",
+		"/C/Users/sakan_000/Documents/Github/SocketLiveVideo/app/peer/peers.js",
+		"/C/Users/sakan_000/Documents/Github/SocketLiveVideo/app/peer/handshake.js",
+		"/C/wamp/www/views/index.php",
+		"/C/wamp/www/views/mysnippets.php",
+		"/C/wamp/www/views/profile.php",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/js/routes.js",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/signup3.html",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/signup2.html",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/newUI/templates/login.html",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/signup.html",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/newUI/templates/signup.html",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/newUI/templates/signup3.html",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/newUI/templates/signup2.html",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/newUI/index.html",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/ionic.config.json",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/menu.html",
+		"/C/Users/sakan_000/Desktop/DataFrame.java",
+		"/C/Users/sakan_000/Desktop/NetworkCard.java",
+		"/C/Users/sakan_000/AppData/Local/Temp/Temp1_Code.zip/Code/src/main/GeneralSettings.java",
+		"/C/Users/sakan_000/AppData/Local/Temp/Temp1_Code.zip/Code/Engine/openglObjects/Vao.java",
+		"/C/Users/sakan_000/AppData/Local/Temp/Temp1_Code.zip/Code/Engine/utils/DisplayManager.java",
+		"/C/Users/sakan_000/Downloads/DataFrame.java",
+		"/C/Users/sakan_000/Desktop/COMP201P_Coursework/src/physical_network/DataFrame.java",
+		"/C/Users/sakan_000/Desktop/config.php",
+		"/C/wamp/www/controllers/snippet_controller.php",
+		"/C/wamp/www/controllers/user_controller.php",
+		"/C/wamp/www/models/User.php",
+		"/C/wamp/www/models/Database.php",
+		"/C/Users/sakan_000/Documents/Github/WebsiteSecurity/vulnerable_app/models/User.php",
+		"/C/Users/sakan_000/Documents/Github/WebsiteSecurity/vulnerable_app/controllers/user_controller.php",
+		"/C/Users/sakan_000/Documents/Github/WebsiteSecurity/vulnerable_app/models/Database.php",
+		"/C/Users/sakan_000/Documents/uploadme.html",
+		"/C/wamp/www/include/path.php",
+		"/C/wamp/www/include/config.php",
+		"/C/Users/sakan_000/Documents/Github/ReferenceCorrection/final_version/include/functions.php",
+		"/C/wamp/www/include/functions.php",
+		"/C/Users/sakan_000/Documents/Github/ReferenceCorrection/final_version/process_login.php",
+		"/C/Users/sakan_000/Documents/Github/UCLKSWeb/include/functions.php",
+		"/C/Users/sakan_000/Documents/Github/UCLKSWeb/controllers/c_login.php",
+		"/C/wamp/www/views/publicprofile.php",
+		"/C/Users/sakan_000/Documents/Github/WebsiteSecurity/vulnerable_app/views/mysnippets.php",
+		"/C/Users/sakan_000/Documents/Github/WebsiteSecurity/vulnerable_app/views/profile.php",
+		"/C/wamp/www/views/login.php",
+		"/C/Users/sakan_000/Documents/Github/WebsiteSecurity/vulnerable_app/views/index.php",
+		"/C/wamp/www/models/Snippet.php",
+		"/C/Users/sakan_000/Desktop/vulnerable_app/models/Database.php",
+		"/C/Users/sakan_000/Desktop/vulnerable_app/controllers/user_controller.php",
+		"/C/Users/sakan_000/Desktop/vulnerable_app/controllers/snippet_controller.php",
+		"/C/Users/sakan_000/Desktop/vulnerable_app/include/config.php",
+		"/C/Users/sakan_000/Desktop/vulnerable_app/models/User.php",
+		"/C/Users/sakan_000/Desktop/vulnerable_app/views/editprofile.php",
+		"/C/Users/sakan_000/Desktop/vulnerable_app/views/editpublicprofile.php",
+		"/C/Users/sakan_000/Desktop/vulnerable_app/views/publicprofile.php",
+		"/C/Users/sakan_000/Desktop/vulnerable_app/include/path.php",
+		"/C/Users/sakan_000/Documents/Github/WebsiteSecurity/secure_app/include/config.php",
+		"/C/Users/sakan_000/Documents/Github/ReferenceCorrection/final_version/include/connection.php",
+		"/C/Users/sakan_000/Documents/Github/WebsiteSecurity/vulnerable_app/views/editprofile.php",
+		"/C/Users/sakan_000/Documents/Github/WebsiteSecurity/vulnerable_app/views/editpublicprofile.php",
+		"/C/wamp/www/views/editprofile.php",
+		"/C/wamp/www/views/editpublicprofile.php",
+		"/C/Users/sakan_000/Documents/Github/WebsiteSecurity/vulnerable_app/controllers/snippet_controller.php"
+	],
+	"find":
+	{
+		"height": 30.0
+	},
+	"find_in_files":
+	{
+		"height": 133.0,
+		"where_history":
+		[
+			"<current file>",
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"function CutFromTo",
+			"CutFromTo",
+			"apver",
+			"instagram",
+			"apVer",
+			"prr(",
+			"function prr",
+			"prr",
+			"requre",
+			"request(",
+			"sendReq(",
+			"instagram",
+			"$this->check",
+			"#form",
+			"nxs_mkRemOptsArr",
+			"hmac",
+			"dosig",
+			"instagram",
+			"nxs_addToLogN",
+			"$proxy",
+			"$proxy->",
+			"$proxy",
+			"proxy",
+			"$this->proxy",
+			"\n\n$(\"#tag_slider\").on('input change', function() {\n    updateHashTags();\n}​);\n",
+			"alert",
+			"asd",
+			"echo",
+			"arrays.copyOfrange",
+			"update(",
+			"fetch_all",
+			"isloggedin",
+			"login",
+			"select(",
+			"snippets",
+			"login",
+			"publicprofile",
+			"redirect",
+			"displayAll",
+			"this->con",
+			"TRUE",
+			"elem.",
+			"modal",
+			"createPrivateChannel(",
+			"changeChannelPrivate",
+			"on(",
+			"modalCreatePrivate-createbtn",
+			"//io.",
+			".emit('connect",
+			"socket.emit('chathistory",
+			"modalJoinPrivate-joinbtn",
+			"error",
+			"$nickname",
+			"privateChannelName",
+			"h3",
+			"ch-",
+			"changeChannel",
+			"modaljoinprivate-joinbtn",
+			"channels[",
+			"script",
+			"setup",
+			"data.channel",
+			"btnJoinPrivate",
+			"currentChannel",
+			"defaultCha",
+			".on",
+			"userinchannel",
+			"Message.fin",
+			"Message",
+			"keydown",
+			"key",
+			"keypress",
+			"Message.find",
+			"desc",
+			"console.log",
+			"message",
+			"connections",
+			"users.",
+			"$chat",
+			"video",
+			"signup-btn",
+			"#notice",
+			"flash",
+			"width",
+			"footer",
+			"download",
+			"team",
+			"url",
+			"image",
+			"img",
+			"l4",
+			"canSendMail",
+			"replies",
+			"role",
+			"$arr",
+			"clear",
+			".active",
+			"progress .active",
+			".active",
+			"url",
+			"server/",
+			"progress",
+			"table",
+			"progress",
+			"'empty'",
+			"empty",
+			"empty results",
+			"error: no ",
+			"manage events",
+			"hover",
+			"error",
+			"img",
+			"<img",
+			"img",
+			"<img",
+			"settings",
+			"permission",
+			"validateRe",
+			"count",
+			"c_",
+			"views",
+			"society",
+			".com",
+			"www.ucluks.com",
+			"uclks.com",
+			"admin@uclks.co.uk",
+			"uclks",
+			"alert"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"l3",
+			"www.uclks.co.uk",
+			"",
+			"ajax",
+			"",
+			"resources/img/",
+			"",
+			"register",
+			"  ",
+			" ",
+			"col-lg-1 col-xs-4"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 4,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "App/www/index.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3078,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "App/www/js/controllers.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5558,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "App/www/js/services.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5234,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "App/www/templates/signup.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4673,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "App/www/templates/login.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1297,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								882,
+								882
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 30.0
+	},
+	"input":
+	{
+		"height": 46.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 128.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.unsaved_changes":
+	{
+		"height": 140.0
+	},
+	"pinned_build_system": "Packages/Python/Python.sublime-build",
+	"project": "whatstheplan.sublime-project",
+	"replace":
+	{
+		"height": 56.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 1281.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 318.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

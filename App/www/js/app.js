@@ -29,10 +29,6 @@ angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.directives
     }
   });
 
-  if (firebase.auth().currentUser){
-        $state.go("main");
-  }
-
   //stateChange event
   $rootScope.$on("$stateChangeStart", function(event, toState, toParams, fromState, fromParams){
     var user = firebase.auth().currentUser;

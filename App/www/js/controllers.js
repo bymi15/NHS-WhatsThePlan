@@ -29,10 +29,9 @@ angular.module('app.controllers', ['ionic', 'firebase'])
         }
 
         firebase.auth().signInWithEmailAndPassword(email, password).then(function() {
-            // user successfully registered
+            // user successfully logged in
             utils.hideLoading();
             $ionicHistory.clearHistory();
-            $ionicHistory.clearCache();
             $state.go("main");
         }).catch(function(error) {
             utils.hideLoading();
@@ -139,7 +138,7 @@ angular.module('app.controllers', ['ionic', 'firebase'])
 })
 
 .controller('mainCtrl', function ($scope, $state, User) {
-     //Check if user is logged in
+    //Check if user is logged in
     firebase.auth().onAuthStateChanged(function(user) {
         if (!user) {
             $state.go("login");
