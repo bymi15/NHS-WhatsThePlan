@@ -169,3 +169,69 @@ angular.module('app.controllers', ['ionic', 'firebase'])
     });
 })
 
+.controller('notesCtrl', function ($scope, $state, utils, Notes) {
+    utils.showLoading();
+
+    //Check if user is logged in
+    firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+            Notes.getNotes(user.uid).then(function(snapshot) {
+                $scope.notes = snapshot.val();
+
+                utils.hideLoading();
+            });
+        }else{
+            $state.go("login");
+        }
+    });
+
+    $scope.goViewNote = function(val){
+        console.log(val + " <<,");
+        $state.go('viewNote', { id: val });
+    }
+})
+
+.controller('addNotesCtrl', function ($scope, $state, utils, $filter, Notes) {
+    $scope.data = {};
+
+    $scope.addNote = function(){
+        utils.showLoading();
+
+        var user = firebase.auth().currentUser;
+
+        if (user != null) {
+            var uid = user.uid;
+            var title = $scope.data.title;
+            var consultant = $scope.data.consultant;
+            var location = $scope.data.location;
+            var datetime = $scope.data.datetime;
+            datetime = $filter('date')(datetime, 'dd-MM-yyyy');
+            var notes = $scope.data.notes;
+
+            Notes.addNote(uid, title, consultant, location, datetime, notes);
+            utils.hideLoading();
+
+            $state.go("notes");
+        }else{
+            $state.go("login");
+        }
+    }
+})
+
+.controller('viewNoteCtrl', function ($scope, $state, $stateParams, utils, Notes) {
+    utils.showLoading();
+
+    //Check if user is logged in
+    firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+            Notes.getNote(user.uid, $stateParams.id).then(function(snapshot) {
+                $scope.note = snapshot.val();
+
+                utils.hideLoading();
+            });
+        }else{
+            $state.go("login");
+        }
+    });
+})
+

@@ -1,0 +1,23 @@
+<ion-view title="Consultation Notes" id="page10" style="background-color:#FFFFFF;">
+  <ion-nav-buttons side="right" class="has-header">
+    <button class="button button-stable icon ion-navicon-round"></button>
+  </ion-nav-buttons>
+  <ion-content padding="true" class="has-header">
+    <div>
+      <h1 style="color:#3FA9F5; display: block; width: 50%; height: auto; margin-left: auto; margin-right: auto;">{{note.title}}</h1>
+    </div>
+    <div id="myProfile-markdown1" class="show-list-numbers-and-dots">
+      <p style="color:#3F3F3F;font-size:17px;">
+        <strong>Consultant:</strong> {{note.consultant}}</p>
+
+      <p style="color:#3F3F3F;font-size:17px;">
+        <strong>Location:</strong> {{note.location}}</p>
+
+      <p style="color:#3F3F3F;font-size:17px;">
+        <strong>Date/Time:</strong> {{note.datetime}}</p>
+
+      <p style="color:#3F3F3F;font-size:17px;">
+        <strong>Notes:</strong> {{note.notes}}</p>
+    </div>
+  </ion-content>
+</ion-view>

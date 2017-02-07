@@ -26,26 +26,29 @@ angular.module('app.services', ['firebase'])
     return func;
 }])
 
-.factory('Appointment', [function(){
-    var ref = firebase.database().ref('appointments');
+.factory('Notes', [function(){
+    var ref = firebase.database().ref('notes');
 
     var func = {};
 
     //returns a promise
-    func.getAppointment = function(uid){
+    func.getNotes = function(uid){
         return ref.child(uid).once('value');
     }
 
-    func.createAppointment = function(uid, fullName, gender, dateOfBirth, nationality, maritalStatus, nhsNumber, gpName, gpSurgery){
-        ref.child(uid).set({
-            fullName: fullName,
-            gender: gender,
-            dateOfBirth: dateOfBirth,
-            nationality: nationality,
-            maritalStatus: maritalStatus,
-            nhsNumber: nhsNumber,
-            gpName: gpName,
-            gpSurgery: gpSurgery
+    //returns a promise
+    func.getNote = function(uid, id){
+        var refUser = firebase.database().ref('notes/' + uid);
+        return refUser.child(id).once('value');
+    }
+
+    func.addNote = function(uid, title, consultant, location, datetime, notes){
+        ref.child(uid).push({
+            title: title,
+            consultant: consultant,
+            location: location,
+            datetime: datetime,
+            notes: notes
         });
     }
 

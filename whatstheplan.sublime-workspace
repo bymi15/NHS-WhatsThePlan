@@ -160,18 +160,29 @@
 	"buffers":
 	[
 		{
-			"file": "App/www/index.html",
+			"file": "App/www/js/controllers.js",
 			"settings":
 			{
-				"buffer_size": 3078,
+				"buffer_size": 7330,
+				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "App/www/js/controllers.js",
+			"file": "App/www/index.html",
 			"settings":
 			{
-				"buffer_size": 5558,
+				"buffer_size": 3579,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "App/www/templates/main.html",
+			"settings":
+			{
+				"buffer_size": 1726,
+				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
@@ -179,15 +190,43 @@
 			"file": "App/www/js/services.js",
 			"settings":
 			{
-				"buffer_size": 5234,
+				"buffer_size": 5882,
+				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "App/www/templates/signup.html",
+			"file": "App/www/templates/notes.html",
 			"settings":
 			{
-				"buffer_size": 4673,
+				"buffer_size": 875,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "App/www/templates/profile.html",
+			"settings":
+			{
+				"buffer_size": 1492,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "App/www/templates/viewNote.html",
+			"settings":
+			{
+				"buffer_size": 968,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "App/www/js/routes.js",
+			"settings":
+			{
+				"buffer_size": 1613,
+				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
@@ -196,6 +235,7 @@
 			"settings":
 			{
 				"buffer_size": 1297,
+				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		}
@@ -264,10 +304,19 @@
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/js",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates"
 	],
 	"file_history":
 	[
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/consultationNotes.html",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/addConsultationNote.html",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/signup.html",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/js/directives.js",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/index.html",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/js/services.js",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/js/app.js",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/profile.html",
 		"/C/wamp/www/server.php",
 		"/C/wamp/www/lib/inc/functions.php",
 		"/C/wamp/scripts/config.inc.php",
@@ -285,13 +334,9 @@
 		"/C/wamp/www/lib/nxs-api/nxs-api.php",
 		"/C/Users/sakan_000/Documents/Github/InstagramVision/lib/inc/nxs-functions.php",
 		"/C/wamp/www/lib/inc/nxs-functions.php",
-		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/js/app.js",
-		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/index.html",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/bower.json",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/gulpfile.js",
-		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/js/directives.js",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/package.json",
-		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/profile.html",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/login.html",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/main.html",
 		"/C/Users/sakan_000/Desktop/rangeslider/index.html",
@@ -344,7 +389,6 @@
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/signup3.html",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/signup2.html",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/newUI/templates/login.html",
-		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/signup.html",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/newUI/templates/signup.html",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/newUI/templates/signup3.html",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/newUI/templates/signup2.html",
@@ -392,10 +436,7 @@
 		"/C/Users/sakan_000/Documents/Github/WebsiteSecurity/secure_app/include/config.php",
 		"/C/Users/sakan_000/Documents/Github/ReferenceCorrection/final_version/include/connection.php",
 		"/C/Users/sakan_000/Documents/Github/WebsiteSecurity/vulnerable_app/views/editprofile.php",
-		"/C/Users/sakan_000/Documents/Github/WebsiteSecurity/vulnerable_app/views/editpublicprofile.php",
-		"/C/wamp/www/views/editprofile.php",
-		"/C/wamp/www/views/editpublicprofile.php",
-		"/C/Users/sakan_000/Documents/Github/WebsiteSecurity/vulnerable_app/controllers/snippet_controller.php"
+		"/C/Users/sakan_000/Documents/Github/WebsiteSecurity/vulnerable_app/views/editpublicprofile.php"
 	],
 	"find":
 	{
@@ -571,24 +612,84 @@
 	"groups":
 	[
 		{
-			"selected": 4,
+			"selected": 5,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "App/www/index.html",
+					"file": "App/www/js/controllers.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3078,
+						"buffer_size": 7330,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								6018,
+								6018
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 3773.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "App/www/index.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3579,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1765,
+								1765
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 990.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "App/www/templates/main.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1726,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								103,
+								103
 							]
 						],
 						"settings":
@@ -601,54 +702,24 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "App/www/js/controllers.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 5558,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
 					"stack_index": 3,
 					"type": "text"
 				},
 				{
-					"buffer": 2,
+					"buffer": 3,
 					"file": "App/www/js/services.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5234,
+						"buffer_size": 5882,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								996,
+								996
 							]
 						],
 						"settings":
@@ -658,27 +729,27 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 330.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 8,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
-					"file": "App/www/templates/signup.html",
+					"buffer": 4,
+					"file": "App/www/templates/notes.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4673,
+						"buffer_size": 875,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								796,
+								796
 							]
 						],
 						"settings":
@@ -695,20 +766,20 @@
 					"type": "text"
 				},
 				{
-					"buffer": 4,
-					"file": "App/www/templates/login.html",
+					"buffer": 5,
+					"file": "App/www/templates/profile.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1297,
+						"buffer_size": 1492,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								882,
-								882
+								352,
+								352
 							]
 						],
 						"settings":
@@ -722,6 +793,96 @@
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "App/www/templates/viewNote.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 968,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								198,
+								198
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "App/www/js/routes.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1613,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								462,
+								462
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 121.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "App/www/templates/login.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1297,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1101,
+								1117
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
 					"type": "text"
 				}
 			]
