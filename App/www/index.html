@@ -46,6 +46,27 @@
 
 
     <style type="text/css">
+      .ion-navicon-round{
+        background-color: #3FA9F5 !important;
+        color: #ffffff !important;
+      }
+
+      .ion-edit{
+        background-color: #3FA9F5 !important;
+        color: #ffffff !important;
+      }
+
+      .main-navbar{
+        background-color: #3FA9F5 !important;
+        color: #ffffff !important;
+        border: 0px !important;
+        border-bottom-color: transparent !important;
+        background-image: none !important;
+        border-bottom: none !important;
+      }
+      .nav-bar-block, .bar{
+        background-color: inherit !important;
+      }
       .platform-ios .manual-ios-statusbar-padding{
         padding-top:20px;
       }
@@ -92,7 +113,7 @@
   <body ng-app="app" animation="slide-left-right-ios7">
     <div>
       <div>
-        <ion-nav-bar class="bar-stable">
+        <ion-nav-bar class="bar-dark main-navbar">
           <ion-nav-back-button></ion-nav-back-button>
         </ion-nav-bar>
         <ion-nav-view></ion-nav-view>

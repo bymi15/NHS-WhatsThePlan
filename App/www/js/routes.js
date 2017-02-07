@@ -37,6 +37,30 @@ angular.module('app.routes', [])
     url: '/profile',
     templateUrl: 'templates/profile.html',
     controller: 'profileCtrl',
+    cache: false,
+    authRequired: true
+  })
+
+  .state('notes', {
+    url: '/notes',
+    templateUrl: 'templates/notes.html',
+    controller: 'notesCtrl',
+    cache: false,
+    authRequired: true
+  })
+
+  .state('addNote', {
+    url: '/addNote',
+    templateUrl: 'templates/addNote.html',
+    controller: 'addNotesCtrl',
+    authRequired: true
+  })
+
+  .state('viewNote', {
+    url: '/viewNote/:id',
+    templateUrl: 'templates/viewNote.html',
+    controller: 'viewNoteCtrl',
+    cache: false,
     authRequired: true
   })
 
