@@ -1,23 +1,24 @@
 <ion-view title="Add Consultation Note" id="page13">
   <ion-content padding="false" class="has-header">
     <form id="addConsultationNote-form10" class="list">
-      <label class="item item-input" id="addConsultationNote-input31">
+      <label class="item item-input item-stacked-label" id="addConsultationNote-input31">
         <span class="input-label">Title:</span>
         <input ng-model="data.title" type="text" placeholder="">
       </label>
-      <label class="item item-input" id="addConsultationNote-input32">
+      <label class="item item-input item-stacked-label" id="addConsultationNote-input32">
         <span class="input-label">Consultant:</span>
         <input ng-model="data.consultant" type="text" placeholder="">
       </label>
-      <label class="item item-input" id="addConsultationNote-input33">
+      <label class="item item-input item-stacked-label" id="addConsultationNote-input33">
         <span class="input-label">Location:</span>
         <input ng-model="data.location" type="text" placeholder="">
       </label>
-      <label class="item item-input" id="addConsultationNote-input34">
-        <span class="input-label">Date/Time:</span>
-        <input ng-model="data.datetime" type="date" placeholder="">
-      </label>
-      <label class="item item-input">
+      <ion-label floating><i class="icon ion-calendar placeholder-icon"></i>Date/Time:</ion-label>
+      <div class="item" ion-datetime-picker ng-model="data.datetime">
+        {{data.datetime| date: "dd-MM-yyyy hh:mm a"}}
+      </div>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Notes:</span>
         <textarea ng-model="data.notes" rows="3" expanding-textarea ng-model="initialText" placeholder="Notes"></textarea>
       </label>
     </form>

@@ -205,7 +205,7 @@ angular.module('app.controllers', ['ionic', 'firebase'])
             var consultant = $scope.data.consultant;
             var location = $scope.data.location;
             var datetime = $scope.data.datetime;
-            datetime = $filter('date')(datetime, 'dd-MM-yyyy');
+            datetime = $filter('date')(datetime, 'dd-MM-yyyy hh:mm a');
             var notes = $scope.data.notes;
 
             Notes.addNote(uid, title, consultant, location, datetime, notes);
