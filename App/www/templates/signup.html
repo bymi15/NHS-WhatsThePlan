@@ -7,15 +7,15 @@
         <ion-slide>
               <ion-list id="signup-list4">
                 <label class="item item-input top-input" id="signup-input10">
-                  <span class="input-label">Email</span>
+                  <span class="input-label">Email:</span>
                   <input ng-model="data.email" type="text" placeholder="" value="">
                 </label>
                 <label class="item item-input" id="signup-input11">
-                  <span class="input-label">Password</span>
+                  <span class="input-label">Password:</span>
                   <input ng-model="data.password" type="password" placeholder="" value="">
                 </label>
                 <label class="item item-input bottom-input" id="signup-input12">
-                  <span class="input-label">Confirm Password</span>
+                  <span class="input-label">Confirm Password:</span>
                   <input ng-model="data.confirmPassword" type="password" placeholder="" value="">
                 </label>
               </ion-list>
@@ -24,23 +24,30 @@
         <ion-slide>
               <ion-list id="signup2-list6">
                 <label class="item item-input top-input" id="signup2-input15">
-                  <span class="input-label">Full Name</span>
+                  <span class="input-label">Full Name:</span>
                   <input ng-model="data.fullName" type="text" placeholder="" value="">
                 </label>
                 <label class="item item-input" id="signup2-input23">
-                  <span class="input-label">Gender</span>
+                  <span class="input-label">Gender:</span>
                   <input ng-model="data.gender" type="text" placeholder="" value="">
-                </label>
+                </label><!--
                 <label class="item item-input" id="signup2-input24">
                   <span class="input-label">Date of Birth</span>
                   <input ng-model="data.dateOfBirth" type="date" placeholder="" value="">
-                </label>
+                </label> -->
+
+                  <label class="item item-icon-right item-input" id="signup2-input24" ion-datetime-picker date ng-model="data.dateOfBirth">
+                    <span class="input-label">Date of Birth:</span>
+                    <i class="icon ion-ios-calendar-outline positive"></i>
+                    <span>{{data.dateOfBirth| date: "dd-MM-yyyy"}}</span>
+                  </label>
+
                 <label class="item item-input" id="signup2-input25">
-                  <span class="input-label">Nationality</span>
+                  <span class="input-label">Nationality:</span>
                   <input ng-model="data.nationality" type="text" placeholder="" value="">
                 </label>
                 <label class="item item-input bottom-input" id="signup2-input26">
-                  <span class="input-label">Marital Status</span>
+                  <span class="input-label">Marital Status:</span>
                   <input ng-model="data.maritalStatus" type="text" placeholder="" value="">
                 </label>
               </ion-list>
@@ -52,15 +59,15 @@
         <ion-slide>
               <ion-list id="signup3-list11">
                 <label class="item item-input top-input" id="signup3-input27">
-                  <span class="input-label">NHS Number</span>
+                  <span class="input-label">NHS Number:</span>
                   <input ng-model="data.nhsNumber" type="text" placeholder="" value="">
                 </label>
                 <label class="item item-input" id="signup3-input28">
-                  <span class="input-label">GP Name</span>
+                  <span class="input-label">GP Name:</span>
                   <input ng-model="data.gpName" type="text" placeholder="" value="">
                 </label>
                 <label class="item item-input" id="signup3-input29">
-                  <span class="input-label">GP Surgery</span>
+                  <span class="input-label">GP Surgery:</span>
                   <input ng-model="data.gpSurgery" type="text" placeholder="" value="">
                 </label>
               </ion-list>

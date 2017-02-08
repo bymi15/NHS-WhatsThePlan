@@ -185,9 +185,15 @@ angular.module('app.controllers', ['ionic', 'firebase'])
         }
     });
 
-    $scope.goViewNote = function(val){
-        console.log(val + " <<,");
-        $state.go('viewNote', { id: val });
+    $scope.goViewNote = function(noteID){
+        $state.go('viewNote', { id: noteID });
+    }
+
+    $scope.removeNote = function(noteID, index){
+        var user = firebase.auth().currentUser;
+        Notes.removeNote(user.uid, noteID);
+        alert(index);
+        $scope.notes.splice(index, 1);
     }
 })
 
