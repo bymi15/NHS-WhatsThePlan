@@ -1,0 +1,41 @@
+<ion-view title="Edit My Profile" style="background-color:#FFFFFF;" hide-back-button="true">
+  <ion-nav-buttons side="left" class="has-header">
+    <button nav-transition="none" ui-sref="profile" class="button button-stable icon ion-chevron-left"></button>
+  </ion-nav-buttons>
+  <ion-content padding="true" class="has-header">
+      <form class="list">
+        <div>
+          <img src="img/EQuQPBLOSLqYlBeb9JIb_icon_avatar.png" style="display: block; width: 50%; height: auto; margin-left: auto; margin-right: auto;">
+        </div>
+        <h3 id="myProfile-heading5" style="color:#3FA9F5;font-weight:300;text-align:center;">{{userProfile.fullName}}</h3>
+        <h4 id="myProfile-heading6" style="color:#54AA3B;font-weight:400;text-align:center;">NHS Number: {{userProfile.nhsNumber}}</h4>
+
+        <label class="item item-input">
+          <span class="input-label">Gender:</span>
+          <input ng-model="data.gender" type="text" placeholder="">
+        </label>
+        <label class="item item-icon-right item-input" ion-datetime-picker date ng-model="data.dateOfBirth">
+          <span class="input-label">Date of Birth:</span>
+          <i class="icon ion-ios-calendar-outline positive"></i>
+          <span>{{data.dateOfBirth| date: "dd-MM-yyyy"}}</span>
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Nationality:</span>
+          <input ng-model="data.nationality" type="text" placeholder="">
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Marital Status:</span>
+          <input ng-model="data.maritalStatus" type="text" placeholder="">
+        </label>
+        <label class="item item-input">
+          <span class="input-label">GP Name:</span>
+          <input ng-model="data.gpName" type="text" placeholder="">
+        </label>
+        <label class="item item-input">
+          <span class="input-label">GP Surgery:</span>
+          <input ng-model="data.gpSurgery" type="text" placeholder="">
+        </label>
+      </form>
+      <button style="border-radius:0px 0px 0px 0px;" class="button button-positive button-block" ng-click="updateProfile()">SAVE CHANGES</button>
+  </ion-content>
+</ion-view>

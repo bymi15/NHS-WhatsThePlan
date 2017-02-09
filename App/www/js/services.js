@@ -23,6 +23,17 @@ angular.module('app.services', ['firebase'])
         });
     }
 
+    func.updateUser = function(uid, gender, dateOfBirth, nationality, maritalStatus, gpName, gpSurgery){
+        ref.child(uid).update({
+            gender: gender,
+            dateOfBirth: dateOfBirth,
+            nationality: nationality,
+            maritalStatus: maritalStatus,
+            gpName: gpName,
+            gpSurgery: gpSurgery
+        });
+    }
+
     return func;
 }])
 

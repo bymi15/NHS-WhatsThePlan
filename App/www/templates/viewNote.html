@@ -17,7 +17,9 @@
         <strong>Date/Time:</strong> {{note.datetime}}</p>
 
       <p style="color:#3F3F3F;font-size:17px;">
-        <strong>Notes:</strong> {{note.notes}}</p>
+        <strong>Notes:</strong>
+        <div ng-bind-html="note.notes"></div>
+      </p>
     </div>
   </ion-content>
 </ion-view>
