@@ -52,6 +52,12 @@ angular.module('app.services', ['firebase'])
         });
     }
 
+    func.removeNote = function(uid, id){
+        var refUser = firebase.database().ref('notes/' + uid);
+        refUser.child(id).remove();
+    }
+
+
     return func;
 }])
 
@@ -93,7 +99,7 @@ angular.module('app.services', ['firebase'])
           fullName: {
             presence: true,
             format: {
-              pattern: "[a-z]+",
+              pattern: "[a-z ]+",
               flags: "i",
               message: "can only contain alphabet letters"
             },

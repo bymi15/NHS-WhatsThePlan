@@ -185,9 +185,14 @@ angular.module('app.controllers', ['ionic', 'firebase'])
         }
     });
 
-    $scope.goViewNote = function(val){
-        console.log(val + " <<,");
-        $state.go('viewNote', { id: val });
+    $scope.goViewNote = function(noteID){
+        $state.go('viewNote', { id: noteID });
+    }
+
+    $scope.removeNote = function(noteID){
+        var user = firebase.auth().currentUser;
+        Notes.removeNote(user.uid, noteID);
+        delete $scope.notes[noteID];
     }
 })
 
@@ -205,7 +210,7 @@ angular.module('app.controllers', ['ionic', 'firebase'])
             var consultant = $scope.data.consultant;
             var location = $scope.data.location;
             var datetime = $scope.data.datetime;
-            datetime = $filter('date')(datetime, 'dd-MM-yyyy');
+            datetime = $filter('date')(datetime, 'dd-MM-yyyy hh:mm a');
             var notes = $scope.data.notes;
 
             Notes.addNote(uid, title, consultant, location, datetime, notes);

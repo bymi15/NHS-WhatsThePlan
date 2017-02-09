@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.directives','app.services', 'firebase', 'angularMoment'])
+angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.directives','app.services', 'firebase', 'angularMoment', 'ion-datetime-picker'])
 
 .config(function($ionicConfigProvider, $sceDelegateProvider){
 
@@ -31,12 +31,13 @@ angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.directives
 
   //stateChange event
   $rootScope.$on("$stateChangeStart", function(event, toState, toParams, fromState, fromParams){
-    var user = firebase.auth().currentUser;
-    if (toState.authRequired && !user){
-        // User is not authenticated
-        $state.transitionTo("login");
-        event.preventDefault();
-    }
+    firebase.auth().onAuthStateChanged(function(user) {
+      if (toState.authRequired && !user){
+          // User is not authenticated
+          $state.transitionTo("login");
+          event.preventDefault();
+      }
+    });
   });
 })
 

@@ -3,14 +3,15 @@
     <button ui-sref="addNote" class="button button-icon icon ion-ios-plus-empty"></button>
   </ion-nav-buttons>
   <ion-content padding="false" class="has-header">
-    <ion-list id="consultationNotes-list9">
-      <ion-item ng-repeat="(key, note) in notes" ng-click="goViewNote('{{key}}')" class="item-icon-right" id="consultationNotes-list-item17">
+    <ion-list id="consultationNotes-list9" can-swipe="true">
+      <ion-item ng-repeat="(key, note) in notes" ng-click="goViewNote('{{key}}')" class="item-icon-right">
         <h2 style="color: #7F7F7F;">{{note.title}}</h2>
         <p><span style="color: #F46A00;">{{note.consultant}}</span>&nbsp<span style="color: #3FA9F5;">{{note.location}}</span></p>
         <p><span style="color: #35B200;">{{note.datetime}}</span></p>
         <div class="item-icon-right">
           <i class="icon ion-ios-arrow-right"></i>
         </div>
+        <ion-option-button class="button-assertive" ng-click="removeNote('{{key}}')">Delete</ion-option-button>
       </ion-item>
     </ion-list>
   </ion-content>
