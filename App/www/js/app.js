@@ -31,12 +31,13 @@ angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.directives
 
   //stateChange event
   $rootScope.$on("$stateChangeStart", function(event, toState, toParams, fromState, fromParams){
-    var user = firebase.auth().currentUser;
-    if (toState.authRequired && !user){
-        // User is not authenticated
-        $state.transitionTo("login");
-        event.preventDefault();
-    }
+    firebase.auth().onAuthStateChanged(function(user) {
+      if (toState.authRequired && !user){
+          // User is not authenticated
+          $state.transitionTo("login");
+          event.preventDefault();
+      }
+    });
   });
 })
 

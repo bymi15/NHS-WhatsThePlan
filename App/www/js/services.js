@@ -53,7 +53,6 @@ angular.module('app.services', ['firebase'])
     }
 
     func.removeNote = function(uid, id){
-        console.log("removing: " + id);
         var refUser = firebase.database().ref('notes/' + uid);
         refUser.child(id).remove();
     }
