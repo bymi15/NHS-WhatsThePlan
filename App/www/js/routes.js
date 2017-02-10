@@ -41,6 +41,13 @@ angular.module('app.routes', [])
     authRequired: true
   })
 
+  .state('editProfile', {
+    url: '/editProfile',
+    templateUrl: 'templates/editProfile.html',
+    controller: 'editProfileCtrl',
+    authRequired: true
+  })
+
   .state('notes', {
     url: '/notes',
     templateUrl: 'templates/notes.html',

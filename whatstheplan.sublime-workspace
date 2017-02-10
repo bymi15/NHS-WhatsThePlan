@@ -163,52 +163,16 @@
 			"file": "App/www/js/controllers.js",
 			"settings":
 			{
-				"buffer_size": 7338,
+				"buffer_size": 9274,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "App/www/index.html",
+			"file": "App/www/templates/editProfile.html",
 			"settings":
 			{
-				"buffer_size": 3805,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "App/www/templates/main.html",
-			"settings":
-			{
-				"buffer_size": 1726,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "App/www/js/services.js",
-			"settings":
-			{
-				"buffer_size": 5882,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "App/www/templates/notes.html",
-			"settings":
-			{
-				"buffer_size": 875,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "App/www/templates/addNote.html",
-			"settings":
-			{
-				"buffer_size": 1524,
+				"buffer_size": 2210,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -217,7 +181,16 @@
 			"file": "App/www/js/app.js",
 			"settings":
 			{
-				"buffer_size": 3033,
+				"buffer_size": 3063,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "App/www/js/services.js",
+			"settings":
+			{
+				"buffer_size": 6394,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -226,24 +199,16 @@
 			"file": "App/www/templates/profile.html",
 			"settings":
 			{
-				"buffer_size": 1492,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "App/www/templates/viewNote.html",
-			"settings":
-			{
-				"buffer_size": 968,
+				"buffer_size": 1536,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "App/www/js/routes.js",
+			"file": "App/www/index.html",
 			"settings":
 			{
-				"buffer_size": 1613,
+				"buffer_size": 3920,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -252,7 +217,7 @@
 			"file": "App/www/templates/login.html",
 			"settings":
 			{
-				"buffer_size": 1297,
+				"buffer_size": 1299,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -327,6 +292,15 @@
 	],
 	"file_history":
 	[
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/viewNote.html",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/notes.html",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/js/routes.js",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/main.html",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/signup.html",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/addNote.html",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/index.html",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/js/app.js",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/js/services.js",
 		"/C/Users/sakan_000/Documents/KakaoTalk Downloads/ShapeTest.java",
 		"/C/Users/sakan_000/Documents/KakaoTalk Downloads/Cylinder.java",
 		"/C/Users/sakan_000/Documents/KakaoTalk Downloads/Circle.java",
@@ -335,11 +309,7 @@
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/experiments/ionicapp/ionic-datetimepicker/js/app.js",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/consultationNotes.html",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/addConsultationNote.html",
-		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/signup.html",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/js/directives.js",
-		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/index.html",
-		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/js/services.js",
-		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/js/app.js",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/profile.html",
 		"/C/wamp/www/server.php",
 		"/C/wamp/www/lib/inc/functions.php",
@@ -362,7 +332,6 @@
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/gulpfile.js",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/package.json",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/login.html",
-		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/main.html",
 		"/C/Users/sakan_000/Desktop/rangeslider/index.html",
 		"/C/Users/sakan_000/Desktop/rangeslider/js/index.js",
 		"/C/Users/sakan_000/AppData/Local/Temp/Temp1_rangeslider-js-add-remove-classes-depending-on-value.zip/js/index.js",
@@ -409,7 +378,6 @@
 		"/C/wamp/www/views/index.php",
 		"/C/wamp/www/views/mysnippets.php",
 		"/C/wamp/www/views/profile.php",
-		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/js/routes.js",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/signup3.html",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/signup2.html",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/newUI/templates/login.html",
@@ -451,10 +419,7 @@
 		"/C/Users/sakan_000/Desktop/vulnerable_app/models/Database.php",
 		"/C/Users/sakan_000/Desktop/vulnerable_app/controllers/user_controller.php",
 		"/C/Users/sakan_000/Desktop/vulnerable_app/controllers/snippet_controller.php",
-		"/C/Users/sakan_000/Desktop/vulnerable_app/include/config.php",
-		"/C/Users/sakan_000/Desktop/vulnerable_app/models/User.php",
-		"/C/Users/sakan_000/Desktop/vulnerable_app/views/editprofile.php",
-		"/C/Users/sakan_000/Desktop/vulnerable_app/views/editpublicprofile.php"
+		"/C/Users/sakan_000/Desktop/vulnerable_app/include/config.php"
 	],
 	"find":
 	{
@@ -630,7 +595,7 @@
 	"groups":
 	[
 		{
-			"selected": 5,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -639,15 +604,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 7338,
+						"buffer_size": 9274,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								6445,
-								6445
+								9146,
+								9146
 							]
 						],
 						"settings":
@@ -657,27 +622,27 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 4543.0,
+						"translation.y": 5885.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 8,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "App/www/index.html",
+					"file": "App/www/templates/editProfile.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3805,
+						"buffer_size": 2210,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1652,
-								1652
+								1441,
+								1441
 							]
 						],
 						"settings":
@@ -687,32 +652,32 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 749.0,
+						"translation.y": 209.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "App/www/templates/main.html",
+					"file": "App/www/js/app.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1726,
+						"buffer_size": 3063,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								103,
-								103
+								1593,
+								1593
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
@@ -720,7 +685,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 9,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
@@ -729,15 +694,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5882,
+						"buffer_size": 6394,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								649,
-								649
+								144,
+								144
 							]
 						],
 						"settings":
@@ -747,117 +712,27 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 462.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 7,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "App/www/templates/notes.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 875,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								796,
-								796
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "App/www/templates/addNote.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1524,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								972,
-								972
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "App/www/js/app.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3033,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								511,
-								511
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 66.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 3,
 					"type": "text"
 				},
 				{
-					"buffer": 7,
+					"buffer": 4,
 					"file": "App/www/templates/profile.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1492,
+						"buffer_size": 1536,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								352,
-								352
+								225,
+								217
 							]
 						],
 						"settings":
@@ -874,20 +749,20 @@
 					"type": "text"
 				},
 				{
-					"buffer": 8,
-					"file": "App/www/templates/viewNote.html",
+					"buffer": 5,
+					"file": "App/www/index.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 968,
+						"buffer_size": 3920,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								198,
-								198
+								1866,
+								1866
 							]
 						],
 						"settings":
@@ -897,57 +772,27 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 1188.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
-					"buffer": 9,
-					"file": "App/www/js/routes.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1613,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								462,
-								462
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 10,
+					"buffer": 6,
 					"file": "App/www/templates/login.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1297,
+						"buffer_size": 1299,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1101,
-								1117
+								612,
+								612
 							]
 						],
 						"settings":
@@ -960,7 +805,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 10,
+					"stack_index": 6,
 					"type": "text"
 				}
 			]

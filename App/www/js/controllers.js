@@ -169,6 +169,58 @@ angular.module('app.controllers', ['ionic', 'firebase'])
     });
 })
 
+.controller('editProfileCtrl', function ($scope, $state, utils, User, $filter) {
+    utils.showLoading();
+
+    $scope.data = {};
+
+    //Check if user is logged in
+    firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+            User.getUser(user.uid).then(function(snapshot) {
+                $scope.userProfile = snapshot.val();
+
+                $scope.data.dateOfBirth = $scope.userProfile.dateOfBirth;
+                $scope.data.gender = $scope.userProfile.gender;
+                $scope.data.nationality = $scope.userProfile.nationality;
+                $scope.data.maritalStatus = $scope.userProfile.maritalStatus;
+                $scope.data.gpName = $scope.userProfile.gpName;
+                $scope.data.gpSurgery = $scope.userProfile.gpSurgery;
+
+                utils.hideLoading();
+            });
+        }else{
+            $state.go("login");
+        }
+    });
+
+    $scope.updateProfile = function(){
+        utils.showLoading();
+
+        var user = firebase.auth().currentUser;
+
+        if (user != null) {
+            var uid = user.uid;
+            var gender = $scope.data.gender;
+            var dateOfBirth = $scope.data.dateOfBirth;
+            dateOfBirth = $filter('date')(dateOfBirth, 'dd-MM-yyyy');
+
+            var nationality = $scope.data.nationality;
+            var maritalStatus = $scope.data.maritalStatus;
+            var gpName = $scope.data.gpName;
+            var gpSurgery = $scope.data.gpSurgery;
+
+            User.updateUser(uid, gender, dateOfBirth, nationality, maritalStatus, gpName, gpSurgery);
+
+            utils.hideLoading();
+
+            $state.go("profile");
+        }else{
+            $state.go("login");
+        }
+    }
+})
+
 .controller('notesCtrl', function ($scope, $state, utils, Notes) {
     utils.showLoading();
 
@@ -231,6 +283,8 @@ angular.module('app.controllers', ['ionic', 'firebase'])
         if (user) {
             Notes.getNote(user.uid, $stateParams.id).then(function(snapshot) {
                 $scope.note = snapshot.val();
+
+                $scope.note.notes = $scope.note.notes.replace(/(?:\r\n|\r|\n)/g, '<br>');
 
                 utils.hideLoading();
             });
