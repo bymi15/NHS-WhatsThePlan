@@ -2,6 +2,10 @@
   <ion-nav-buttons side="left" class="has-header">
     <button nav-transition="none" ui-sref="profile" class="button button-stable icon ion-chevron-left"></button>
   </ion-nav-buttons>
+  <ion-nav-buttons side="right" class="has-header">
+    <button nav-transition="none" ng-click="updateProfile()" class="ion-header-icon button button-stable icon ion-android-done"></button>
+  </ion-nav-buttons>
+
   <ion-content padding="true" class="has-header">
       <form class="list">
         <div>
@@ -36,6 +40,6 @@
           <input ng-model="data.gpSurgery" type="text" placeholder="">
         </label>
       </form>
-      <button style="border-radius:0px 0px 0px 0px;" class="button button-positive button-block" ng-click="updateProfile()">SAVE CHANGES</button>
+      <button nav-transition="none" style="border-radius:0px 0px 0px 0px;" class="button button-positive button-block" ng-click="updateProfile()">SAVE CHANGES</button>
   </ion-content>
 </ion-view>

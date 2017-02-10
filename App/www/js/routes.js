@@ -63,6 +63,13 @@ angular.module('app.routes', [])
     authRequired: true
   })
 
+  .state('editNote', {
+    url: '/editNote/:id',
+    templateUrl: 'templates/editNote.html',
+    controller: 'editNoteCtrl',
+    authRequired: true
+  })
+
   .state('viewNote', {
     url: '/viewNote/:id',
     templateUrl: 'templates/viewNote.html',

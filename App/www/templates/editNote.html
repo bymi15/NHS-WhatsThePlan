@@ -1,0 +1,35 @@
+<ion-view title="Edit My Profile" style="background-color:#FFFFFF;" hide-back-button="true">
+  <ion-nav-buttons side="left" class="has-header">
+    <button nav-transition="none" ng-click="goBack()" class="button button-stable icon ion-chevron-left"></button>
+  </ion-nav-buttons>
+  <ion-nav-buttons side="right" class="has-header">
+    <button nav-transition="none" ng-click="updateNote()" class="ion-header-icon button button-stable icon ion-android-done"></button>
+  </ion-nav-buttons>
+
+  <ion-content padding="true" class="has-header">
+      <form class="list">
+        <label class="item item-input">
+          <span class="input-label">Title:</span>
+          <input ng-model="data.title" type="text" placeholder="">
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Consultant:</span>
+          <input ng-model="data.consultant" type="text" placeholder="">
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Location:</span>
+          <input ng-model="data.location" type="text" placeholder="">
+        </label>
+        <label class="item item-icon-right item-input" ion-datetime-picker ng-model="data.datetime">
+          <span class="input-label">Date/Time:</span>
+          <i class="icon ion-ios-calendar-outline positive"></i>
+          <span>{{data.datetime| date: "dd-MM-yyyy hh:mm a"}}</span>
+        </label>
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">Notes:</span>
+          <textarea ng-model="data.notes" rows="3" expanding-textarea ng-model="initialText" placeholder="Notes"></textarea>
+        </label>
+      </form>
+      <button nav-transition="none" style="border-radius:0px 0px 0px 0px;" class="button button-positive button-block" ng-click="updateNote()">SAVE CHANGES</button>
+  </ion-content>
+</ion-view>
