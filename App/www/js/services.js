@@ -63,6 +63,17 @@ angular.module('app.services', ['firebase'])
         });
     }
 
+    func.updateNote = function(uid, id, title, consultant, location, datetime, notes){
+        var refUser = firebase.database().ref('notes/' + uid);
+        refUser.child(id).update({
+            title: title,
+            consultant: consultant,
+            location: location,
+            datetime: datetime,
+            notes: notes
+        });
+    }
+
     func.removeNote = function(uid, id){
         var refUser = firebase.database().ref('notes/' + uid);
         refUser.child(id).remove();

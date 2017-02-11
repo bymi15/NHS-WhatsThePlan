@@ -284,6 +284,8 @@ angular.module('app.controllers', ['ionic', 'firebase'])
             Notes.getNote(user.uid, $stateParams.id).then(function(snapshot) {
                 $scope.note = snapshot.val();
 
+                $scope.noteID = $stateParams.id;
+
                 $scope.note.notes = $scope.note.notes.replace(/(?:\r\n|\r|\n)/g, '<br>');
 
                 utils.hideLoading();
@@ -292,5 +294,66 @@ angular.module('app.controllers', ['ionic', 'firebase'])
             $state.go("login");
         }
     });
+
+    $scope.goEditNote = function(){
+        $state.go('editNote', { id: $scope.noteID });
+    }
+})
+
+.controller('editNoteCtrl', function ($scope, $state, $stateParams, utils, Notes, User, $filter, $ionicHistory) {
+    utils.showLoading();
+
+    $scope.goBack = function(){
+        $ionicHistory.goBack();
+    }
+
+    $scope.data = {};
+
+    //Check if user is logged in
+    firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+            Notes.getNote(user.uid, $stateParams.id).then(function(snapshot) {
+                $scope.note = snapshot.val();
+
+                $scope.note.id = $stateParams.id;
+
+                $scope.data.title = $scope.note.title;
+                $scope.data.consultant = $scope.note.consultant;
+                $scope.data.location = $scope.note.location;
+                $scope.data.datetime = $scope.note.datetime;
+                $scope.data.notes = $scope.note.notes;
+
+                utils.hideLoading();
+            });
+        }else{
+            $state.go("login");
+        }
+    });
+
+    $scope.updateNote = function(){
+        utils.showLoading();
+
+        var user = firebase.auth().currentUser;
+
+        if (user != null) {
+            var uid = user.uid;
+            var id = $scope.note.id;
+
+            var title = $scope.data.title;
+            var consultant = $scope.data.consultant;
+            var location = $scope.data.location;
+            var datetime = $scope.data.datetime;
+            datetime = $filter('date')(datetime, 'dd-MM-yyyy hh:mm a');
+            var notes = $scope.data.notes;
+
+            Notes.updateNote(uid, id, title, consultant, location, datetime, notes);
+
+            utils.hideLoading();
+
+            $state.go('viewNote', { id: id });
+        }else{
+            $state.go("login");
+        }
+    }
 })
 
