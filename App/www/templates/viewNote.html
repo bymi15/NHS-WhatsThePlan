@@ -3,18 +3,16 @@
     <button nav-transition="none" ng-click="goEditNote()" class="button button-stable icon ion-edit"></button>
   </ion-nav-buttons>
   <ion-content padding="true" class="has-header">
-    <div>
-      <h1 style="color:#3FA9F5; display: block; width: 50%; height: auto; margin-left: auto; margin-right: auto;">{{note.title}}</h1>
-    </div>
-    <div id="myProfile-markdown1" class="show-list-numbers-and-dots">
+    <div class="show-list-numbers-and-dots">
+      <h3 style="color:#3FA9F5; display: block; text-align: center; text-decoration: underline; font-weight: normal; margin-bottom:10px;">{{note.title}}</h3>
       <p style="color:#3F3F3F;font-size:17px;">
-        <strong>Consultant:</strong> {{note.consultant}}</p>
+        <strong>Consultant:</strong> <span style="color:#F46A00">{{note.consultant}}</span></p>
 
       <p style="color:#3F3F3F;font-size:17px;">
-        <strong>Location:</strong> {{note.location}}</p>
+        <strong>Location:</strong> <span>{{note.location}}</span></p>
 
       <p style="color:#3F3F3F;font-size:17px;">
-        <strong>Date/Time:</strong> {{note.datetime}}</p>
+        <strong>Date/Time:</strong> <span style="color:#35B200">{{note.datetime}}</span></p>
 
       <p style="color:#3F3F3F;font-size:17px;">
         <strong>Notes:</strong>
