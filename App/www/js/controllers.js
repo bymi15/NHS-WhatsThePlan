@@ -360,3 +360,172 @@ angular.module('app.controllers', ['ionic', 'firebase'])
     }
 })
 
+.controller('appointmentsCtrl', function ($scope, $state, utils, User, $filter,$ionicHistory, Appointment, $ionicModal, $ionicPopup) {
+
+    utils.showLoading();
+
+    //Check if user is logged in
+    firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+            Appointment.getAppointments(user.uid).then(function(snapshot) {
+                $scope.appointments = snapshot.val();
+                $scope.currentDate = $filter('date')(new Date(), 'dd MMM yyyy');
+                utils.hideLoading();
+            });
+        }else{
+            $state.go("login");
+        }
+    });
+
+    $scope.removeAppointment = function(id){
+        var user = firebase.auth().currentUser;
+        Appointment.removeAppointment(user.uid, id);
+        delete $scope.appointments[id];
+    }
+
+/*
+    $ionicModal.fromTemplateUrl('user_photo.html', { // Use Ionic Modal to show user photo
+        scope: $scope,
+        animation: 'slide-in-up'
+    }).then(function(modal) {
+        $scope.modal = modal;
+    });
+
+    $scope.openModal = function() {
+        $scope.modal.show();
+    };
+    $scope.closeModal = function() {
+        $scope.modal.hide();
+    };
+    $scope.$on('$destroy', function() {
+        $scope.modal.remove();
+    });
+
+    $scope.showUser = function (user, event){
+        if (event){
+          event.stopPropagation(); //to prevent calling of showUser() and showPop() functions at same time
+        }
+        $scope.current_user = user;
+        $scope.openModal();
+    }*/
+
+    $scope.showPopup=function(){
+         var alertPopup=$ionicPopup.alert({
+           title:'hey',
+           templateUrl:'templates/mymodal.html'
+         });
+          alertPopup.then(function(res){
+            console.log('popup');
+          });
+    }
+
+    var toggle_visibility = function(id) {
+       var e = document.getElementsByName(id);
+       if(e.style.display == 'block')
+          e.style.display = 'none';
+       else
+          e.style.display = 'block';
+    }
+
+    google.maps.event.addDomListener(window, 'load', function() {
+        var myLatlng = new google.maps.LatLng(37.3000, -120.4833);
+
+        var mapOptions = {
+            center: myLatlng,
+            zoom: 16,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+
+        var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+
+        navigator.geolocation.getCurrentPosition(function(pos) {
+            map.setCenter(new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude));
+            var myLocation = new google.maps.Marker({
+                position: new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude),
+                map: map,
+                title: "My Location"
+            });
+        });
+
+        $scope.map = map;
+    });
+
+})
+
+.controller('bookAppointmentCtrl', function ($scope, $state, utils, User,$filter, $ionicHistory, Appointment, $ionicLoading) {
+
+    var map = new google.maps.Map(document.getElementById('map-canvas'),{
+        center:{
+            lat:27.72,
+            lng:85.36
+        },
+        zoom:15
+    });
+
+    var marker = new google.maps.Marker({
+        position:{
+            lat:27.72,
+            lng:85.36
+        },
+        map:map
+    });
+
+    var inputBox = document.getElementById('mapsearch');
+    var thisLocation = document.getElementById('thisLocation');
+
+    var searchBox = new google.maps.places.SearchBox(inputBox);
+
+    inputBox.addEventListener('keyup',function(){
+        thisLocation.value = inputBox.value;
+    });
+
+    google.maps.event.addListener(searchBox,'places_changed',function(){
+        var places = searchBox.getPlaces();
+
+        var bounds = new google.maps.LatLngBounds();
+
+        var i,place;
+        for(i=0;place=places[i];i++){
+            bounds.extend(place.geometry.location);
+            marker.setPosition(place.geometry.location);
+        }
+
+        map.fitBounds(bounds);
+        map.setZoom(15);
+
+        thisLocation.value = inputBox.value;
+    });
+
+    google.maps.event.addListener(marker, 'dragend', function (event) {
+        document.getElementById("latbox").value = this.getPosition().lat();
+        document.getElementById("lngbox").value = this.getPosition().lng();
+    });
+
+    //FINISH MAPS
+    $scope.addAppointment = function(){
+        utils.showLoading();
+
+        var user = firebase.auth().currentUser;
+
+        if (user != null) {
+            var uid = user.uid;
+            var dateNow = $scope.thisDate;
+            var locationNow = document.getElementById('thisLocation').value;
+            var timeNow = $scope.thisTime;
+            var descriptionNow = $scope.thisDescription;
+            var doctorNow = $scope.thisDoctor;
+            dateNow = $filter('date')(dateNow, 'dd/MM/yyyy');
+            timeNow = $filter('date')(timeNow,'hh:MM a');
+
+            var markerX = marker.getPosition().lat();
+            var markerY = marker.getPosition().lng();
+
+            Appointment.createAppointment(uid, locationNow,timeNow,dateNow,descriptionNow,doctorNow,markerX,markerY);
+
+            utils.hideLoading();
+            $state.go("appointments");
+        }else{
+            $state.go("login");
+        }
+    }
+})

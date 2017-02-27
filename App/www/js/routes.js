@@ -78,6 +78,21 @@ angular.module('app.routes', [])
     authRequired: true
   })
 
+  .state('appointments', {
+    url: '/appointments',
+    templateUrl: 'templates/appointments.html',
+    controller: 'appointmentsCtrl',
+    cache: false,
+    authRequired: true
+  })
+
+  .state('bookAppointment', {
+    url: '/bookAppointment',
+    templateUrl: 'templates/bookAppointment.html',
+    controller: 'bookAppointmentCtrl',
+    authRequired: true
+  })
+
   $urlRouterProvider.otherwise(function($injector, $location) {
     var $state = $injector.get("$state");
     $state.go("main");
