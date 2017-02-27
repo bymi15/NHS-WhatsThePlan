@@ -1,0 +1,92 @@
+
+<style>
+.mymodal {  
+     width: 90%; 
+     height: 90%; 
+     top: 5%; 
+     left: 5%; 
+     right: 5%; 
+     bottom: 5%;}
+
+
+.scroll {
+    height: 100%;
+}
+ 
+#map {
+    width: 100%;
+    height: 100%;
+}
+.popup-position{ display:none;position: fixed;top:0;left:0;background-color: rgba(0,0,0,7);width:100%;height:100%;}
+#popup-wrapper{width:500px;margin:70px auto;text-align:left;}
+#popup-container{background-color: #FFF;padding:20px;}
+#wrapper {width:960px;margin:40px auto;text-align:left;}
+</style>
+
+
+<ion-view  hide-nav-bar="true" hide-back-button="false" view-title="welcome">
+  
+
+<ion-header-bar align-title="centre"  style = "background-color:#3FA9F5;height:4em;">
+  
+ <h1 class="button-clear">
+    <i class="ion-arrow-left-c" style="color:white;height:3em;width:3em;" ng-click = "myGoBack()"></i> 
+  </h1>
+
+
+  <h1 class="title" style = "font-size:30px;color:white;font-family ="Times New Roman", Times, serif;"> Appointments</h1>
+  <div class="buttons">
+    <button class="button button-stable icon ion-plus" style = "background-color:#3FA9F5;color:white;" ui-sref = "bookappointment"></button>
+  </div>
+</ion-header-bar>
+
+
+  <ion-content padding="true" >
+   
+
+ <div id = "popup-box1" class = "popup-position">
+      <div id = "popup-wrapper">
+           <div id = "popup-container">
+                     <h3>Popup box 1</h3>
+                     <p>Congratulations,youve</p>
+                     <p> <a href = "javascript:void(0)" > Close popup box</a></p>
+                   </div>
+                 </div>
+               </div>
+
+<script >
+
+    function toggle_visibility(id) {
+       var e = document.getElementsByName(id);
+       if(e.style.display == 'block')
+          e.style.display = 'none';
+       else
+          e.style.display = 'block';
+    }
+//-->
+</script>
+ 
+
+   <h1 style = "text-allign:centre;font-size:29px;color:#3FA9F5;position:relative;left:1.5em;">Today is 29 november</h1>
+
+
+    <div ng-repeat  = "app in appointments|filter:{uid:getCurrentU();}">
+
+   <div class="card" style="height:7em;">
+  <div class="item item-text-wrap">
+    <h2 style = "color:red;">{{app.description}} </h2>
+    <h2 style = "color:#F68C3C;">Doctor {{app.doctor}} <strong style="color:grey;">{{app.location}}</strong> </h2>
+    
+    <h2 style = "color:greenfloat:left;">{{app.date}} <strong style="color:#4CAEF5">{{app.time}}</strong>  </h2>
+
+       <h1 class="ion-ios-location" style="color:#3FA9F5;height:3em;width:3em;position:relative;left:7.5em;bottom:1.7em" ng-click="showPopup()"></h1> 
+</div>
+  </div>
+
+     </div>
+  </ion-item-group>
+
+    </div>
+ 
+  </ion-content>
+</ion-view>

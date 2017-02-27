@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>What's The Plan - UCL Systems Engineering Project</title>
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/icon" href="assets/images/favicon.ico"/>
+    <!-- Font Awesome -->
+    <link href="assets/css/font-awesome.css" rel="stylesheet">
+    <!-- Bootstrap -->
+    <link href="assets/css/bootstrap.css" rel="stylesheet">
+    <!-- Slick slider -->
+    <link rel="stylesheet" type="text/css" href="assets/css/slick.css"/> 
+    <!-- Animate css -->
+    <link rel="stylesheet" type="text/css" href="assets/css/animate.css"/>  
+    <!-- Theme color -->
+    <link id="switcher" href="assets/css/theme-color/default.css" rel="stylesheet">
+    
+    <!-- Main Style -->
+    <link href="style.css" rel="stylesheet">
+
+
+    <!-- Fonts -->
+    <!-- Open Sans for body font -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <!-- Raleway for Title -->
+    <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+    <!-- Pacifico for 404 page   -->
+    <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+  <!-- BEGAIN PRELOADER -->
+  <div id="preloader">
+    <div class="loader">&nbsp;</div>
+  </div>
+  <!-- END PRELOADER -->    
+
+  <!-- SCROLL TOP BUTTON -->
+    <a class="scrollToTop" href="#"><i class="fa fa-chevron-up"></i></a>
+  <!-- END SCROLL TOP BUTTON -->
+
+
+  <!-- Start menu section -->
+  <section id="menu-area">
+    <nav class="navbar navbar-default main-navbar" role="navigation">  
+      <div class="container">
+        <div class="navbar-header">
+          <!-- FOR MOBILE VIEW COLLAPSED BUTTON -->
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <!-- LOGO -->     
+		  <!-- Image logo  -->
+           <a class="navbar-brand logo" href="index.html"><img src="assets/images/logo.jpg" alt="logo"></a> 
+           <!-- Text logo  -->	
+<!--            <a class="navbar-brand logo" href="index.html"><span>Rex</span></a>                      -->
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul id="top-menu" class="nav navbar-nav main-nav menu-scroll">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="background.html">BACKGROUND</a></li> 
+            <li><a href="requirements.html">REQUIREMENTS</a></li>                    
+            <li><a href="uidesign.html">UI DESIGN</a></li> 
+            <li><a href="research.html">RESEARCH</a></li>
+            <li><a href="platform.html">PLATFORM</a></li>     
+            <li class="active"><a href="experiments&prototypes.html">EXPERIMENTS & PROTOTYPES</a></li>
+			<li><a href="testing.html">TESTING</a></li>
+			<li><a href="recordofprogress.html">RECORD OF PROGRESS</a></li>
+			<li><a href="pocdesign.html">POC DESIGN</a></li>	
+          </ul>                            
+        </div><!--/.nav-collapse -->
+      </div>          
+    </nav> 
+  </section>
+  <!-- End menu section -->
+<!-- Start about section -->
+  <section id="about">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <!-- Start section area -->
+          <div class="welcome-area">
+            <div class="title-area">
+              <h2 class="tittle"><span>EXPERIMENTS & PROTOTYPES</span></h2><p> Click the following buttons to jump to the corresponding sections below: </p>
+              <a class="smoothscrolldown btn btn-primary" href="#log">Experiment Log</a>
+              <a class="smoothscrolldown btn btn-primary" href="#prototype">Prototype</a>
+			  <br><br>
+			  <h2 class="tittle" style="font-size:35px">Experiments</h2>
+              <span class="tittle-line"></span>
+
+			  <p>To <strong>identify potential limitations</strong> and <strong>problems</strong> in the development of the app, we decided to perform some <strong>key</strong> <strong>experiments</strong> to test the <strong>feasibility</strong> of using <strong>Firebase</strong> and <strong>Ionic</strong> as our <strong>backend</strong> and <strong>frontend frameworks</strong>. Furthermore, we also experimented with <strong>user authentication</strong> (a vital feature of our app) and a <strong>Date Picker Plugin</strong> that helps us with one of our requirements. If we are able to successfully integrate the two development frameworks, we can be sure that development in the future will progress smoothly without any major obstacles.</p>
+			  
+
+			  <h3 id="log" class="tittle" style="font-size:30px">Experiment Log</h3>
+				<table class="table table-inverse">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Title</th>
+                  <th>Details</th>
+                  <th>Results</th>
+                  <th>Outcome</th>
+                  <th>Done By</th>
+                  <th>Date</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">1</th>
+                  <td>Setting up the Firebase database</td>
+                  <td>Setting up the firebase database is quite straightforward. The harder challenge is linking the app to the database.</td>
+                  <td>The database has been set succesfully.</td>
+                  <td>Success</td>
+                  <td>Eduard Ursinschi</td>
+                  <td>1/12/2016</td>
+                </tr>
+                <tr>
+                  <th scope="row">1.1</th>
+                  <td>Write data to the Firebase database</td>
+                  <td>Created an array linked to the database called ‘medication’ and added a sample medicine product details into it.</td>
+                  <td>The database was updated in real time with the medication details.</td>
+                  <td>Success</td>
+                  <td>Eduard Ursinschi</td>
+                  <td>2/12/2016</td>
+                </tr>
+                <tr>
+                  <th scope="row">1.2</th>
+                  <td>Read data from the Firebase database</td>
+                  <td>Added information regarding a task to the database and retrieved the information in Ionic, using a simple UI to display the info recorded.</td>
+                  <td>The information in the database has been displayed successfully in Ionic.</td>
+                  <td>Success</td>
+                  <td>Eduard Ursinschi</td>
+                  <td>2/12/2016</td>
+                </tr>
+                <tr>
+                  <th scope="row">1.3</th>
+                  <td>Update data from the Firebase database</td>
+                  <td>Changed the dosage on every medicine recorded in the database to 200ml.</td>
+                  <td>TThe information was successfully updated.</td>
+                  <td>Success</td>
+                  <td>Eduard Ursinschi</td>
+                  <td>2/12/2016</td>
+                </tr>
+                <tr>
+                  <th scope="row">2</th>
+                  <td>Integrate Firebase with Ionic</td>
+                  <td>Integrated in the sample app the Javascript packages that allows the communication between the app and the database.</td>
+                  <td>The connection was successful.</td>
+                  <td>Success</td>
+                  <td>Eduard Ursinschi</td>
+                  <td>3/12/2016</td>
+                </tr>
+                <tr>
+                  <th scope="row">3</th>
+                  <td>User authentication using Firebase</td>
+                  <td>Added the user authentication inside the Ionic Sample app using the Firebase Authentication.</td>
+                  <td>The user authentication works perfectly.</td>
+                  <td>Success</td>
+                  <td>Shivam Shah</td>
+                  <td>5/12/2016</td>
+                </tr>
+                <tr>
+                  <th scope="row">3.1</th>
+                  <td>Register an account</td>
+                  <td>Created a template in Ionic for registering using the Firebase Authentication and the registering phase works unless the passwords do not match or the fields are empty.</td>
+                  <td>Registration works and every account is successfully added to the database and it is prepared for the logging in phase.</td>
+                  <td>Success</td>
+                  <td>Shivam Shah</td>
+                  <td>5/12/2016</td>
+                </tr>
+                <tr>
+                  <th scope="row">3.2</th>
+                  <td>Login – grant access to a valid user</td>
+                  <td>Access is granted to a valid user which is found by name and password in the database.</td>
+                  <td>A registered user is allowed to login into the next template if the details are correct.</td>
+                  <td>Success</td>
+                  <td>Shivam Shah</td>
+                  <td>5/12/2016</td>
+                </tr>
+                <tr>
+                  <th scope="row">3.3</th>
+                  <td>Login – deny access to an invalid user</td>
+                  <td>If the username is not found in the database, then a pop-up prints the message:”The username does not exist”. If the password doesn’t match the specific user, then a pop-up prints the message:”The password is incorrect”.</td>
+                  <td>The user doesn’t have the access if he doesn’t input the correct details. </td>
+                  <td>Success</td>
+                  <td>Shivam Shah</td>
+                  <td>5/12/2016</td>
+                </tr>
+                <tr>
+                  <th scope="row">4.1</th>
+                  <td>Ionic date picker plugin</td>
+                  <td>Tested the Ionic date picker plugin using a blank Ionic app with a text input.</td>
+                  <td>The date popup appears when the text input is clicked, and the date is set correctly.</td>
+                  <td>Success</td>
+                  <td>Brian Min</td>
+                  <td>10/12/2016</td>
+                </tr>
+                <tr>
+                  <th scope="row">4.2</th>
+                  <td>Ionic date/time picker plugin</td>
+                  <td>Tested the Ionic date/time picker plugin using a blank Ionic app with a text input.</td>
+                  <td>The date and time popup appears when the text input is clicked and is set correctly.</td>
+                  <td>Success</td>
+                  <td>Brian Min</td>
+                  <td>10/12/2016</td>
+                </tr>
+              </tbody>
+            </table>
+				<br>
+            <img src="experiments/experiment1.jpg" class="img-responsive">
+            <img src="experiments/experiment1.1.jpg" class="img-responsive">
+            <img src="experiments/experiment1.2.jpg" class="img-responsive">
+            <img src="experiments/experiment1.3.jpg" class="img-responsive">
+            <img src="experiments/experiment2.jpg" class="img-responsive">
+            <img src="experiments/experiment3.1.jpg" class="img-responsive">
+            <img src="experiments/experiment3.2.jpg" class="img-responsive">
+            <img src="experiments/experiment3.3.jpg" class="img-responsive">
+            <img src="experiments/experiment4.1.jpg" class="img-responsive">
+            <img src="experiments/experiment4.2.jpg" class="img-responsive">
+            <br>
+            <br><br>
+			  <h2 id="prototype" class="tittle" style="font-size:35px">Prototype</h2>
+            <span class="tittle-line"></span>
+				<br>
+            <p><strong>Prototype demo</strong> available through <strong>Invision</strong> at: <a target="_blank" href="https://invis.io/6Q9L8M9N8#">https://invis.io/6Q9L8M9N8#</a><br>We decided to use an interactive way of demonstrating our prototype rather than simply using pictures or videos, as it would be more engaging for the user. </p><br>
+            <a target="_blank" href="https://invis.io/6Q9L8M9N8#"><img src="experiments/finalprototype.jpg" class="img-responsive"></a><br>
+			
+			<h3 class="tittle" style="font-size:30px">Feedback</h3>
+			  <p>
+			  We sent our client the link to our prototype so that they could <strong>experiment</strong> with the <strong>user interface</strong> and <strong>navigation</strong> within the app, and therefore provide us with some <strong>feedback</strong>.<br>
+They responded saying that the prototype “<strong>seems really clear and easy to navigate</strong>”.
+</p>
+			  </p>
+		  </div>
+          </div>
+          <!-- End section area -->
+		
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Start Team action -->
+	
+  <!-- initialize jQuery Library --> 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <!-- Bootstrap -->
+  <script src="assets/js/bootstrap.js"></script>
+  <!-- Slick Slider -->
+  <script type="text/javascript" src="assets/js/slick.js"></script>
+  <!-- Counter -->
+  <script type="text/javascript" src="assets/js/waypoints.js"></script>
+  <script type="text/javascript" src="assets/js/jquery.counterup.js"></script>
+  <!-- Wow animation -->
+  <script type="text/javascript" src="assets/js/wow.js"></script> 
+
+  <!-- Custom js -->
+  <script type="text/javascript" src="assets/js/custom.js"></script>
+    
+  </body>
+</html>

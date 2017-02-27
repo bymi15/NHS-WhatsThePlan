@@ -1,0 +1,161 @@
+
+<style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 300px;
+        width:300px;
+
+      }
+       #map-canvas{
+        height: 300px;
+        width:300px;
+
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #description {
+        font-family: Roboto;
+        font-size: 15px;
+        font-weight: 300;
+      }
+
+      #infowindow-content .title {
+        font-weight: bold;
+      }
+
+      #infowindow-content {
+        display: none;
+      }
+
+      #map #infowindow-content {
+        display: inline;
+      }
+
+      .pac-card {
+        margin: 10px 10px 0 0;
+        border-radius: 2px 0 0 2px;
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        outline: none;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+        background-color: #fff;
+        font-family: Roboto;
+      }
+
+      #pac-container {
+        padding-bottom: 12px;
+        margin-right: 12px;
+      }
+
+      .pac-controls {
+        display: inline-block;
+        padding: 5px 11px;
+      }
+
+      .pac-controls label {
+        font-family: Roboto;
+        font-size: 13px;
+        font-weight: 300;
+      }
+
+      #pac-input {
+        background-color: #fff;
+        font-family: Roboto;
+        font-size: 15px;
+        font-weight: 300;
+        margin-left: 12px;
+        padding: 0 11px 0 13px;
+        text-overflow: ellipsis;
+        width: 400px;
+      }
+
+      #pac-input:focus {
+        border-color: #4d90fe;
+      }
+
+      #title {
+        color: #fff;
+        background-color: #4d90fe;
+        font-size: 25px;
+        font-weight: 500;
+        padding: 6px 12px;
+      }
+      #target {
+        width: 345px;
+      }
+    </style>
+
+<ion-view  hide-nav-bar="true" hide-back-button="false" view-title="welcome" ng-controller ="bookappointmentCtrl">
+  <ion-nav-buttons side="right" class="has-header">
+    <button class="button button-stable icon ion-edit"></button>
+  </ion-nav-buttons>
+
+
+<ion-header-bar align-title="centre"  style = "background-color:#3FA9F5;height:4em;">
+  
+<h2 class="button-clear">
+    <i class="ion-arrow-left-c" style="color:white;height:3em;width:3em;" ng-click = "myGoBack()"></i> 
+  </h2>
+
+
+  <h1 class="title" style = "font-size:22px;color:white;font-family:Verdana;position:relative;top:0.08em;"> Book Appointment</h1>
+  <div class="buttons">
+    <button class="button button-stable icon ion-plus" style = "background-color:#3FA9F5;color:white;"></button>
+  </div>
+</ion-header-bar>
+
+
+  <ion-content padding="true" class="has-header">
+   <div class = "spacer" style = "height:6em;width:100%"></div>
+     <form   ng-submit="submit()" ng-controller="bookappointmentCtrl">
+<ion-slide>   
+
+<ion-list id="signup2-list6">
+ <label class="item item-input" id="signup2-input25">
+                  <span class="input-label">Doctor:</span>
+                  <input ng-model="thisDoctor" type="text" placeholder="" value="">
+                </label>
+               
+                <label class="item item-input" id="signup2-input23">
+                  <span class="input-label">Date:</span>
+                  <input ng-model="thisDate" type="date" placeholder="" value="">
+                </label>
+                <label class="item item-input" id="signup2-input24">
+                  <span class="input-label">Time:</span>
+                  <input ng-model="thisTime" type="time" placeholder="" value="">
+                </label>
+                <label class="item item-input" id="signup2-input25">
+                  <span class="input-label">Description:</span>
+                  <input ng-model="thisDescription" type="text" placeholder="" value="">
+                </label>
+                
+                  <h3 style = "font-size:15px;color:grey;">Location</h3>
+                  
+                <div ng-controller="MapCtrl">
+
+  <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDzyoOupKRrTJMq6c4j2wRxkpe65Z1AJwY&libraries=places" >
+  </script>
+
+<input type="text" id = "mapsearch" size="50">
+<div id="map-canvas"  data-tap-disabled="true"></div>
+<div class = "spacer" style = "height:5em;width:100%"></div>
+ <input type = "submit"   id="submit" style="background-color:#3FA9F5;color:white;" class="button button-light  button-block" value = "Submit">
+
+    </div>
+              </ion-list>
+
+</ion-slide>
+
+
+
+
+      </form> 
+
+ 
+  </ion-content>
+</ion-view>

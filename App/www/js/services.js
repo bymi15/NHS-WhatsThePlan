@@ -26,6 +26,35 @@ angular.module('app.services', ['firebase'])
     return func;
 }])
 
+.factory('Appointment', [function(){
+    var ref = firebase.database().ref('appointments');
+
+    var func = {};
+
+    //returns a promise
+    func.getAppointment = function(uid){
+        return ref.child(uid).once('value');
+    }
+
+    func.createAppointment = function(uid,otherUid,thisLocation,thisTime,thisDate,thisDescription,thisDoctor,markerX,markerY){
+        ref.child(otherUid).set({
+            aa:"12",
+            uid:uid,
+            location:thisLocation,
+            doctor:thisDoctor,
+            time:thisTime,
+            date:thisDate,
+            description:thisDescription,
+            markerX:markerX,
+             markerY:markerY
+        });
+    }
+
+    return func;
+}])
+
+
+
 .factory('validater', [function(){
     var func = {};
 

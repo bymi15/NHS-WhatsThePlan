@@ -7,36 +7,58 @@ angular.module('app.routes', [])
   // Set up the various states which the app can be in.
   // Each state's controller can be found in controllers.js
   $stateProvider
+   
 
-  .state('menu', {
-    url: '/side-menu21',
-    templateUrl: 'templates/menu.html',
-    controller: 'menuCtrl'
-  })
 
-  .state('login', {
-    url: '/login',
-    templateUrl: 'templates/login.html',
-    controller: 'loginCtrl'
-  })
 
-  .state('signup', {
-    url: '/signup',
-    templateUrl: 'templates/signup.html',
-    controller: 'signupCtrl'
-  })
-
-  .state('main', {
+ .state('main', {
     url: '/main',
     templateUrl: 'templates/main.html',
     controller: 'mainCtrl',
     authRequired: true
   })
 
+ .state('login', {
+    url: '/login',
+    templateUrl: 'templates/login.html',
+    controller: 'loginCtrl'
+  })
+
+
+ 
+   .state('menu', {
+    url: '/side-menu21',
+    templateUrl: 'templates/menu.html',
+    controller: 'menuCtrl'
+  })
+
+ 
+  .state('signup', {
+    url: '/signup',
+    templateUrl: 'templates/signup.html',
+    controller: 'signupCtrl'
+  })
+
+ 
+
   .state('profile', {
     url: '/profile',
     templateUrl: 'templates/profile.html',
     controller: 'profileCtrl',
+    authRequired: true
+  })
+
+   .state('appointments', {
+    url: '/appointments',
+    templateUrl: 'templates/appointments.html',
+    controller: 'appointmentsCtrl',
+    authRequired: true
+  })
+
+.state('bookappointment', {
+    url: '/bookappointment',
+    templateUrl: 'templates/bookappointment.html',
+    controller: 'bookappointmentCtrl',
     authRequired: true
   })
 
