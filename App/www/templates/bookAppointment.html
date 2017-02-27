@@ -1,0 +1,36 @@
+<ion-view hide-back-button="false" view-title="Book an Appointment" ng-controller ="bookAppointmentCtrl">
+  <ion-content padding="false" class="has-header">
+    <form class="list">
+          <label class="item item-input item-stacked-label" id="signup2-input25">
+            <span class="input-label">Description:</span>
+            <input ng-model="thisDescription" type="text" placeholder="" value="">
+          </label>
+
+          <label class="item item-input item-stacked-label" id="signup2-input25">
+            <span class="input-label">Doctor:</span>
+            <input ng-model="thisDoctor" type="text" placeholder="" value="">
+          </label>
+
+          <label class="item item-input item-stacked-label" id="signup2-input23">
+            <span class="input-label">Date:</span>
+            <input ng-model="thisDate" type="date" placeholder="" value="">
+          </label>
+          <label class="item item-input item-stacked-label" id="signup2-input24">
+            <span class="input-label">Time:</span>
+            <input ng-model="thisTime" type="time" placeholder="" value="">
+          </label>
+
+          <input type="hidden" id="thisLocation" ng-model="thisLocation">
+
+          <label class="item item-input item-stacked-label" id="addConsultationNote-input33">
+            <span class="input-label">Location:</span>
+
+              <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDzyoOupKRrTJMq6c4j2wRxkpe65Z1AJwY&libraries=places"></script>
+              <input type="text" id="mapsearch" size="50">
+              <div id="map-canvas" data-tap-disabled="true"></div>
+          </label>
+
+          <button style="border-radius:0px 0px 0px 0px;" class="button button-positive button-block" ng-click="addAppointment()">ADD APPOINTMENT</button>
+    </form>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,34 @@
+<ion-view title="Appointments" id="page17">
+  <ion-nav-buttons side="right" class="has-header">
+      <button ui-sref="bookAppointment" class="button button-icon icon ion-android-add ion-header-icon"></button>
+  </ion-nav-buttons>
+
+  <ion-content padding="true" class="has-header">
+  <!--
+  <div id = "popup-box1" class = "popup-position">
+    <div id = "popup-wrapper">
+     <div id = "popup-container">
+       <h3>Popup box 1</h3>
+       <p>Congratulations,youve</p>
+       <p> <a href = "javascript:void(0)" > Close popup box</a></p>
+     </div>
+   </div>
+  </div> -->
+
+   <h1 style="font-weight:normal;text-align:center;font-size:24px;color:#3FA9F5;position:relative;">Today is {{currentDate}}</h1>
+
+  <ion-list can-swipe="true">
+      <ion-item ng-repeat="(key, appointment) in appointments" class="item-icon-right">
+        <h2 style="color:#7F7F7F;">{{appointment.description}}</h2>
+        <p style="color:#F46A00 ;">{{appointment.doctor}} <span style="color:#A5A5A5;">{{appointment.location}}</span></p>
+
+        <p style="color:#35B200;">{{appointment.date}} <span style="color:#3FA9F5">{{appointment.time}}</span></p>
+
+        <p><a href="javascript:void(0)" class="ion-ios-location" style="color:#3FA9F5; height:3em; width:3em; font-size: 60;" ng-click="showPopup()"></a></p>
+
+
+        <ion-option-button class="button-assertive" ng-click="removeAppointment('{{key}}')">Delete</ion-option-button>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

@@ -83,6 +83,75 @@ angular.module('app.services', ['firebase'])
     return func;
 }])
 
+.factory('Appointment', [function(){
+    var ref = firebase.database().ref('appointments');
+
+    var func = {};
+
+    //returns a promise
+    func.getAppointments = function(uid){
+        return ref.child(uid).once('value');
+    }
+
+    func.createAppointment = function(uid,thisLocation,thisTime,thisDate,thisDescription,thisDoctor,markerX,markerY){
+        ref.child(uid).push({
+            location:thisLocation,
+            doctor:thisDoctor,
+            time:thisTime,
+            date:thisDate,
+            description:thisDescription,
+            markerX:markerX,
+            markerY:markerY
+        });
+    }
+
+    func.removeAppointment = function(uid, id){
+        var refUser = firebase.database().ref('appointments/' + uid);
+        refUser.child(id).remove();
+    }
+
+    return func;
+}])
+
+.factory('Careplan', [function(){
+    var ref = firebase.database().ref('careplan');
+
+    var func = {};
+
+    //returns a promise
+    func.getCareplan = function(uid){
+        return ref.child(uid).once('value');
+    }
+
+    func.addCareplan = function(uid, title, consultant, location, datetime, notes){
+        ref.child(uid).push({
+            title: title,
+            consultant: consultant,
+            location: location,
+            datetime: datetime,
+            notes: notes
+        });
+    }
+
+    func.updateCareplan = function(uid, id, title, consultant, location, datetime, notes){
+        var refUser = firebase.database().ref('notes/' + uid);
+        refUser.child(id).update({
+            title: title,
+            consultant: consultant,
+            location: location,
+            datetime: datetime,
+            notes: notes
+        });
+    }
+
+    func.removeCareplan = function(uid, id){
+        var refUser = firebase.database().ref('notes/' + uid);
+        refUser.child(id).remove();
+    }
+
+
+    return func;
+}])
 .factory('validater', ['moment', function(moment){
     var func = {};
 
