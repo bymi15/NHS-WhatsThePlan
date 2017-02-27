@@ -236,3 +236,130 @@ angular.module('app.services', ['firebase'])
     return func;
 
 }])
+
+//contains REST HTTP request functions for accessing the EHRScape REST API
+.factory('Ehrscape', [function($http){
+
+    var func = {};
+
+    var baseUrl = 'https://test.operon.systems/rest/v1';
+
+    var username = "oprn_hcbox";
+    var password = "XioTAJoO479";
+
+    //var authorization = "Basic " + btoa(username + ":" + password);
+
+    var sessionId;
+
+    var headers = {
+      headers: {
+        "Ehr-Session": sessionId
+      }
+    };
+
+    //helper functions
+    var requestPost = function(endpoint, data) {
+      return $http.post(baseUrl + endpoint, data, headers);
+    }
+
+    var requestGet = function(endpoint) {
+      return $http.get(baseUrl + endpoint, headers);
+    }
+
+    var requestDelete = function(endpoint) {
+      return $http.delete(baseUrl + endpoint, headers);
+    }
+
+    var requestPut = function(endpoint, data) {
+      return $http.put(baseUrl + endpoint, data, headers);
+    }
+
+    var saveComposition = function(ehrId, templateId, compositionData) {
+      var queryParams = {
+        "ehrId": ehrId,
+        templateId: templateId,
+        format: 'FLAT',
+        committer: 'zcabbhm'
+      };
+
+      return requestPost("/composition", compositionData);
+    }
+
+    //service functions
+    func.startSession = function() {
+      return $http.post(baseUrl + "/session", {username: username, password: password}).then(function(res){
+        sessionId = res.data.sessionId;
+      });
+    }
+
+    func.closeSession = function() {
+      return $http.delete(baseUrl + "/session", headers);
+    }
+
+    func.createPatient = function(firstNames, lastNames, gender, dateOfBirth) {
+      requestPost("/ehr", {}).then(function(res){
+        var ehrId =  res.data.ehrId;
+      });
+
+      //build the party data
+      var partyData = {
+        firstNames: firstNames,
+        lastNames: lastNames,
+        gender: gender,
+        dateOfBirth: dateOfBirth,
+        partyAdditionalInfo: [
+        {
+          key: "ehrId",
+          value: ehrId
+        }
+        ]
+      };
+
+      requestPost("/demographics/party", partyData).then(function(res){
+        if(res.data.party.action == 'CREATE') {
+          return res.data.party.meta.href;
+        }else{
+          return false;
+        }
+      });
+    }
+
+    func.addBodyWeight = function(ehrId, weight) {
+      var compositionData = {
+          "ctx/time": "2014-3-19T13:10Z",
+          "ctx/language": "en",
+          "ctx/territory": "GB",
+          "vital_signs/body_weight/any_event/body_weight": parseFloat(weight)
+      };
+
+      requestPost("/ehr", {}).then(function(res){
+        var ehrId =  res.data.ehrId;
+      });
+
+      //build the party data
+      var partyData = {
+        firstNames: firstNames,
+        lastNames: lastNames,
+        gender: gender,
+        dateOfBirth: dateOfBirth,
+        partyAdditionalInfo: [
+        {
+          key: "ehrId",
+          value: ehrId
+        }
+        ]
+      };
+
+      requestPost("/demographics/party", partyData).then(function(res){
+        if(res.data.party.action == 'CREATE') {
+          return res.data.party.meta.href;
+        }else{
+          return false;
+        }
+      });
+    }
+
+
+    return func;
+
+}])

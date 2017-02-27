@@ -40,7 +40,7 @@ angular.module('app.controllers', ['ionic', 'firebase'])
     };
 })
 
-.controller('signupCtrl', function ($scope, $ionicHistory, $ionicSlideBoxDelegate, $state, utils, validater, User, $filter) {
+.controller('signupCtrl', function ($scope, $ionicHistory, $ionicSlideBoxDelegate, $state, utils, validater, User, $filter, Ehrscape) {
     $scope.disableSwipe = function() {
         $ionicSlideBoxDelegate.enableSlide(false);
     }
@@ -123,6 +123,9 @@ angular.module('app.controllers', ['ionic', 'firebase'])
 
             //add the user entry in firebase
             User.createUser(result.uid, fullName, gender, dateOfBirth, nationality, maritalStatus, nhsNumber, gpName, gpSurgery);
+
+            //create a new ehr
+            //Ehrscape.post()
 
             utils.hideLoading();
             $ionicHistory.clearHistory();
