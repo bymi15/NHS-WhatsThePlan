@@ -93,6 +93,22 @@ angular.module('app.routes', [])
     authRequired: true
   })
 
+  .state('careplan', {
+    url: '/careplan',
+    templateUrl: 'templates/careplan.html',
+    controller: 'careplanCtrl',
+    cache: false,
+    authRequired: true
+  })
+
+  .state('editCareplan', {
+    url: '/editCareplan',
+    templateUrl: 'templates/editCareplan.html',
+    controller: 'editCareplanCtrl',
+    cache: false,
+    authRequired: true
+  })
+
   $urlRouterProvider.otherwise(function($injector, $location) {
     var $state = $injector.get("$state");
     $state.go("main");

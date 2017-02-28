@@ -410,13 +410,13 @@ angular.module('app.controllers', ['ionic', 'firebase'])
     }*/
 
     $scope.showPopup=function(){
-         var alertPopup=$ionicPopup.alert({
-           title:'hey',
-           templateUrl:'templates/mymodal.html'
-         });
-          alertPopup.then(function(res){
+        var alertPopup=$ionicPopup.alert({
+             title:'hey',
+             templateUrl:'templates/mymodal.html'
+        });
+           alertPopup.then(function(res){
             console.log('popup');
-          });
+        });
     }
 
     var toggle_visibility = function(id) {
@@ -453,6 +453,8 @@ angular.module('app.controllers', ['ionic', 'firebase'])
 })
 
 .controller('bookAppointmentCtrl', function ($scope, $state, utils, User,$filter, $ionicHistory, Appointment, $ionicLoading) {
+
+    $scope.data = {};
 
     var map = new google.maps.Map(document.getElementById('map-canvas'),{
         center:{
@@ -509,6 +511,53 @@ angular.module('app.controllers', ['ionic', 'firebase'])
 
         if (user != null) {
             var uid = user.uid;
+            var dateNow = $scope.data.thisDate;
+            var locationNow = document.getElementById('thisLocation').value;
+            var timeNow = $scope.data.thisTime;
+            var descriptionNow = $scope.data.thisDescription;
+            var doctorNow = $scope.data.thisDoctor;
+            dateNow = $filter('date')(dateNow, 'dd/MM/yyyy');
+            timeNow = $filter('date')(timeNow,'hh:MM a');
+
+            var markerX = marker.getPosition().lat();
+            var markerY = marker.getPosition().lng();
+
+            Appointment.createAppointment(uid,locationNow,timeNow,dateNow,descriptionNow,doctorNow,markerX,markerY);
+
+            utils.hideLoading();
+            $state.go("appointments");
+        }else{
+            $state.go("login");
+        }
+    }
+})
+
+
+.controller('careplanCtrl', function ($scope, $state, utils, Careplan) {
+    utils.showLoading();
+
+    $scope.data = {};
+
+    //Check if user is logged in
+    firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+            Careplan.getCareplan(user.uid).then(function(snapshot) {
+                $scope.careplan = snapshot.val();
+
+                utils.hideLoading();
+            });
+        }else{
+            $state.go("login");
+        }
+    });
+
+    $scope.editCareplan = function(){
+        utils.showLoading();
+
+        var user = firebase.auth().currentUser;
+
+        if (user != null) {
+            var uid = user.uid;
             var dateNow = $scope.thisDate;
             var locationNow = document.getElementById('thisLocation').value;
             var timeNow = $scope.thisTime;
@@ -523,9 +572,54 @@ angular.module('app.controllers', ['ionic', 'firebase'])
             Appointment.createAppointment(uid, locationNow,timeNow,dateNow,descriptionNow,doctorNow,markerX,markerY);
 
             utils.hideLoading();
-            $state.go("appointments");
         }else{
             $state.go("login");
         }
     }
 })
+
+.controller('editCareplanCtrl', function ($scope, $state, utils, Careplan) {
+    utils.showLoading();
+
+    $scope.data = {};
+
+    //Check if user is logged in
+    firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+            Careplan.getCareplan(user.uid).then(function(snapshot) {
+                $scope.careplan = snapshot.val();
+
+                utils.hideLoading();
+            });
+        }else{
+            $state.go("login");
+        }
+    });
+
+    $scope.saveCareplan = function(){
+        utils.showLoading();
+
+        var user = firebase.auth().currentUser;
+
+        if (user != null) {
+            var uid = user.uid;
+            var dateNow = $scope.thisDate;
+            var locationNow = document.getElementById('thisLocation').value;
+            var timeNow = $scope.thisTime;
+            var descriptionNow = $scope.thisDescription;
+            var doctorNow = $scope.thisDoctor;
+            dateNow = $filter('date')(dateNow, 'dd/MM/yyyy');
+            timeNow = $filter('date')(timeNow,'hh:MM a');
+
+            var markerX = marker.getPosition().lat();
+            var markerY = marker.getPosition().lng();
+
+            Appointment.createAppointment(uid, locationNow,timeNow,dateNow,descriptionNow,doctorNow,markerX,markerY);
+
+            utils.hideLoading();
+        }else{
+            $state.go("login");
+        }
+    }
+})
+

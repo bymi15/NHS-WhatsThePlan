@@ -1,5 +1,5 @@
 
-<style>
+<!-- <style>
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
       #map {
@@ -88,17 +88,16 @@
       #target {
         width: 345px;
       }
-    </style>
-
-
-<ion-modal-view style="width: 90%; height: 90%; top: 5%; left: 5%; right: 5%; bottom: 5%;"title="Nidak" hide-nav-bar="true" hide-back-button="true" cache-view="false" nav-transition="none" id="page4" style="background-color:#3FA9F5;" ng-controller="bookappointmentCtrl">
+    </style> -->
+<ion-modal-view style="width: 90%; height: 90%; top: 5%; left: 5%; right: 5%; bottom: 5%;" hide-nav-bar="true" hide-back-button="true" cache-view="false" nav-transition="none" id="page4" style="background-color:#3FA9F5;" ng-controller="bookappointmentCtrl">
 
   <ion-content padding="true" class="manual-ios-statusbar-padding" scroll="false">
+
   <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDzyoOupKRrTJMq6c4j2wRxkpe65Z1AJwY&libraries=places" >
   </script>
 
+  <div id="map-canvas" style= "position:relative;right:8em;"  data-tap-disabled="true"></div>
 
-<div id="map-canvas" style= "position:relative;right:8em;"  data-tap-disabled="true"></div>
   </ion-content>
 </ion-modal-view>
 
