@@ -93,12 +93,11 @@ angular.module('app.services', ['firebase'])
         return ref.child(uid).once('value');
     }
 
-    func.createAppointment = function(uid,thisLocation,thisTime,thisDate,thisDescription,thisDoctor,markerX,markerY){
+    func.createAppointment = function(uid,thisLocation,datetime,thisDescription,thisDoctor,markerX,markerY){
         ref.child(uid).push({
             location:thisLocation,
             doctor:thisDoctor,
-            time:thisTime,
-            date:thisDate,
+            datetime:datetime,
             description:thisDescription,
             markerX:markerX,
             markerY:markerY
@@ -123,32 +122,12 @@ angular.module('app.services', ['firebase'])
         return ref.child(uid).once('value');
     }
 
-    func.addCareplan = function(uid, title, consultant, location, datetime, notes){
-        ref.child(uid).push({
-            title: title,
-            consultant: consultant,
-            location: location,
+    func.saveCareplan = function(uid, datetime, careplan){
+        ref.child(uid).set({
             datetime: datetime,
-            notes: notes
+            careplan: careplan,
         });
     }
-
-    func.updateCareplan = function(uid, id, title, consultant, location, datetime, notes){
-        var refUser = firebase.database().ref('notes/' + uid);
-        refUser.child(id).update({
-            title: title,
-            consultant: consultant,
-            location: location,
-            datetime: datetime,
-            notes: notes
-        });
-    }
-
-    func.removeCareplan = function(uid, id){
-        var refUser = firebase.database().ref('notes/' + uid);
-        refUser.child(id).remove();
-    }
-
 
     return func;
 }])
