@@ -414,9 +414,8 @@ angular.module('app.controllers', ['ionic', 'firebase'])
              title:'hey',
              templateUrl:'templates/mymodal.html'
         });
-           alertPopup.then(function(res){
-            console.log('popup');
-        });
+
+        alertPopup.then(function(res){});
     }
 
     var toggle_visibility = function(id) {
@@ -511,18 +510,16 @@ angular.module('app.controllers', ['ionic', 'firebase'])
 
         if (user != null) {
             var uid = user.uid;
-            var dateNow = $scope.data.thisDate;
+            var dateTime = $scope.data.datetime;
             var locationNow = document.getElementById('thisLocation').value;
-            var timeNow = $scope.data.thisTime;
             var descriptionNow = $scope.data.thisDescription;
             var doctorNow = $scope.data.thisDoctor;
-            dateNow = $filter('date')(dateNow, 'dd/MM/yyyy');
-            timeNow = $filter('date')(timeNow,'hh:MM a');
+            dateTime = $filter('date')(dateTime, 'dd-MM-yyyy hh:mm a');
 
             var markerX = marker.getPosition().lat();
             var markerY = marker.getPosition().lng();
 
-            Appointment.createAppointment(uid,locationNow,timeNow,dateNow,descriptionNow,doctorNow,markerX,markerY);
+            Appointment.createAppointment(uid,locationNow,dateTime,descriptionNow,doctorNow,markerX,markerY);
 
             utils.hideLoading();
             $state.go("appointments");
@@ -543,6 +540,9 @@ angular.module('app.controllers', ['ionic', 'firebase'])
         if (user) {
             Careplan.getCareplan(user.uid).then(function(snapshot) {
                 $scope.careplan = snapshot.val();
+                /*$scope.careplan.careplan = $scope.careplan.careplan.replace(/(?:\r\n|\r|\n)/g, '<br>');*/
+                $scope.data.careplan = $scope.careplan.careplan;
+                $scope.data.datetime = $scope.careplan.datetime;
 
                 utils.hideLoading();
             });
@@ -550,35 +550,9 @@ angular.module('app.controllers', ['ionic', 'firebase'])
             $state.go("login");
         }
     });
-
-    $scope.editCareplan = function(){
-        utils.showLoading();
-
-        var user = firebase.auth().currentUser;
-
-        if (user != null) {
-            var uid = user.uid;
-            var dateNow = $scope.thisDate;
-            var locationNow = document.getElementById('thisLocation').value;
-            var timeNow = $scope.thisTime;
-            var descriptionNow = $scope.thisDescription;
-            var doctorNow = $scope.thisDoctor;
-            dateNow = $filter('date')(dateNow, 'dd/MM/yyyy');
-            timeNow = $filter('date')(timeNow,'hh:MM a');
-
-            var markerX = marker.getPosition().lat();
-            var markerY = marker.getPosition().lng();
-
-            Appointment.createAppointment(uid, locationNow,timeNow,dateNow,descriptionNow,doctorNow,markerX,markerY);
-
-            utils.hideLoading();
-        }else{
-            $state.go("login");
-        }
-    }
 })
 
-.controller('editCareplanCtrl', function ($scope, $state, utils, Careplan) {
+.controller('editCareplanCtrl', function ($scope, $state, utils, Careplan, $filter) {
     utils.showLoading();
 
     $scope.data = {};
@@ -588,6 +562,7 @@ angular.module('app.controllers', ['ionic', 'firebase'])
         if (user) {
             Careplan.getCareplan(user.uid).then(function(snapshot) {
                 $scope.careplan = snapshot.val();
+                $scope.data.careplan = $scope.careplan.careplan;
 
                 utils.hideLoading();
             });
@@ -603,20 +578,16 @@ angular.module('app.controllers', ['ionic', 'firebase'])
 
         if (user != null) {
             var uid = user.uid;
-            var dateNow = $scope.thisDate;
-            var locationNow = document.getElementById('thisLocation').value;
-            var timeNow = $scope.thisTime;
-            var descriptionNow = $scope.thisDescription;
-            var doctorNow = $scope.thisDoctor;
-            dateNow = $filter('date')(dateNow, 'dd/MM/yyyy');
-            timeNow = $filter('date')(timeNow,'hh:MM a');
+            var dateTime = new Date();
+            var careplan = $scope.data.careplan;
 
-            var markerX = marker.getPosition().lat();
-            var markerY = marker.getPosition().lng();
+            dateTime = $filter('date')(dateTime, 'dd-MM-yyyy hh:mm a');
 
-            Appointment.createAppointment(uid, locationNow,timeNow,dateNow,descriptionNow,doctorNow,markerX,markerY);
+            Careplan.saveCareplan(uid, dateTime, careplan);
 
             utils.hideLoading();
+
+            $state.go("careplan");
         }else{
             $state.go("login");
         }
