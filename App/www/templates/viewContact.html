@@ -1,0 +1,21 @@
+<ion-view title="Contact" id="page23" style="background-color:#FFFFFF;">
+  <ion-nav-buttons side="right" class="has-header">
+    <button ng-click="goEditContact()" class="button button-stable icon ion-edit"></button>
+  </ion-nav-buttons>
+  <ion-content padding="true" class="has-header">
+    <h3 id="contact-heading8" style="color:#54AA3B;font-weight:300;text-align:center;">{{contact.full_name}}</h3>
+    <div id="contact-markdown5" class="show-list-numbers-and-dots">
+      <p style="color:#3F3F3F;font-size:17px;">
+        <strong>Role:</strong> {{contact.role}}</p>
+
+      <p style="color:#3F3F3F;font-size:17px;">
+        <strong>Email:</strong> {{contact.email}}</p>
+
+      <p style="color:#3F3F3F;font-size:17px;">
+        <strong>Phone Number:</strong> {{contact.phone_number}}</p>
+
+      <p style="color:#3F3F3F;font-size:17px;">
+        <strong>Note</strong>: {{contact.note}} </p>
+    </div>
+  </ion-content>
+</ion-view>

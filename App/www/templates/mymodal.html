@@ -1,14 +1,26 @@
+<style>
+.mymodal {
+     width: 90%;
+     height: 80%;
+     left: 5%;
+     right: 5%;
+     padding-bottom:0;
+     background-color: #FFFFFF;
+  }
+</style>
 
-<ion-modal-view style="width: 90%; height: 90%; top: 5%; left: 5%; right: 5%; bottom: 5%;" hide-nav-bar="true" hide-back-button="true" cache-view="false" nav-transition="none" id="page4" style="background-color:#3FA9F5;" ng-controller="bookAppointmentCtrl">
+<ion-modal-view class="mymodal" hide-nav-bar="true" hide-back-button="true" cache-view="false" nav-transition="none" id="page4" ng-controller="bookAppointmentCtrl">
 
-  <ion-content padding="true" class="manual-ios-statusbar-padding" scroll="false">
+  <ion-content padding="false" class="manual-ios-statusbar-padding" scroll="false">
 
   <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDzyoOupKRrTJMq6c4j2wRxkpe65Z1AJwY&libraries=places" >
   </script>
 
-  <div id="map-canvas" style= "position:relative;right:8em;"  data-tap-disabled="true"></div>
+  <div>
+    <strong><h5 style="color:#ff8533;position:relative;font-size:14px;text-align: center;font-weight:700;">{{location.text}}</h5></strong>
+  </div>
+
+  <div id="map-canvas" data-tap-disabled="true" style="margin-bottom:0;"></div>
 
   </ion-content>
 </ion-modal-view>
-
-

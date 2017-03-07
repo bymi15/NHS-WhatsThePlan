@@ -1,5 +1,64 @@
 angular.module('app.services', ['firebase'])
 
+.service('sharedProperties', function () {
+  var MarkerY = -0.1363550999999461;
+  var MarkerX = 51.5250834;
+  var location = "My Location";
+  return {
+    getLocation: function () {
+      return location;
+    },
+    setLocation: function(value) {
+      location = value;
+    },
+    getMarkerX: function () {
+      return MarkerX;
+    },
+    setMarkerX: function(value) {
+      MarkerX = value;
+    },
+    getMarkerY: function () {
+      return MarkerY;
+    },
+    setMarkerY: function(value) {
+      MarkerY = value;
+    }
+  };
+})
+
+.factory('ClosePopupService', function($document, $ionicPopup, $timeout){
+  var lastPopup;
+  return {
+    register: function(popup) {
+      $timeout(function(){
+        var element = $ionicPopup._popupStack.length>0 ? $ionicPopup._popupStack[0].element : null;
+        if(!element || !popup || !popup.close) return;
+        element = element && element.children ? angular.element(element.children()[0]) : null;
+        lastPopup  = popup;
+        var insideClickHandler = function(event){
+          event.stopPropagation();
+        };
+        var outsideHandler = function() {
+          popup.close();
+        };
+        element.on('click', insideClickHandler);
+        $document.on('click', outsideHandler);
+        popup.then(function(){
+          lastPopup = null;
+          element.off('click', insideClickHandler);
+          $document.off('click', outsideHandler);
+        });
+      });
+    },
+    closeActivePopup: function(){
+      if(lastPopup) {
+        $timeout(lastPopup.close);
+        return lastPopup;
+      }
+    }
+  };
+})
+
 .factory('User', [function(){
     var ref = firebase.database().ref('users');
 
@@ -131,6 +190,56 @@ angular.module('app.services', ['firebase'])
 
     return func;
 }])
+
+.factory('Careteam', [function(){
+    var ref = firebase.database().ref('careteam');
+
+    var func = {};
+
+    //returns a promise
+    func.getContacts = function(uid){
+        return ref.child(uid).once('value');
+    }
+
+    //returns a promise
+    func.getContact = function(uid, id){
+        var refUser = firebase.database().ref('careteam/' + uid);
+        return refUser.child(id).once('value');
+    }
+
+    func.addContact = function(uid, full_name, role, email, phone_number, address, note){
+        if(note==null) note=" ";
+
+        ref.child(uid).push({
+            full_name: full_name,
+            role: role,
+            email: email,
+            phone_number: phone_number,
+            address: address,
+            note: note
+        });
+    }
+
+    func.updateContact = function(uid, id, full_name, role, email, phone_number, address, note){
+        var refUser = firebase.database().ref('careteam/' + uid);
+        refUser.child(id).update({
+            full_name: full_name,
+            role: role,
+            email: email,
+            phone_number: phone_number,
+            address: address,
+            note: note
+        });
+    }
+
+    func.removeContact = function(uid, id){
+        var refUser = firebase.database().ref('careteam/' + uid);
+        refUser.child(id).remove();
+    }
+
+    return func;
+}])
+
 .factory('validater', ['moment', function(moment){
     var func = {};
 

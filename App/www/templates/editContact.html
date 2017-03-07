@@ -1,0 +1,34 @@
+<ion-view title="Edit Contact">
+  <ion-nav-buttons side="right" class="has-header">
+    <button nav-transition="none" ng-click="updateContact()" class="ion-header-icon button button-stable icon ion-android-done"></button>
+  </ion-nav-buttons>
+  <ion-content padding="true" class="has-header">
+    <form class="list">
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Full Name:</span>
+        <input ng-model="data.full_name" type="text" placeholder="">
+      </label>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Role:</span>
+        <input ng-model="data.role" type="text" placeholder="">
+      </label>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Email:</span>
+        <input ng-model="data.email" type="text" placeholder="">
+      </label>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Phone Number:</span>
+        <input ng-model="data.phone_number" type="text" placeholder="">
+      </label>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Address:</span>
+        <input ng-model="data.address" type="text" placeholder="">
+      </label>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Note:</span>
+        <input ng-model="data.note" type="text" placeholder="">
+      </label>
+    </form>
+    <button nav-transition="none" style="border-radius:0px 0px 0px 0px;" class="button button-positive button-block" ng-click="updateContact()">SAVE CHANGES</button>
+  </ion-content>
+</ion-view>

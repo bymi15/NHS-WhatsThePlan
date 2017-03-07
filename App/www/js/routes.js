@@ -93,6 +93,43 @@ angular.module('app.routes', [])
     authRequired: true
   })
 
+  .state('careplanMenu', {
+    url: '/careplanMenu',
+    templateUrl: 'templates/careplanMenu.html',
+    controller: 'careplanMenuCtrl',
+    authRequired: true
+  })
+
+  .state('careteam', {
+    url: '/careteam',
+    templateUrl: 'templates/careteam.html',
+    controller: 'careteamCtrl',
+    cache: false,
+    authRequired: true
+  })
+
+  .state('viewContact', {
+    url: '/viewContact/:id',
+    templateUrl: 'templates/viewContact.html',
+    controller: 'viewContactCtrl',
+    cache: false,
+    authRequired: true
+  })
+
+  .state('addContact', {
+    url: '/addContact',
+    templateUrl: 'templates/addContact.html',
+    controller: 'addContactCtrl',
+    authRequired: true
+  })
+
+  .state('editContact', {
+    url: '/editContact/:id',
+    templateUrl: 'templates/editContact.html',
+    controller: 'editContactCtrl',
+    authRequired: true
+  })
+
   .state('careplan', {
     url: '/careplan',
     templateUrl: 'templates/careplan.html',
