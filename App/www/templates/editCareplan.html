@@ -2,7 +2,7 @@
   <ion-content padding="false" class="has-header">
     <div class="list list-inset">
         <div class="item">
-            <textarea style="background: #ffffff; color:#3FA9F5; width: 100%;max-width: 100%; height: 70vh; padding: 10px;" ng-model="data.careplan"></textarea>
+            <textarea style="background: #ffffff; color:#3FA9F5; width: 100%;max-width: 100%; height: 70vh; padding: 10px;" ng-model="data.careplan" readonly>{{$scope.careplan.careplan}}</textarea>
         </div>
         <button class="button button-positive button-block" ng-click="saveCareplan()">SAVE CHANGES</button>
     </div>

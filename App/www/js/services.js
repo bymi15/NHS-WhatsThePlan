@@ -1,5 +1,38 @@
 angular.module('app.services', ['firebase'])
 
+.service('sharedProperties', function () {
+        var MarkerY = 27.72;
+        var MarkerX = 85.36;
+        var location = "Something";
+        return {
+            getLocation: function () {
+                return location;
+            },
+            setLocation: function(value) {
+                location = value;
+            },
+            getMarkerX: function () {
+                return MarkerX;
+            },
+            setMarkerX: function(value) {
+                MarkerX = value;
+            },
+            getMarkerY: function () {
+                return MarkerY;
+            },
+            setMarkerY: function(value) {
+                MarkerY = value;
+            }
+
+
+        };
+    })
+
+
+
+
+
+
 .factory('User', [function(){
     var ref = firebase.database().ref('users');
 
@@ -93,11 +126,12 @@ angular.module('app.services', ['firebase'])
         return ref.child(uid).once('value');
     }
 
-    func.createAppointment = function(uid,thisLocation,datetime,thisDescription,thisDoctor,markerX,markerY){
+    func.createAppointment = function(uid,thisLocation,thisTime,thisDate,thisDescription,thisDoctor,markerX,markerY){
         ref.child(uid).push({
             location:thisLocation,
             doctor:thisDoctor,
-            datetime:datetime,
+            time:thisTime,
+            date:thisDate,
             description:thisDescription,
             markerX:markerX,
             markerY:markerY
@@ -122,12 +156,32 @@ angular.module('app.services', ['firebase'])
         return ref.child(uid).once('value');
     }
 
-    func.saveCareplan = function(uid, datetime, careplan){
-        ref.child(uid).set({
+    func.addCareplan = function(uid, title, consultant, location, datetime, notes){
+        ref.child(uid).push({
+            title: title,
+            consultant: consultant,
+            location: location,
             datetime: datetime,
-            careplan: careplan,
+            notes: notes
         });
     }
+
+    func.updateCareplan = function(uid, id, title, consultant, location, datetime, notes){
+        var refUser = firebase.database().ref('notes/' + uid);
+        refUser.child(id).update({
+            title: title,
+            consultant: consultant,
+            location: location,
+            datetime: datetime,
+            notes: notes
+        });
+    }
+
+    func.removeCareplan = function(uid, id){
+        var refUser = firebase.database().ref('notes/' + uid);
+        refUser.child(id).remove();
+    }
+
 
     return func;
 }])

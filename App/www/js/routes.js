@@ -101,6 +101,14 @@ angular.module('app.routes', [])
     authRequired: true
   })
 
+  .state('mymodal', {
+    url: '/mymodal',
+    templateUrl: 'templates/mymodal.html',
+    controller: 'appointmentsCtrl',
+    cache: false,
+    authRequired: true
+  })
+
   .state('editCareplan', {
     url: '/editCareplan',
     templateUrl: 'templates/editCareplan.html',

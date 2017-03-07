@@ -360,10 +360,10 @@ angular.module('app.controllers', ['ionic', 'firebase'])
     }
 })
 
-.controller('appointmentsCtrl', function ($scope, $state, utils, User, $filter,$ionicHistory, Appointment, $ionicModal, $ionicPopup) {
+.controller('appointmentsCtrl', function ($scope, $state, utils, User, $filter,$ionicHistory, Appointment, $ionicModal, $ionicPopup,sharedProperties) {
 
     utils.showLoading();
-
+$scope.alea = sharedProperties.getLocation();
     //Check if user is logged in
     firebase.auth().onAuthStateChanged(function(user) {
         if (user) {
@@ -408,16 +408,80 @@ angular.module('app.controllers', ['ionic', 'firebase'])
         $scope.current_user = user;
         $scope.openModal();
     }*/
+    $scope.createClass = function(name,rules){
+    var style = document.createElement('style');
+    style.type = 'text/css';
+    document.getElementsByTagName('head')[0].appendChild(style);
+    if(!(style.sheet||{}).insertRule) 
+        (style.styleSheet || style.sheet).addRule(name, rules);
+    else
+        style.sheet.insertRule(name+"{"+rules+"}",0);
+}
 
-    $scope.showPopup=function(){
-        var alertPopup=$ionicPopup.alert({
-             title:'hey',
-             templateUrl:'templates/mymodal.html'
+$scope.say = function(){
+    console.log("2222");
+}
+
+
+
+
+  //$scope.createClass('.GQ',"color: green;width:90%;height:1%;");
+  $scope.createClass('.popup',"min-width: 80%;height: 80%;background-color: transparent;border-style: solid;");
+  $scope.createClass('.popup-body',"overflow:inherit; text-align:center;position:relative;background-color: #387EF5;height:30em;border-style: solid;border:1px black;");
+  $scope.createClass('.popup-head',"background-color: #387EF5;display:none;border-style: solid;");
+    $scope.createClass('.popup-sub-title',"background-color: #387EF5;border-style: solid;");
+      $scope.createClass('.popup-buttons',"background-color: #387EF5;color:#387EF5;border-style: solid;");
+        $scope.createClass('.popup-buttons.row ',"background-color: transparent;display:none;");
+    $scope.createClass('.popup-footer',"background-color: #387EF5;display:none;");
+   
+$scope.getItem = function(item)
+{
+    
+   sharedProperties.setMarkerX(item.markerX);
+   sharedProperties.setMarkerY(item.markerY);
+   sharedProperties.setLocation(item.location);
+   console.log(item.location);
+}
+
+    $scope.showPopup=function(item){
+        console.log(item);
+       
+        console.log(item.markerY);
+        console.log("jh");
+   console.log(item.markerX);
+  sharedProperties.setMarkerX(item.markerX);
+  console.log(sharedProperties.getMarkerX());
+       console.log("kks");
+
+  console.log("kks");
+   sharedProperties.setMarkerY(item.markerY);
+   sharedProperties.setLocation(item.location);
+  
+    
+     console.log(sharedProperties.getMarkerY());
+       console.log("kks");
+     console.log(sharedProperties.getLocation());
+       console.log("kks");
+    ;
+        
+        //console.log($scope.value.location);
+                var alertPopup=$ionicPopup.alert({
+           
+             templateUrl:'templates/mymodal.html',
+             cssClass: 'popup'
         });
-
-        alertPopup.then(function(res){});
+           alertPopup.then(function(res){
+            console.log('popup');
+        });
+           $scope.alertPopup = alertPopup;
     }
 
+$scope.closePopup = function(){
+    
+    console.log("Should be closed");
+
+    
+}   ;
     var toggle_visibility = function(id) {
        var e = document.getElementsByName(id);
        if(e.style.display == 'block')
@@ -451,22 +515,35 @@ angular.module('app.controllers', ['ionic', 'firebase'])
 
 })
 
-.controller('bookAppointmentCtrl', function ($scope, $state, utils, User,$filter, $ionicHistory, Appointment, $ionicLoading) {
+.controller('bookAppointmentCtrl', function ($scope, $state, utils, User,$filter, $ionicHistory, Appointment, $ionicLoading,sharedProperties) {
+ $scope.data = {};
+$scope.data.newLocation = "aaa";
+$scope.newLocation = sharedProperties.getLocation();
+$scope.newMarkerX = sharedProperties.getMarkerX();
+$scope.newMarkerY = sharedProperties.getMarkerY();
+$scope.updateLocation = function(){
+        $scope.newLocation = sharedProperties.getLocation(); 
+        $scope.newMarkerX = sharedProperties.getMarkerX();
+        $scope.newMarkerY = sharedProperties.getMarkerY(); 
+}
 
-    $scope.data = {};
+$scope.say = function(){
+    console.log("2222");
+}
+   
 
     var map = new google.maps.Map(document.getElementById('map-canvas'),{
         center:{
-            lat:27.72,
-            lng:85.36
+            lat:sharedProperties.getMarkerX(),
+            lng:sharedProperties.getMarkerY()
         },
         zoom:15
     });
 
     var marker = new google.maps.Marker({
         position:{
-            lat:27.72,
-            lng:85.36
+            lat:sharedProperties.getMarkerX(),
+            lng:sharedProperties.getMarkerY()
         },
         map:map
     });
@@ -510,16 +587,18 @@ angular.module('app.controllers', ['ionic', 'firebase'])
 
         if (user != null) {
             var uid = user.uid;
-            var dateTime = $scope.data.datetime;
+            var dateNow = $scope.data.thisDate;
             var locationNow = document.getElementById('thisLocation').value;
+            var timeNow = $scope.data.thisTime;
             var descriptionNow = $scope.data.thisDescription;
             var doctorNow = $scope.data.thisDoctor;
-            dateTime = $filter('date')(dateTime, 'dd-MM-yyyy hh:mm a');
+            dateNow = $filter('date')(dateNow, 'dd/MM/yyyy');
+            timeNow = $filter('date')(timeNow,'hh:MM a');
 
             var markerX = marker.getPosition().lat();
             var markerY = marker.getPosition().lng();
 
-            Appointment.createAppointment(uid,locationNow,dateTime,descriptionNow,doctorNow,markerX,markerY);
+            Appointment.createAppointment(uid,locationNow,timeNow,dateNow,descriptionNow,doctorNow,markerX,markerY);
 
             utils.hideLoading();
             $state.go("appointments");
@@ -540,9 +619,6 @@ angular.module('app.controllers', ['ionic', 'firebase'])
         if (user) {
             Careplan.getCareplan(user.uid).then(function(snapshot) {
                 $scope.careplan = snapshot.val();
-                /*$scope.careplan.careplan = $scope.careplan.careplan.replace(/(?:\r\n|\r|\n)/g, '<br>');*/
-                $scope.data.careplan = $scope.careplan.careplan;
-                $scope.data.datetime = $scope.careplan.datetime;
 
                 utils.hideLoading();
             });
@@ -550,9 +626,35 @@ angular.module('app.controllers', ['ionic', 'firebase'])
             $state.go("login");
         }
     });
+
+    $scope.editCareplan = function(){
+        utils.showLoading();
+
+        var user = firebase.auth().currentUser;
+
+        if (user != null) {
+            var uid = user.uid;
+            var dateNow = $scope.thisDate;
+            var locationNow = document.getElementById('thisLocation').value;
+            var timeNow = $scope.thisTime;
+            var descriptionNow = $scope.thisDescription;
+            var doctorNow = $scope.thisDoctor;
+            dateNow = $filter('date')(dateNow, 'dd/MM/yyyy');
+            timeNow = $filter('date')(timeNow,'hh:MM a');
+
+            var markerX = marker.getPosition().lat();
+            var markerY = marker.getPosition().lng();
+
+            Appointment.createAppointment(uid, locationNow,timeNow,dateNow,descriptionNow,doctorNow,markerX,markerY);
+
+            utils.hideLoading();
+        }else{
+            $state.go("login");
+        }
+    }
 })
 
-.controller('editCareplanCtrl', function ($scope, $state, utils, Careplan, $filter) {
+.controller('editCareplanCtrl', function ($scope, $state, utils, Careplan) {
     utils.showLoading();
 
     $scope.data = {};
@@ -562,7 +664,6 @@ angular.module('app.controllers', ['ionic', 'firebase'])
         if (user) {
             Careplan.getCareplan(user.uid).then(function(snapshot) {
                 $scope.careplan = snapshot.val();
-                $scope.data.careplan = $scope.careplan.careplan;
 
                 utils.hideLoading();
             });
@@ -578,16 +679,20 @@ angular.module('app.controllers', ['ionic', 'firebase'])
 
         if (user != null) {
             var uid = user.uid;
-            var dateTime = new Date();
-            var careplan = $scope.data.careplan;
+            var dateNow = $scope.thisDate;
+            var locationNow = document.getElementById('thisLocation').value;
+            var timeNow = $scope.thisTime;
+            var descriptionNow = $scope.thisDescription;
+            var doctorNow = $scope.thisDoctor;
+            dateNow = $filter('date')(dateNow, 'dd/MM/yyyy');
+            timeNow = $filter('date')(timeNow,'hh:MM a');
 
-            dateTime = $filter('date')(dateTime, 'dd-MM-yyyy hh:mm a');
+            var markerX = marker.getPosition().lat();
+            var markerY = marker.getPosition().lng();
 
-            Careplan.saveCareplan(uid, dateTime, careplan);
+            Appointment.createAppointment(uid, locationNow,timeNow,dateNow,descriptionNow,doctorNow,markerX,markerY);
 
             utils.hideLoading();
-
-            $state.go("careplan");
         }else{
             $state.go("login");
         }
