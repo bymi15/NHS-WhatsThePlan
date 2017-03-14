@@ -260,7 +260,7 @@ angular.module('app.services', ['firebase'])
         return validation;
     }
 
-    func.validateSignup = function(email, password, confirmPassword, fullName, gender, dateOfBirth, nationality, maritalStatus, nhsNumber, gpName, gpSurgery){
+    func.validateSignup = function(email, password, confirmPassword, fullName, gender, nationality, maritalStatus, nhsNumber, gpName, gpSurgery){
         //validate
         var genderChoices = ["Male", "Female"];
         var constraints = {
@@ -280,7 +280,7 @@ angular.module('app.services', ['firebase'])
             format: {
               pattern: "[a-z ]+",
               flags: "i",
-              message: "can only contain alphabet letters"
+              message: "can only contain alphabet letters and spaces"
             },
             length: {
               maximum: 100
@@ -290,32 +290,26 @@ angular.module('app.services', ['firebase'])
             presence: true,
             inclusion: genderChoices
           },
-          dateOfBirth: {
-            presence: true,
-            datetime: {
-              dateOnly: true
-            }
-          },
           nationality: {
             presence: true,
             format: {
-              pattern: "[a-z]+",
+              pattern: "[a-z ]+",
               flags: "i",
-              message: "can only contain alphabet letters"
+              message: "can only contain alphabet letters and spaces"
             }
           },
           maritalStatus: {
             presence: true,
             format: {
-              pattern: "[a-z]+",
+              pattern: "[a-z ]+",
               flags: "i",
-              message: "can only contain alphabet letters"
+              message: "can only contain alphabet letters and spaces"
             }
           },
           nhsNumber: {
             presence: true,
             format: {
-              pattern: "([0-9]{3} [0-9]{3} [0-9]{4})",
+              pattern: "([0-9]{3}[0-9]{3}[0-9]{4})",
               flags: "i",
               message: "must be a valid NHS number"
             }
@@ -323,9 +317,9 @@ angular.module('app.services', ['firebase'])
           gpName: {
             presence: true,
             format: {
-              pattern: "[a-z]+",
+              pattern: "[a-z ]+",
               flags: "i",
-              message: "can only contain alphabet letters"
+              message: "can only contain alphabet letters and spaces"
             },
             length: {
               maximum: 100
@@ -338,19 +332,8 @@ angular.module('app.services', ['firebase'])
             }
           }
         };
-        validate.extend(validate.validators.datetime, {
-          // The value is guaranteed not to be null or undefined but otherwise it could be anything.
-          parse: function(value, options) {
-            return +moment(value, "dd-MM-yyyy");
-          },
-          // Input is a unix timestamp
-          format: function(value, options) {
-            var format = options.dateOnly ? "dd-MM-yyyy" : "hh:mm:ss dd-MM-yyyy";
-            return moment(value).format(format);
-          }
-        });
 
-        var validation = validate({email: email, password: password, fullName: fullName, gender: gender, dateOfBirth: dateOfBirth, nationality: nationality, maritalStatus: maritalStatus, nhsNumber: nhsNumber, gpName: gpName, gpSurgery: gpSurgery}, constraints);
+        var validation = validate({email: email, password: password, fullName: fullName, gender: gender, nationality: nationality, maritalStatus: maritalStatus, nhsNumber: nhsNumber, gpName: gpName, gpSurgery: gpSurgery}, constraints);
 
         if(password != confirmPassword){
             validation  = {};
@@ -404,6 +387,10 @@ angular.module('app.services', ['firebase'])
     var username = "oprn_hcbox";
     var password = "XioTAJoO479";
 
+    var templateId = 'WhatsThePlan.v0';
+
+    var ehrId = '';
+
     //var authorization = "Basic " + btoa(username + ":" + password);
 
     var sessionId;
@@ -431,31 +418,39 @@ angular.module('app.services', ['firebase'])
       return $http.put(baseUrl + endpoint, data, headers);
     }
 
-    var saveComposition = function(ehrId, templateId, compositionData) {
+    var saveComposition = function(compositionData, committer) {
       var queryParams = {
         "ehrId": ehrId,
         templateId: templateId,
         format: 'FLAT',
-        committer: 'zcabbhm'
+        committer: committer
       };
 
       return requestPost("/composition", compositionData);
     }
 
-    //service functions
+    //this should be called once - when the user logs in or signs up
     func.startSession = function() {
-      return $http.post(baseUrl + "/session", {username: username, password: password}).then(function(res){
+      $http.post(baseUrl + "/session", {username: username, password: password}).then(function(res){
         sessionId = res.data.sessionId;
       });
     }
 
+    //this should be called once - when the user logs out
     func.closeSession = function() {
-      return $http.delete(baseUrl + "/session", headers);
+      $http.delete(baseUrl + "/session", headers);
     }
 
-    func.createPatient = function(firstNames, lastNames, gender, dateOfBirth) {
-      requestPost("/ehr", {}).then(function(res){
-        var ehrId =  res.data.ehrId;
+    //this should be called once - when the user logs in or signs up
+    func.loadPatientEhr = function(nhsNumber) {
+      requestGet("/ehr/?subjectId=" + nhsNumber + "&subjectNamespace=uk.nhs.nhs_number").then(function(res){
+        ehrId =  res.data.ehrId;
+      });
+    }
+
+    func.createPatient = function(firstNames, lastNames, gender, dateOfBirth, nhsNumber) {
+      requestPost("/ehr", {subjectId: nhsNumber, subjectNamespace: "uk.nhs.nhs_number"}).then(function(res){
+          ehrId = res.data.ehrId;
       });
 
       //build the party data
@@ -466,22 +461,16 @@ angular.module('app.services', ['firebase'])
         dateOfBirth: dateOfBirth,
         partyAdditionalInfo: [
         {
-          key: "ehrId",
-          value: ehrId
+          key: "uk.nhs.nhs_number",
+          value: nhsNumber
         }
         ]
       };
 
-      requestPost("/demographics/party", partyData).then(function(res){
-        if(res.data.party.action == 'CREATE') {
-          return res.data.party.meta.href;
-        }else{
-          return false;
-        }
-      });
+      return requestPost("/demographics/party", partyData);
     }
 
-    func.addBodyWeight = function(ehrId, weight) {
+    /*func.addBodyWeight = function(ehrId, weight) {
       var compositionData = {
           "ctx/time": "2014-3-19T13:10Z",
           "ctx/language": "en",
@@ -489,10 +478,6 @@ angular.module('app.services', ['firebase'])
           "vital_signs/body_weight/any_event/body_weight": parseFloat(weight)
       };
 
-      requestPost("/ehr", {}).then(function(res){
-        var ehrId =  res.data.ehrId;
-      });
-
       //build the party data
       var partyData = {
         firstNames: firstNames,
@@ -514,7 +499,7 @@ angular.module('app.services', ['firebase'])
           return false;
         }
       });
-    }
+    }*/
 
 
     return func;

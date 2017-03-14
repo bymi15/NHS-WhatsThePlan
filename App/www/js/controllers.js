@@ -72,7 +72,7 @@ angular.module('app.controllers', ['ionic', 'firebase'])
 
 
         utils.showLoading();
-        var validation = validater.validateSignup(email, password, confirmPassword, fullName, gender, dateOfBirth, nationality, maritalStatus, nhsNumber, gpName, gpSurgery);
+        var validation = validater.validateSignup(email, password, confirmPassword, fullName, gender, nationality, maritalStatus, nhsNumber, gpName, gpSurgery);
 
         if(validation){
             utils.hideLoading();
@@ -91,9 +91,6 @@ angular.module('app.controllers', ['ionic', 'firebase'])
                 return;
             }else if(validation.gender){
                 utils.showAlert('Error!', validation.gender);
-                return;
-            }else if(validation.dateOfBirth){
-                utils.showAlert('Error!', validation.dateOfBirth);
                 return;
             }else if(validation.nationality){
                 utils.showAlert('Error!', validation.nationality);
@@ -122,8 +119,19 @@ angular.module('app.controllers', ['ionic', 'firebase'])
             //add the user entry in firebase
             User.createUser(result.uid, fullName, gender, dateOfBirth, nationality, maritalStatus, nhsNumber, gpName, gpSurgery);
 
-            //create a new ehr
-            //Ehrscape.post()
+            //create a new ehr session for the user
+            var index = fullName.indexOf(" ");
+            var firstNames = fullName.substr(0, index);
+            var lastNames = fullName.substr(index + 1);
+            Ehrscape.startSession();
+            Ehrscape.loadPatientEhr(nhsNumber);
+            Ehrscape.createPatient(firstNames, lastNames, gender, dateOfBirth.toISOString(), nhsNumber).then(function(res){
+                if(res.data.party.action == 'CREATE') {
+                  console.log(res.data.party.meta.href);
+                }else{
+                  console.log(res);
+                }
+            });
 
             utils.hideLoading();
             $ionicHistory.clearHistory();
@@ -138,7 +146,7 @@ angular.module('app.controllers', ['ionic', 'firebase'])
 
 })
 
-.controller('mainCtrl', function ($scope, $state, User) {
+.controller('mainCtrl', function ($scope, $state, User, Ehrscape) {
     //Check if user is logged in
     firebase.auth().onAuthStateChanged(function(user) {
         if (!user) {
@@ -148,6 +156,8 @@ angular.module('app.controllers', ['ionic', 'firebase'])
 
     $scope.logout = function(){
         firebase.auth().signOut();
+
+        Ehrscape.closeSession();
 
         $state.go("login");
     }
