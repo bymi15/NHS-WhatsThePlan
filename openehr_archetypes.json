@@ -1,0 +1,807 @@
+{
+  "meta": {
+    "href": "http://test.operon.systems/rest/v1/template/WhatsThePlan.v0"
+  },
+  "webTemplate": {
+    "templateId": "WhatsThePlan.v0",
+    "version": "2.3",
+    "defaultLanguage": "en",
+    "languages": [
+      "en"
+    ],
+    "tree": {
+      "id": "whats_the_plan",
+      "name": "Whats the plan",
+      "localizedName": "Whats the plan",
+      "rmType": "COMPOSITION",
+      "nodeId": "openEHR-EHR-COMPOSITION.encounter.v1",
+      "min": 1,
+      "max": 1,
+      "localizedNames": {
+        "en": "Whats the plan"
+      },
+      "localizedDescriptions": {
+        "en": "Interaction, contact or care event between a subject of care and healthcare provider(s)."
+      },
+      "aqlPath": "",
+      "children": [
+        {
+          "id": "context",
+          "rmType": "EVENT_CONTEXT",
+          "nodeId": "",
+          "min": 1,
+          "max": 1,
+          "aqlPath": "/context",
+          "children": [
+            {
+              "id": "start_time",
+              "name": "Start_time",
+              "rmType": "DV_DATE_TIME",
+              "min": 1,
+              "max": 1,
+              "aqlPath": "/context/start_time",
+              "inputs": [
+                {
+                  "type": "DATETIME"
+                }
+              ],
+              "inContext": true
+            },
+            {
+              "id": "setting",
+              "name": "Setting",
+              "rmType": "DV_CODED_TEXT",
+              "min": 1,
+              "max": 1,
+              "aqlPath": "/context/setting",
+              "inputs": [
+                {
+                  "suffix": "code",
+                  "type": "TEXT"
+                },
+                {
+                  "suffix": "value",
+                  "type": "TEXT"
+                }
+              ],
+              "inContext": true
+            }
+          ]
+        },
+        {
+          "id": "contacts",
+          "name": "Contacts",
+          "localizedName": "Contacts",
+          "rmType": "SECTION",
+          "nodeId": "openEHR-EHR-SECTION.adhoc.v1",
+          "min": 0,
+          "max": 1,
+          "localizedNames": {
+            "en": "Contacts"
+          },
+          "localizedDescriptions": {
+            "en": "A generic section header which should be renamed in a template to suit a specific clinical context."
+          },
+          "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Contacts']",
+          "children": [
+            {
+              "id": "relevant_contact",
+              "name": "Relevant contact",
+              "localizedName": "Relevant contact",
+              "rmType": "ADMIN_ENTRY",
+              "nodeId": "openEHR-EHR-ADMIN_ENTRY.relevant_contact_rcp.v1",
+              "min": 0,
+              "max": -1,
+              "localizedNames": {
+                "en": "Relevant contact"
+              },
+              "localizedDescriptions": {
+                "en": "Relevant contact for the patient or client, including formal and informal carers, next of kin and key workers."
+              },
+              "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Contacts']/items[openEHR-EHR-ADMIN_ENTRY.relevant_contact_rcp.v1]",
+              "children": [
+                {
+                  "id": "person_name",
+                  "name": "Person name",
+                  "localizedName": "Person name",
+                  "rmType": "CLUSTER",
+                  "nodeId": "openEHR-EHR-CLUSTER.person_name.v1",
+                  "min": 0,
+                  "max": -1,
+                  "localizedNames": {
+                    "en": "Person name"
+                  },
+                  "localizedDescriptions": {
+                    "en": "Details of personal name of an individual, provider or third party."
+                  },
+                  "annotations": {
+                    "view:pass_through": "true"
+                  },
+                  "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Contacts']/items[openEHR-EHR-ADMIN_ENTRY.relevant_contact_rcp.v1]/data[at0001]/items[openEHR-EHR-CLUSTER.person_name.v1]",
+                  "children": [
+                    {
+                      "id": "name",
+                      "name": "Name",
+                      "localizedName": "Name",
+                      "rmType": "DV_TEXT",
+                      "nodeId": "at0001",
+                      "min": 0,
+                      "max": 1,
+                      "localizedNames": {
+                        "en": "Name"
+                      },
+                      "localizedDescriptions": {
+                        "en": "Name in free text unstructured format."
+                      },
+                      "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Contacts']/items[openEHR-EHR-ADMIN_ENTRY.relevant_contact_rcp.v1]/data[at0001]/items[openEHR-EHR-CLUSTER.person_name.v1]/items[at0001,'Name']/value",
+                      "inputs": [
+                        {
+                          "type": "TEXT"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "telecom_details_uk",
+                  "name": "Telecom details (UK)",
+                  "localizedName": "Telecom details (UK)",
+                  "rmType": "CLUSTER",
+                  "nodeId": "openEHR-EHR-CLUSTER.telecom_uk.v1",
+                  "min": 0,
+                  "max": -1,
+                  "localizedNames": {
+                    "en": "Telecom details (UK)"
+                  },
+                  "localizedDescriptions": {
+                    "en": "Personal or organisational telecommunication details, including telephone, fax, and email or other telecommunications details e.g skype address."
+                  },
+                  "annotations": {
+                    "view:pass_through": "true"
+                  },
+                  "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Contacts']/items[openEHR-EHR-ADMIN_ENTRY.relevant_contact_rcp.v1]/data[at0001]/items[openEHR-EHR-CLUSTER.telecom_uk.v1]",
+                  "children": [
+                    {
+                      "id": "contact_information",
+                      "name": "Contact information",
+                      "localizedName": "Contact information",
+                      "rmType": "DV_TEXT",
+                      "nodeId": "at0002",
+                      "min": 0,
+                      "max": 1,
+                      "localizedNames": {
+                        "en": "Contact information"
+                      },
+                      "localizedDescriptions": {
+                        "en": "An unstructured description of telecoms."
+                      },
+                      "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Contacts']/items[openEHR-EHR-ADMIN_ENTRY.relevant_contact_rcp.v1]/data[at0001]/items[openEHR-EHR-CLUSTER.telecom_uk.v1]/items[at0002,'Contact information']/value",
+                      "inputs": [
+                        {
+                          "type": "TEXT"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "relationship_category",
+                  "name": "Relationship category",
+                  "localizedName": "Relationship category",
+                  "rmType": "DV_CODED_TEXT",
+                  "nodeId": "at0035",
+                  "min": 0,
+                  "max": 1,
+                  "localizedNames": {
+                    "en": "Relationship category"
+                  },
+                  "localizedDescriptions": {
+                    "en": "The broad category of care relationship which the contact hods with the subject."
+                  },
+                  "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Contacts']/items[openEHR-EHR-ADMIN_ENTRY.relevant_contact_rcp.v1]/data[at0001]/items[at0035]/value",
+                  "inputs": [
+                    {
+                      "suffix": "code",
+                      "type": "CODED_TEXT",
+                      "list": [
+                        {
+                          "value": "at0036",
+                          "label": "Informal carer",
+                          "localizedLabels": {
+                            "en": "Informal carer"
+                          },
+                          "localizedDescriptions": {
+                            "en": "An individual identified by the person as offering care and support, excluding paid carers or carers from voluntary agencies."
+                          }
+                        },
+                        {
+                          "value": "at0037",
+                          "label": "Main informal carer",
+                          "localizedLabels": {
+                            "en": "Main informal carer"
+                          },
+                          "localizedDescriptions": {
+                            "en": "The contact is identified by the subject as being a primary informal source of care and support."
+                          }
+                        },
+                        {
+                          "value": "at0038",
+                          "label": "Formal care worker",
+                          "localizedLabels": {
+                            "en": "Formal care worker"
+                          },
+                          "localizedDescriptions": {
+                            "en": "A health and social care professional or staff member, including a carer from voluntary sector."
+                          }
+                        },
+                        {
+                          "value": "at0039",
+                          "label": "Key formal care worker",
+                          "localizedLabels": {
+                            "en": "Key formal care worker"
+                          },
+                          "localizedDescriptions": {
+                            "en": "The formal carer is the subject's key worker."
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "relationship",
+                  "name": "Relationship",
+                  "localizedName": "Relationship",
+                  "rmType": "DV_TEXT",
+                  "nodeId": "at0030",
+                  "min": 0,
+                  "max": 1,
+                  "localizedNames": {
+                    "en": "Relationship"
+                  },
+                  "localizedDescriptions": {
+                    "en": "For an informal carer, the personal relationship with the client/carer e.g spouse or friend . For a formal carer, the professional role or responsibility of the carer with respect to the person which should help identify them as being an appropriate contact for an aspect of care, usually a professional role or care pathway name."
+                  },
+                  "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Contacts']/items[openEHR-EHR-ADMIN_ENTRY.relevant_contact_rcp.v1]/data[at0001]/items[at0030]/value",
+                  "inputs": [
+                    {
+                      "type": "TEXT"
+                    }
+                  ]
+                },
+                {
+                  "id": "is_next_of_kin",
+                  "name": "Is next of kin?",
+                  "localizedName": "Is next of kin?",
+                  "rmType": "DV_BOOLEAN",
+                  "nodeId": "at0025",
+                  "min": 0,
+                  "max": 1,
+                  "localizedNames": {
+                    "en": "Is next of kin?"
+                  },
+                  "localizedDescriptions": {
+                    "en": "True if this informal care is  the person's next-of-kin."
+                  },
+                  "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Contacts']/items[openEHR-EHR-ADMIN_ENTRY.relevant_contact_rcp.v1]/data[at0001]/items[at0025]/value",
+                  "inputs": [
+                    {
+                      "type": "BOOLEAN",
+                      "list": [
+                        {
+                          "value": "true",
+                          "label": "true"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "note",
+                  "name": "Note",
+                  "localizedName": "Note",
+                  "rmType": "DV_TEXT",
+                  "nodeId": "at0017",
+                  "min": 0,
+                  "max": 1,
+                  "localizedNames": {
+                    "en": "Note"
+                  },
+                  "localizedDescriptions": {
+                    "en": "Any additional comment or note about the carer or their role."
+                  },
+                  "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Contacts']/items[openEHR-EHR-ADMIN_ENTRY.relevant_contact_rcp.v1]/data[at0001]/items[at0017]/value",
+                  "inputs": [
+                    {
+                      "type": "TEXT"
+                    }
+                  ]
+                },
+                {
+                  "id": "language",
+                  "name": "Language",
+                  "rmType": "CODE_PHRASE",
+                  "min": 1,
+                  "max": 1,
+                  "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Contacts']/items[openEHR-EHR-ADMIN_ENTRY.relevant_contact_rcp.v1]/language",
+                  "inContext": true
+                },
+                {
+                  "id": "encoding",
+                  "name": "Encoding",
+                  "rmType": "CODE_PHRASE",
+                  "min": 1,
+                  "max": 1,
+                  "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Contacts']/items[openEHR-EHR-ADMIN_ENTRY.relevant_contact_rcp.v1]/encoding",
+                  "inContext": true
+                },
+                {
+                  "id": "subject",
+                  "name": "Subject",
+                  "rmType": "PARTY_PROXY",
+                  "min": 1,
+                  "max": 1,
+                  "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Contacts']/items[openEHR-EHR-ADMIN_ENTRY.relevant_contact_rcp.v1]/subject",
+                  "inContext": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "medications",
+          "name": "Medications",
+          "localizedName": "Medications",
+          "rmType": "SECTION",
+          "nodeId": "openEHR-EHR-SECTION.adhoc.v1",
+          "min": 0,
+          "max": 1,
+          "localizedNames": {
+            "en": "Medications"
+          },
+          "localizedDescriptions": {
+            "en": "A generic section header which should be renamed in a template to suit a specific clinical context."
+          },
+          "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Medications']",
+          "children": [
+            {
+              "id": "medication_order",
+              "name": "Medication order",
+              "localizedName": "Medication order",
+              "rmType": "INSTRUCTION",
+              "nodeId": "openEHR-EHR-INSTRUCTION.medication_order.v0",
+              "min": 0,
+              "max": -1,
+              "localizedNames": {
+                "en": "Medication order"
+              },
+              "localizedDescriptions": {
+                "en": "A medication, vaccine or other therapeutic item order for an identified individual."
+              },
+              "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Medications']/items[openEHR-EHR-INSTRUCTION.medication_order.v0]",
+              "children": [
+                {
+                  "id": "order",
+                  "name": "Order",
+                  "localizedName": "Order",
+                  "rmType": "ACTIVITY",
+                  "nodeId": "at0001",
+                  "min": 0,
+                  "max": -1,
+                  "localizedNames": {
+                    "en": "Order"
+                  },
+                  "localizedDescriptions": {
+                    "en": "Order."
+                  },
+                  "annotations": {
+                    "view:pass_through": "true"
+                  },
+                  "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Medications']/items[openEHR-EHR-INSTRUCTION.medication_order.v0]/activities[at0001]",
+                  "children": [
+                    {
+                      "id": "name",
+                      "name": "Name",
+                      "localizedName": "Name",
+                      "rmType": "DV_TEXT",
+                      "nodeId": "at0070",
+                      "min": 1,
+                      "max": 1,
+                      "localizedNames": {
+                        "en": "Name"
+                      },
+                      "localizedDescriptions": {
+                        "en": "Identification of the medication, vaccine or other therapeutic item being ordered."
+                      },
+                      "annotations": {
+                        "map_FHIR": "medication",
+                        "comment": "Depending on the prescribing context this field could be used for either generic- or product-based prescribing. This data field can be used to record tightly bound orders of different medications when they are prescribed as a single pack. It is strongly recommended that the 'Medication item' be coded with a terminology capable of triggering decision support, where possible. The extent of coding may vary from the simple name of the medication item through to structured details about the actual medication pack to be used. Free text entry should only be used if there is no appropriate terminology available. \n"
+                      },
+                      "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Medications']/items[openEHR-EHR-INSTRUCTION.medication_order.v0]/activities[at0001]/description[at0002]/items[at0070,'Name']/value",
+                      "inputs": [
+                        {
+                          "type": "TEXT"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "route",
+                      "name": "Route",
+                      "localizedName": "Route",
+                      "rmType": "DV_TEXT",
+                      "nodeId": "at0091",
+                      "min": 0,
+                      "max": -1,
+                      "localizedNames": {
+                        "en": "Route"
+                      },
+                      "localizedDescriptions": {
+                        "en": "The route of administration."
+                      },
+                      "annotations": {
+                        "map_FHIR": "route",
+                        "comment": "For example: 'oral', 'intravenous', or 'topical'. \nCoding of the route with a terminology is preferred, where possible. Multiple potential routes may be specified."
+                      },
+                      "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Medications']/items[openEHR-EHR-INSTRUCTION.medication_order.v0]/activities[at0001]/description[at0002]/items[at0091]/value",
+                      "inputs": [
+                        {
+                          "type": "TEXT"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "dose_direction",
+                      "name": "Dose direction",
+                      "localizedName": "Dose direction",
+                      "rmType": "DV_TEXT",
+                      "nodeId": "at0009",
+                      "min": 0,
+                      "max": 1,
+                      "localizedNames": {
+                        "en": "Dose direction"
+                      },
+                      "localizedDescriptions": {
+                        "en": "Complete narrative description about how the medication is to be used."
+                      },
+                      "annotations": {
+                        "comment": "This narrative should subsume data captured in 'Dose amount', 'Dose timing' and any additional instructions for use. Where the medication dose directions are fully carried by the structured, computable dose directions, this element should carry the narrative equivalent, generally auto-generated. If it is not possible to represent the intended 'Dose direction' fully in computable form, partial representation is not recommended, and the directions should be only recorded in narrative form using this data element."
+                      },
+                      "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Medications']/items[openEHR-EHR-INSTRUCTION.medication_order.v0]/activities[at0001]/description[at0002]/items[at0009,'Dose direction']/value",
+                      "inputs": [
+                        {
+                          "type": "TEXT"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "dose_amount",
+                      "name": "Dose amount",
+                      "localizedName": "Dose amount",
+                      "rmType": "DV_TEXT",
+                      "nodeId": "at0109",
+                      "min": 0,
+                      "max": 1,
+                      "localizedNames": {
+                        "en": "Dose amount"
+                      },
+                      "localizedDescriptions": {
+                        "en": "The narrative description of the dose amount of the medication, vaccine or other therapeutic item."
+                      },
+                      "annotations": {
+                        "comment": "Example: '100mg'. Will generally only be used for legacy formats where dose directions are simply split between textual representations of dose and amount."
+                      },
+                      "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Medications']/items[openEHR-EHR-INSTRUCTION.medication_order.v0]/activities[at0001]/description[at0002]/items[at0109,'Dose amount']/value",
+                      "inputs": [
+                        {
+                          "type": "TEXT"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "dose_timing",
+                      "name": "Dose timing",
+                      "localizedName": "Dose timing",
+                      "rmType": "DV_TEXT",
+                      "nodeId": "at0055",
+                      "min": 0,
+                      "max": 1,
+                      "localizedNames": {
+                        "en": "Dose timing"
+                      },
+                      "localizedDescriptions": {
+                        "en": "A narrative description of the timing (including frequency) of the medication, vaccine or other therapeutic item."
+                      },
+                      "annotations": {
+                        "comment": "Example: 'in the morning'. Will generally only be used for legacy formats where dose directions are simply split between textual representations of dose and amount."
+                      },
+                      "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Medications']/items[openEHR-EHR-INSTRUCTION.medication_order.v0]/activities[at0001]/description[at0002]/items[at0055,'Dose timing']/value",
+                      "inputs": [
+                        {
+                          "type": "TEXT"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "order_details",
+                      "name": "Order details",
+                      "localizedName": "Order details",
+                      "rmType": "CLUSTER",
+                      "nodeId": "at0113",
+                      "min": 0,
+                      "max": 1,
+                      "localizedNames": {
+                        "en": "Order details"
+                      },
+                      "localizedDescriptions": {
+                        "en": "Details about the whole medication order."
+                      },
+                      "annotations": {
+                        "view:pass_through": "true"
+                      },
+                      "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Medications']/items[openEHR-EHR-INSTRUCTION.medication_order.v0]/activities[at0001]/description[at0002]/items[at0113]",
+                      "children": [
+                        {
+                          "id": "start_date",
+                          "name": "Start date",
+                          "localizedName": "Start date",
+                          "rmType": "DV_DATE_TIME",
+                          "nodeId": "at0012",
+                          "min": 0,
+                          "max": 1,
+                          "localizedNames": {
+                            "en": "Start date"
+                          },
+                          "localizedDescriptions": {
+                            "en": "The date and optional time to commence use of the medication, vaccine or other therapeutic good."
+                          },
+                          "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Medications']/items[openEHR-EHR-INSTRUCTION.medication_order.v0]/activities[at0001]/description[at0002]/items[at0113]/items[at0012,'Start date']/value",
+                          "inputs": [
+                            {
+                              "type": "DATETIME"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "id": "timing",
+                      "name": "Timing",
+                      "rmType": "DV_PARSABLE",
+                      "min": 1,
+                      "max": 1,
+                      "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Medications']/items[openEHR-EHR-INSTRUCTION.medication_order.v0]/activities[at0001]/timing",
+                      "inputs": [
+                        {
+                          "type": "TEXT"
+                        }
+                      ],
+                      "inContext": true
+                    },
+                    {
+                      "id": "action_archetype_id",
+                      "name": "Action_archetype_id",
+                      "rmType": "STRING",
+                      "min": 1,
+                      "max": 1,
+                      "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Medications']/items[openEHR-EHR-INSTRUCTION.medication_order.v0]/activities[at0001]/action_archetype_id",
+                      "inputs": [
+                        {
+                          "type": "TEXT"
+                        }
+                      ],
+                      "inContext": true
+                    }
+                  ]
+                },
+                {
+                  "id": "narrative",
+                  "name": "Narrative",
+                  "rmType": "DV_TEXT",
+                  "min": 1,
+                  "max": 1,
+                  "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Medications']/items[openEHR-EHR-INSTRUCTION.medication_order.v0]/narrative",
+                  "inputs": [
+                    {
+                      "type": "TEXT"
+                    }
+                  ],
+                  "inContext": true
+                },
+                {
+                  "id": "language",
+                  "name": "Language",
+                  "rmType": "CODE_PHRASE",
+                  "min": 1,
+                  "max": 1,
+                  "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Medications']/items[openEHR-EHR-INSTRUCTION.medication_order.v0]/language",
+                  "inContext": true
+                },
+                {
+                  "id": "encoding",
+                  "name": "Encoding",
+                  "rmType": "CODE_PHRASE",
+                  "min": 1,
+                  "max": 1,
+                  "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Medications']/items[openEHR-EHR-INSTRUCTION.medication_order.v0]/encoding",
+                  "inContext": true
+                },
+                {
+                  "id": "subject",
+                  "name": "Subject",
+                  "rmType": "PARTY_PROXY",
+                  "min": 1,
+                  "max": 1,
+                  "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Medications']/items[openEHR-EHR-INSTRUCTION.medication_order.v0]/subject",
+                  "inContext": true
+                }
+              ]
+            },
+            {
+              "id": "exclusion_of_a_medication",
+              "name": "Exclusion of a Medication",
+              "localizedName": "Exclusion of a Medication",
+              "rmType": "EVALUATION",
+              "nodeId": "openEHR-EHR-EVALUATION.exclusion-medication.v1",
+              "min": 0,
+              "max": -1,
+              "localizedNames": {
+                "en": "Exclusion of a Medication"
+              },
+              "localizedDescriptions": {
+                "en": "Statement/s about use of medication that needs to be positively recorded as clinically excluded from the health record ata a specific point in time."
+              },
+              "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Medications']/items[openEHR-EHR-EVALUATION.exclusion-medication.v1]",
+              "children": [
+                {
+                  "id": "exclusion_statement",
+                  "name": "Exclusion Statement",
+                  "localizedName": "Exclusion Statement",
+                  "rmType": "DV_TEXT",
+                  "nodeId": "at0002.1",
+                  "min": 1,
+                  "max": -1,
+                  "localizedNames": {
+                    "en": "Exclusion Statement"
+                  },
+                  "localizedDescriptions": {
+                    "en": "A statement about exclusion of use of medication in the health record."
+                  },
+                  "annotations": {
+                    "comment": "The statement can support recording that no medications are being taken or that one or more specified medications are not being taken. For example: \"Not currently taking any medications\"; \"Never taken any medications\" or \"Not currently taking corticosteroids\"."
+                  },
+                  "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Medications']/items[openEHR-EHR-EVALUATION.exclusion-medication.v1]/data[at0001]/items[at0002.1]/value",
+                  "inputs": [
+                    {
+                      "type": "TEXT",
+                      "defaultValue": "No medications"
+                    }
+                  ]
+                },
+                {
+                  "id": "language",
+                  "name": "Language",
+                  "rmType": "CODE_PHRASE",
+                  "min": 1,
+                  "max": 1,
+                  "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Medications']/items[openEHR-EHR-EVALUATION.exclusion-medication.v1]/language",
+                  "inContext": true
+                },
+                {
+                  "id": "encoding",
+                  "name": "Encoding",
+                  "rmType": "CODE_PHRASE",
+                  "min": 1,
+                  "max": 1,
+                  "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Medications']/items[openEHR-EHR-EVALUATION.exclusion-medication.v1]/encoding",
+                  "inContext": true
+                },
+                {
+                  "id": "subject",
+                  "name": "Subject",
+                  "rmType": "PARTY_PROXY",
+                  "min": 1,
+                  "max": 1,
+                  "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Medications']/items[openEHR-EHR-EVALUATION.exclusion-medication.v1]/subject",
+                  "inContext": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "encounter_details",
+          "name": "Encounter details",
+          "localizedName": "Encounter details",
+          "rmType": "SECTION",
+          "nodeId": "openEHR-EHR-SECTION.adhoc.v1",
+          "min": 0,
+          "max": 1,
+          "localizedNames": {
+            "en": "Encounter details"
+          },
+          "localizedDescriptions": {
+            "en": "A generic section header which should be renamed in a template to suit a specific clinical context."
+          },
+          "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Encounter details']",
+          "children": [
+            {
+              "id": "clinical_synopsis",
+              "name": "Clinical Synopsis",
+              "localizedName": "Clinical Synopsis",
+              "rmType": "EVALUATION",
+              "nodeId": "openEHR-EHR-EVALUATION.clinical_synopsis.v1",
+              "min": 0,
+              "max": -1,
+              "localizedNames": {
+                "en": "Clinical Synopsis"
+              },
+              "localizedDescriptions": {
+                "en": "Narrative summary or overview about a patient, specifically from the perspective of a healthcare provider, and with or without associated interpretations."
+              },
+              "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Encounter details']/items[openEHR-EHR-EVALUATION.clinical_synopsis.v1]",
+              "children": [
+                {
+                  "id": "synopsis",
+                  "name": "Synopsis",
+                  "localizedName": "Synopsis",
+                  "rmType": "DV_TEXT",
+                  "nodeId": "at0002",
+                  "min": 1,
+                  "max": 1,
+                  "localizedNames": {
+                    "en": "Synopsis"
+                  },
+                  "localizedDescriptions": {
+                    "en": "The summary, assessment, conclusions or evaluation of the clinical findings."
+                  },
+                  "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Encounter details']/items[openEHR-EHR-EVALUATION.clinical_synopsis.v1]/data[at0001]/items[at0002]/value",
+                  "inputs": [
+                    {
+                      "type": "TEXT"
+                    }
+                  ]
+                },
+                {
+                  "id": "language",
+                  "name": "Language",
+                  "rmType": "CODE_PHRASE",
+                  "min": 1,
+                  "max": 1,
+                  "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Encounter details']/items[openEHR-EHR-EVALUATION.clinical_synopsis.v1]/language",
+                  "inContext": true
+                },
+                {
+                  "id": "encoding",
+                  "name": "Encoding",
+                  "rmType": "CODE_PHRASE",
+                  "min": 1,
+                  "max": 1,
+                  "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Encounter details']/items[openEHR-EHR-EVALUATION.clinical_synopsis.v1]/encoding",
+                  "inContext": true
+                },
+                {
+                  "id": "subject",
+                  "name": "Subject",
+                  "rmType": "PARTY_PROXY",
+                  "min": 1,
+                  "max": 1,
+                  "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Encounter details']/items[openEHR-EHR-EVALUATION.clinical_synopsis.v1]/subject",
+                  "inContext": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "composer",
+          "name": "Composer",
+          "rmType": "PARTY_PROXY",
+          "min": 1,
+          "max": 1,
+          "aqlPath": "/composer",
+          "inContext": true
+        }
+      ]
+    }
+  }
+}
