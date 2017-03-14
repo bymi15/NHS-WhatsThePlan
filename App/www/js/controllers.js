@@ -1,8 +1,6 @@
 angular.module('app.controllers', ['ionic', 'firebase'])
 
 .controller('menuCtrl', function ($scope, $stateParams) {
-
-
 })
 
 .controller('loginCtrl', function ($scope, $state, $ionicHistory, utils, validater) {
@@ -360,7 +358,8 @@ angular.module('app.controllers', ['ionic', 'firebase'])
     }
 })
 
-.controller('appointmentsCtrl', function ($scope, $state, utils, User, $filter,$ionicHistory, Appointment, $ionicModal, $ionicPopup) {
+
+.controller('appointmentsCtrl', function ($scope, $state, utils, User, $filter,$ionicHistory, Appointment, $ionicModal, $ionicPopup, sharedProperties, ClosePopupService) {
 
     utils.showLoading();
 
@@ -383,47 +382,38 @@ angular.module('app.controllers', ['ionic', 'firebase'])
         delete $scope.appointments[id];
     }
 
-/*
-    $ionicModal.fromTemplateUrl('user_photo.html', { // Use Ionic Modal to show user photo
-        scope: $scope,
-        animation: 'slide-in-up'
-    }).then(function(modal) {
-        $scope.modal = modal;
-    });
-
-    $scope.openModal = function() {
-        $scope.modal.show();
-    };
-    $scope.closeModal = function() {
-        $scope.modal.hide();
-    };
-    $scope.$on('$destroy', function() {
-        $scope.modal.remove();
-    });
-
-    $scope.showUser = function (user, event){
-        if (event){
-          event.stopPropagation(); //to prevent calling of showUser() and showPop() functions at same time
+    $scope.createClass = function(name,rules){
+        var style = document.createElement('style');
+        style.type = 'text/css';
+        document.getElementsByTagName('head')[0].appendChild(style);
+        if(!(style.sheet||{}).insertRule){
+            (style.styleSheet || style.sheet).addRule(name, rules);
+        }else{
+            style.sheet.insertRule(name+"{"+rules+"}",0);
         }
-        $scope.current_user = user;
-        $scope.openModal();
-    }*/
-
-    $scope.showPopup=function(){
-        var alertPopup=$ionicPopup.alert({
-             title:'hey',
-             templateUrl:'templates/mymodal.html'
-        });
-
-        alertPopup.then(function(res){});
     }
 
-    var toggle_visibility = function(id) {
-       var e = document.getElementsByName(id);
-       if(e.style.display == 'block')
-          e.style.display = 'none';
-       else
-          e.style.display = 'block';
+    $scope.createClass('.mypopup .popup',"min-width: 90%;height: 90%;background-color: transparent;border-style: solid;");
+    $scope.createClass('.mypopup .popup-body',"overflow:inherit; text-align:center;position:relative;background-color: #FFFFFF;height:30em;border-style: solid;border:1px black;");
+    $scope.createClass('.mypopup .popup-head',"background-color: #387EF5");
+    $scope.createClass('.mypopup .popup-title',"color: #FFFFFF; font-size:20px;");
+    $scope.createClass('.mypopup .popup-buttons',"background-color: #387EF5;color:#3FA9F5;border-style: solid;");
+    $scope.createClass('.mypopup .popup-buttons.button',"background-color: #3FA9F5;color:#FFFFFF;border-style: solid;");
+    $scope.createClass('.mypopup .popup-buttons.row ',"background-color: transparent;display:none;");
+    $scope.createClass('.mypopup .popup-footer',"display:none;");
+
+    $scope.showPopup=function(item){
+        sharedProperties.setMarkerX(item.markerX);
+        sharedProperties.setMarkerY(item.markerY);
+        sharedProperties.setLocation(item.location);
+
+        var alertPopup=$ionicPopup.alert({
+            title:'Location',
+            templateUrl:'templates/mymodal.html',
+            cssClass: 'mypopup'
+        });
+        ClosePopupService.register(alertPopup);
+        alertPopup.then(function(res){});
     }
 
     google.maps.event.addDomListener(window, 'load', function() {
@@ -451,22 +441,24 @@ angular.module('app.controllers', ['ionic', 'firebase'])
 
 })
 
-.controller('bookAppointmentCtrl', function ($scope, $state, utils, User,$filter, $ionicHistory, Appointment, $ionicLoading) {
+.controller('bookAppointmentCtrl', function ($scope, $state, utils, User,$filter, $ionicHistory, Appointment, $ionicLoading, sharedProperties) {
 
     $scope.data = {};
 
+    $scope.location = { text: sharedProperties.getLocation() };
+
     var map = new google.maps.Map(document.getElementById('map-canvas'),{
         center:{
-            lat:27.72,
-            lng:85.36
+            lat:sharedProperties.getMarkerX(),
+            lng:sharedProperties.getMarkerY()
         },
         zoom:15
     });
 
     var marker = new google.maps.Marker({
         position:{
-            lat:27.72,
-            lng:85.36
+            lat:sharedProperties.getMarkerX(),
+            lng:sharedProperties.getMarkerY()
         },
         map:map
     });
@@ -529,6 +521,8 @@ angular.module('app.controllers', ['ionic', 'firebase'])
     }
 })
 
+.controller('careplanMenuCtrl', function ($scope, $stateParams) {
+})
 
 .controller('careplanCtrl', function ($scope, $state, utils, Careplan) {
     utils.showLoading();
@@ -594,3 +588,135 @@ angular.module('app.controllers', ['ionic', 'firebase'])
     }
 })
 
+.controller('careteamCtrl', function ($scope, $state, utils, Careteam) {
+    utils.showLoading();
+
+    $scope.data = {};
+
+    //Check if user is logged in
+    firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+            Careteam.getContacts(user.uid).then(function(snapshot) {
+                $scope.contacts = snapshot.val();
+
+                utils.hideLoading();
+            });
+        }else{
+            $state.go("login");
+        }
+    });
+
+    $scope.goViewContact = function(contactID){
+        $state.go('viewContact', { id: contactID });
+    }
+
+    $scope.removeContact = function(contactID){
+        var user = firebase.auth().currentUser;
+        Careteam.removeContact(user.uid, contactID);
+        delete $scope.contacts[contactID];
+    }
+})
+
+.controller('viewContactCtrl', function ($scope, $state, $stateParams, utils, Careteam) {
+    utils.showLoading();
+
+    //Check if user is logged in
+    firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+            Careteam.getContact(user.uid, $stateParams.id).then(function(snapshot) {
+                $scope.contact = snapshot.val();
+
+                $scope.contactID = $stateParams.id;
+
+                utils.hideLoading();
+            });
+        }else{
+            $state.go("login");
+        }
+    });
+
+    $scope.goEditContact = function(){
+        $state.go('editContact', { id: $scope.contactID });
+    }
+})
+
+.controller('addContactCtrl', function ($scope, $state, utils, $filter, Careteam) {
+    $scope.data = {};
+
+    $scope.addContact = function(){
+        utils.showLoading();
+
+        var user = firebase.auth().currentUser;
+
+        if (user != null) {
+            var uid = user.uid;
+            var full_name = $scope.data.full_name;
+            var role = $scope.data.role;
+            var email = $scope.data.email;
+            var phone_number = $scope.data.phone_number;
+            var address = $scope.data.address;
+            var note = $scope.data.note;
+
+            Careteam.addContact(uid, full_name, role, email, phone_number, address, note);
+            utils.hideLoading();
+
+            $state.go("careteam");
+        }else{
+            $state.go("login");
+        }
+    }
+})
+
+.controller('editContactCtrl', function ($scope, $state, $stateParams, utils, Careteam, $filter) {
+    utils.showLoading();
+
+    $scope.data = {};
+
+    //Check if user is logged in
+    firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+            Careteam.getContact(user.uid, $stateParams.id).then(function(snapshot) {
+                $scope.contact = snapshot.val();
+
+                $scope.contact.id = $stateParams.id;
+
+                $scope.data.full_name = $scope.contact.full_name;
+                $scope.data.role = $scope.contact.role;
+                $scope.data.email= $scope.contact.email;
+                $scope.data.phone_number = $scope.contact.phone_number;
+                $scope.data.address = $scope.contact.address;
+                $scope.data.note = $scope.contact.note;
+
+                utils.hideLoading();
+            });
+        }else{
+            $state.go("login");
+        }
+    });
+
+    $scope.updateContact = function(){
+        utils.showLoading();
+
+        var user = firebase.auth().currentUser;
+
+        if (user != null) {
+            var uid = user.uid;
+            var id = $scope.contact.id;
+
+            var full_name = $scope.data.full_name;
+            var role = $scope.data.role;
+            var email = $scope.data.email;
+            var phone_number = $scope.data.phone_number;
+            var address = $scope.data.address;
+            var note = $scope.data.note;
+
+            Careteam.updateContact(uid, id, full_name, role, email, phone_number, address, note);
+
+            utils.hideLoading();
+
+            $state.go('viewContact', { id: id });
+        }else{
+            $state.go("login");
+        }
+    }
+})

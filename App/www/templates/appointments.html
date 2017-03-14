@@ -4,16 +4,6 @@
   </ion-nav-buttons>
 
   <ion-content padding="true" class="has-header">
-  <!--
-  <div id = "popup-box1" class = "popup-position">
-    <div id = "popup-wrapper">
-     <div id = "popup-container">
-       <h3>Popup box 1</h3>
-       <p>Congratulations,youve</p>
-       <p> <a href = "javascript:void(0)" > Close popup box</a></p>
-     </div>
-   </div>
-  </div> -->
 
    <h1 style="font-weight:normal;text-align:center;font-size:24px;color:#3FA9F5;position:relative;">Today is {{currentDate}}</h1>
 
@@ -24,7 +14,7 @@
         <p style="color:#35B200;">{{appointment.datetime}}</p>
 
         <div class="item-icon-right">
-          <a href="javascript:void(0)" class="" style="color:#3FA9F5" ng-click="showPopup()"><i class="icon ion-ios-location"></i></a>
+          <a href="javascript:void(0)" class="" style="color:#3FA9F5" ng-click="showPopup(appointment);"><i class="icon ion-ios-location"></i></a>
         </div>
 
         <ion-option-button class="button-assertive" ng-click="removeAppointment('{{key}}')">Delete</ion-option-button>
