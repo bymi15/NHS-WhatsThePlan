@@ -3,7 +3,7 @@ angular.module('app.controllers', ['ionic', 'firebase'])
 .controller('menuCtrl', function ($scope, $stateParams) {
 })
 
-.controller('loginCtrl', function ($scope, $state, $ionicHistory, utils, validater) {
+.controller('loginCtrl', function ($scope, $state, $ionicHistory, utils, validater, User, Ehrscape) {
 
     $scope.data = {};
 
@@ -28,9 +28,21 @@ angular.module('app.controllers', ['ionic', 'firebase'])
 
         firebase.auth().signInWithEmailAndPassword(email, password).then(function() {
             // user successfully logged in
-            utils.hideLoading();
-            $ionicHistory.clearHistory();
-            $state.go("main");
+
+            // retrieve user nhs number
+            User.getUser(firebase.auth().currentUser.uid).then(function(snapshot) {
+                var nhsNumber = snapshot.val().nhsNumber;
+
+                // create an openehr session
+                Ehrscape.startSession().then(function(res){
+                    Ehrscape.setSessionId(res.data.sessionId);
+                    Ehrscape.retrieveEhrId(nhsNumber);
+
+                    utils.hideLoading();
+                    $ionicHistory.clearHistory();
+                    $state.go("main");
+                });
+            });
         }).catch(function(error) {
             utils.hideLoading();
             utils.showAlert('Error!', 'Incorrect login details. Please try again.');
@@ -62,6 +74,7 @@ angular.module('app.controllers', ['ionic', 'firebase'])
         var fullName = $scope.data.fullName;
         var gender = $scope.data.gender;
         var dateOfBirth = $scope.data.dateOfBirth;
+        var isoDateOfBirth = $filter('date')(dateOfBirth, 'yyyy-MM-ddTHH:mm:ss.sss') + 'Z';
         dateOfBirth = $filter('date')(dateOfBirth, 'dd-MM-yyyy');
 
         var nationality = $scope.data.nationality;
@@ -116,28 +129,39 @@ angular.module('app.controllers', ['ionic', 'firebase'])
         firebase.auth().createUserWithEmailAndPassword(email, password).then(function(result) {
             //success
 
-            //add the user entry in firebase
-            User.createUser(result.uid, fullName, gender, dateOfBirth, nationality, maritalStatus, nhsNumber, gpName, gpSurgery);
-
             //create a new ehr session for the user
             var index = fullName.indexOf(" ");
             var firstNames = fullName.substr(0, index);
             var lastNames = fullName.substr(index + 1);
-            Ehrscape.startSession();
-            Ehrscape.loadPatientEhr(nhsNumber);
-            Ehrscape.createPatient(firstNames, lastNames, gender, dateOfBirth.toISOString(), nhsNumber).then(function(res){
-                if(res.data.party.action == 'CREATE') {
-                  console.log(res.data.party.meta.href);
-                }else{
-                  console.log(res);
-                }
+
+            Ehrscape.startSession().then(function(res){
+                Ehrscape.setSessionId(res.data.sessionId);
+
+                Ehrscape.createPatient(firstNames, lastNames, gender, isoDateOfBirth, maritalStatus, nhsNumber).then(function(res){
+                    if(res.data.action == 'CREATE') {
+                        //success
+                        console.log(res.data.meta.href);
+
+                        //add the user entry in firebase
+                        User.createUser(result.uid, fullName, gender, dateOfBirth, nationality, maritalStatus, nhsNumber, gpName, gpSurgery);
+
+                        utils.hideLoading();
+                        $ionicHistory.clearHistory();
+                        $ionicHistory.clearCache();
+
+                        $state.go("main");
+                    }else{
+                        //failure
+                        console.log(res);
+
+                        utils.hideLoading();
+                        utils.showAlert('Error!', "An error has occured while creating the user demographics party (EhrScape API)");
+                    }
+                });
+
             });
 
-            utils.hideLoading();
-            $ionicHistory.clearHistory();
-            $ionicHistory.clearCache();
 
-            $state.go("main");
         }).catch(function(error) {
             utils.hideLoading();
             utils.showAlert('Error!', error.message);
