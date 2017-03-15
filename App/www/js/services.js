@@ -378,7 +378,7 @@ angular.module('app.services', ['firebase'])
 }])
 
 //contains REST HTTP request functions for accessing the EHRScape REST API
-.factory('Ehrscape', [function($http){
+.factory('Ehrscape', ['$http', function($http){
 
     var func = {};
 
@@ -430,10 +430,23 @@ angular.module('app.services', ['firebase'])
     }
 
     //this should be called once - when the user logs in or signs up
-    func.startSession = function() {
-      $http.post(baseUrl + "/session", {username: username, password: password}).then(function(res){
-        sessionId = res.data.sessionId;
+    func.startSession = function(nhsNumber) {
+      return $http.post(baseUrl + "/session?username=" + username + "&password=" + password, {});
+    }
+
+    func.retrieveEhrId = function(nhsNumber){
+      requestGet("/ehr/?subjectId=" + nhsNumber + "&subjectNamespace=uk.nhs.nhs_number").then(function(res){
+          ehrId = res.ehrId;
       });
+    }
+
+    func.setSessionId = function(session){
+      sessionId = session;
+      headers = {
+        headers: {
+          "Ehr-Session": sessionId
+        }
+      };
     }
 
     //this should be called once - when the user logs out
@@ -441,33 +454,33 @@ angular.module('app.services', ['firebase'])
       $http.delete(baseUrl + "/session", headers);
     }
 
-    //this should be called once - when the user logs in or signs up
-    func.loadPatientEhr = function(nhsNumber) {
-      requestGet("/ehr/?subjectId=" + nhsNumber + "&subjectNamespace=uk.nhs.nhs_number").then(function(res){
-        ehrId =  res.data.ehrId;
-      });
-    }
-
-    func.createPatient = function(firstNames, lastNames, gender, dateOfBirth, nhsNumber) {
-      requestPost("/ehr", {subjectId: nhsNumber, subjectNamespace: "uk.nhs.nhs_number"}).then(function(res){
+    func.createPatient = function(firstNames, lastNames, gender, dateOfBirth, maritalStatus, nhsNumber) {
+      return requestPost("/ehr", {subjectId: nhsNumber, subjectNamespace: "uk.nhs.nhs_number"}).then(function(res){
           ehrId = res.data.ehrId;
+
+          //build the party data
+          var partyData = {
+            "firstNames": firstNames,
+            "lastNames": lastNames,
+            "gender": gender.toUpperCase(),
+            "dateOfBirth": dateOfBirth,
+            "address": {
+              "address": "N.A."
+            },
+            "partyAdditionalInfo": [
+              {
+                "key": "uk.nhs.nhs_number",
+                "value": nhsNumber
+              },
+              {
+                "key": "maritalStatus",
+                "value": maritalStatus
+              }
+            ]
+          };
+
+          return requestPost("/demographics/party", partyData);
       });
-
-      //build the party data
-      var partyData = {
-        firstNames: firstNames,
-        lastNames: lastNames,
-        gender: gender,
-        dateOfBirth: dateOfBirth,
-        partyAdditionalInfo: [
-        {
-          key: "uk.nhs.nhs_number",
-          value: nhsNumber
-        }
-        ]
-      };
-
-      return requestPost("/demographics/party", partyData);
     }
 
     /*func.addBodyWeight = function(ehrId, weight) {
