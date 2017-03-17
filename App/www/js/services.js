@@ -262,7 +262,7 @@ angular.module('app.services', ['firebase'])
 
     func.validateSignup = function(email, password, confirmPassword, fullName, gender, nationality, maritalStatus, nhsNumber, gpName, gpSurgery){
         //validate
-        var genderChoices = ["Male", "Female"];
+        var genderChoices = ["Male", "Female", "MALE", "FEMALE", "male", "female"];
         var constraints = {
           email: {
             presence: true,
@@ -389,11 +389,9 @@ angular.module('app.services', ['firebase'])
 
     var templateId = 'WhatsThePlan.v0';
 
-    var ehrId = '';
-
-    //var authorization = "Basic " + btoa(username + ":" + password);
-
     var sessionId;
+
+    var ehrId;
 
     var headers = {
       headers: {
@@ -429,15 +427,17 @@ angular.module('app.services', ['firebase'])
       return requestPost("/composition", compositionData);
     }
 
+    func.requestPost = function(endpoint, data){
+      return $http.post(baseUrl + endpoint, data, headers);
+    }
+
     //this should be called once - when the user logs in or signs up
     func.startSession = function(nhsNumber) {
       return $http.post(baseUrl + "/session?username=" + username + "&password=" + password, {});
     }
 
     func.retrieveEhrId = function(nhsNumber){
-      requestGet("/ehr/?subjectId=" + nhsNumber + "&subjectNamespace=uk.nhs.nhs_number").then(function(res){
-          ehrId = res.ehrId;
-      });
+      return requestGet("/ehr/?subjectId=" + nhsNumber + "&subjectNamespace=uk.nhs.nhs_number");
     }
 
     func.setSessionId = function(session){
@@ -449,13 +449,68 @@ angular.module('app.services', ['firebase'])
       };
     }
 
+    func.setEhrId = function(eid){
+      ehrId = eid;
+    }
+
     //this should be called once - when the user logs out
     func.closeSession = function() {
       $http.delete(baseUrl + "/session", headers);
     }
 
-    func.createPatient = function(firstNames, lastNames, gender, dateOfBirth, maritalStatus, nhsNumber) {
-      return requestPost("/ehr", {subjectId: nhsNumber, subjectNamespace: "uk.nhs.nhs_number"}).then(function(res){
+    func.checkPatientExists = function(nhsNumber){
+      return requestGet("/demographics/party/query/?uk.nhs.nhs_number=" + nhsNumber);
+    }
+
+    func.createPatientEhrId = function(nhsNumber){
+      return requestPost("/ehr/?subjectId=" + nhsNumber + "&subjectNamespace=uk.nhs.nhs_number", {});
+    }
+
+    func.createPatientDemographics = function(firstNames, lastNames, gender, dateOfBirth, maritalStatus, nhsNumber) {
+      //build the party data
+      var partyData = {
+        "firstNames": firstNames,
+        "lastNames": lastNames,
+        "gender": gender.toUpperCase(),
+        "dateOfBirth": dateOfBirth,
+        "partyAdditionalInfo": [
+        {
+          "key": "uk.nhs.nhs_number",
+          "value": nhsNumber
+        },
+        {
+          "key": "maritalStatus",
+          "value": maritalStatus
+        }
+        ]
+      };
+
+      return requestPost("/demographics/party", partyData);
+    }
+
+    /*func.createPatient = function(firstNames, lastNames, gender, dateOfBirth, maritalStatus, nhsNumber) {
+      return requestPost("/ehr/?subjectId=" + nhsNumber + "&subjectNamespace=uk.nhs.nhs_number", {}).then(function(res){
+          if(res.status==400 && res.code=="EHR-2124"){
+            //patient already exists on the openehr system
+            //return success callback
+            console.log("nhs number alrdy exists on openehr");
+            var success = {
+              data: [
+              {
+                action: "CREATE"
+              }
+              ]
+            }
+            var fn = function(){return success};
+            return fn;
+          }
+
+          if(res.status==201){
+            console.log("ehr id created successfully");
+          }else{
+            console.log(JSON.stringify(res));
+          }
+
           ehrId = res.data.ehrId;
 
           //build the party data
@@ -464,9 +519,6 @@ angular.module('app.services', ['firebase'])
             "lastNames": lastNames,
             "gender": gender.toUpperCase(),
             "dateOfBirth": dateOfBirth,
-            "address": {
-              "address": "N.A."
-            },
             "partyAdditionalInfo": [
               {
                 "key": "uk.nhs.nhs_number",
@@ -480,8 +532,11 @@ angular.module('app.services', ['firebase'])
           };
 
           return requestPost("/demographics/party", partyData);
+
+      }).catch(function(error) {
+          utils.showAlert('Error!', error.message);
       });
-    }
+    }*/
 
     /*func.addBodyWeight = function(ehrId, weight) {
       var compositionData = {
