@@ -3,7 +3,7 @@ angular.module('app.controllers', ['ionic', 'firebase'])
 .controller('menuCtrl', function ($scope, $stateParams) {
 })
 
-.controller('loginCtrl', function ($scope, $state, $ionicHistory, utils, validater, User, Ehrscape) {
+.controller('loginCtrl', function ($scope, $state, $ionicHistory, utils, validater, User, Ehrscape, $rootScope) {
 
     $scope.data = {};
 
@@ -29,20 +29,23 @@ angular.module('app.controllers', ['ionic', 'firebase'])
         firebase.auth().signInWithEmailAndPassword(email, password).then(function() {
             // user successfully logged in
 
-            // retrieve user nhs number
+            //start the openEHR session
             User.getUser(firebase.auth().currentUser.uid).then(function(snapshot) {
                 var nhsNumber = snapshot.val().nhsNumber;
 
                 // create an openehr session
                 Ehrscape.startSession().then(function(res){
                     Ehrscape.setSessionId(res.data.sessionId);
-                    Ehrscape.retrieveEhrId(nhsNumber);
-
-                    utils.hideLoading();
-                    $ionicHistory.clearHistory();
-                    $state.go("main");
+                    Ehrscape.retrieveEhrId(nhsNumber).then(function(res){
+                        $rootScope.ehrId = res.data.ehrId;
+                    });
+                    $rootScope.sessionId = res.data.sessionId;
                 });
             });
+
+            utils.hideLoading();
+            $ionicHistory.clearHistory();
+            $state.go("main");
         }).catch(function(error) {
             utils.hideLoading();
             utils.showAlert('Error!', 'Incorrect login details. Please try again.');
@@ -50,7 +53,7 @@ angular.module('app.controllers', ['ionic', 'firebase'])
     };
 })
 
-.controller('signupCtrl', function ($scope, $ionicHistory, $ionicSlideBoxDelegate, $state, utils, validater, User, $filter, Ehrscape) {
+.controller('signupCtrl', function ($scope, $ionicHistory, $ionicSlideBoxDelegate, $state, utils, validater, User, $filter, Ehrscape, $rootScope) {
     $scope.disableSwipe = function() {
         $ionicSlideBoxDelegate.enableSlide(false);
     }
@@ -83,8 +86,6 @@ angular.module('app.controllers', ['ionic', 'firebase'])
         var gpName = $scope.data.gpName;
         var gpSurgery = $scope.data.gpSurgery;
 
-
-        utils.showLoading();
         var validation = validater.validateSignup(email, password, confirmPassword, fullName, gender, nationality, maritalStatus, nhsNumber, gpName, gpSurgery);
 
         if(validation){
@@ -126,68 +127,132 @@ angular.module('app.controllers', ['ionic', 'firebase'])
             }
         }
 
-        firebase.auth().createUserWithEmailAndPassword(email, password).then(function(result) {
-            //success
+        var index = fullName.indexOf(" ");
+        var firstNames = fullName.substr(0, index);
+        var lastNames = fullName.substr(index + 1);
 
-            //create a new ehr session for the user
-            var index = fullName.indexOf(" ");
-            var firstNames = fullName.substr(0, index);
-            var lastNames = fullName.substr(index + 1);
-
-            Ehrscape.startSession().then(function(res){
+        //check if email already exists:
+        firebase.auth().fetchProvidersForEmail(email).then(function(result){
+            if(result.length > 0){
+                console.log("The email address already exists. Please try a different one.");
+                throw("The email address already exists. Please try a different one.");
+            }else{
+                //create a new ehr session for the user
+                return Ehrscape.startSession();
+            }
+        }).then(function(res){
+            if(res.data.sessionId == null){
+                console.log("EhrScape returned a NULL session ID");
+                throw("EhrScape returned a NULL session ID");
+            }else{
                 Ehrscape.setSessionId(res.data.sessionId);
+                $rootScope.sessionId = res.data.sessionId;
 
-                Ehrscape.createPatient(firstNames, lastNames, gender, isoDateOfBirth, maritalStatus, nhsNumber).then(function(res){
-                    if(res.data.action == 'CREATE') {
-                        //success
-                        console.log(res.data.meta.href);
+                return Ehrscape.checkPatientExists(nhsNumber);
+            }
+        }).then(function(res){
+            //patient doesn't already exist
+            if(res.status==204){
+                return Ehrscape.retrieveEhrId(nhsNumber).then(function(res){
+                    //ehr id doesn't exist - needs to be created
+                    if(res.status==204){
+                        return Ehrscape.createPatientEhrId(nhsNumber).then(function(res){
+                            if(res.status==201){
+                                $rootScope.ehrId = res.data.ehrId;
+                                Ehrscape.setEhrId(res.data.ehrId);
+                                console.log("ehr id created successfully: " + res.data.ehrId);
 
-                        //add the user entry in firebase
-                        User.createUser(result.uid, fullName, gender, dateOfBirth, nationality, maritalStatus, nhsNumber, gpName, gpSurgery);
-
-                        utils.hideLoading();
-                        $ionicHistory.clearHistory();
-                        $ionicHistory.clearCache();
-
-                        $state.go("main");
+                                return Ehrscape.createPatientDemographics(firstNames, lastNames, gender, isoDateOfBirth, maritalStatus, nhsNumber);
+                            }else{
+                                console.log(JSON.stringify(res));
+                                throw("Error! Could not create ehr id for NHS Number: " + nhsNumber);
+                            }
+                        });
                     }else{
-                        //failure
-                        console.log(res);
+                        $rootScope.ehrId = res.data.ehrId;
+                        Ehrscape.setEhrId(res.data.ehrId);
+                        console.log("ehr id retrieved successfully: " + res.data.ehrId);
 
-                        utils.hideLoading();
-                        utils.showAlert('Error!', "An error has occured while creating the user demographics party (EhrScape API)");
+                        return Ehrscape.createPatientDemographics(firstNames, lastNames, gender, isoDateOfBirth, maritalStatus, nhsNumber);
                     }
                 });
+            }else{
+                console.log("A user with NHS number: " + nhsNumber + " already exists on the OpenEHR system");
+                throw("A user with NHS number: " + nhsNumber + " already exists on the OpenEHR system")
+            }
+        }).then(function(res){
+            if(res.data.action == 'CREATE') {
+                //success
+                console.log("ehr create patient success!");
 
-            });
-
-
-        }).catch(function(error) {
+                return firebase.auth().createUserWithEmailAndPassword(email, password);
+            }else{
+                //failure
+                console.log("An error has occured while creating the user demographics party");
+                throw("An error has occured while creating the user demographics party");
+            }
+        }).then(function(res){
+            //add the user entry in firebase
+            User.createUser(res.uid, fullName, gender, dateOfBirth, nationality, maritalStatus, nhsNumber, gpName, gpSurgery);
+            $ionicHistory.clearHistory();
+            $ionicHistory.clearCache();
             utils.hideLoading();
-            utils.showAlert('Error!', error.message);
+            $state.go("main");
+
+        }).catch(function(error){
+            utils.hideLoading();
+            utils.showAlert('Error!', error);
         });
+
     };
 
 })
 
-.controller('mainCtrl', function ($scope, $state, User, Ehrscape) {
+.controller('mainCtrl', function ($scope, $state, User, Ehrscape, $rootScope) {
     //Check if user is logged in
     firebase.auth().onAuthStateChanged(function(user) {
         if (!user) {
             $state.go("login");
+        }else{
+            //check if ehr session is still active
+            if($rootScope.sessionId == null || $rootScope.ehrId == null){
+                console.log("refreshing ehr session");
+                User.getUser(firebase.auth().currentUser.uid).then(function(snapshot) {
+                    var userProf = snapshot.val();
+                    if(userProf == null) return;
+                    var nhsNumber = userProf.nhsNumber;
+                    // create an openehr session
+                    Ehrscape.startSession().then(function(res){
+                        Ehrscape.setSessionId(res.data.sessionId);
+                        Ehrscape.retrieveEhrId(nhsNumber).then(function(res){
+                            $rootScope.ehrId = res.data.ehrId;
+                        });
+                        $rootScope.sessionId = res.data.sessionId;
+                    });
+                });
+            }
         }
     });
+
 
     $scope.logout = function(){
         firebase.auth().signOut();
 
+        Ehrscape.setSessionId($rootScope.sessionId);
         Ehrscape.closeSession();
+
+        //reset the rootscope
+        for (var prop in $rootScope) {
+            if (prop.substring(0,1) !== '$') {
+                delete $rootScope[prop];
+            }
+        }
 
         $state.go("login");
     }
 })
 
-.controller('profileCtrl', function ($scope, $state, utils, User) {
+.controller('profileCtrl', function ($scope, $state, utils, User, Ehrscape, $rootScope) {
     utils.showLoading();
 
     //Check if user is logged in
@@ -195,6 +260,8 @@ angular.module('app.controllers', ['ionic', 'firebase'])
         if (user) {
             User.getUser(user.uid).then(function(snapshot) {
                 $scope.userProfile = snapshot.val();
+
+                console.log($rootScope.sessionId + " | " + $rootScope.ehrId);
 
                 utils.hideLoading();
             });
@@ -318,10 +385,11 @@ angular.module('app.controllers', ['ionic', 'firebase'])
         if (user) {
             Notes.getNote(user.uid, $stateParams.id).then(function(snapshot) {
                 $scope.note = snapshot.val();
-
                 $scope.noteID = $stateParams.id;
 
-                $scope.note.notes = $scope.note.notes.replace(/(?:\r\n|\r|\n)/g, '<br>');
+                if($scope.note != null){
+                    $scope.note.notes = $scope.note.notes.replace(/(?:\r\n|\r|\n)/g, '<br>');
+                }
 
                 utils.hideLoading();
             });
@@ -569,8 +637,10 @@ angular.module('app.controllers', ['ionic', 'firebase'])
             Careplan.getCareplan(user.uid).then(function(snapshot) {
                 $scope.careplan = snapshot.val();
                 /*$scope.careplan.careplan = $scope.careplan.careplan.replace(/(?:\r\n|\r|\n)/g, '<br>');*/
-                $scope.data.careplan = $scope.careplan.careplan;
-                $scope.data.datetime = $scope.careplan.datetime;
+                if($scope.careplan != null){
+                    $scope.data.careplan = $scope.careplan.careplan;
+                    $scope.data.datetime = $scope.careplan.datetime;
+                }
 
                 utils.hideLoading();
             });
@@ -590,7 +660,10 @@ angular.module('app.controllers', ['ionic', 'firebase'])
         if (user) {
             Careplan.getCareplan(user.uid).then(function(snapshot) {
                 $scope.careplan = snapshot.val();
-                $scope.data.careplan = $scope.careplan.careplan;
+
+                if($scope.careplan != null){
+                    $scope.data.careplan = $scope.careplan.careplan;
+                }
 
                 utils.hideLoading();
             });
