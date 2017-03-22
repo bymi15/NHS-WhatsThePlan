@@ -1,0 +1,11 @@
+<ion-view title="Allergies" id="page15" style="background-color:#FFFFFF;">
+  <ion-content padding="false" class="has-header">
+      <ion-list id="allergies-list">
+        <ion-item ng-repeat="allergy in allergies" style="white-space: normal;" id="allergies-list-item">
+          <span style="font-weight: 500;">Allergen:</span> <span style="color: #F46A00;">{{allergy.Causative_agent}}</span>
+          <br>
+          <span style="font-weight: 500;">Symptoms:</span> <span style="color: #35B200;">{{allergy.Manifestation}}</span>
+        </ion-item>
+      </ion-list>
+  </ion-content>
+</ion-view>

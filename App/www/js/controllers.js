@@ -827,3 +827,19 @@ angular.module('app.controllers', ['ionic', 'firebase'])
         }
     }
 })
+
+.controller('medicalRecordsCtrl', function ($scope, $stateParams) {
+})
+
+.controller('allergiesCtrl', function ($scope, $state, $stateParams, utils, Ehrscape, $rootScope) {
+    utils.showLoading();
+
+    Ehrscape.setSessionId($rootScope.sessionId);
+    Ehrscape.setEhrId($rootScope.ehrId);
+
+    Ehrscape.getPatientAllergies().then(function(res){
+        $scope.allergies = res.data.resultSet;
+        console.log(JSON.stringify(res));
+        utils.hideLoading();
+    });
+})
