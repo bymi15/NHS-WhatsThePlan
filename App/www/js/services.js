@@ -492,7 +492,7 @@ angular.module('app.services', ['firebase'])
       return requestPost("/demographics/party", partyData);
     }
 
-    func.getPatientAllergies(){
+    func.getPatientAllergies = function(){
       var aql = "select a/uid/value as compositionId, a/context/start_time/value as dateRecorded, b_a/data[at0001]/items[at0002]/value/value as Causative_agent, b_a/data[at0001]/items[at0009]/items[at0011]/value/value as Manifestation from EHR e [a/ehr_id/value = '" + ehrId + "'] contains COMPOSITION a[openEHR-EHR-COMPOSITION.adverse_reaction_list.v1] contains EVALUATION b_a[openEHR-EHR-EVALUATION.adverse_reaction_risk.v1] where a/name/value='Adverse reaction list'";
 
       return query(aql);
