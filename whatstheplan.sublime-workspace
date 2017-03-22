@@ -175,7 +175,7 @@
 			"file": "App/www/js/controllers.js",
 			"settings":
 			{
-				"buffer_size": 25010,
+				"buffer_size": 27978,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -184,7 +184,7 @@
 			"file": "App/www/js/services.js",
 			"settings":
 			{
-				"buffer_size": 13855,
+				"buffer_size": 15556,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -281,6 +281,7 @@
 	],
 	"file_history":
 	[
+		"/C/Users/SAKAN_~1/AppData/Local/Temp/7zO0C6DCA62/main.c",
 		"/C/Users/sakan_000/Documents/Github/bymi15.github.io/index.html",
 		"/C/Users/sakan_000/Documents/Github/bymi15.github.io/js/bxslider.js",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/openehr_archetypes.json",
@@ -407,8 +408,7 @@
 		"/C/Users/sakan_000/Documents/Github/WebsiteSecurity/secure_app/views/myfiles.php",
 		"/C/wamp/www/nxs-api/nxs-api.php",
 		"/C/Users/sakan_000/Documents/Github/InstagramVision/uploadImage.php",
-		"/C/Users/sakan_000/Documents/Github/InstagramVision/nxs-api/nxs-api.php",
-		"/C/wamp/www/uclks/views/v_login.php"
+		"/C/Users/sakan_000/Documents/Github/InstagramVision/nxs-api/nxs-api.php"
 	],
 	"find":
 	{
@@ -428,6 +428,11 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"retrieve",
+			"user",
+			"ehrid",
+			"validation",
+			"ehrscape",
 			"login",
 			"logout",
 			"profile",
@@ -550,12 +555,7 @@
 			"#notice",
 			"flash",
 			"width",
-			"footer",
-			"download",
-			"team",
-			"url",
-			"image",
-			"img"
+			"footer"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -593,15 +593,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 25010,
+						"buffer_size": 27978,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								6676,
-								6676
+								269,
+								273
 							]
 						],
 						"settings":
@@ -611,7 +611,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 4000.0,
+						"translation.y": 4224.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -623,15 +623,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 13855,
+						"buffer_size": 15556,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								11643,
-								11643
+								12415,
+								12415
 							]
 						],
 						"settings":
@@ -641,7 +641,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 9694.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,

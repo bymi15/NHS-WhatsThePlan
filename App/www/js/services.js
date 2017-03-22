@@ -427,6 +427,10 @@ angular.module('app.services', ['firebase'])
       return requestPost("/composition", compositionData);
     }
 
+    var query = function(queryString){
+      return requestGet("/query/?aql=" + queryString);
+    }
+
     func.requestPost = function(endpoint, data){
       return $http.post(baseUrl + endpoint, data, headers);
     }
@@ -488,87 +492,11 @@ angular.module('app.services', ['firebase'])
       return requestPost("/demographics/party", partyData);
     }
 
-    /*func.createPatient = function(firstNames, lastNames, gender, dateOfBirth, maritalStatus, nhsNumber) {
-      return requestPost("/ehr/?subjectId=" + nhsNumber + "&subjectNamespace=uk.nhs.nhs_number", {}).then(function(res){
-          if(res.status==400 && res.code=="EHR-2124"){
-            //patient already exists on the openehr system
-            //return success callback
-            console.log("nhs number alrdy exists on openehr");
-            var success = {
-              data: [
-              {
-                action: "CREATE"
-              }
-              ]
-            }
-            var fn = function(){return success};
-            return fn;
-          }
+    func.getPatientAllergies(){
+      var aql = "select a/uid/value as compositionId, a/context/start_time/value as dateRecorded, b_a/data[at0001]/items[at0002]/value/value as Causative_agent, b_a/data[at0001]/items[at0009]/items[at0011]/value/value as Manifestation from EHR e [a/ehr_id/value = '" + ehrId + "'] contains COMPOSITION a[openEHR-EHR-COMPOSITION.adverse_reaction_list.v1] contains EVALUATION b_a[openEHR-EHR-EVALUATION.adverse_reaction_risk.v1] where a/name/value='Adverse reaction list'";
 
-          if(res.status==201){
-            console.log("ehr id created successfully");
-          }else{
-            console.log(JSON.stringify(res));
-          }
-
-          ehrId = res.data.ehrId;
-
-          //build the party data
-          var partyData = {
-            "firstNames": firstNames,
-            "lastNames": lastNames,
-            "gender": gender.toUpperCase(),
-            "dateOfBirth": dateOfBirth,
-            "partyAdditionalInfo": [
-              {
-                "key": "uk.nhs.nhs_number",
-                "value": nhsNumber
-              },
-              {
-                "key": "maritalStatus",
-                "value": maritalStatus
-              }
-            ]
-          };
-
-          return requestPost("/demographics/party", partyData);
-
-      }).catch(function(error) {
-          utils.showAlert('Error!', error.message);
-      });
-    }*/
-
-    /*func.addBodyWeight = function(ehrId, weight) {
-      var compositionData = {
-          "ctx/time": "2014-3-19T13:10Z",
-          "ctx/language": "en",
-          "ctx/territory": "GB",
-          "vital_signs/body_weight/any_event/body_weight": parseFloat(weight)
-      };
-
-      //build the party data
-      var partyData = {
-        firstNames: firstNames,
-        lastNames: lastNames,
-        gender: gender,
-        dateOfBirth: dateOfBirth,
-        partyAdditionalInfo: [
-        {
-          key: "ehrId",
-          value: ehrId
-        }
-        ]
-      };
-
-      requestPost("/demographics/party", partyData).then(function(res){
-        if(res.data.party.action == 'CREATE') {
-          return res.data.party.meta.href;
-        }else{
-          return false;
-        }
-      });
-    }*/
-
+      return query(aql);
+    }
 
     return func;
 
