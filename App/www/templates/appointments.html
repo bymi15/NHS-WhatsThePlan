@@ -8,10 +8,10 @@
    <h1 style="font-weight:normal;text-align:center;font-size:24px;color:#3FA9F5;position:relative;">Today is {{currentDate}}</h1>
 
   <ion-list can-swipe="true">
-      <ion-item ng-repeat="(key, appointment) in appointments" class="item-icon-right">
-        <h2 style="color:#7F7F7F;">{{appointment.description}}</h2>
-        <p style="color:#F46A00 ;">{{appointment.doctor}} <span style="color:#3FA9F5;">{{appointment.location}}</span></p>
-        <p style="color:#35B200;">{{appointment.datetime}}</p>
+      <ion-item style="white-space: normal;" ng-repeat="(key, appointment) in appointments" class="item-icon-right">
+        <h2 style="white-space: normal; color:#7F7F7F;">{{appointment.description}}</h2>
+        <p style="white-space: normal; color:#F46A00 ;">{{appointment.doctor}} <span style="white-space: normal; color:#35B200;">{{appointment.location}}</span></p>
+        <p style="white-space: normal; color:#3FA9F5;">{{appointment.datetime}}</p>
 
         <div class="item-icon-right">
           <a href="javascript:void(0)" class="" style="color:#3FA9F5" ng-click="showPopup(appointment);"><i class="icon ion-ios-location"></i></a>

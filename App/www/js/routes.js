@@ -7,12 +7,12 @@ angular.module('app.routes', [])
   // Set up the various states which the app can be in.
   // Each state's controller can be found in controllers.js
   $stateProvider
-
+/*
   .state('menu', {
-    url: '/side-menu21',
+    url: '/menu',
     templateUrl: 'templates/menu.html',
     controller: 'menuCtrl'
-  })
+  })*/
 
   .state('login', {
     url: '/login',
@@ -142,6 +142,22 @@ angular.module('app.routes', [])
     url: '/editCareplan',
     templateUrl: 'templates/editCareplan.html',
     controller: 'editCareplanCtrl',
+    cache: false,
+    authRequired: true
+  })
+
+  .state('medicalRecords', {
+    url: '/medicalRecords',
+    templateUrl: 'templates/medicalRecords.html',
+    controller: 'medicalRecordsCtrl',
+    cache: true,
+    authRequired: true
+  })
+
+  .state('allergies', {
+    url: '/allergies',
+    templateUrl: 'templates/allergies.html',
+    controller: 'allergiesCtrl',
     cache: false,
     authRequired: true
   })
