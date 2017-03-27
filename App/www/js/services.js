@@ -499,6 +499,12 @@ angular.module('app.services', ['firebase'])
       return query(aql);
     }
 
+    func.getPatientMedications = function(){
+      ehrId = "dabcbf61-94bb-45df-a472-9c7a489a200d"; //test ehrid
+      var aql = "select a/uid/value as uid, b_a/activities[at0001]/description[at0002]/items[at0070]/value/value as Medication_item, b_a/activities[at0001]/description[at0002]/items[at0009]/value/value as Overall_directions_description, b_a/activities[at0001]/description[at0002]/items[at0044]/value/value as Additional_instruction, b_a/activities[at0001]/description[at0002]/items[at0018]/value/value as Clinical_indication, b_b/items[at0001]/value/value as Course_status from EHR e contains COMPOSITION a[openEHR-EHR-COMPOSITION.medication_list.v0] contains ( INSTRUCTION b_a[openEHR-EHR-INSTRUCTION.medication_order.v0] or CLUSTER b_b[openEHR-EHR-CLUSTER.medication_order_summary.v0]) where a/name/value='Medication list'";
+
+      return query(aql);
+    }
     return func;
 
 }])

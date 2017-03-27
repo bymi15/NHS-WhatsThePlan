@@ -162,6 +162,22 @@ angular.module('app.routes', [])
     authRequired: true
   })
 
+  .state('medications', {
+    url: '/medications',
+    templateUrl: 'templates/medications.html',
+    controller: 'medicationsCtrl',
+    cache: false,
+    authRequired: true
+  })
+
+  .state('viewMedication', {
+    url: '/viewMedication/:id',
+    templateUrl: 'templates/viewMedication.html',
+    controller: 'viewMedicationCtrl',
+    cache: false,
+    authRequired: true
+  })
+
   $urlRouterProvider.otherwise(function($injector, $location) {
     var $state = $injector.get("$state");
     $state.go("main");

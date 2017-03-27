@@ -1,0 +1,19 @@
+<ion-view title="Medications" style="background-color:#FFFFFF;">
+  <ion-content padding="true" class="has-header">
+    <div class="show-list-numbers-and-dots">
+      <h3 style="color:#3FA9F5; display: block; text-align: center; text-decoration: underline; font-weight: normal; margin-bottom:10px;">{{medication.Medication_item}}</h3>
+      <p style="color:#3F3F3F;font-size:16px;">
+        <strong>Status:</strong> <span>{{medication.Course_status}}</span></p>
+
+      <p style="color:#3F3F3F;font-size:16px;">
+        <strong>Clinical Indication:</strong> <span style="color:#F46A00">{{medication.Clinical_indication}}</span></p>
+
+      <p style="color:#3F3F3F;font-size:16px;">
+        <strong>Overall Directions:</strong> <span style="color:#35B200">{{medication.Overall_directions_description}}</span></p>
+
+      <p style="color:#3F3F3F;font-size:16px;">
+        <strong>Additional Instructions:</strong>{{medication.Additional_instruction}}
+      </p>
+    </div>
+  </ion-content>
+</ion-view>
