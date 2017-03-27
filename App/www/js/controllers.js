@@ -208,7 +208,7 @@ angular.module('app.controllers', ['ionic', 'firebase'])
 
 })
 
-.controller('mainCtrl', function ($scope, $state, User, Ehrscape, $rootScope) {
+.controller('mainCtrl', function ($scope, $state, User, Ehrscape, $rootScope, utils) {
     //Check if user is logged in
     firebase.auth().onAuthStateChanged(function(user) {
         if (!user) {
@@ -216,6 +216,7 @@ angular.module('app.controllers', ['ionic', 'firebase'])
         }else{
             //check if ehr session is still active
             if($rootScope.sessionId == null || $rootScope.ehrId == null){
+                utils.showLoading();
                 console.log("refreshing ehr session");
                 User.getUser(firebase.auth().currentUser.uid).then(function(snapshot) {
                     var userProf = snapshot.val();
@@ -228,6 +229,7 @@ angular.module('app.controllers', ['ionic', 'firebase'])
                             $rootScope.ehrId = res.data.ehrId;
                         });
                         $rootScope.sessionId = res.data.sessionId;
+                        utils.hideLoading();
                     });
                 });
             }
@@ -828,7 +830,7 @@ angular.module('app.controllers', ['ionic', 'firebase'])
     }
 })
 
-.controller('medicalRecordsCtrl', function ($scope, $stateParams) {
+.controller('medicalRecordsCtrl', function ($scope, $state, $stateParams, utils, Ehrscape, $rootScope) {
 })
 
 .controller('allergiesCtrl', function ($scope, $state, $stateParams, utils, Ehrscape, $rootScope) {
@@ -839,7 +841,37 @@ angular.module('app.controllers', ['ionic', 'firebase'])
 
     Ehrscape.getPatientAllergies().then(function(res){
         $scope.allergies = res.data.resultSet;
-        console.log(JSON.stringify(res));
+        //console.log(JSON.stringify(res));
         utils.hideLoading();
     });
+})
+
+.controller('medicationsCtrl', function ($scope, $state, $stateParams, utils, Ehrscape, $rootScope) {
+    utils.showLoading();
+
+    Ehrscape.setSessionId($rootScope.sessionId);
+    Ehrscape.setEhrId($rootScope.ehrId);
+
+    Ehrscape.getPatientMedications().then(function(res){
+        $scope.medications = res.data.resultSet;
+        $rootScope.medications = $scope.medications;
+        //console.log(JSON.stringify(res));
+        utils.hideLoading();
+    });
+
+    $scope.goViewMedication = function(medID){
+        $state.go('viewMedication', { id: medID });
+    }
+})
+
+.controller('viewMedicationCtrl', function ($scope, $state, $stateParams, utils, Ehrscape, $rootScope) {
+    var uid = $stateParams.id;
+    for(var key in $rootScope.medications){
+        var medication = $rootScope.medications[key];
+        if(medication.uid == uid){
+            $scope.medication = medication;
+            break;
+        }
+    }
+
 })
