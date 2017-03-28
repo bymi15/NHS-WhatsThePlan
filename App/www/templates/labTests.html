@@ -1,0 +1,13 @@
+<ion-view title="Laboratory Test">
+  <ion-content padding="true" class="has-header">
+    <ion-list>
+      <ion-item style="white-space: normal;" ng-repeat="testGroup in labTests" ng-click="goViewLabTest('{{testGroup.test_name_code}}')" class="item-icon-right">
+        <h2 style="white-space: normal; color: #7F7F7F;">{{testGroup.test_name}}</h2>
+        <p><span style="white-space: normal; color: #35B200;">{{testGroup.datetime}}</span></p>
+        <div class="item-icon-right">
+          <i class="icon ion-ios-arrow-right"></i>
+        </div>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

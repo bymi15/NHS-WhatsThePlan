@@ -2,7 +2,7 @@
   <ion-content padding="false" class="has-header">
     <div id="medications-container">
       <ion-list id="medications-list">
-        <a ng-repeat="medication in medications" href="javascript:void(0)" ng-click="goViewMedication('{{medication.uid}}')" style="text-decoration: none;">
+        <a ng-repeat="(key, medication) in medications" href="javascript:void(0)" ng-click="goViewMedication('{{key}}')" style="text-decoration: none;">
           <ion-item class="item item-icon-left item-icon-right" id="medications-list-item">
             <i class="icon ion-medkit"></i>
             {{medication.Medication_item}}
