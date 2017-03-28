@@ -236,7 +236,6 @@ angular.module('app.controllers', ['ionic', 'firebase'])
         }
     });
 
-
     $scope.logout = function(){
         firebase.auth().signOut();
 
@@ -865,13 +864,59 @@ angular.module('app.controllers', ['ionic', 'firebase'])
 })
 
 .controller('viewMedicationCtrl', function ($scope, $state, $stateParams, utils, Ehrscape, $rootScope) {
-    var uid = $stateParams.id;
-    for(var key in $rootScope.medications){
-        var medication = $rootScope.medications[key];
-        if(medication.uid == uid){
-            $scope.medication = medication;
-            break;
-        }
-    }
+    utils.showLoading();
 
+    var key = $stateParams.id;
+    $scope.medication = $rootScope.medications[key];
+
+    utils.hideLoading();
+})
+
+.controller('labTestsCtrl', function ($scope, $state, $stateParams, utils, Ehrscape, $rootScope, _, $filter) {
+    utils.showLoading();
+
+    Ehrscape.setSessionId($rootScope.sessionId);
+    Ehrscape.setEhrId($rootScope.ehrId);
+
+    Ehrscape.getLabTestResults().then(function(res){
+        var i = 0;
+        var testsArr = [];
+        var foundArr = [];
+
+        var labTests = res.data.resultSet;
+        for(var key in labTests){
+            var datetime = labTests[key].sample_time;
+            labTests[key].datetime = $filter('date')(datetime, 'dd-MM-yyyy hh:mm a');
+
+            var found = foundArr.includes(labTests[key].test_name_code);
+            if(!found){
+                foundArr.push(labTests[key].test_name_code);
+                testsArr[i] = labTests[key];
+                i++;
+            }
+        }
+
+        $scope.labTests = testsArr;
+        $scope.labTestsGrouped = _.groupBy(labTests, "test_name_code");
+        //console.log(JSON.stringify($scope.labTestsGrouped));
+
+        $rootScope.labTestsGrouped = $scope.labTestsGrouped;
+        //console.log(JSON.stringify(res));
+        utils.hideLoading();
+    });
+
+    $scope.goViewLabTest = function(testID){
+        $state.go('viewLabTest', { id: testID });
+    }
+})
+
+
+.controller('viewLabTestCtrl', function ($scope, $state, $stateParams, utils, Ehrscape, $rootScope) {
+    utils.showLoading();
+
+    var testID = $stateParams.id;
+
+    $scope.testGroup = $rootScope.labTestsGrouped[testID];
+
+    utils.hideLoading();
 })

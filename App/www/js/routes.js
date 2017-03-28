@@ -178,6 +178,22 @@ angular.module('app.routes', [])
     authRequired: true
   })
 
+  .state('labTests', {
+    url: '/labTests',
+    templateUrl: 'templates/labTests.html',
+    controller: 'labTestsCtrl',
+    cache: false,
+    authRequired: true
+  })
+
+  .state('viewLabTest', {
+    url: '/viewLabTest/:id',
+    templateUrl: 'templates/viewLabTest.html',
+    controller: 'viewLabTestCtrl',
+    cache: false,
+    authRequired: true
+  })
+
   $urlRouterProvider.otherwise(function($injector, $location) {
     var $state = $injector.get("$state");
     $state.go("main");
