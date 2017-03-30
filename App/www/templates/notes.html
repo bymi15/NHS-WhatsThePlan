@@ -13,6 +13,7 @@
         </div>
         <ion-option-button class="button-assertive" ng-click="removeNote('{{key}}')">Delete</ion-option-button>
       </ion-item>
+      <ion-item ng-show="!notes">No notes to display</ion-item>
     </ion-list>
   </ion-content>
 </ion-view>
