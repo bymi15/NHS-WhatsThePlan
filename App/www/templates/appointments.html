@@ -19,6 +19,7 @@
 
         <ion-option-button class="button-assertive" ng-click="removeAppointment('{{key}}')">Delete</ion-option-button>
       </ion-item>
+      <ion-item ng-show="!appointments">No appointments to display</ion-item>
     </ion-list>
   </ion-content>
 </ion-view>

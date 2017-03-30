@@ -920,3 +920,37 @@ angular.module('app.controllers', ['ionic', 'firebase'])
 
     utils.hideLoading();
 })
+
+
+.controller('diagnosisCtrl', function ($scope, $state, $stateParams, utils, Ehrscape, $rootScope) {
+    utils.showLoading();
+
+    Ehrscape.setSessionId($rootScope.sessionId);
+    Ehrscape.setEhrId($rootScope.ehrId);
+
+    Ehrscape.getPatientDiagnosis().then(function(res){
+        $scope.diagnosis = res.data.resultSet;
+
+        for(var key in $scope.diagnosis){
+            var datetime = $scope.diagnosis[key].onset_date;
+            $scope.diagnosis[key].datetime = $filter('date')(datetime, 'dd-MM-yyyy hh:mm a');
+        }
+
+        $rootScope.diagnosis = $scope.diagnosis
+
+        //console.log(JSON.stringify(res));
+        utils.hideLoading();
+    });
+})
+
+
+.controller('viewDiagnosisCtrl', function ($scope, $state, $stateParams, utils, Ehrscape, $rootScope) {
+    utils.showLoading();
+
+    var diagnosisID = $stateParams.id;
+
+    $scope.diagnosis = $rootScope.diagnosis[diagnosisID];
+
+    utils.hideLoading();
+})
+
