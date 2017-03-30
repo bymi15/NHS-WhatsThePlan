@@ -324,7 +324,7 @@ angular.module('app.controllers', ['ionic', 'firebase'])
     }
 })
 
-.controller('notesCtrl', function ($scope, $state, utils, Notes) {
+.controller('notesCtrl', function ($scope, $state, utils, Notes, $filter) {
     utils.showLoading();
 
     //Check if user is logged in
@@ -365,7 +365,7 @@ angular.module('app.controllers', ['ionic', 'firebase'])
             var consultant = $scope.data.consultant;
             var location = $scope.data.location;
             var datetime = $scope.data.datetime;
-            datetime = $filter('date')(datetime, 'dd-MM-yyyy hh:mm a');
+            datetime = $filter('date')(datetime, 'hh:mm a - dd MMM yyyy');
             var notes = $scope.data.notes;
 
             Notes.addNote(uid, title, consultant, location, datetime, notes);
@@ -447,7 +447,7 @@ angular.module('app.controllers', ['ionic', 'firebase'])
             var consultant = $scope.data.consultant;
             var location = $scope.data.location;
             var datetime = $scope.data.datetime;
-            datetime = $filter('date')(datetime, 'dd-MM-yyyy hh:mm a');
+            datetime = $filter('date')(datetime, 'hh:mm a - dd MMM yyyy');
             var notes = $scope.data.notes;
 
             Notes.updateNote(uid, id, title, consultant, location, datetime, notes);
@@ -609,7 +609,7 @@ angular.module('app.controllers', ['ionic', 'firebase'])
             var locationNow = document.getElementById('thisLocation').value;
             var descriptionNow = $scope.data.thisDescription;
             var doctorNow = $scope.data.thisDoctor;
-            dateTime = $filter('date')(dateTime, 'dd-MM-yyyy hh:mm a');
+            dateTime = $filter('date')(dateTime, 'hh:mm a - dd MMM yyyy');
 
             var markerX = marker.getPosition().lat();
             var markerY = marker.getPosition().lng();
@@ -748,7 +748,7 @@ angular.module('app.controllers', ['ionic', 'firebase'])
     }
 })
 
-.controller('addContactCtrl', function ($scope, $state, utils, $filter, Careteam) {
+.controller('addContactCtrl', function ($scope, $state, utils, Careteam) {
     $scope.data = {};
 
     $scope.addContact = function(){
@@ -775,7 +775,7 @@ angular.module('app.controllers', ['ionic', 'firebase'])
     }
 })
 
-.controller('editContactCtrl', function ($scope, $state, $stateParams, utils, Careteam, $filter) {
+.controller('editContactCtrl', function ($scope, $state, $stateParams, utils, Careteam) {
     utils.showLoading();
 
     $scope.data = {};
@@ -886,7 +886,7 @@ angular.module('app.controllers', ['ionic', 'firebase'])
         var labTests = res.data.resultSet;
         for(var key in labTests){
             var datetime = labTests[key].sample_time;
-            labTests[key].datetime = $filter('date')(datetime, 'dd-MM-yyyy hh:mm a');
+            labTests[key].datetime = $filter('date')(datetime, 'hh:mm a - dd MMM yyyy');
 
             var found = foundArr.includes(labTests[key].test_name_code);
             if(!found){
@@ -933,7 +933,7 @@ angular.module('app.controllers', ['ionic', 'firebase'])
 
         for(var key in $scope.diagnosis){
             var datetime = $scope.diagnosis[key].onset_date;
-            $scope.diagnosis[key].datetime = $filter('date')(datetime, 'dd-MM-yyyy hh:mm a');
+            $scope.diagnosis[key].datetime = $filter('date')(datetime, 'hh:mm a - dd MMM yyyy');
         }
 
         $rootScope.diagnosis = $scope.diagnosis
