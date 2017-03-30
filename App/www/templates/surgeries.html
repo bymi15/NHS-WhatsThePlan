@@ -1,0 +1,14 @@
+<ion-view title="Surgeries">
+  <ion-content padding="true" class="has-header">
+    <ion-list>
+      <ion-item style="white-space: normal;" ng-repeat="(key, surgery) in surgeries" ng-click="goViewSurgery('{{key}}')" class="item-icon-right">
+        <h2 style="white-space: normal; color: #7F7F7F;">{{surgery.procedure_name}}</h2>
+        <p>Diagnosed on <span style="white-space: normal; color: #35B200;">{{surgery.datetime}}</span></p>
+        <div class="item-icon-right">
+          <i class="icon ion-ios-arrow-right"></i>
+        </div>
+      </ion-item>
+      <ion-item ng-show="!surgeries">No surgeries to display</ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>
