@@ -149,14 +149,15 @@ angular.module('app.services', ['firebase'])
 
     //returns a promise
     func.getAppointments = function(uid){
-        return ref.child(uid).once('value');
+        return ref.child(uid).orderByChild('timestamp');
     }
 
-    func.createAppointment = function(uid,thisLocation,datetime,thisDescription,thisDoctor,markerX,markerY){
+    func.createAppointment = function(uid,thisLocation,datetime,timestamp,thisDescription,thisDoctor,markerX,markerY){
         ref.child(uid).push({
             location:thisLocation,
             doctor:thisDoctor,
             datetime:datetime,
+            timestamp:timestamp,
             description:thisDescription,
             markerX:markerX,
             markerY:markerY
@@ -166,6 +167,17 @@ angular.module('app.services', ['firebase'])
     func.removeAppointment = function(uid, id){
         var refUser = firebase.database().ref('appointments/' + uid);
         refUser.child(id).remove();
+    }
+
+    //removes appointments past certain number of hours from current time
+    func.removeOldAppointments = function(uid, hours){
+        var refUser = firebase.database().ref('appointments/' + uid);
+        var now = Date.now();
+        var cutoff = now - hours * 60 * 60 * 1000;
+        var old = refUser.orderByChild('timestamp').endAt(cutoff).limitToLast(1);
+        old.on('child_added', function(snapshot) {
+            snapshot.ref.remove();
+        });
     }
 
     return func;

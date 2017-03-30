@@ -469,8 +469,17 @@ angular.module('app.controllers', ['ionic', 'firebase'])
     //Check if user is logged in
     firebase.auth().onAuthStateChanged(function(user) {
         if (user) {
-            Appointment.getAppointments(user.uid).then(function(snapshot) {
-                $scope.appointments = snapshot.val();
+            //clear out old appointments past 2 hours from the current time
+            Appointment.removeOldAppointments(user.uid, 2);
+
+            //retrieve the appointments from firebase
+            $scope.appointments = []
+
+            Appointment.getAppointments(user.uid).once('value', function(snap){
+                snap.forEach(function(ss) {
+                    $scope.appointments.push(ss.val());
+                });
+
                 $scope.currentDate = $filter('date')(new Date(), 'dd MMM yyyy');
                 utils.hideLoading();
             });
@@ -609,12 +618,13 @@ angular.module('app.controllers', ['ionic', 'firebase'])
             var locationNow = document.getElementById('thisLocation').value;
             var descriptionNow = $scope.data.thisDescription;
             var doctorNow = $scope.data.thisDoctor;
+            var timestamp = (new Date(dateTime)).getTime();
             dateTime = $filter('date')(dateTime, 'hh:mm a - dd MMM yyyy');
 
             var markerX = marker.getPosition().lat();
             var markerY = marker.getPosition().lng();
 
-            Appointment.createAppointment(uid,locationNow,dateTime,descriptionNow,doctorNow,markerX,markerY);
+            Appointment.createAppointment(uid,locationNow,dateTime,timestamp,descriptionNow,doctorNow,markerX,markerY);
 
             utils.hideLoading();
             $state.go("appointments");
