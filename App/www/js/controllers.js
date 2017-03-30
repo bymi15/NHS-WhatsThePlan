@@ -932,7 +932,7 @@ angular.module('app.controllers', ['ionic', 'firebase'])
 })
 
 
-.controller('diagnosisCtrl', function ($scope, $state, $stateParams, utils, Ehrscape, $rootScope) {
+.controller('diagnosisCtrl', function ($scope, $state, $stateParams, utils, Ehrscape, $rootScope, $filter) {
     utils.showLoading();
 
     Ehrscape.setSessionId($rootScope.sessionId);
@@ -951,6 +951,11 @@ angular.module('app.controllers', ['ionic', 'firebase'])
         //console.log(JSON.stringify(res));
         utils.hideLoading();
     });
+
+
+    $scope.goViewDiagnosis = function(diagnosisID){
+        $state.go('viewDiagnosis', { id: diagnosisID });
+    }
 })
 
 

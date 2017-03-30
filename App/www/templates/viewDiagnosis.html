@@ -6,10 +6,11 @@
         Diagnosed on <span style="color:#35B200">{{diagnosis.datetime}}</span></p>
 
       <p style="color:#3F3F3F;font-size:17px;">
-        <strong>Description:</strong> <span>{{diagnosis.description}}</span></p>
+        <strong>Author:</strong> <span style="color:#F46A00">{{diagnosis.author}}</span></p>
 
       <p style="color:#3F3F3F;font-size:17px;">
-        <strong>Author:</strong> <span style="color:#F46A00">{{diagnosis.author}}</span></p>
+        <strong>Description:</strong> <span>{{diagnosis.description}}</span><span ng-show="!diagnosis.description">none</span></p>
+
     </div>
   </ion-content>
 </ion-view>
