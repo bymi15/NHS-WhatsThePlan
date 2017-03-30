@@ -969,3 +969,39 @@ angular.module('app.controllers', ['ionic', 'firebase'])
     utils.hideLoading();
 })
 
+.controller('surgeriesCtrl', function ($scope, $state, $stateParams, utils, Ehrscape, $rootScope, $filter) {
+    utils.showLoading();
+
+    Ehrscape.setSessionId($rootScope.sessionId);
+    Ehrscape.setEhrId($rootScope.ehrId);
+
+    Ehrscape.getPatientSurgeries().then(function(res){
+        $scope.surgeries = res.data.resultSet;
+
+        for(var key in $scope.surgeries){
+            var datetime = $scope.surgeries[key].procedure_datetime;
+            $scope.surgeries[key].datetime = $filter('date')(datetime, 'hh:mm a - dd MMM yyyy');
+        }
+
+        $rootScope.surgeries = $scope.surgeries
+
+        //console.log(JSON.stringify(res));
+        utils.hideLoading();
+    });
+
+
+    $scope.goViewSurgery = function(surgeryID){
+        $state.go('viewSurgery', { id: surgeryID });
+    }
+})
+
+
+.controller('viewSurgeryCtrl', function ($scope, $state, $stateParams, utils, Ehrscape, $rootScope) {
+    utils.showLoading();
+
+    var surgeryID = $stateParams.id;
+
+    $scope.surgery = $rootScope.surgeries[surgeryID];
+
+    utils.hideLoading();
+})
