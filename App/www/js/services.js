@@ -149,14 +149,15 @@ angular.module('app.services', ['firebase'])
 
     //returns a promise
     func.getAppointments = function(uid){
-        return ref.child(uid).once('value');
+        return ref.child(uid).orderByChild('timestamp');
     }
 
-    func.createAppointment = function(uid,thisLocation,datetime,thisDescription,thisDoctor,markerX,markerY){
+    func.createAppointment = function(uid,thisLocation,datetime,timestamp,thisDescription,thisDoctor,markerX,markerY){
         ref.child(uid).push({
             location:thisLocation,
             doctor:thisDoctor,
             datetime:datetime,
+            timestamp:timestamp,
             description:thisDescription,
             markerX:markerX,
             markerY:markerY
@@ -166,6 +167,17 @@ angular.module('app.services', ['firebase'])
     func.removeAppointment = function(uid, id){
         var refUser = firebase.database().ref('appointments/' + uid);
         refUser.child(id).remove();
+    }
+
+    //removes appointments past certain number of hours from current time
+    func.removeOldAppointments = function(uid, hours){
+        var refUser = firebase.database().ref('appointments/' + uid);
+        var now = Date.now();
+        var cutoff = now - hours * 60 * 60 * 1000;
+        var old = refUser.orderByChild('timestamp').endAt(cutoff).limitToLast(1);
+        old.on('child_added', function(snapshot) {
+            snapshot.ref.remove();
+        });
     }
 
     return func;
@@ -512,6 +524,21 @@ angular.module('app.services', ['firebase'])
 
       return query(aql);
     }
+
+    func.getPatientSurgeries = function(){
+      ehrId = "dabcbf61-94bb-45df-a472-9c7a489a200d"; //test ehrid
+      var aql = "select a/uid/value as uid, a/composer/name as author, a/context/start_time/value as date_submitted, b_a/description[at0001]/items[at0002]/value/value as procedure_name, b_a/description[at0001]/items[at0002]/value/defining_code/code_string as procedure_code, b_a/description[at0001]/items[at0002]/value/defining_code/terminology_id/value as procedure_terminology, b_a/description[at0001]/items[at0049]/value/value as procedure_notes, b_a/other_participations/performer/name as performer, b_a/time/value as procedure_datetime, b_a/ism_transition/current_state/value as procedure_state, b_a/ism_transition/current_state/defining_code/code_string as procedure_state_code, b_a/ism_transition/current_state/defining_code/terminology_id/value as procedure_state_terminology, b_a/ism_transition/careflow_step/value as procedure_step, b_a/ism_transition/careflow_step/defining_code/code_string as procedure_step_code, b_a/ism_transition/careflow_step/defining_code/terminology_id/value as procedure_step_terminology from EHR e [ehr_id/value = '" + ehrId + "'] contains COMPOSITION a[openEHR-EHR-COMPOSITION.health_summary.v1] contains ACTION b_a[openEHR-EHR-ACTION.procedure.v1] where a/name/value='Procedures list'";
+
+      return query(aql);
+    }
+
+    func.getPatientDiagnosis = function(){
+      ehrId = "dabcbf61-94bb-45df-a472-9c7a489a200d"; //test ehrid
+      var aql = "select a/uid/value as uid, a/composer/name as author, a/context/start_time/value as date_created, b_a/data[at0001]/items[at0002]/value/value as problem, b_a/data[at0001]/items[at0002]/value/defining_code/code_string as problem_code, b_a/data[at0001]/items[at0002]/value/defining_code/terminology_id/value as problem_terminology, b_a/data[at0001]/items[at0009]/value/value as description, b_a/data[at0001]/items[at0077]/value/value as onset_date from EHR e [ehr_id/value = '" + ehrId + "'] contains COMPOSITION a[openEHR-EHR-COMPOSITION.problem_list.v1] contains EVALUATION b_a[openEHR-EHR-EVALUATION.problem_diagnosis.v1] where a/name/value='Problem list'";
+
+      return query(aql);
+    }
+
     return func;
 
 }])
