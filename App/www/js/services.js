@@ -82,6 +82,10 @@ angular.module('app.services', ['firebase'])
         });
     }
 
+    func.removeUser = function(uid){
+        ref.child(uid).remove();
+    }
+
     func.updateUser = function(uid, gender, dateOfBirth, nationality, maritalStatus, gpName, gpSurgery){
         ref.child(uid).update({
             gender: gender,
@@ -448,7 +452,7 @@ angular.module('app.services', ['firebase'])
     }
 
     //this should be called once - when the user logs in or signs up
-    func.startSession = function(nhsNumber) {
+    func.startSession = function() {
       return $http.post(baseUrl + "/session?username=" + username + "&password=" + password, {});
     }
 

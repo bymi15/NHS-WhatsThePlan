@@ -175,34 +175,43 @@
 			"file": "App/www/js/controllers.js",
 			"settings":
 			{
-				"buffer_size": 32187,
+				"buffer_size": 33354,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "App/tests/unit-tests/ehrscape.factory.tests.js",
+			"settings":
+			{
+				"buffer_size": 2192,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
 			}
 		},
 		{
 			"file": "App/www/js/services.js",
 			"settings":
 			{
-				"buffer_size": 19675,
+				"buffer_size": 19666,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "App/www/templates/diagnosis.html",
+			"file": "App/www/templates/viewSurgery.html",
 			"settings":
 			{
-				"buffer_size": 652,
+				"buffer_size": 892,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "App/www/templates/viewDiagnosis.html",
+			"file": "App/www/templates/surgeries.html",
 			"settings":
 			{
-				"buffer_size": 766,
+				"buffer_size": 675,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -211,7 +220,7 @@
 			"file": "App/www/js/routes.js",
 			"settings":
 			{
-				"buffer_size": 4937,
+				"buffer_size": 5293,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -311,22 +320,38 @@
 	[
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/tests",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/css",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/js",
-		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates"
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/lib",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/lib/firebase"
 	],
 	"file_history":
 	[
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/tests/unit-tests.conf.js",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/package.json",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/lib/firebase/initFirebase.js",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/lib/firebase/firebase.js",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/index.html",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/lib/ionic/js/ionic.bundle.js",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/tests/unit-tests/user.controller.tests.js",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/js/app.js",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/gulpfile.js",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/tests/unit-tests/user.factory.tests.js",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/tests/unit-tests/login.ctrl.tests.js",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/js/services.js",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/tests/unit-tests/user.service.tests.js",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/lib/angular/angular.js",
+		"/C/Users/sakan_000/Documents/Github/rota/RotaServices/Matcher/test/algroithm.spec.js",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/diagnosis.html",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/viewDiagnosis.html",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/appointments.html",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/careteam.html",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/medications.html",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/notes.html",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/labTests.html",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/viewLabTest.html",
-		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/js/app.js",
-		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/index.html",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/medicalRecords.html",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/js/routes.js",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/medication.html",
@@ -420,8 +445,6 @@
 		"/C/Users/sakan_000/Documents/Github/InstagramVision/lib/inc/nxs-functions.php",
 		"/C/wamp/www/lib/inc/nxs-functions.php",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/bower.json",
-		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/gulpfile.js",
-		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/package.json",
 		"/C/Users/sakan_000/Desktop/rangeslider/index.html",
 		"/C/Users/sakan_000/Desktop/rangeslider/js/index.js",
 		"/C/Users/sakan_000/AppData/Local/Temp/Temp1_rangeslider-js-add-remove-classes-depending-on-value.zip/js/index.js",
@@ -433,19 +456,7 @@
 		"/C/Users/sakan_000/Documents/Github/AWS_VM_References/webapp/app/assets/javascripts/application.js",
 		"/C/Users/sakan_000/Documents/Github/WebsiteSecurity/secure_app/resources/js/custom.js",
 		"/C/wamp/www/path.php",
-		"/C/wamp/www/uclks/include/path.php",
-		"/C/wamp/www/viewImage.php",
-		"/C/wamp/www/app.js",
-		"/C/Users/sakan_000/Documents/Github/WebsiteSecurity/secure_app/controllers/file_controller.php",
-		"/C/Users/sakan_000/Documents/Github/WebsiteSecurity/secure_app/include/path.php",
-		"/C/Users/sakan_000/Documents/Github/UCLKSWeb/controllers/c_gallery.php",
-		"/C/Users/sakan_000/Documents/Github/UCLKSWeb/controllers/c_post.php",
-		"/C/Users/sakan_000/Documents/Github/UCLKSWeb/views/v_createpost.php",
-		"/C/Users/sakan_000/Documents/Github/UCLKSWeb/resources/js/form.js",
-		"/C/Users/sakan_000/Documents/Github/UCLKSWeb/resources/js/functions.js",
-		"/C/Users/sakan_000/Documents/Github/UCLKSWeb/views/v_post.php",
-		"/C/Users/sakan_000/Documents/Github/UCLKSWeb/resources/js/ajax/reply.js",
-		"/C/Users/sakan_000/Documents/Github/UCLKSWeb/resources/js/ajax/board.js"
+		"/C/wamp/www/uclks/include/path.php"
 	],
 	"find":
 	{
@@ -465,6 +476,10 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"startSes",
+			"customSpy",
+			"user",
+			"ehrscape",
 			"appointments",
 			"appo",
 			"dd mm yyyy",
@@ -588,11 +603,7 @@
 			".on",
 			"userinchannel",
 			"Message.fin",
-			"Message",
-			"keydown",
-			"key",
-			"keypress",
-			"Message.find"
+			"Message"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -621,7 +632,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -630,15 +641,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 32187,
+						"buffer_size": 33354,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								16710,
-								16710
+								5322,
+								5330
 							]
 						],
 						"settings":
@@ -648,27 +659,57 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 10886.0,
+						"translation.y": 2999.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "App/www/js/services.js",
+					"file": "App/tests/unit-tests/ehrscape.factory.tests.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 19675,
+						"buffer_size": 2192,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								5015,
-								5015
+								1160,
+								1160
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "App/www/js/services.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 19666,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								12425,
+								12495
 							]
 						],
 						"settings":
@@ -678,57 +719,27 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 3406.0,
+						"translation.y": 9918.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "App/www/templates/diagnosis.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 652,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								561,
-								561
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
 					"buffer": 3,
-					"file": "App/www/templates/viewDiagnosis.html",
+					"file": "App/www/templates/viewSurgery.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 766,
+						"buffer_size": 892,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								734,
-								734
+								393,
+								393
 							]
 						],
 						"settings":
@@ -746,19 +757,49 @@
 				},
 				{
 					"buffer": 4,
-					"file": "App/www/js/routes.js",
+					"file": "App/www/templates/surgeries.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4937,
+						"buffer_size": 675,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4744,
-								4744
+								26,
+								26
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "App/www/js/routes.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5293,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4558,
+								4558
 							]
 						],
 						"settings":
@@ -768,14 +809,14 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 3883.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
-					"buffer": 5,
+					"buffer": 6,
 					"file": "App/www/templates/viewMedication.html",
 					"semi_transient": false,
 					"settings":
@@ -801,11 +842,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 8,
 					"type": "text"
 				},
 				{
-					"buffer": 6,
+					"buffer": 7,
 					"file": "App/www/templates/viewLabTest.html",
 					"semi_transient": false,
 					"settings":
@@ -831,11 +872,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 7,
 					"type": "text"
 				},
 				{
-					"buffer": 7,
+					"buffer": 8,
 					"file": "App/www/templates/main.html",
 					"semi_transient": false,
 					"settings":
@@ -861,7 +902,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 6,
 					"type": "text"
 				}
 			]
