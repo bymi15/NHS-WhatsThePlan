@@ -15,6 +15,8 @@ describe('User Service (Firebase)', function(){
     var maritalStatus = 'Single';
     var nationality = 'Unit';
 
+    var newGpName = 'Dr Test';
+
     beforeEach(module('app.services', 'firebase'));
 
     beforeEach(inject(function (_User_) {
@@ -23,7 +25,6 @@ describe('User Service (Firebase)', function(){
 
     beforeEach(function(done){
         firebase.auth().signInWithEmailAndPassword(email, password).then(function(){
-            console.info("User Service authenticated with firebase!");
             done();
         }).catch(function(error) {
             console.info(error);
@@ -84,6 +85,18 @@ describe('User Service (Firebase)', function(){
         });
     });
 
+    it('can correctly modify test user details', function(done) {
+        inject(function(User) {
+            User.updateUser(uid, fullName, gender, dateOfBirth, nationality, maritalStatus, newGpName, gpSurgery);
+            setTimeout(function() {
+                User.getUser(uid).then(function(snapshot) {
+                    var user = snapshot.val();
+                    expect(user.gpName).toEqual(newGpName);
+                    done();
+                });
+            }, 1000);
+        });
+    });
 
     it('can correctly remove a test user', function(done) {
         inject(function(User) {

@@ -172,19 +172,19 @@
 	"buffers":
 	[
 		{
-			"file": "App/www/js/controllers.js",
+			"file": "App/tests/unit-tests/user.factory.tests.js",
 			"settings":
 			{
-				"buffer_size": 33354,
+				"buffer_size": 3498,
 				"encoding": "UTF-8",
-				"line_ending": "Unix"
+				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "App/tests/unit-tests/ehrscape.factory.tests.js",
+			"file": "App/tests/unit-tests/notes.factory.tests.js",
 			"settings":
 			{
-				"buffer_size": 2192,
+				"buffer_size": 4481,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -193,7 +193,7 @@
 			"file": "App/www/js/services.js",
 			"settings":
 			{
-				"buffer_size": 19666,
+				"buffer_size": 19785,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -324,11 +324,16 @@
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/css",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/js",
-		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/lib",
-		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/lib/firebase"
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/lib/firebase",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates"
 	],
 	"file_history":
 	[
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/js/controllers.js",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/editProfile.html",
+		"/C/Users/sakan_000/Desktop/ehrscape.factory.tests.js",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/tests/unit-tests/firebaseauth.tests.js",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/tests/unit-tests/ehrscape.factory.tests.js",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/tests/unit-tests.conf.js",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/package.json",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/lib/firebase/initFirebase.js",
@@ -416,7 +421,6 @@
 		"/C/Users/sakan_000/Downloads/Main (1).java",
 		"/C/Users/sakan_000/Downloads/FileIO.java",
 		"/C/Users/sakan_000/Downloads/Main.java",
-		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/editProfile.html",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/signup.html",
 		"/C/Users/sakan_000/Documents/KakaoTalk Downloads/ShapeTest.java",
 		"/C/Users/sakan_000/Documents/KakaoTalk Downloads/Cylinder.java",
@@ -452,11 +456,7 @@
 		"/C/wamp/www/js/rangeslider.min.js",
 		"/C/Users/sakan_000/Documents/Github/InstagramVision/css/bootstrap.min.css",
 		"/C/Users/sakan_000/Documents/Github/InstagramVision/processUploadImage.php",
-		"/C/Users/sakan_000/Documents/Github/InstagramVision/path.php",
-		"/C/Users/sakan_000/Documents/Github/AWS_VM_References/webapp/app/assets/javascripts/application.js",
-		"/C/Users/sakan_000/Documents/Github/WebsiteSecurity/secure_app/resources/js/custom.js",
-		"/C/wamp/www/path.php",
-		"/C/wamp/www/uclks/include/path.php"
+		"/C/Users/sakan_000/Documents/Github/InstagramVision/path.php"
 	],
 	"find":
 	{
@@ -632,24 +632,24 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "App/www/js/controllers.js",
+					"file": "App/tests/unit-tests/user.factory.tests.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 33354,
+						"buffer_size": 3498,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								5322,
-								5330
+								2937,
+								2937
 							]
 						],
 						"settings":
@@ -659,27 +659,27 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 2999.0,
+						"translation.y": 1683.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "App/tests/unit-tests/ehrscape.factory.tests.js",
+					"file": "App/tests/unit-tests/notes.factory.tests.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2192,
+						"buffer_size": 4481,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1160,
-								1160
+								2599,
+								2599
 							]
 						],
 						"settings":
@@ -689,10 +689,10 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 2387.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
@@ -701,15 +701,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 19666,
+						"buffer_size": 19785,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								12425,
-								12495
+								2182,
+								2191
 							]
 						],
 						"settings":
@@ -719,10 +719,10 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 9918.0,
+						"translation.y": 1514.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{

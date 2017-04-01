@@ -86,8 +86,9 @@ angular.module('app.services', ['firebase'])
         ref.child(uid).remove();
     }
 
-    func.updateUser = function(uid, gender, dateOfBirth, nationality, maritalStatus, gpName, gpSurgery){
+    func.updateUser = function(uid, fullName, gender, dateOfBirth, nationality, maritalStatus, gpName, gpSurgery){
         ref.child(uid).update({
+            fullName: fullName,
             gender: gender,
             dateOfBirth: dateOfBirth,
             nationality: nationality,

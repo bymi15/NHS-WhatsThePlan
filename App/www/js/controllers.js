@@ -283,6 +283,7 @@ angular.module('app.controllers', ['ionic', 'firebase'])
             User.getUser(user.uid).then(function(snapshot) {
                 $scope.userProfile = snapshot.val();
 
+                $scope.data.fullName = $scope.userProfile.fullName;
                 $scope.data.dateOfBirth = $scope.userProfile.dateOfBirth;
                 $scope.data.gender = $scope.userProfile.gender;
                 $scope.data.nationality = $scope.userProfile.nationality;
@@ -304,6 +305,7 @@ angular.module('app.controllers', ['ionic', 'firebase'])
 
         if (user != null) {
             var uid = user.uid;
+            var fullName = $scope.data.fullName;
             var gender = $scope.data.gender;
             var dateOfBirth = $scope.data.dateOfBirth;
             dateOfBirth = $filter('date')(dateOfBirth, 'dd-MM-yyyy');
@@ -313,7 +315,7 @@ angular.module('app.controllers', ['ionic', 'firebase'])
             var gpName = $scope.data.gpName;
             var gpSurgery = $scope.data.gpSurgery;
 
-            User.updateUser(uid, gender, dateOfBirth, nationality, maritalStatus, gpName, gpSurgery);
+            User.updateUser(uid, fullName, gender, dateOfBirth, nationality, maritalStatus, gpName, gpSurgery);
 
             utils.hideLoading();
 
