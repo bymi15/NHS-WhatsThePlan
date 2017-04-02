@@ -35,6 +35,16 @@ describe('Notes Service (Firebase)', function(){
         });
     });
 
+    beforeAll(function(done){
+        firebase.auth().signInWithEmailAndPassword(email, password).then(function(){
+            firebase.database().ref('notes/' + uid).remove();
+            done();
+        }).catch(function(error) {
+            console.info(error);
+            done();
+        });
+    });
+
     it('expect test to run', function() {
       expect(true).toBe(true);
     });
@@ -52,8 +62,9 @@ describe('Notes Service (Firebase)', function(){
 
                     var keyArr = Object.keys(notesObj);
                     var length = keyArr.length;
-                    noteID = keyArr[0];
-
+                    if(length >= 1){
+                        noteID = keyArr[0];
+                    }
                     expect(length).toEqual(1);
                     done();
                 });
@@ -70,7 +81,9 @@ describe('Notes Service (Firebase)', function(){
 
                     var keyArr = Object.keys(notesObj);
                     var length = keyArr.length;
-                    noteID2 = keyArr[1];
+                    if(length >= 1){
+                        noteID2 = keyArr[1];
+                    }
 
                     expect(length).toEqual(2);
                     done();
@@ -122,6 +135,19 @@ describe('Notes Service (Firebase)', function(){
                 Notes.getNote(uid, noteID).then(function(snapshot) {
                     var noteObj = snapshot.val();
                     expect(noteObj).toBeNull();
+                    done();
+                });
+            }, 1000);
+        });
+    });
+
+    it('can correctly modify a consultation note by id', function(done) {
+        inject(function(Notes) {
+            Notes.updateNote(uid, noteID2, title2, consultant2, location2, datetime, notes2);
+            setTimeout(function() {
+                Notes.getNote(uid, noteID2).then(function(snapshot) {
+                    var noteObj = snapshot.val();
+                    expect(noteObj.datetime).toEqual(datetime);
                     done();
                 });
             }, 1000);

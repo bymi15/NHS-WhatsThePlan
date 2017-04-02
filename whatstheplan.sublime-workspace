@@ -190,6 +190,15 @@
 			}
 		},
 		{
+			"file": "/C/Users/sakan_000/Documents/Github/compilers-part2-group21/src/comp207p/main/ConstantFolder.java",
+			"settings":
+			{
+				"buffer_size": 2746,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
 			"file": "App/www/js/services.js",
 			"settings":
 			{
@@ -324,11 +333,18 @@
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/css",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/js",
-		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/lib/firebase",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates"
 	],
 	"file_history":
 	[
+		"/C/Users/sakan_000/Documents/Github/compilers-part2-group21/src/comp207p/main/ConstantFolderOriginal.java",
+		"/C/Users/sakan_000/Documents/Github/compilers-part2-group21/src/comp207p/main/ConstantFolder.java",
+		"/C/Users/sakan_000/Documents/Github/compilers-part2-group21/src/comp207p/main/Main.java",
+		"/C/Users/sakan_000/Desktop/comp207p-coursework2/test/comp207p/target/DynamicVariableFoldingTest.java",
+		"/C/Users/sakan_000/Desktop/comp207p-coursework2/test/comp207p/target/SimpleFoldingTest.java",
+		"/C/Users/sakan_000/Desktop/comp207p-coursework2/src/comp207p/target/DynamicVariableFolding.java",
+		"/C/Users/sakan_000/Desktop/comp207p-coursework2/src/comp207p/target/ConstantVariableFolding.java",
+		"/C/Users/sakan_000/Desktop/comp207p-coursework2/src/comp207p/main/ConstantFolder.java",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/js/controllers.js",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/editProfile.html",
 		"/C/Users/sakan_000/Desktop/ehrscape.factory.tests.js",
@@ -448,15 +464,7 @@
 		"/C/wamp/www/lib/nxs-api/nxs-api.php",
 		"/C/Users/sakan_000/Documents/Github/InstagramVision/lib/inc/nxs-functions.php",
 		"/C/wamp/www/lib/inc/nxs-functions.php",
-		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/bower.json",
-		"/C/Users/sakan_000/Desktop/rangeslider/index.html",
-		"/C/Users/sakan_000/Desktop/rangeslider/js/index.js",
-		"/C/Users/sakan_000/AppData/Local/Temp/Temp1_rangeslider-js-add-remove-classes-depending-on-value.zip/js/index.js",
-		"/C/Users/sakan_000/AppData/Local/Temp/Temp1_rangeslider-js-add-remove-classes-depending-on-value.zip/css/style.css",
-		"/C/wamp/www/js/rangeslider.min.js",
-		"/C/Users/sakan_000/Documents/Github/InstagramVision/css/bootstrap.min.css",
-		"/C/Users/sakan_000/Documents/Github/InstagramVision/processUploadImage.php",
-		"/C/Users/sakan_000/Documents/Github/InstagramVision/path.php"
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/bower.json"
 	],
 	"find":
 	{
@@ -632,7 +640,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 2,
 			"sheets":
 			[
 				{
@@ -662,7 +670,7 @@
 						"translation.y": 1683.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
@@ -689,7 +697,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 2387.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
@@ -697,6 +705,35 @@
 				},
 				{
 					"buffer": 2,
+					"file": "/C/Users/sakan_000/Documents/Github/compilers-part2-group21/src/comp207p/main/ConstantFolder.java",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2746,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								615,
+								615
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Java/Java.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
 					"file": "App/www/js/services.js",
 					"semi_transient": false,
 					"settings":
@@ -722,11 +759,11 @@
 						"translation.y": 1514.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
+					"buffer": 4,
 					"file": "App/www/templates/viewSurgery.html",
 					"semi_transient": false,
 					"settings":
@@ -752,11 +789,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
-					"buffer": 4,
+					"buffer": 5,
 					"file": "App/www/templates/surgeries.html",
 					"semi_transient": false,
 					"settings":
@@ -782,11 +819,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
-					"buffer": 5,
+					"buffer": 6,
 					"file": "App/www/js/routes.js",
 					"semi_transient": false,
 					"settings":
@@ -812,11 +849,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
-					"buffer": 6,
+					"buffer": 7,
 					"file": "App/www/templates/viewMedication.html",
 					"semi_transient": false,
 					"settings":
@@ -842,11 +879,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 8,
+					"stack_index": 9,
 					"type": "text"
 				},
 				{
-					"buffer": 7,
+					"buffer": 8,
 					"file": "App/www/templates/viewLabTest.html",
 					"semi_transient": false,
 					"settings":
@@ -872,11 +909,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 8,
 					"type": "text"
 				},
 				{
-					"buffer": 8,
+					"buffer": 9,
 					"file": "App/www/templates/main.html",
 					"semi_transient": false,
 					"settings":
@@ -902,7 +939,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 7,
 					"type": "text"
 				}
 			]
