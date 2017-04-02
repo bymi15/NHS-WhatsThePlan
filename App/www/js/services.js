@@ -86,8 +86,9 @@ angular.module('app.services', ['firebase'])
         ref.child(uid).remove();
     }
 
-    func.updateUser = function(uid, gender, dateOfBirth, nationality, maritalStatus, gpName, gpSurgery){
+    func.updateUser = function(uid, fullName, gender, dateOfBirth, nationality, maritalStatus, gpName, gpSurgery){
         ref.child(uid).update({
+            fullName: fullName,
             gender: gender,
             dateOfBirth: dateOfBirth,
             nationality: nationality,
@@ -156,13 +157,13 @@ angular.module('app.services', ['firebase'])
         return ref.child(uid).orderByChild('timestamp');
     }
 
-    func.createAppointment = function(uid,thisLocation,datetime,timestamp,thisDescription,thisDoctor,markerX,markerY){
+    func.createAppointment = function(uid,location,datetime,timestamp,description,doctor,markerX,markerY){
         ref.child(uid).push({
-            location:thisLocation,
-            doctor:thisDoctor,
+            location:location,
+            doctor:doctor,
             datetime:datetime,
             timestamp:timestamp,
-            description:thisDescription,
+            description:description,
             markerX:markerX,
             markerY:markerY
         });
