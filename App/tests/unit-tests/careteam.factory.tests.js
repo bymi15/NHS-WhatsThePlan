@@ -1,43 +1,36 @@
-describe('Notes Service (Firebase)', function(){
-    var Notes;
+describe('Care Team / Contacts Service (Firebase)', function(){
+    var Careteam;
     //authentic user details
     var email = "test@test.test";
     var password = "testtest";
 
     //fixtures
-    var noteID;
+    var contactID;
     var uid = '0000000001';
-    var title = 'Test Consultation Notes';
-    var consultant = 'Dr Test';
-    var location = 'UCLH';
-    var datetime = '21-02-2017 04:34 AM'
-    var notes = 'Unit test notes';
+    var full_name = 'Unit Test';
+    var role = 'Primary Carer';
+    var email = 'unit@test.com';
+    var phone_number = '0791231234';
+    var address = 'Whiston Hospital';
+    var note = 'Unit test note';
 
-    var noteID2;
-    var title2 = 'Test Consultation Notes 2';
-    var consultant2 = 'Dr Test 2';
-    var location2 = 'Test Hospital';
-    var datetime2 = '21-02-2016 02:30 PM'
-    var notes2 = 'Unit test notes 2';
+    var contactID2;
+    var full_name2 = 'Unit Test 2';
+    var role2 = 'Secondary Carer';
+    var email2 = 'test@unittest.com';
+    var phone_number2 = '0700000034';
+    var address2 = 'UCLH';
+    var note2 = 'Test unit note 2';
 
     beforeEach(module('app.services', 'firebase'));
 
-    beforeEach(inject(function (_Notes_) {
-        Notes = _Notes_;
+    beforeEach(inject(function (_Careteam_) {
+        Careteam = _Careteam_;
     }));
-
-    beforeEach(function(done){
-        firebase.auth().signInWithEmailAndPassword(email, password).then(function(){
-            done();
-        }).catch(function(error) {
-            console.info(error);
-            done();
-        });
-    });
 
     beforeAll(function(done){
         firebase.auth().signInWithEmailAndPassword(email, password).then(function(){
-            firebase.database().ref('notes/' + uid).remove();
+            firebase.database().ref('careteam/' + uid).remove();
             done();
         }).catch(function(error) {
             console.info(error);
@@ -50,20 +43,20 @@ describe('Notes Service (Firebase)', function(){
     });
 
     it('should exist', function() {
-        expect(Notes).toBeDefined();
+        expect(Careteam).toBeDefined();
     });
 
-    it('can correctly create a consultation note', function(done) {
-        inject(function(Notes) {
-            Notes.addNote(uid, title, consultant, location, datetime, notes);
+    it('can correctly add a contact', function(done) {
+        inject(function(Careteam) {
+            Careteam.addContact(uid, full_name, role, email, phone_number, address, note);
             setTimeout(function() {
-                Notes.getNotes(uid).then(function(snapshot) {
-                    var notesObj = snapshot.val();
+                Careteam.getContacts(uid).then(function(snapshot) {
+                    var contactsObj = snapshot.val();
 
-                    var keyArr = Object.keys(notesObj);
+                    var keyArr = Object.keys(contactsObj);
                     var length = keyArr.length;
                     if(length >= 1){
-                        noteID = keyArr[0];
+                        contactID = keyArr[0];
                     }
                     expect(length).toEqual(1);
                     done();
@@ -72,17 +65,17 @@ describe('Notes Service (Firebase)', function(){
         });
     });
 
-    it('can correctly create another consultation note', function(done) {
-        inject(function(Notes) {
-            Notes.addNote(uid, title2, consultant2, location2, datetime2, notes2);
+    it('can correctly add another contact', function(done) {
+        inject(function(Careteam) {
+            Careteam.addContact(uid, full_name2, role2, email2, phone_number2, address2, note2);
             setTimeout(function() {
-                Notes.getNotes(uid).then(function(snapshot) {
-                    var notesObj = snapshot.val();
+                Careteam.getContacts(uid).then(function(snapshot) {
+                    var contactsObj = snapshot.val();
 
-                    var keyArr = Object.keys(notesObj);
+                    var keyArr = Object.keys(contactsObj);
                     var length = keyArr.length;
                     if(length >= 1){
-                        noteID2 = keyArr[1];
+                        contactID2 = keyArr[1];
                     }
 
                     expect(length).toEqual(2);
@@ -92,77 +85,76 @@ describe('Notes Service (Firebase)', function(){
         });
     });
 
-    it('can correctly retrieve the consultation notes', function(done) {
-        inject(function(Notes) {
-            Notes.getNotes(uid).then(function(snapshot) {
-                var notesObj = snapshot.val();
+    it('can correctly retrieve the care team', function(done) {
+        inject(function(Careteam) {
+            Careteam.getContacts(uid).then(function(snapshot) {
+                var contactsObj = snapshot.val();
 
-                if(notesObj==null){
-                    expect(notesObj).not.toBeNull();
+                if(contactsObj==null){
+                    expect(contactsObj).not.toBeNull();
                     done();
                 }else{
-                    var notesTest = notesObj[noteID].notes;
-                    var notesTest2 = notesObj[noteID2].notes;
+                    var contactsTest = contactsObj[contactID].full_name;
+                    var contactsTest2 = contactsObj[contactID2].full_name;
 
-                    expect(notesTest === notes && notesTest2 === notes2).toBeTruthy();
+                    expect(contactsTest === full_name && contactsTest2 === full_name2).toBeTruthy();
                     done();
                 }
             });
         });
     });
 
-    it('can correctly retrieve a single consultation note by id', function(done) {
-        inject(function(Notes) {
-            Notes.getNote(uid, noteID).then(function(snapshot) {
-                var noteObj = snapshot.val();
-                if(noteObj==null){
-                    expect(noteObj).not.toBeNull();
+    it('can correctly retrieve a single contact by id', function(done) {
+        inject(function(Careteam) {
+            Careteam.getContact(uid, contactID).then(function(snapshot) {
+                var contactObj = snapshot.val();
+                if(contactObj==null){
+                    expect(contactObj).not.toBeNull();
                     done();
                 }else{
-                    var noteTest = noteObj.notes;
-                    expect(noteTest).toEqual(notes);
+                    var contactTest = contactObj.full_name;
+                    expect(contactTest).toEqual(full_name);
                     done();
                 }
             });
         });
     });
 
-    it('can correctly remove a consultation note by id', function(done) {
-        inject(function(Notes) {
-            Notes.removeNote(uid, noteID);
+    it('can correctly remove a contact by id', function(done) {
+        inject(function(Careteam) {
+            Careteam.removeContact(uid, contactID);
 
             setTimeout(function() {
-                Notes.getNote(uid, noteID).then(function(snapshot) {
-                    var noteObj = snapshot.val();
-                    expect(noteObj).toBeNull();
+                Careteam.getContact(uid, contactID).then(function(snapshot) {
+                    var contactObj = snapshot.val();
+                    expect(contactObj).toBeNull();
                     done();
                 });
             }, 1000);
         });
     });
 
-    it('can correctly modify a consultation note by id', function(done) {
-        inject(function(Notes) {
-            Notes.updateNote(uid, noteID2, title2, consultant2, location2, datetime, notes2);
+    it('can correctly modify a contact by id', function(done) {
+        inject(function(Careteam) {
+            Careteam.updateContact(uid, contactID2, full_name2, role2, email, phone_number2, address2, note2);
             setTimeout(function() {
-                Notes.getNote(uid, noteID2).then(function(snapshot) {
-                    var noteObj = snapshot.val();
-                    expect(noteObj.datetime).toEqual(datetime);
+                Careteam.getContact(uid, contactID2).then(function(snapshot) {
+                    var contactObj = snapshot.val();
+                    expect(contactObj.email).toEqual(email);
                     done();
                 });
             }, 1000);
         });
     });
 
-    it('can correctly remove another consultation note by id', function(done) {
-        inject(function(Notes) {
-            Notes.removeNote(uid, noteID2);
+    it('can correctly remove another contact by id', function(done) {
+        inject(function(Careteam) {
+            Careteam.removeContact(uid, contactID2);
 
             setTimeout(function() {
-                Notes.getNotes(uid).then(function(snapshot) {
-                    var notesObj = snapshot.val();
-
-                    expect(notesObj).toBeNull();
+                Careteam.getContact(uid, contactID2).then(function(snapshot) {
+                    var contactObj = snapshot.val();
+                    expect(contactObj).toBeNull();
                     done();
                 });
             }, 1000);

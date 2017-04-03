@@ -18,15 +18,6 @@ describe('Careplan Service (Firebase)', function(){
         Careplan = _Careplan_;
     }));
 
-    beforeEach(function(done){
-        firebase.auth().signInWithEmailAndPassword(email, password).then(function(){
-            done();
-        }).catch(function(error) {
-            console.info(error);
-            done();
-        });
-    });
-
     beforeAll(function(done){
         firebase.auth().signInWithEmailAndPassword(email, password).then(function(){
             firebase.database().ref('careplan/' + uid).remove();
