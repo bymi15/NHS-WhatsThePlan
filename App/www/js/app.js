@@ -1,4 +1,4 @@
-angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.directives','app.services', 'firebase', 'angularMoment', 'ion-datetime-picker', 'underscore'])
+angular.module('app', ['ionic', 'ngCordova', 'app.controllers', 'app.routes', 'app.directives','app.services', 'firebase', 'angularMoment', 'ion-datetime-picker', 'underscore'])
 
 .config(function($ionicConfigProvider, $sceDelegateProvider){
 

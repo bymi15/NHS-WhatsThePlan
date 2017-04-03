@@ -1,4 +1,4 @@
-angular.module('app.controllers', ['ionic', 'firebase'])
+angular.module('app.controllers', ['ionic', 'firebase', 'ngCordova'])
 
 .controller('menuCtrl', function ($scope, $stateParams) {
 })
@@ -639,8 +639,10 @@ angular.module('app.controllers', ['ionic', 'firebase'])
 .controller('careplanMenuCtrl', function ($scope, $stateParams) {
 })
 
-.controller('careplanCtrl', function ($scope, $state, utils, Careplan) {
+.controller('careplanCtrl', function ($scope, $state, utils, Careplan, $cordovaCamera) {
     utils.showLoading();
+
+    $scope.imgURI = [];
 
     $scope.data = {};
 
@@ -661,6 +663,46 @@ angular.module('app.controllers', ['ionic', 'firebase'])
             $state.go("login");
         }
     });
+
+    $scope.takePhoto = function(){
+        var options = {
+            quality: 75,
+            destinationType: Camera.DestinationType.DATA_URL,
+            sourceType: Camera.PictureSourceType.CAMERA,
+            allowEdit: true,
+            encodingType: Camera.EncodingType.JPEG,
+            targetWidth: 300,
+            targetHeight: 300,
+            popoverOptions: CameraPopoverOptions,
+            saveToPhotoAlbum: false
+        };
+
+        $cordovaCamera.getPicture(options).then(function(imageData){
+            $scope.imgURI.push("data:image/jpeg;base64," + imageData);
+        }, function(err){
+            console.log(err)
+        });
+    }
+
+    $scope.choosePhoto = function () {
+        var options = {
+            quality: 75,
+            destinationType: Camera.DestinationType.DATA_URL,
+            sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+            allowEdit: true,
+            encodingType: Camera.EncodingType.JPEG,
+            targetWidth: 300,
+            targetHeight: 300,
+            popoverOptions: CameraPopoverOptions,
+            saveToPhotoAlbum: false
+        };
+
+        $cordovaCamera.getPicture(options).then(function (imageData) {
+            $scope.imgURI.push("data:image/jpeg;base64," + imageData);
+        }, function (err) {
+            console.log(err)
+        });
+    }
 })
 
 .controller('editCareplanCtrl', function ($scope, $state, utils, Careplan, $filter) {

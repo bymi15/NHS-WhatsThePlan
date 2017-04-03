@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"thisDe",
+				"thisDescription"
+			],
+			[
+				"app",
+				"appointmentID"
+			],
+			[
 				"sess",
 				"sessionId"
 			],
@@ -184,25 +192,25 @@
 			"file": "App/tests/unit-tests/notes.factory.tests.js",
 			"settings":
 			{
-				"buffer_size": 4481,
+				"buffer_size": 5424,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "/C/Users/sakan_000/Documents/Github/compilers-part2-group21/src/comp207p/main/ConstantFolder.java",
+			"file": "App/tests/unit-tests/appointment.factory.tests.js",
 			"settings":
 			{
-				"buffer_size": 2746,
+				"buffer_size": 6278,
 				"encoding": "UTF-8",
-				"line_ending": "Unix"
+				"line_ending": "Windows"
 			}
 		},
 		{
 			"file": "App/www/js/services.js",
 			"settings":
 			{
-				"buffer_size": 19785,
+				"buffer_size": 19761,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -337,8 +345,9 @@
 	],
 	"file_history":
 	[
-		"/C/Users/sakan_000/Documents/Github/compilers-part2-group21/src/comp207p/main/ConstantFolderOriginal.java",
 		"/C/Users/sakan_000/Documents/Github/compilers-part2-group21/src/comp207p/main/ConstantFolder.java",
+		"/C/Users/sakan_000/Documents/Github/compilers-part2-group21/src/comp207p/target/ConstantVariableFolding.java",
+		"/C/Users/sakan_000/Documents/Github/compilers-part2-group21/src/comp207p/main/ConstantFolderOriginal.java",
 		"/C/Users/sakan_000/Documents/Github/compilers-part2-group21/src/comp207p/main/Main.java",
 		"/C/Users/sakan_000/Desktop/comp207p-coursework2/test/comp207p/target/DynamicVariableFoldingTest.java",
 		"/C/Users/sakan_000/Desktop/comp207p-coursework2/test/comp207p/target/SimpleFoldingTest.java",
@@ -463,8 +472,7 @@
 		"/C/wamp/www/processUploadImage.php",
 		"/C/wamp/www/lib/nxs-api/nxs-api.php",
 		"/C/Users/sakan_000/Documents/Github/InstagramVision/lib/inc/nxs-functions.php",
-		"/C/wamp/www/lib/inc/nxs-functions.php",
-		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/bower.json"
+		"/C/wamp/www/lib/inc/nxs-functions.php"
 	],
 	"find":
 	{
@@ -484,6 +492,10 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"removeOldAppointments",
+			"appointmentID",
+			"Notes",
+			"debug",
 			"startSes",
 			"customSpy",
 			"user",
@@ -607,11 +619,7 @@
 			"data.channel",
 			"btnJoinPrivate",
 			"currentChannel",
-			"defaultCha",
-			".on",
-			"userinchannel",
-			"Message.fin",
-			"Message"
+			"defaultCha"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -619,6 +627,7 @@
 		"regex": false,
 		"replace_history":
 		[
+			"Appointment",
 			"l3",
 			"www.uclks.co.uk",
 			"",
@@ -640,7 +649,7 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -656,38 +665,8 @@
 						"selection":
 						[
 							[
-								2937,
-								2937
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 1683.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "App/tests/unit-tests/notes.factory.tests.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4481,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2599,
-								2599
+								2517,
+								2517
 							]
 						],
 						"settings":
@@ -704,32 +683,63 @@
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "/C/Users/sakan_000/Documents/Github/compilers-part2-group21/src/comp207p/main/ConstantFolder.java",
+					"buffer": 1,
+					"file": "App/tests/unit-tests/notes.factory.tests.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2746,
+						"buffer_size": 5424,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								615,
-								615
+								4163,
+								4163
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Java/Java.sublime-syntax",
-							"translate_tabs_to_spaces": false
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 2772.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "App/tests/unit-tests/appointment.factory.tests.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6278,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4348,
+								4348
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2673.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
@@ -738,15 +748,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 19785,
+						"buffer_size": 19761,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2182,
-								2191
+								4024,
+								4063
 							]
 						],
 						"settings":
@@ -756,7 +766,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1514.0,
+						"translation.y": 3358.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 3,
@@ -992,7 +1002,7 @@
 	"project": "whatstheplan.sublime-project",
 	"replace":
 	{
-		"height": 56.0
+		"height": 90.0
 	},
 	"save_all_on_build": true,
 	"select_file":
