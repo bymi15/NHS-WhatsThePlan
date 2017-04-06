@@ -5,6 +5,13 @@ angular.module('app.controllers', ['ionic', 'firebase', 'ngCordova'])
 
 .controller('loginCtrl', function ($scope, $state, $ionicHistory, utils, validater, User, Ehrscape, $rootScope) {
 
+    //Check if user is logged in
+    firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+            $state.go("main");
+        }
+    });
+
     $scope.data = {};
 
     $scope.signInEmail = function(){
@@ -13,7 +20,7 @@ angular.module('app.controllers', ['ionic', 'firebase', 'ngCordova'])
         var email = $scope.data.email;
         var password = $scope.data.password;
 
-        var validation = validater.validateLogin(email, password);
+        /*var validation = validater.validateLogin(email, password);
 
         if(validation){
             utils.hideLoading();
@@ -25,7 +32,7 @@ angular.module('app.controllers', ['ionic', 'firebase', 'ngCordova'])
                 return;
             }
         }
-
+*/
         firebase.auth().signInWithEmailAndPassword(email, password).then(function() {
             // user successfully logged in
 
@@ -639,16 +646,15 @@ angular.module('app.controllers', ['ionic', 'firebase', 'ngCordova'])
 .controller('careplanMenuCtrl', function ($scope, $stateParams) {
 })
 
-.controller('careplanCtrl', function ($scope, $state, utils, Careplan, $cordovaCamera) {
+.controller('careplanCtrl', function ($scope, $state, utils, Careplan, $cordovaCamera, CareplanPhotos, $filter) {
     utils.showLoading();
-
-    $scope.imgURI = [];
 
     $scope.data = {};
 
     //Check if user is logged in
     firebase.auth().onAuthStateChanged(function(user) {
         if (user) {
+            $scope.currentUID = user.uid;
             Careplan.getCareplan(user.uid).then(function(snapshot) {
                 $scope.careplan = snapshot.val();
                 /*$scope.careplan.careplan = $scope.careplan.careplan.replace(/(?:\r\n|\r|\n)/g, '<br>');*/
@@ -657,7 +663,10 @@ angular.module('app.controllers', ['ionic', 'firebase', 'ngCordova'])
                     $scope.data.datetime = $scope.careplan.datetime;
                 }
 
-                utils.hideLoading();
+                CareplanPhotos.getImages(user.uid).then(function(ss){
+                    $scope.images = ss.val();
+                    utils.hideLoading();
+                });
             });
         }else{
             $state.go("login");
@@ -672,13 +681,19 @@ angular.module('app.controllers', ['ionic', 'firebase', 'ngCordova'])
             allowEdit: true,
             encodingType: Camera.EncodingType.JPEG,
             targetWidth: 300,
-            targetHeight: 300,
+            targetHeight: 450,
             popoverOptions: CameraPopoverOptions,
             saveToPhotoAlbum: false
         };
 
         $cordovaCamera.getPicture(options).then(function(imageData){
-            $scope.imgURI.push("data:image/jpeg;base64," + imageData);
+            var dateTime = new Date();
+            dateTime = $filter('date')(dateTime, 'dd-MM-yyyy hh:mm a');
+
+            CareplanPhotos.uploadImage($scope.currentUID, dateTime, "data:image/jpeg;base64," + imageData);
+
+            $state.go($state.current, {}, {reload: true});
+
         }, function(err){
             console.log(err)
         });
@@ -692,17 +707,29 @@ angular.module('app.controllers', ['ionic', 'firebase', 'ngCordova'])
             allowEdit: true,
             encodingType: Camera.EncodingType.JPEG,
             targetWidth: 300,
-            targetHeight: 300,
+            targetHeight: 450,
             popoverOptions: CameraPopoverOptions,
             saveToPhotoAlbum: false
         };
 
         $cordovaCamera.getPicture(options).then(function (imageData) {
-            $scope.imgURI.push("data:image/jpeg;base64," + imageData);
+            var dateTime = new Date();
+            dateTime = $filter('date')(dateTime, 'dd-MM-yyyy hh:mm a');
+
+            CareplanPhotos.uploadImage($scope.currentUID, dateTime, "data:image/jpeg;base64," + imageData);
+
+            $state.go($state.current, {}, {reload: true});
+
         }, function (err) {
             console.log(err)
         });
     }
+
+     $scope.deleteImage = function (imageID) {
+        CareplanPhotos.deleteImage($scope.currentUID, imageID);
+        $state.go($state.current, {}, {reload: true});
+        alert("The photo has been deleted.");
+     }
 })
 
 .controller('editCareplanCtrl', function ($scope, $state, utils, Careplan, $filter) {

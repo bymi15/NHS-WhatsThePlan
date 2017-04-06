@@ -180,55 +180,54 @@
 	"buffers":
 	[
 		{
-			"file": "App/tests/unit-tests/user.factory.tests.js",
+			"file": "App/www/js/controllers.js",
 			"settings":
 			{
-				"buffer_size": 3498,
+				"buffer_size": 35848,
 				"encoding": "UTF-8",
-				"line_ending": "Windows"
+				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "App/tests/unit-tests/notes.factory.tests.js",
+			"file": "App/www/templates/careplan.html",
 			"settings":
 			{
-				"buffer_size": 5424,
+				"buffer_size": 1180,
 				"encoding": "UTF-8",
-				"line_ending": "Windows"
+				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "App/tests/unit-tests/appointment.factory.tests.js",
+			"file": "App/www/main.html",
 			"settings":
 			{
-				"buffer_size": 6278,
+				"buffer_size": 5758,
 				"encoding": "UTF-8",
-				"line_ending": "Windows"
+				"line_ending": "Unix"
 			}
 		},
 		{
 			"file": "App/www/js/services.js",
 			"settings":
 			{
-				"buffer_size": 19761,
+				"buffer_size": 20313,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "App/www/templates/viewSurgery.html",
+			"file": "App/www/templates/notes.html",
 			"settings":
 			{
-				"buffer_size": 892,
-				"encoding": "UTF-8",
+				"buffer_size": 1163,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "App/www/templates/surgeries.html",
+			"file": "App/www/templates/profile.html",
 			"settings":
 			{
-				"buffer_size": 675,
+				"buffer_size": 1554,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -238,33 +237,6 @@
 			"settings":
 			{
 				"buffer_size": 5293,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "App/www/templates/viewMedication.html",
-			"settings":
-			{
-				"buffer_size": 996,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "App/www/templates/viewLabTest.html",
-			"settings":
-			{
-				"buffer_size": 981,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "App/www/templates/main.html",
-			"settings":
-			{
-				"buffer_size": 1969,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -339,38 +311,60 @@
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/tests",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www",
-		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/css",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/js",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates"
 	],
 	"file_history":
 	[
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/surgeries.html",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/login.html",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/js/services.js",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/tests/unit-tests.conf.js",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/profile.html",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/viewMedication.html",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/viewLabTest.html",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/viewContact.html",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/viewNote.html",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/js/app.js",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/main.html",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/gulpfile.js",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/main.html",
 		"/C/Users/sakan_000/Documents/Github/compilers-part2-group21/src/comp207p/main/ConstantFolder.java",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/index.html",
+		"/C/Users/sakan_000/Documents/Github/compilers-part2-group21/test/comp207p/target/DynamicVariableFoldingTest.java",
+		"/C/Users/sakan_000/Documents/Github/compilers-part2-group21/test/comp207p/target/SimpleFoldingTest.java",
+		"/C/Users/sakan_000/Documents/Github/compilers-part2-group21/test/comp207p/target/ConstantVariableFoldingTest.java",
+		"/C/Users/sakan_000/Documents/Github/compilers-part2-group21/src/comp207p/target/DynamicVariableFolding.java",
 		"/C/Users/sakan_000/Documents/Github/compilers-part2-group21/src/comp207p/target/ConstantVariableFolding.java",
-		"/C/Users/sakan_000/Documents/Github/compilers-part2-group21/src/comp207p/main/ConstantFolderOriginal.java",
+		"/C/Users/sakan_000/Documents/Github/compilers-part2-group21/src/comp207p/target/SimpleFolding.j",
+		"/C/Users/sakan_000/Documents/Github/compilers-part2-group21/test/comp207p/target/ASimpleFoldingTest.java",
+		"/C/Users/sakan_000/Documents/Github/compilers-part2-group21/src/comp207p/target/ASimpleFolding.j",
 		"/C/Users/sakan_000/Documents/Github/compilers-part2-group21/src/comp207p/main/Main.java",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/tests/unit-tests/notes.factory.tests.js",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/tests/unit-tests/appointment.factory.tests.js",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/tests/unit-tests/careplan.factory.tests.js",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/tests/unit-tests/careteam.factory.tests.js",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/config.xml",
+		"/C/Users/sakan_000/Desktop/ConstantVariableFolding.java",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/viewSurgery.html",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/tests/unit-tests/user.factory.tests.js",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/js/controllers.js",
+		"/C/Users/sakan_000/Documents/Github/compilers-part2-group21/src/comp207p/main/ConstantFolderOriginal.java",
 		"/C/Users/sakan_000/Desktop/comp207p-coursework2/test/comp207p/target/DynamicVariableFoldingTest.java",
 		"/C/Users/sakan_000/Desktop/comp207p-coursework2/test/comp207p/target/SimpleFoldingTest.java",
 		"/C/Users/sakan_000/Desktop/comp207p-coursework2/src/comp207p/target/DynamicVariableFolding.java",
 		"/C/Users/sakan_000/Desktop/comp207p-coursework2/src/comp207p/target/ConstantVariableFolding.java",
 		"/C/Users/sakan_000/Desktop/comp207p-coursework2/src/comp207p/main/ConstantFolder.java",
-		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/js/controllers.js",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/editProfile.html",
 		"/C/Users/sakan_000/Desktop/ehrscape.factory.tests.js",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/tests/unit-tests/firebaseauth.tests.js",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/tests/unit-tests/ehrscape.factory.tests.js",
-		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/tests/unit-tests.conf.js",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/package.json",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/lib/firebase/initFirebase.js",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/lib/firebase/firebase.js",
-		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/index.html",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/lib/ionic/js/ionic.bundle.js",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/tests/unit-tests/user.controller.tests.js",
-		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/js/app.js",
-		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/gulpfile.js",
-		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/tests/unit-tests/user.factory.tests.js",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/tests/unit-tests/login.ctrl.tests.js",
-		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/js/services.js",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/tests/unit-tests/user.service.tests.js",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/lib/angular/angular.js",
 		"/C/Users/sakan_000/Documents/Github/rota/RotaServices/Matcher/test/algroithm.spec.js",
@@ -381,14 +375,12 @@
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/medications.html",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/notes.html",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/labTests.html",
-		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/viewLabTest.html",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/medicalRecords.html",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/js/routes.js",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/medication.html",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/menu.html",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/allergies.html",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/addNote.html",
-		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/main.html",
 		"/C/Users/SAKAN_~1/AppData/Local/Temp/7zO0C6DCA62/main.c",
 		"/C/Users/sakan_000/Documents/Github/bymi15.github.io/index.html",
 		"/C/Users/sakan_000/Documents/Github/bymi15.github.io/js/bxslider.js",
@@ -396,7 +388,6 @@
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/mymodal.html",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/editContact.html",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/addContact.html",
-		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/viewContact.html",
 		"/C/Users/sakan_000/Documents/Github/compilers-group21/src/Parser.cup",
 		"/C/Users/sakan_000/Documents/Github/compilers-group21/src/Lexer.lex",
 		"/C/Users/sakan_000/Documents/Github/compilers-group21/tests/extra_tests/p-tdef0.s",
@@ -418,7 +409,6 @@
 		"/C/Users/sakan_000/Desktop/NHS-WhatsThePlan-eddy/App/www/templates/appointments.html",
 		"/C/Users/sakan_000/Desktop/NHS-WhatsThePlan-eddy/App/www/js/services.js",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/editCareplan.html",
-		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/profile.html",
 		"/C/Users/sakan_000/Desktop/templates/contact.html",
 		"/C/Users/sakan_000/Desktop/templates/careTeam.html",
 		"/C/Users/sakan_000/Desktop/templates/carePlan.html",
@@ -434,9 +424,7 @@
 		"/C/Users/sakan_000/Desktop/linkedindatamining/script.py",
 		"/C/Users/sakan_000/Desktop/linkedindatamining/auth.py",
 		"/C/Users/sakan_000/Desktop/project/lexer.lex",
-		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/viewNote.html",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/editNote.html",
-		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/login.html",
 		"/C/Users/sakan_000/Documents/Github/MoveAndTag-TeamOrthrus/clusterTag/src/Parser.java",
 		"/C/Users/sakan_000/Documents/Github/MoveAndTag-TeamOrthrus/clusterTag/src/Main.java",
 		"/C/Users/sakan_000/Downloads/Algorithm (1).java",
@@ -455,24 +443,7 @@
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/experiments/ionicapp/ionic-datetimepicker/js/app.js",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/consultationNotes.html",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/addConsultationNote.html",
-		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/js/directives.js",
-		"/C/wamp/www/server.php",
-		"/C/wamp/www/lib/inc/functions.php",
-		"/C/wamp/scripts/config.inc.php",
-		"/C/wamp/www/test.php",
-		"/C/wamp/www/lib/inc/config.php",
-		"/C/wamp/www/uclks/include/config.php",
-		"/C/wamp/www/lib/nxs-api/nxs-http.php",
-		"/C/Users/sakan_000/Documents/Github/InstagramVision/index.php",
-		"/C/Users/sakan_000/Documents/Github/InstagramVision/server.php",
-		"/C/Users/sakan_000/Documents/Github/InstagramVision/js/app.js",
-		"/C/wamp/www/css/rangeslider.css",
-		"/C/wamp/www/index.php",
-		"/C/wamp/www/js/app.js",
-		"/C/wamp/www/processUploadImage.php",
-		"/C/wamp/www/lib/nxs-api/nxs-api.php",
-		"/C/Users/sakan_000/Documents/Github/InstagramVision/lib/inc/nxs-functions.php",
-		"/C/wamp/www/lib/inc/nxs-functions.php"
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/js/directives.js"
 	],
 	"find":
 	{
@@ -492,6 +463,34 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"moment",
+			"CareplanPhotos",
+			"nhsnum",
+			"moment",
+			"deleteIn",
+			"instList.setPositions",
+			"deleteInstruction(",
+			"Notes",
+			"catch",
+			"e",
+			"debug(",
+			"myCPGen",
+			"handleStoreInstructions",
+			"handle.getInstruction()",
+			"lastStackValue",
+			"newInstList",
+			"myCPGen",
+			"lastStackValue",
+			"binaryOps",
+			"convertNumber",
+			"firstNumber",
+			"lastHandle.getInstruction()",
+			"lastStackOp",
+			"convertNumber",
+			"getLastStackPush",
+			"safeInstructionDelete",
+			"lastStackOp",
+			"stackChangingOp",
 			"removeOldAppointments",
 			"appointmentID",
 			"Notes",
@@ -591,35 +590,7 @@
 			"select(",
 			"snippets",
 			"login",
-			"publicprofile",
-			"redirect",
-			"displayAll",
-			"this->con",
-			"TRUE",
-			"elem.",
-			"modal",
-			"createPrivateChannel(",
-			"changeChannelPrivate",
-			"on(",
-			"modalCreatePrivate-createbtn",
-			"//io.",
-			".emit('connect",
-			"socket.emit('chathistory",
-			"modalJoinPrivate-joinbtn",
-			"error",
-			"$nickname",
-			"privateChannelName",
-			"h3",
-			"ch-",
-			"changeChannel",
-			"modaljoinprivate-joinbtn",
-			"channels[",
-			"script",
-			"setup",
-			"data.channel",
-			"btnJoinPrivate",
-			"currentChannel",
-			"defaultCha"
+			"publicprofile"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -627,6 +598,21 @@
 		"regex": false,
 		"replace_history":
 		[
+			"Careteam",
+			"mainCpGen",
+			"processStoreInstr",
+			"instr",
+			"lastVal",
+			"mainCpGen",
+			"lastVal",
+			"binOp",
+			"convertNum",
+			"num",
+			"instr",
+			"lastHandle",
+			"getLastHandle",
+			"deleteInstruction",
+			"lastHandle",
 			"Appointment",
 			"l3",
 			"www.uclks.co.uk",
@@ -649,24 +635,24 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "App/tests/unit-tests/user.factory.tests.js",
+					"file": "App/www/js/controllers.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3498,
+						"buffer_size": 35848,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2517,
-								2517
+								24722,
+								24722
 							]
 						],
 						"settings":
@@ -676,70 +662,68 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "App/tests/unit-tests/notes.factory.tests.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 5424,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								4163,
-								4163
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 2772.0,
+						"translation.y": 16522.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "App/tests/unit-tests/appointment.factory.tests.js",
+					"buffer": 1,
+					"file": "App/www/templates/careplan.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 6278,
+						"buffer_size": 1180,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4348,
-								4348
+								836,
+								836
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/HTML/HTML.sublime-syntax"
 						},
 						"translation.x": 0.0,
-						"translation.y": 2673.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "App/www/main.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5758,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								594,
+								594
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
@@ -748,15 +732,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 19761,
+						"buffer_size": 20313,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4024,
-								4063
+								6049,
+								6060
 							]
 						],
 						"settings":
@@ -766,27 +750,27 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 3358.0,
+						"translation.y": 4550.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
 					"buffer": 4,
-					"file": "App/www/templates/viewSurgery.html",
-					"semi_transient": false,
+					"file": "App/www/templates/notes.html",
+					"semi_transient": true,
 					"settings":
 					{
-						"buffer_size": 892,
+						"buffer_size": 1163,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								393,
-								393
+								1035,
+								932
 							]
 						],
 						"settings":
@@ -804,19 +788,19 @@
 				},
 				{
 					"buffer": 5,
-					"file": "App/www/templates/surgeries.html",
+					"file": "App/www/templates/profile.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 675,
+						"buffer_size": 1554,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								26,
-								26
+								715,
+								715
 							]
 						],
 						"settings":
@@ -829,7 +813,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
@@ -856,100 +840,10 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 132.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "App/www/templates/viewMedication.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 996,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								996,
-								996
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 9,
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "App/www/templates/viewLabTest.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 981,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								789,
-								789
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 8,
-					"type": "text"
-				},
-				{
-					"buffer": 9,
-					"file": "App/www/templates/main.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1969,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1240,
-								1240
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 7,
+					"stack_index": 6,
 					"type": "text"
 				}
 			]
