@@ -208,6 +208,31 @@ angular.module('app.services', ['firebase'])
     return func;
 }])
 
+.factory('CareplanPhotos', [function(){
+    var ref = firebase.database().ref('careplanphotos');
+
+    var func = {};
+
+    //returns a promise
+    func.getImages = function(uid){
+        return ref.child(uid).once('value');
+    }
+
+    func.uploadImage = function(uid, datetime, data){
+        ref.child(uid).push({
+            datetime: datetime,
+            data: data,
+        });
+    }
+
+    func.deleteImage = function(uid, id){
+        var refUser = firebase.database().ref('careplanphotos/' + uid);
+        refUser.child(id).remove();
+    }
+
+    return func;
+}])
+
 .factory('Careteam', [function(){
     var ref = firebase.database().ref('careteam');
 
@@ -257,7 +282,7 @@ angular.module('app.services', ['firebase'])
     return func;
 }])
 
-.factory('validater', ['moment', function(moment){
+.factory('validater', [function(){
     var func = {};
 
     func.validateLogin = function(email, password){
