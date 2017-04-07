@@ -75,11 +75,11 @@
             <li><a href="requirements.html">REQUIREMENTS</a></li>                    
             <li><a href="uidesign.html">UI DESIGN</a></li> 
             <li class="active"><a href="research.html">RESEARCH</a></li>
-            <li><a href="platform.html">PLATFORM</a></li>     
+            <li><a href="design.html">DESIGN</a></li>     
             <li><a href="experiments&prototypes.html">EXPERIMENTS & PROTOTYPES</a></li>
 			<li><a href="testing.html">TESTING</a></li>
-			<li><a href="recordofprogress.html">RECORD OF PROGRESS</a></li>
-			<li><a href="pocdesign.html">POC DESIGN</a></li>	
+			<li><a href="management.html">MANAGEMENT</a></li>
+			<li><a href="evaluation.html">EVALUATION</a></li>	
           </ul>                            
         </div><!--/.nav-collapse -->
       </div>          
@@ -103,6 +103,8 @@
               <a class="smoothscrolldown btn btn-primary" href="#pathways">NHS Pathways</a>
               <a class="smoothscrolldown btn btn-primary" href="#frontend">Frontend Technologies</a>
               <a class="smoothscrolldown btn btn-primary" href="#backend">Backend Technologies</a>
+			  <br><br><a class="smoothscrolldown btn btn-primary" href="#openEHR">openEHR Integration APIs & Tools</a>
+			  
 			  <br><br>
 			  <h2 id="structureofresearch" class="tittle" style="font-size:35px">Structure of Research</h2>
 			                <span class="tittle-line"></span>
@@ -387,7 +389,7 @@ If <strong>What’s The Plan</strong> plans to use an <strong>open</strong> appr
               <p>• The documentation and guides are lacking in general and there is a lack of full example code.</p>
               <p>&nbsp;</p>
           <h2 class="tittle" style="font-size:25px">Ionic</h2>
-          <p><strong>Ionic</strong>, which is a robust <strong>HTML5 SDK,</strong> is a<strong> hybrid mobile development framework</strong> that allows developers to build mobile apps which feel native using <strong>CSS, HTML</strong> and <strong>JavaScript</strong> as web technologies, applications being built on <strong>Angular</strong>.</p>
+          <p><strong>Ionic</strong>, which is a robust <strong>HTML5 SDK,</strong> is a<strong> hybrid mobile development framework</strong> that allows developers to build mobile apps which feel native using <strong>CSS, HTML</strong> and <strong>JavaScript</strong> as web technologies, applications being built on <strong>AngularJS</strong>.</p>
           <h3 class="tittle" style="font-size:22px">Advantages of Ionic:</h3>
           <p>•	  It is well optimized for touch devices.</p>
           <p>• Ionic has a growing 3rd party plugin community - abundance of plugins such as date-time picker plugin can be used.</p>
@@ -566,9 +568,9 @@ If <strong>What’s The Plan</strong> plans to use an <strong>open</strong> appr
                     <p>• http://nordicapis.com/why-you-should-build-apps-with-an-api-backend-baas/</p>
                     <p>• http://tutorialzine.com/2015/12/the-languages-and-frameworks-you-should-learn-in-2016/</p>
                     <p>• http://www.homeandlearn.co.uk/php/php1p1.html</p>
-<p>• https://www.upwork.com/hiring/development/server-side-scripting-back-end-web-development-technology/</p>
+					<p>• https://www.upwork.com/hiring/development/server-side-scripting-back-end-web-development-technology/</p>
                     <p>• https://www.oracle.com/mysql/index.html</p>
-              <p>• https://www.datarealm.com/blog/five-advantages-disadvantages-of-mysql/</p>
+					<p>• https://www.datarealm.com/blog/five-advantages-disadvantages-of-mysql/</p>
                     <p>• http://railsapps.github.io/what-is-ruby-rails.html</p>
                     <p>• https://www.toptal.com/ruby-on-rails/after-two-decades-of-programming-i-use-rails</p>
                     <p>• https://bitzesty.com/2014/03/03/ruby-on-rails-what-it-is-and-why-we-use-it-for-web-applications/</p>
@@ -577,6 +579,43 @@ If <strong>What’s The Plan</strong> plans to use an <strong>open</strong> appr
                     <p>•  https://crisp.im/blog/why-you-should-never-use-firebase-realtime-database/</p>
                     <p><br>
                     </p>
+					
+					
+<h2 id="openEHR" class="tittle" style="font-size:30px">openEHR Integration APIs & Tools</h2>	
+<span class="tittle-line"></span>	
+<br>
+<h2 class="tittle" style="font-size:25px">EhrScape RESTful APIs</h2>	
+<p>
+openEHR acts as an open specification for the information model of Electronic Health Records. However, it does not itself produce the open Electronic Health Care applications and software. As a result of the complexity provided by the openEHR Specification, an application developer would have to interact with an openEHR System and its information model using a set of "service APIs". EhrScape acts as the interface to the openEHR Clinical Data Repository and provides  several service APIs to allow the building of open healthcare applications.
+<br><br>
+
+EhrScape is a RESTful API which means it uses HTTP requests like GET, PUT, POST and DELETE to store, retrieve and query data. 
+<br><br>
+
+EhrScape provides various service APIs such as Terminology APIs, Eletronic Health Record APIs, Clinical Decision Support APIs, and Resource Store APIs. However, as we are creating an EHR based mobile application, we are only interested in Electronic Health Record APIs. </p>
+<br><img src="research/ehrscapeapi.jpg" height="500" width="800"><br><br>
+
+<h2 class="tittle" style="font-size:25px">Postman</h2>	
+	
+<p>
+Postman is a GUI Platform that aims to speed up API development through testing and documentation. In the context of What's The Plan, it is the perfect tool to test and experiment with EhrScape API calls outside of the application context.
+
+
+<br><br><img src="research/postman.jpg" height="300" width="800"><br><br><br>
+The sources below provide the bulk of tutorials and documentation for EhrScape API services and Postman, which we read to get a better grasp of how to implement openEHR concepts in our app.
+</p>		<br>
+					
+	<p><span class="tittle" style="font-size:22px"><strong>Sources</strong></span><strong>:</strong></p>
+                    <p>• https://www.ehrscape.com/api-explorer.html</p>
+					<p>• https://code4health.org/platform/open_interfaces_apis/ehrscape</p>
+					<p>• https://code4health.org/platform/open_interfaces_apis/ehrscape/introduction</p>
+					<p>• https://code4health.org/platform/open_interfaces_apis/ehrscape/using_postman_with_ehrscape</p>
+
+                    <p><br>
+                    </p>
+
+</p>				
+		
             </div>
           </div>
           <!-- End section area -->

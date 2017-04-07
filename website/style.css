@@ -293,7 +293,7 @@ img{
 }
 .logo {
 	height: 80px;
-	width: 65px;
+	width: 110px;
 	padding: 0;
 }
 .logo  span{
@@ -303,8 +303,8 @@ img{
 	padding-top: 38px;
 }
 .logo-compressed {
-	height: 80px;  
-	width: 65px;
+	height: 80px;
+	width: 110px;
 }
 .logo-compressed span{
 	padding-top: 30px;	
@@ -315,7 +315,7 @@ img{
 }
 #navbar {
 	float: left;
-	width: 94%;
+	width: 90%;
 }
 .main-nav {
 	display: inline-block;
