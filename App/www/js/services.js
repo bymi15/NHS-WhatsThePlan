@@ -59,6 +59,41 @@ angular.module('app.services', ['firebase'])
   };
 })
 
+
+.factory('LocalNotification', [function(){
+    var func = {};
+
+    //returns a promise
+    func.schedule = function(id, title, text, datetime){
+      return cordova.plugins.notification.local.schedule({
+        id: id,
+        title: title,
+        text: text,
+        data: {id: id},
+        at: datetime
+      })
+    }
+
+    //returns a promise
+    func.scheduleEvery = function(id, title, text, datetime, every){
+      return cordova.plugins.notification.local.schedule({
+        id: id,
+        title: title,
+        text: text,
+        data: {id: id},
+        firstAt: datetime,
+        every: every
+      })
+    }
+
+    //returns a promise
+    func.cancel = function(id){
+      return cordova.plugins.notification.local.cancel(id);
+    }
+
+    return func;
+}])
+
 .factory('User', [function(){
     var ref = firebase.database().ref('users');
 
@@ -276,6 +311,44 @@ angular.module('app.services', ['firebase'])
 
     func.removeContact = function(uid, id){
         var refUser = firebase.database().ref('careteam/' + uid);
+        refUser.child(id).remove();
+    }
+
+    return func;
+}])
+
+.factory('MedicationReminder', [function(){
+    var ref = firebase.database().ref('medicationreminder');
+
+    var func = {};
+
+    //returns a promise
+    func.getReminders = function(uid){
+        return ref.child(uid).orderByChild('timestamp');
+    }
+
+    //returns the id
+    func.addReminder = function(uid, remId, medication, dosage, datetime, repeatEvery, timestamp){
+      ref.child(uid).push({
+        remId: remId,
+        medication: medication,
+        dosage: dosage,
+        datetime: datetime,
+        repeatEvery: repeatEvery,
+        timestamp: timestamp
+      });
+    }
+
+    //returns a promise
+    func.generateId = function(uid, callback){
+      var refCounter = firebase.database().ref('reminderCounter');
+      return refCounter.child(uid).transaction(function(counter) {
+        return (counter || 0) + 1; //increment the counter
+      }, callback);
+    }
+
+    func.removeReminder = function(uid, id){
+        var refUser = firebase.database().ref('medicationreminder/' + uid);
         refUser.child(id).remove();
     }
 

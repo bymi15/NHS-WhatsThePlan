@@ -1,0 +1,19 @@
+<ion-view title="Medication Reminder" style="background-color:#FFFFFF;">
+  <ion-nav-buttons side="right" class="has-header">
+    <button ui-sref="addReminder" class="button button-icon icon ion-android-add ion-header-icon"></button>
+  </ion-nav-buttons>
+  <ion-content padding="false" class="has-header">
+    <div id="medications-container">
+      <ion-list can-swipe="true">
+        <ion-item ng-repeat="(key, reminder) in reminders">
+          <h2 style="white-space: normal; color:#7F7F7F;">{{reminder.medication}}</h2>
+          <p style="white-space: normal; color:#F46A00 ;">{{reminder.dosage}}</p>
+          <p style="white-space: normal; color:#3FA9F5;">{{reminder.datetime}}</p>
+          <p style="white-space: normal; color:#35B200;">Every {{reminder.repeatEvery}}</p>
+          <ion-option-button class="button-assertive" ng-click="removeReminder('{{key}}')">Remove</ion-option-button>
+        </ion-item>
+        <ion-item ng-show="remindersLength===0">No reminders to display</ion-item>
+      </ion-list>
+    </div>
+  </ion-content>
+</ion-view>
