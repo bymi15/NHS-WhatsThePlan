@@ -740,9 +740,12 @@ angular.module('app.controllers', ['ionic', 'firebase', 'ngCordova'])
     }
 
      $scope.deleteImage = function (imageID) {
-        CareplanPhotos.deleteImage($scope.currentUID, imageID);
-        $state.go($state.current, {}, {reload: true});
-        alert("The photo has been deleted.");
+        var result = confirm("Are you sure you wish to delete this photo?");
+        if (result) {
+            CareplanPhotos.deleteImage($scope.currentUID, imageID);
+            $state.go($state.current, {}, {reload: true});
+            alert("The photo has been deleted.");
+        }
      }
 })
 
@@ -1012,7 +1015,13 @@ angular.module('app.controllers', ['ionic', 'firebase', 'ngCordova'])
 .controller('addReminderCtrl', function ($scope, $state, utils, $filter, MedicationReminder, LocalNotification, $ionicPlatform, $rootScope) {
     $scope.data = {};
 
+    $scope.data.repeatEvery = 'hour';
+
+
     $scope.addReminder = function(){
+    alert(JSON.stringify($scope.data));
+    return;
+
         utils.showLoading();
 
         var user = firebase.auth().currentUser;

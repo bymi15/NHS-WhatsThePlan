@@ -8,11 +8,11 @@
       <span style="color: #A5A5A5; font-size:12px; float:right;">Last updated on {{data.datetime}}</span>
       <textarea style="background: #3FA9F5; color:#ffffff; width: 100%;max-width: 100%; height: 70vh; padding: 10px;" ng-model="data.careplan" readonly></textarea>
 
-      <div ng-repeat="(key, img) in images">
+      <div ng-repeat="(key, img) in images" style="text-align:center;">
         <br>
         <span style="color: #A5A5A5; font-size:12px; float:right;">Photo taken on {{img.datetime}}</span>
         <img ng-src="{{img.data}}" style="width: 100%; max-width: 100%;">
-        <button class="button-assertive" ng-click="deleteImage('{{key}}')">Delete Photo</button>
+        <button class="button button-assertive" ng-click="deleteImage('{{key}}')">Delete Photo</button>
       </div>
 
       <br>

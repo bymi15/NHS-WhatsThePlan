@@ -1,8 +1,6 @@
 <ion-view title="Add Medication Reminder">
   <ion-content padding="false" class="has-header">
     <form class="list">
-          <button class="button button-positive button-block" ng-click="addReminder()">ADD REMINDER</button>
-
           <label class="item item-input item-stacked-label">
             <span class="input-label">Medication:</span>
             <input ng-model="data.medication" type="text" placeholder="e.g. Paracetamol" value="">
@@ -19,18 +17,15 @@
             <span>{{data.datetime| date: "dd-MM-yyyy hh:mm a"}}</span>
           </label>
 
-          <label class="item item-input item-stacked-label">
+          <div class=" item item-divider">
             <span class="input-label">Repeat Every:</span>
-            <select ng-model="data.repeatEvery">
-              <option value="minute">Minute</option>
-              <option value="hour">Hour</option>
-              <option value="day">Day</option>
-              <option value="week">Week</option>
-              <option value="month">Month</option>
-            </ion-select>
-          </label>
+          </div>
 
-          <button class="button button-positive button-block" ng-click="addReminder()">ADD REMINDER</button>
+          <ion-radio ng-model="data.repeatEvery" ng-value="'hour'">Hour</ion-radio>
+          <ion-radio ng-model="data.repeatEvery" ng-value="'day'">Day</ion-radio>
+          <ion-radio ng-model="data.repeatEvery" ng-value="'week'">Week</ion-radio>
+
+          <button class="button button-positive button-full" ng-click="addReminder()">ADD REMINDER</button>
     </form>
   </ion-content>
 </ion-view>
