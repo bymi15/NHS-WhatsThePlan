@@ -1019,9 +1019,6 @@ angular.module('app.controllers', ['ionic', 'firebase', 'ngCordova'])
 
 
     $scope.addReminder = function(){
-    alert(JSON.stringify($scope.data));
-    return;
-
         utils.showLoading();
 
         var user = firebase.auth().currentUser;
