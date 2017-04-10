@@ -229,6 +229,7 @@ angular.module('app.controllers', ['ionic', 'firebase', 'ngCordova'])
 })
 
 .controller('mainCtrl', function ($scope, $state, User, Ehrscape, $rootScope, utils) {
+
     //Check if user is logged in
     firebase.auth().onAuthStateChanged(function(user) {
         if (!user) {

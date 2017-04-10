@@ -25,7 +25,7 @@ angular.module('app', ['ionic', 'ngCordova', 'app.controllers', 'app.routes', 'a
     }
 
     if (window.cordova && window.cordova.plugins.notification) {
-      alert("notifications are supported by this device!");
+      //alert("notifications are supported by this device!");
 
       $rootScope.notificationSupported = true;
 
@@ -45,7 +45,7 @@ angular.module('app', ['ionic', 'ngCordova', 'app.controllers', 'app.routes', 'a
 
       // Listen for click event.
       cordova.plugins.notification.local.on('click', function (notification, state) {
-
+        window.location.href = "#/medicationReminder";
       });
 
       // Listen for trigger event.
