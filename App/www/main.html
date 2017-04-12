@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+
+    <script src="lib/ng-cordova/ng-cordova.min.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+
+
+    <!-- firebase & angularfire libraries -->
+    <!-- Firebase -->
+    <script src="lib/firebase/firebase.js"></script>
+    <script src="lib/firebase/initFirebase.js"></script>
+
+    <!-- AngularFire -->
+    <script src="lib/firebase/angularfire.min.js"></script>
+
+    <!-- Underscore JS -->
+    <script src="lib/underscore/underscore-min.js"></script>
+    <script src="lib/angular-underscore-module/angular-underscore-module.js"></script>
+
+    <!-- Validate JS -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/validate.js/0.11.1/validate.min.js"></script>
+
+    <!-- Ionic Datetime Picker Plugin -->
+    <script src="lib/ion-datetime-picker/release/ion-datetime-picker.min.js"></script>
+
+    <!-- Google Maps API -->
+    <script src="https://rawgit.com/angular-ui/angular-google-maps/2.4.1/dist/angular-google-maps.min.js"></script>
+    <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDzyoOupKRrTJMq6c4j2wRxkpe65Z1AJwY&libraries=places" type="text/javascript"></script>
+    <script src="https://rawgit.com/angular-ui/angular-google-maps/2.4.1/dist/angular-google-maps.min.js"> </script>
+
+
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+
+
+    <link href="css/ionic.app.css" rel="stylesheet">
+
+    <link href="lib/ion-datetime-picker/release/ion-datetime-picker.min.css" rel="stylesheet">
+
+
+    <style type="text/css">
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 300px;
+      }
+
+      #map-canvas{
+        height: 300px;
+      }
+
+      #description {
+        font-family: Roboto;
+        font-size: 15px;
+        font-weight: 300;
+      }
+
+      #infowindow-content .title {
+        font-weight: bold;
+      }
+
+      #infowindow-content {
+        display: none;
+      }
+
+      #map #infowindow-content {
+        display: inline;
+      }
+
+      #target {
+        width: 345px;
+      }
+
+      .button-positive{
+        background-color: #3FA9F5;
+      }
+
+      .ion-header-icon{
+        background-color: #3FA9F5 !important;
+        color: #ffffff !important;
+      }
+
+      .ion-navicon-round{
+        background-color: #3FA9F5 !important;
+        color: #ffffff !important;
+      }
+
+      .ion-chevron-left{
+        background-color: #3FA9F5 !important;
+        color: #ffffff !important;
+      }
+
+      .blue-theme-button{
+        background-color: #3FA9F5 !important;
+        color: #ffffff !important;
+      }
+
+      .main-navbar{
+        background-color: #3FA9F5 !important;
+        color: #ffffff !important;
+        border: 0px !important;
+        border-bottom-color: transparent !important;
+        background-image: none !important;
+        border-bottom: none !important;
+      }
+      .nav-bar-block, .bar{
+        background-color: inherit !important;
+      }
+      .platform-ios .manual-ios-statusbar-padding{
+        padding-top:20px;
+      }
+      .manual-remove-top-padding{
+        padding-top:0px;
+      }
+      .manual-remove-top-padding .scroll{
+        padding-top:0px !important;
+      }
+      ion-list.manual-list-fullwidth div.list, .list.card.manual-card-fullwidth {
+        margin-left:-10px;
+        margin-right:-10px;
+      }
+      ion-list.manual-list-fullwidth div.list > .item, .list.card.manual-card-fullwidth > .item {
+        border-radius:0px;
+        border-left:0px;
+        border-right: 0px;
+      }
+      .show-list-numbers-and-dots ul{
+        list-style-type: disc;
+        padding-left:40px;
+      }
+      .show-list-numbers-and-dots ol{
+        list-style-type: decimal;
+        padding-left:40px;
+      }
+    </style>
+
+    <script src="js/app.js"></script>
+    <script src="js/controllers.js"></script>
+    <script src="js/routes.js"></script>
+
+
+    <script src="js/directives.js"></script>
+
+    <script src="js/services.js"></script>
+
+
+    <!-- Only required for Tab projects w/ pages in multiple tabs
+    <script src="lib/ionicuirouter/ionicUIRouter.js"></script>
+    -->
+
+  </head>
+  <body ng-app="app" animation="slide-left-right-ios7">
+    <div>
+      <div>
+      <ion-side-menus>
+        <!-- Main content -->
+        <ion-side-menu-content>
+          <ion-nav-bar class="bar-dark main-navbar">
+            <ion-nav-back-button></ion-nav-back-button>
+          </ion-nav-bar>
+          <ion-nav-view></ion-nav-view>
+        </ion-side-menu-content>
+
+        <!--Right menu-->
+        <ion-side-menu side="right">
+          <ion-header-bar class="bar bar-header"></ion-header-bar>
+
+          <ion-content has-header="true">
+
+            <ion-list ng-controller="mainCtrl">
+              <a menu-close href="javascript:void(0)" ng-click="logout()" style="text-decoration: none;">
+                <ion-item style="white-space: normal;">
+                  <span style="color: #3FA9F5;">Logout</span>
+                </ion-item>
+              </a>
+              <a menu-close href="javascript:void(0)" ng-click="" style="text-decoration: none;">
+                <ion-item style="white-space: normal;">
+                  <span style="color: #3FA9F5;">Export Data</span>
+                </ion-item>
+              </a>
+            </ion-list>
+
+          </ion-content>
+        </ion-side-menu>
+      </ion-side-menus>
+      </div>
+    </div>
+  </body>
+</html>

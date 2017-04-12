@@ -26,15 +26,6 @@ describe('Notes Service (Firebase)', function(){
         Notes = _Notes_;
     }));
 
-    beforeEach(function(done){
-        firebase.auth().signInWithEmailAndPassword(email, password).then(function(){
-            done();
-        }).catch(function(error) {
-            console.info(error);
-            done();
-        });
-    });
-
     beforeAll(function(done){
         firebase.auth().signInWithEmailAndPassword(email, password).then(function(){
             firebase.database().ref('notes/' + uid).remove();

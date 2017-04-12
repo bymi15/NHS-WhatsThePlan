@@ -9,7 +9,7 @@ describe('Appointment Service (Firebase)', function(){
 
     var appointmentID;
     var location = 'UCLH';
-    var timestamp = '1487662740000';
+    var timestamp = 1487662740000;
     var description = 'Test Appointment 1';
     var doctor = 'Dr Unit Test';
     var markerX = '50';
@@ -18,7 +18,7 @@ describe('Appointment Service (Firebase)', function(){
 
     var appointmentID2;
     var location2 = 'Whiston Hospital';
-    var timestamp2 = '1424526120000';
+    var timestamp2 = 1424526120000;
     var description2 = 'Test Appointment 2';
     var doctor2 = 'Dr Test Unit 2';
     var markerX2 = '35';
@@ -30,15 +30,6 @@ describe('Appointment Service (Firebase)', function(){
     beforeEach(inject(function (_Appointment_) {
         Appointment = _Appointment_;
     }));
-
-    beforeEach(function(done){
-        firebase.auth().signInWithEmailAndPassword(email, password).then(function(){
-            done();
-        }).catch(function(error) {
-            console.info(error);
-            done();
-        });
-    });
 
     beforeAll(function(done){
         firebase.auth().signInWithEmailAndPassword(email, password).then(function(){
@@ -149,28 +140,7 @@ describe('Appointment Service (Firebase)', function(){
         });
     });
 
-    it('can correctly remove another appointment by id', function(done) {
-        inject(function(Appointment) {
-            Appointment.removeAppointment(uid, appointmentID2);
-
-            setTimeout(function() {
-                var appointments = [];
-                Appointment.getAppointments(uid).once('value', function(snap){
-                    snap.forEach(function(ss) {
-                        appointments.push(ss.val());
-                    });
-
-                    var keyArr = Object.keys(appointments);
-                    var length = keyArr.length;
-
-                    expect(length).toEqual(0);
-                    done();
-                });
-            }, 1000);
-        });
-    });
-
-    /*it('can correctly remove old appointments', function(done) {
+    it('can correctly remove old appointments', function(done) {
         inject(function(Appointment) {
             Appointment.removeOldAppointments(uid, 1);
 
@@ -189,5 +159,5 @@ describe('Appointment Service (Firebase)', function(){
                 });
             }, 1000);
         });
-    });*/
+    });
 });

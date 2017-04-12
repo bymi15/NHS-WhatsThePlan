@@ -4,10 +4,10 @@
       <h3 style="color:#3FA9F5; display: block; text-align: center; text-decoration: underline; font-weight: normal; margin-bottom:10px; font-size: 18px;">{{testGroup[0].test_name}}</h3>
 
       <ion-item style="white-space: normal;" ng-repeat="test in testGroup" class="item-icon-right">
-        <h2 style="white-space: normal; color: #7F7F7F;">{{test.result_name}}: <span style="color: #3FA9F5">{{test.result_magnitude}} ({{test.result_units}})</span></h2>
-        <p style="white-space: normal; color: #F46A00;">{{test.datetime}}</p>
-        <p style="white-space: normal; color: #7F7F7F;">Author: <span style="color: #35B200">{{test.author}}</span></p>
-        <p style="white-space: normal; color: #7F7F7F;">Conclusion: <span style="color: #000000">{{test.conclusion}}</span></p>
+        <h2 style="white-space: normal;">{{test.result_name}}: <span style="color: #3FA9F5">{{test.result_magnitude}} ({{test.result_units}})</span></h2>
+        <p style="white-space: normal; color: #35B200;">{{test.datetime}}</p>
+        <p style="white-space: normal;">Author: <span style="color: #F46A00">{{test.author}}</span></p>
+        <p style="white-space: normal;">Conclusion: <span style="color: #7F7F7F">{{test.conclusion}}</span></p>
       </ion-item>
     </ion-list>
   </ion-content>

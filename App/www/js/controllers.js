@@ -1,11 +1,31 @@
-angular.module('app.controllers', ['ionic', 'firebase'])
+//Java String.hashCode() implementation
+String.prototype.hashCode = function() {
+    var hash = 0;
+    if (this.length == 0) return hash;
+    for (i = 0; i < this.length; i++) {
+        char = this.charCodeAt(i);
+        hash = ((hash<<5)-hash)+char;
+        hash = hash & hash; // Convert to 32bit integer
+    }
+    return hash;
+};
 
-.controller('menuCtrl', function ($scope, $stateParams) {
-})
+angular.module('app.controllers', ['ionic', 'firebase', 'ngCordova'])
 
 .controller('loginCtrl', function ($scope, $state, $ionicHistory, utils, validater, User, Ehrscape, $rootScope) {
 
+    //Check if user is logged in
+    firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+            $state.go("main");
+        }
+    });
+
     $scope.data = {};
+
+    //for testing
+    $scope.data.email = "test@test.test";
+    $scope.data.password = "testtest";
 
     $scope.signInEmail = function(){
         utils.showLoading();
@@ -13,7 +33,7 @@ angular.module('app.controllers', ['ionic', 'firebase'])
         var email = $scope.data.email;
         var password = $scope.data.password;
 
-        var validation = validater.validateLogin(email, password);
+        /*var validation = validater.validateLogin(email, password);
 
         if(validation){
             utils.hideLoading();
@@ -25,7 +45,7 @@ angular.module('app.controllers', ['ionic', 'firebase'])
                 return;
             }
         }
-
+*/
         firebase.auth().signInWithEmailAndPassword(email, password).then(function() {
             // user successfully logged in
 
@@ -209,6 +229,7 @@ angular.module('app.controllers', ['ionic', 'firebase'])
 })
 
 .controller('mainCtrl', function ($scope, $state, User, Ehrscape, $rootScope, utils) {
+
     //Check if user is logged in
     firebase.auth().onAuthStateChanged(function(user) {
         if (!user) {
@@ -227,9 +248,9 @@ angular.module('app.controllers', ['ionic', 'firebase'])
                         Ehrscape.setSessionId(res.data.sessionId);
                         Ehrscape.retrieveEhrId(nhsNumber).then(function(res){
                             $rootScope.ehrId = res.data.ehrId;
+                            utils.hideLoading();
                         });
                         $rootScope.sessionId = res.data.sessionId;
-                        utils.hideLoading();
                     });
                 });
             }
@@ -334,7 +355,6 @@ angular.module('app.controllers', ['ionic', 'firebase'])
         if (user) {
             Notes.getNotes(user.uid).then(function(snapshot) {
                 $scope.notes = snapshot.val();
-
                 utils.hideLoading();
             });
         }else{
@@ -475,14 +495,16 @@ angular.module('app.controllers', ['ionic', 'firebase'])
             Appointment.removeOldAppointments(user.uid, 2);
 
             //retrieve the appointments from firebase
-            $scope.appointments = []
+            $scope.appointments = {};
 
             Appointment.getAppointments(user.uid).once('value', function(snap){
                 snap.forEach(function(ss) {
-                    $scope.appointments.push(ss.val());
+                    var val = ss.val();
+                    $scope.appointments[ss.key] = val;
                 });
 
                 $scope.currentDate = $filter('date')(new Date(), 'dd MMM yyyy');
+                $scope.appointmentsLength = Object.keys($scope.appointments).length;
                 utils.hideLoading();
             });
         }else{
@@ -639,7 +661,7 @@ angular.module('app.controllers', ['ionic', 'firebase'])
 .controller('careplanMenuCtrl', function ($scope, $stateParams) {
 })
 
-.controller('careplanCtrl', function ($scope, $state, utils, Careplan) {
+.controller('careplanCtrl', function ($scope, $state, utils, Careplan, $cordovaCamera, CareplanPhotos, $filter) {
     utils.showLoading();
 
     $scope.data = {};
@@ -647,6 +669,7 @@ angular.module('app.controllers', ['ionic', 'firebase'])
     //Check if user is logged in
     firebase.auth().onAuthStateChanged(function(user) {
         if (user) {
+            $scope.currentUID = user.uid;
             Careplan.getCareplan(user.uid).then(function(snapshot) {
                 $scope.careplan = snapshot.val();
                 /*$scope.careplan.careplan = $scope.careplan.careplan.replace(/(?:\r\n|\r|\n)/g, '<br>');*/
@@ -655,12 +678,76 @@ angular.module('app.controllers', ['ionic', 'firebase'])
                     $scope.data.datetime = $scope.careplan.datetime;
                 }
 
-                utils.hideLoading();
+                CareplanPhotos.getImages(user.uid).then(function(ss){
+                    $scope.images = ss.val();
+                    utils.hideLoading();
+                });
             });
         }else{
             $state.go("login");
         }
     });
+
+    $scope.takePhoto = function(){
+        var options = {
+            quality: 75,
+            destinationType: Camera.DestinationType.DATA_URL,
+            sourceType: Camera.PictureSourceType.CAMERA,
+            allowEdit: true,
+            encodingType: Camera.EncodingType.JPEG,
+            targetWidth: 300,
+            targetHeight: 450,
+            popoverOptions: CameraPopoverOptions,
+            saveToPhotoAlbum: false
+        };
+
+        $cordovaCamera.getPicture(options).then(function(imageData){
+            var dateTime = new Date();
+            dateTime = $filter('date')(dateTime, 'dd-MM-yyyy hh:mm a');
+
+            CareplanPhotos.uploadImage($scope.currentUID, dateTime, "data:image/jpeg;base64," + imageData);
+
+            $state.go($state.current, {}, {reload: true});
+
+        }, function(err){
+            console.log(err)
+        });
+    }
+
+    $scope.choosePhoto = function () {
+        var options = {
+            quality: 75,
+            destinationType: Camera.DestinationType.DATA_URL,
+            sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+            allowEdit: true,
+            encodingType: Camera.EncodingType.JPEG,
+            targetWidth: 300,
+            targetHeight: 450,
+            popoverOptions: CameraPopoverOptions,
+            saveToPhotoAlbum: false
+        };
+
+        $cordovaCamera.getPicture(options).then(function (imageData) {
+            var dateTime = new Date();
+            dateTime = $filter('date')(dateTime, 'dd-MM-yyyy hh:mm a');
+
+            CareplanPhotos.uploadImage($scope.currentUID, dateTime, "data:image/jpeg;base64," + imageData);
+
+            $state.go($state.current, {}, {reload: true});
+
+        }, function (err) {
+            console.log(err)
+        });
+    }
+
+     $scope.deleteImage = function (imageID) {
+        var result = confirm("Are you sure you wish to delete this photo?");
+        if (result) {
+            CareplanPhotos.deleteImage($scope.currentUID, imageID);
+            $state.go($state.current, {}, {reload: true});
+            alert("The photo has been deleted.");
+        }
+     }
 })
 
 .controller('editCareplanCtrl', function ($scope, $state, utils, Careplan, $filter) {
@@ -857,6 +944,10 @@ angular.module('app.controllers', ['ionic', 'firebase'])
     });
 })
 
+
+.controller('medicationsMenuCtrl', function ($scope, $stateParams) {
+})
+
 .controller('medicationsCtrl', function ($scope, $state, $stateParams, utils, Ehrscape, $rootScope) {
     utils.showLoading();
 
@@ -883,6 +974,94 @@ angular.module('app.controllers', ['ionic', 'firebase'])
 
     utils.hideLoading();
 })
+
+.controller('medicationReminderCtrl', function ($scope, $state, utils, MedicationReminder, LocalNotification, $rootScope) {
+    utils.showLoading();
+
+    //Check if user is logged in
+    firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+            $scope.reminders = {};
+            MedicationReminder.getReminders(user.uid).once('value', function(snap){
+                snap.forEach(function(ss) {
+                    var val = ss.val();
+                    $scope.reminders[ss.key] = val;
+                });
+
+                $scope.remindersLength = (Object.keys($scope.reminders)).length;
+                utils.hideLoading();
+            });
+        }else{
+            $state.go("login");
+        }
+    });
+
+    $scope.removeReminder = function(id){
+        var notificationID = $scope.reminders[id].remId;
+
+        var user = firebase.auth().currentUser;
+        MedicationReminder.removeReminder(user.uid, id);
+
+        delete $scope.reminders[id];
+
+        if($rootScope.notificationSupported){
+            LocalNotification.cancel(notificationID).then(function(result){
+                console.log(result);
+                alert("notification cancelled: " + result);
+            });
+        }
+    }
+})
+
+.controller('addReminderCtrl', function ($scope, $state, utils, $filter, MedicationReminder, LocalNotification, $ionicPlatform, $rootScope) {
+    $scope.data = {};
+
+    $scope.data.repeatEvery = 'hour';
+
+
+    $scope.addReminder = function(){
+        utils.showLoading();
+
+        var user = firebase.auth().currentUser;
+
+        if (user != null) {
+            var uid = user.uid;
+            var medication = $scope.data.medication;
+            var dosage = $scope.data.dosage;
+            var repeatEvery = $scope.data.repeatEvery;
+            var datetime = $scope.data.datetime;
+            var datetimeObject = new Date($scope.data.datetime);
+            var datetimeFull = $filter('date')(datetime, 'hh:mm a - dd MMM yyyy');
+            var timestamp = datetimeObject.getTime();
+
+            MedicationReminder.generateId(user.uid, function(err, committed, ss){
+                if(err) {
+                    utils.showAlert('An error has occured!', err);
+                    utils.hideLoading();
+                }else if(committed) {
+                    var remId = ss.val();
+
+                    MedicationReminder.addReminder(uid, remId, medication, dosage, datetimeFull, repeatEvery, timestamp);
+
+                    if($rootScope.notificationSupported){
+                        LocalNotification.scheduleEvery(remId, "It's time to take your medication!", "Take " + dosage + " of " + medication, datetimeObject, repeatEvery).then(function(result){
+                            utils.showAlert('Notification triggered!', result);
+                            console.log(result);
+                        });
+                    }
+
+                    utils.hideLoading();
+
+                    $state.go("medicationReminder");
+                }
+            });
+
+        }else{
+            $state.go("login");
+        }
+    }
+})
+
 
 .controller('labTestsCtrl', function ($scope, $state, $stateParams, utils, Ehrscape, $rootScope, _, $filter) {
     utils.showLoading();

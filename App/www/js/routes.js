@@ -162,6 +162,14 @@ angular.module('app.routes', [])
     authRequired: true
   })
 
+  .state('medicationsMenu', {
+    url: '/medicationsMenu',
+    templateUrl: 'templates/medicationsMenu.html',
+    controller: 'medicationsMenuCtrl',
+    cache: true,
+    authRequired: true
+  })
+
   .state('medications', {
     url: '/medications',
     templateUrl: 'templates/medications.html',
@@ -174,6 +182,22 @@ angular.module('app.routes', [])
     url: '/viewMedication/:id',
     templateUrl: 'templates/viewMedication.html',
     controller: 'viewMedicationCtrl',
+    cache: false,
+    authRequired: true
+  })
+
+  .state('medicationReminder', {
+    url: '/medicationReminder',
+    templateUrl: 'templates/medicationReminder.html',
+    controller: 'medicationReminderCtrl',
+    cache: false,
+    authRequired: true
+  })
+
+  .state('addReminder', {
+    url: '/addReminder',
+    templateUrl: 'templates/addReminder.html',
+    controller: 'addReminderCtrl',
     cache: false,
     authRequired: true
   })

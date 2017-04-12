@@ -1,13 +1,14 @@
 <ion-view title="Care Team">
   <ion-nav-buttons side="right" class="has-header">
-    <button ui-sref="addContact" class="button button-icon icon ion-android-add ion-header-icon"></button>
+    <button ui-sref="addContact" class="button button-icon icon ion-person-add ion-header-icon"></button>
   </ion-nav-buttons>
   <ion-content padding="true" class="has-header">
     <ion-list can-swipe="true">
-      <ion-item ng-repeat="(key, contact) in contacts" ng-click="goViewContact('{{key}}')" class="item-icon-right">{{contact.full_name}}
-        <div class="item-icon-right">
-          <i class="icon ion-ios-arrow-right"></i>
-        </div>
+      <ion-item ng-repeat="(key, contact) in contacts" ng-click="goViewContact('{{key}}')" class="item-icon-left item-icon-right">
+        <i class="icon ion-person"></i>
+        {{contact.full_name}}
+        <i class="icon ion-ios-arrow-right"></i>
+
         <ion-option-button class="button-assertive" ng-click="removeContact('{{key}}')">Delete</ion-option-button>
       </ion-item>
       <ion-item ng-show="!contacts">No contacts to display</ion-item>
