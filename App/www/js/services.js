@@ -65,30 +65,30 @@ angular.module('app.services', ['firebase'])
 
     //returns a promise
     func.schedule = function(id, title, text, datetime){
-      return cordova.plugins.notification.local.schedule({
+      cordova.plugins.notification.local.schedule({
         id: id,
         title: title,
         text: text,
         data: {id: id},
         at: datetime
-      })
+      });
     }
 
     //returns a promise
     func.scheduleEvery = function(id, title, text, datetime, every){
-      return cordova.plugins.notification.local.schedule({
+      cordova.plugins.notification.local.schedule({
         id: id,
         title: title,
         text: text,
         data: {id: id},
         firstAt: datetime,
         every: every
-      })
+      });
     }
 
     //returns a promise
     func.cancel = function(id){
-      return cordova.plugins.notification.local.cancel(id);
+      cordova.plugins.notification.local.cancel(id);
     }
 
     return func;
