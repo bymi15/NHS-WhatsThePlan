@@ -53,18 +53,13 @@ angular.module('app', ['ionic', 'ngCordova', 'app.controllers', 'app.routes', 'a
 
       });
 
-      // Listen for schedule event.
-      cordova.plugins.notification.local.on('schedule', function (notification, state) {
-        alert("scheduled: " + notification.id);
-      });
-
       // To add a notification.
-      cordova.plugins.notification.local.schedule({
+      /*cordova.plugins.notification.local.schedule({
         id: 1,
         title: "hello",
         text: "suppppppppp",
         at: new Date()
-      });
+      });*/
 
     }
   });

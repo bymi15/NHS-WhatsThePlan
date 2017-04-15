@@ -1,15 +1,3 @@
-//Java String.hashCode() implementation
-String.prototype.hashCode = function() {
-    var hash = 0;
-    if (this.length == 0) return hash;
-    for (i = 0; i < this.length; i++) {
-        char = this.charCodeAt(i);
-        hash = ((hash<<5)-hash)+char;
-        hash = hash & hash; // Convert to 32bit integer
-    }
-    return hash;
-};
-
 angular.module('app.controllers', ['ionic', 'firebase', 'ngCordova'])
 
 .controller('loginCtrl', function ($scope, $state, $ionicHistory, utils, validater, User, Ehrscape, $rootScope) {
@@ -106,7 +94,7 @@ angular.module('app.controllers', ['ionic', 'firebase', 'ngCordova'])
         var gpName = $scope.data.gpName;
         var gpSurgery = $scope.data.gpSurgery;
 
-        var validation = validater.validateSignup(email, password, confirmPassword, fullName, gender, nationality, maritalStatus, nhsNumber, gpName, gpSurgery);
+        /*var validation = validater.validateSignup(email, password, confirmPassword, fullName, gender, nationality, maritalStatus, nhsNumber, gpName, gpSurgery);
 
         if(validation){
             utils.hideLoading();
@@ -145,7 +133,7 @@ angular.module('app.controllers', ['ionic', 'firebase', 'ngCordova'])
                 utils.showAlert('Error!', "An error has occured. Please try again.");
                 return;
             }
-        }
+        }*/
 
         var index = fullName.indexOf(" ");
         var firstNames = fullName.substr(0, index);
@@ -191,7 +179,6 @@ angular.module('app.controllers', ['ionic', 'firebase', 'ngCordova'])
                     }else{
                         $rootScope.ehrId = res.data.ehrId;
                         Ehrscape.setEhrId(res.data.ehrId);
-                        console.log("ehr id retrieved successfully: " + res.data.ehrId);
 
                         return Ehrscape.createPatientDemographics(firstNames, lastNames, gender, isoDateOfBirth, maritalStatus, nhsNumber);
                     }
@@ -1005,10 +992,7 @@ angular.module('app.controllers', ['ionic', 'firebase', 'ngCordova'])
         delete $scope.reminders[id];
 
         if($rootScope.notificationSupported){
-            LocalNotification.cancel(notificationID).then(function(result){
-                console.log(result);
-                alert("notification cancelled: " + result);
-            });
+            LocalNotification.cancel(notificationID);
         }
     }
 })
@@ -1044,10 +1028,7 @@ angular.module('app.controllers', ['ionic', 'firebase', 'ngCordova'])
                     MedicationReminder.addReminder(uid, remId, medication, dosage, datetimeFull, repeatEvery, timestamp);
 
                     if($rootScope.notificationSupported){
-                        LocalNotification.scheduleEvery(remId, "It's time to take your medication!", "Take " + dosage + " of " + medication, datetimeObject, repeatEvery).then(function(result){
-                            utils.showAlert('Notification triggered!', result);
-                            console.log(result);
-                        });
+                        LocalNotification.scheduleEvery(remId, "It's time to take your medication!", "Take " + dosage + " of " + medication, datetimeObject, repeatEvery);
                     }
 
                     utils.hideLoading();
