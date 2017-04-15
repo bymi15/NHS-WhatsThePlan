@@ -179,7 +179,6 @@ angular.module('app.controllers', ['ionic', 'firebase', 'ngCordova'])
                     }else{
                         $rootScope.ehrId = res.data.ehrId;
                         Ehrscape.setEhrId(res.data.ehrId);
-                        console.log("ehr id retrieved successfully: " + res.data.ehrId);
 
                         return Ehrscape.createPatientDemographics(firstNames, lastNames, gender, isoDateOfBirth, maritalStatus, nhsNumber);
                     }

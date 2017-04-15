@@ -1,9 +1,53 @@
+<style>
+.splashscreen {
+  background-color: #3FA9F5;
+  height:100%;
+  width:100%;
+  animation: pulse 500ms linear 1 both;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#custom-overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 100000;
+  width:100%;
+}
+#custom-overlay img {
+  display: block;
+  margin: 0 auto;
+  width: 50%;
+  height: auto;
+  animation: pulse 1000ms linear 1 both;
+  animation-delay: 500ms;
+}
+@keyframes pulse {
+  0% {
+    opacity:0;
+  }
+  100% {
+    opacity:1;
+  }
+}
+</style>
+
 <!DOCTYPE html>
 <html>
   <head>
-   <title>What's The Plan</title>
+   <meta charset="utf-8">
+   <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+   <div id="custom-overlay">
+      <div class="splashscreen">
+        <img src="img/logo.png">
+      </div>
+   </div>
    <script>
-     window.location='./main.html';
+     setTimeout(function(){ window.location='./main.html'; }, 3000);
    </script>
   </head><body>
   </body>
