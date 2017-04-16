@@ -63,7 +63,6 @@ angular.module('app.services', ['firebase'])
 .factory('LocalNotification', [function(){
     var func = {};
 
-    //returns a promise
     func.schedule = function(id, title, text, datetime){
       cordova.plugins.notification.local.schedule({
         id: id,
@@ -74,7 +73,6 @@ angular.module('app.services', ['firebase'])
       });
     }
 
-    //returns a promise
     func.scheduleEvery = function(id, title, text, datetime, every){
       cordova.plugins.notification.local.schedule({
         id: id,
@@ -84,6 +82,10 @@ angular.module('app.services', ['firebase'])
         firstAt: datetime,
         every: every
       });
+    }
+
+    func.getAll = function(callback){
+      cordova.plugins.notification.local.getAll(callback);
     }
 
     //returns a promise

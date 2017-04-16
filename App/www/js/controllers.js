@@ -1002,6 +1002,9 @@ angular.module('app.controllers', ['ionic', 'firebase', 'ngCordova'])
 
     $scope.data.repeatEvery = 'hour';
 
+    /*LocalNotification.getAll(function (notifications) {
+        alert(JSON.stringify(notifications));
+    });*/
 
     $scope.addReminder = function(){
         utils.showLoading();
