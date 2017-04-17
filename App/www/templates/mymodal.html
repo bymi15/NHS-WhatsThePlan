@@ -1,5 +1,5 @@
 <style>
-.mymodal {
+  .mymodal {
      width: 90%;
      height: 80%;
      left: 5%;
@@ -7,11 +7,17 @@
      padding-bottom:0;
      background-color: #FFFFFF;
   }
+  .mypopup .popup{min-width: 90%;height: 75%;background-color: transparent;border-style: solid;}
+  .mypopup .popup-body{overflow:inherit; text-align:center;position:relative;background-color: #FFFFFF;height:30em;border-style: solid;border:1px black;}
+  .mypopup .popup-head{background-color: #387EF5}
+  .mypopup .popup-title{color: #FFFFFF; font-size:20px;}
+  .mypopup .popup-buttons{padding:0;}
+  .mypopup .popup-footer{display:none;}
 </style>
 
-<ion-modal-view class="mymodal" hide-nav-bar="true" hide-back-button="true" cache-view="false" nav-transition="none" id="page4" ng-controller="bookAppointmentCtrl">
+<ion-modal-view class="mymodal" hide-nav-bar="true" hide-back-button="true" cache-view="false" nav-transition="none" id="page4" ng-controller="appointmentModalCtrl">
 
-  <ion-content padding="false" class="manual-ios-statusbar-padding" scroll="false">
+  <ion-content padding="false" scroll="false">
 
   <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDzyoOupKRrTJMq6c4j2wRxkpe65Z1AJwY&libraries=places" >
   </script>
@@ -20,7 +26,7 @@
     <strong><h5 style="color:#ff8533;position:relative;font-size:14px;text-align: center;font-weight:700;">{{location.text}}</h5></strong>
   </div>
 
-  <div id="map-canvas" data-tap-disabled="true" style="margin-bottom:0;"></div>
+  <div id="map-canvas" data-tap-disabled="true" style="margin-bottom:0;padding-bottom:0;"></div>
 
   </ion-content>
 </ion-modal-view>

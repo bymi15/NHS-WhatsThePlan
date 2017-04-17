@@ -505,26 +505,6 @@ angular.module('app.controllers', ['ionic', 'firebase', 'ngCordova'])
         delete $scope.appointments[id];
     }
 
-    $scope.createClass = function(name,rules){
-        var style = document.createElement('style');
-        style.type = 'text/css';
-        document.getElementsByTagName('head')[0].appendChild(style);
-        if(!(style.sheet||{}).insertRule){
-            (style.styleSheet || style.sheet).addRule(name, rules);
-        }else{
-            style.sheet.insertRule(name+"{"+rules+"}",0);
-        }
-    }
-
-    $scope.createClass('.mypopup .popup',"min-width: 90%;height: 90%;background-color: transparent;border-style: solid;");
-    $scope.createClass('.mypopup .popup-body',"overflow:inherit; text-align:center;position:relative;background-color: #FFFFFF;height:30em;border-style: solid;border:1px black;");
-    $scope.createClass('.mypopup .popup-head',"background-color: #387EF5");
-    $scope.createClass('.mypopup .popup-title',"color: #FFFFFF; font-size:20px;");
-    $scope.createClass('.mypopup .popup-buttons',"background-color: #387EF5;color:#3FA9F5;border-style: solid;");
-    $scope.createClass('.mypopup .popup-buttons.button',"background-color: #3FA9F5;color:#FFFFFF;border-style: solid;");
-    $scope.createClass('.mypopup .popup-buttons.row ',"background-color: transparent;display:none;");
-    $scope.createClass('.mypopup .popup-footer',"display:none;");
-
     $scope.showPopup=function(item){
         sharedProperties.setMarkerX(item.markerX);
         sharedProperties.setMarkerY(item.markerY);
@@ -548,7 +528,7 @@ angular.module('app.controllers', ['ionic', 'firebase', 'ngCordova'])
             mapTypeId: google.maps.MapTypeId.ROADMAP
         };
 
-        var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+        var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
 
         navigator.geolocation.getCurrentPosition(function(pos) {
             map.setCenter(new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude));
@@ -643,6 +623,29 @@ angular.module('app.controllers', ['ionic', 'firebase', 'ngCordova'])
             $state.go("login");
         }
     }
+})
+
+.controller('appointmentModalCtrl', function ($scope, sharedProperties) {
+
+    $scope.data = {};
+
+    $scope.location = { text: sharedProperties.getLocation() };
+
+    var map = new google.maps.Map(document.getElementById('map-canvas'),{
+        center:{
+            lat:sharedProperties.getMarkerX(),
+            lng:sharedProperties.getMarkerY()
+        },
+        zoom:15
+    });
+
+    var marker = new google.maps.Marker({
+        position:{
+            lat:sharedProperties.getMarkerX(),
+            lng:sharedProperties.getMarkerY()
+        },
+        map:map
+    });
 })
 
 .controller('careplanMenuCtrl', function ($scope, $stateParams) {
