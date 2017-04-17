@@ -30,11 +30,7 @@
                 <label class="item item-input" id="signup2-input23">
                   <span class="input-label">Gender:</span>
                   <input ng-model="data.gender" type="text" placeholder="" value="">
-                </label><!--
-                <label class="item item-input" id="signup2-input24">
-                  <span class="input-label">Date of Birth</span>
-                  <input ng-model="data.dateOfBirth" type="date" placeholder="" value="">
-                </label> -->
+                </label>
 
                   <label class="item item-icon-right item-input" id="signup2-input24" ion-datetime-picker date ng-model="data.dateOfBirth">
                     <span class="input-label">Date of Birth:</span>
@@ -52,8 +48,8 @@
                 </label>
               </ion-list>
               <div class="button-bar">
-                <a ng-click="nextSlide()" id="signup2-button6" style="color:#696969;" class="button button-light  button-block">Next</a>
                 <a ng-click="previousSlide()" id="signup2-button6" style="color:#696969;" class="button button-light button-block">Back</a>
+                <a ng-click="nextSlide()" id="signup2-button6" style="color:#696969;" class="button button-light  button-block">Next</a>
               </div>
         </ion-slide>
         <ion-slide>
@@ -72,8 +68,8 @@
                 </label>
               </ion-list>
               <div class="button-bar">
-                <a ng-click="signupEmail()" id="signup3-button8" style="color:#696969;" class="button button-energized  button-block">Sign up</a>
                 <a ng-click="previousSlide()" id="signup2-button6" style="color:#696969;" class="button button-light  button-block">Back</a>
+                <a ng-click="signupEmail()" id="signup3-button8" style="color:#696969;" class="button button-energized  button-block">Sign up</a>
               </div>
         </ion-slide>
       </ion-slide-box>
