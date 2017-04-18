@@ -1018,9 +1018,11 @@ angular.module('app.controllers', ['ionic', 'firebase', 'ngCordova'])
                             }
 
                             if(!found){
-                                removeReminder(key);
+                                MedicationReminder.removeReminder(user.uid, key);
+                                delete $scope.reminders[key];
                             }
                         }
+                        utils.hideLoading();
                     });
                 }
 
