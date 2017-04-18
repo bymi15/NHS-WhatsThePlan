@@ -1,19 +1,36 @@
-<ion-view title="Surgeries" style="background-color:#FFFFFF;">
+<ion-view title="{{surgery.procedure_name}}" style="background-color:#FFFFFF;">
   <ion-content padding="true" class="has-header">
-    <div class="show-list-numbers-and-dots">
-      <h3 style="color:#3FA9F5; display: block; text-align: center; text-decoration: underline; font-weight: normal; margin-bottom:10px;">{{surgery.procedure_name}}</h3>
-      <p style="color:#3F3F3F;font-size:17px;">
-        Performed on <span style="color:#35B200">{{surgery.datetime}}</span></p>
-
-      <p style="color:#3F3F3F;font-size:17px;">
-        <strong>Performer:</strong> <span>{{surgery.performer}}</span></p>
-
-      <p style="color:#3F3F3F;font-size:17px;">
-        <strong>Procedure Notes:</strong> <span>{{surgery.procedure_notes}}</span></p>
-
-      <p style="color:#3F3F3F;font-size:17px;">
-        <strong>Procedure Step:</strong> <span>{{surgery.procedure_step}}</span></p>
-
+    <div class="list card">
+      <div class="item item-divider">Surgery Date/Time</div>
+      <div class="item item-body">
+        <div>
+          {{surgery.datetime}}
+        </div>
+      </div>
+    </div>
+    <div class="list card">
+      <div class="item item-divider">Performer</div>
+      <div class="item item-body">
+        <div>
+          {{surgery.performer}}
+        </div>
+      </div>
+    </div>
+    <div class="list card">
+      <div class="item item-divider">Procedure Notes</div>
+      <div class="item item-body">
+        <div>
+          {{surgery.procedure_notes}}
+        </div>
+      </div>
+    </div>
+    <div class="list card">
+      <div class="item item-divider">Procedure Step</div>
+      <div class="item item-body">
+        <div>
+          {{surgery.procedure_step}}
+        </div>
+      </div>
     </div>
   </ion-content>
 </ion-view>

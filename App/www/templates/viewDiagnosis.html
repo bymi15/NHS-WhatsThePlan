@@ -1,16 +1,31 @@
-<ion-view title="Diagnosis" style="background-color:#FFFFFF;">
+<ion-view title="{{diagnosis.problem}}" style="background-color:#FFFFFF;">
   <ion-content padding="true" class="has-header">
-    <div class="show-list-numbers-and-dots">
-      <h3 style="color:#3FA9F5; display: block; text-align: center; text-decoration: underline; font-weight: normal; margin-bottom:10px;">{{diagnosis.problem}}</h3>
-      <p style="color:#3F3F3F;font-size:17px;">
-        Diagnosed on <span style="color:#35B200">{{diagnosis.datetime}}</span></p>
+    <div class="list card">
+      <div class="item item-divider">Diagnosed Date</div>
+      <div class="item item-body">
+        <div>
+          {{diagnosis.datetime}}
+        </div>
+      </div>
+    </div>
 
-      <p style="color:#3F3F3F;font-size:17px;">
-        <strong>Author:</strong> <span style="color:#F46A00">{{diagnosis.author}}</span></p>
+    <div class="list card">
+      <div class="item item-divider">Author</div>
+      <div class="item item-body">
+        <div>
+          {{diagnosis.author}}
+        </div>
+      </div>
+    </div>
 
-      <p style="color:#3F3F3F;font-size:17px;">
-        <strong>Description:</strong> <span>{{diagnosis.description}}</span><span ng-show="!diagnosis.description">none</span></p>
-
+    <div class="list card">
+      <div class="item item-divider">Description</div>
+      <div class="item item-body">
+        <div>
+          {{diagnosis.description}}
+          <span ng-show="!diagnosis.description">none</span>
+        </div>
+      </div>
     </div>
   </ion-content>
 </ion-view>
