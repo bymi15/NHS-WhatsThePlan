@@ -21,7 +21,7 @@ angular.module('app.controllers', ['ionic', 'firebase', 'ngCordova'])
         var email = $scope.data.email;
         var password = $scope.data.password;
 
-        /*var validation = validater.validateLogin(email, password);
+        var validation = validater.validateLogin(email, password);
 
         if(validation){
             utils.hideLoading();
@@ -33,7 +33,7 @@ angular.module('app.controllers', ['ionic', 'firebase', 'ngCordova'])
                 return;
             }
         }
-*/
+
         firebase.auth().signInWithEmailAndPassword(email, password).then(function() {
             // user successfully logged in
 
@@ -94,46 +94,15 @@ angular.module('app.controllers', ['ionic', 'firebase', 'ngCordova'])
         var gpName = $scope.data.gpName;
         var gpSurgery = $scope.data.gpSurgery;
 
-        /*var validation = validater.validateSignup(email, password, confirmPassword, fullName, gender, nationality, maritalStatus, nhsNumber, gpName, gpSurgery);
+        var validation = validater.validateSignup(email, password, confirmPassword, fullName, gender, nationality, maritalStatus, nhsNumber, gpName, gpSurgery);
 
         if(validation){
             utils.hideLoading();
-
-            if(validation.email){
-                utils.showAlert('Error!', validation.email);
-                return;
-            }else if(validation.password){
-                utils.showAlert('Error!', validation.password);
-                return;
-            }else if(validation.confirmPassword){
-                utils.showAlert('Error!', validation.confirmPassword);
-                return;
-            }else if(validation.fullName){
-                utils.showAlert('Error!', validation.fullName);
-                return;
-            }else if(validation.gender){
-                utils.showAlert('Error!', validation.gender);
-                return;
-            }else if(validation.nationality){
-                utils.showAlert('Error!', validation.nationality);
-                return;
-            }else if(validation.maritalStatus){
-                utils.showAlert('Error!', validation.maritalStatus);
-                return;
-            }else if(validation.nhsNumber){
-                utils.showAlert('Error!', validation.nhsNumber);
-                return;
-            }else if(validation.gpName){
-                utils.showAlert('Error!', validation.gpName);
-                return;
-            }else if(validation.gpSurgery){
-                utils.showAlert('Error!', validation.gpSurgery);
-                return;
-            }else{
-                utils.showAlert('Error!', "An error has occured. Please try again.");
+            for(var key in validation){
+                utils.showAlert('Error!', validation[key][0]);
                 return;
             }
-        }*/
+        }
 
         var index = fullName.indexOf(" ");
         var firstNames = fullName.substr(0, index);
@@ -280,7 +249,7 @@ angular.module('app.controllers', ['ionic', 'firebase', 'ngCordova'])
     });
 })
 
-.controller('editProfileCtrl', function ($scope, $state, utils, User, $filter) {
+.controller('editProfileCtrl', function ($scope, $state, utils, User, $filter, validater) {
     utils.showLoading();
 
     $scope.data = {};
@@ -323,6 +292,16 @@ angular.module('app.controllers', ['ionic', 'firebase', 'ngCordova'])
             var gpName = $scope.data.gpName;
             var gpSurgery = $scope.data.gpSurgery;
 
+            var validation = validater.validateProfile(fullName, gender, dateOfBirth, nationality, maritalStatus, gpName, gpSurgery);
+
+            if(validation){
+                utils.hideLoading();
+                for(var key in validation){
+                    utils.showAlert('Error!', validation[key][0]);
+                    return;
+                }
+            }
+
             User.updateUser(uid, fullName, gender, dateOfBirth, nationality, maritalStatus, gpName, gpSurgery);
 
             utils.hideLoading();
@@ -360,7 +339,7 @@ angular.module('app.controllers', ['ionic', 'firebase', 'ngCordova'])
     }
 })
 
-.controller('addNotesCtrl', function ($scope, $state, utils, $filter, Notes) {
+.controller('addNotesCtrl', function ($scope, $state, utils, $filter, Notes, validater) {
     $scope.data = {};
 
     $scope.addNote = function(){
@@ -376,6 +355,16 @@ angular.module('app.controllers', ['ionic', 'firebase', 'ngCordova'])
             var datetime = $scope.data.datetime;
             datetime = $filter('date')(datetime, 'hh:mm a - dd MMM yyyy');
             var notes = $scope.data.notes;
+
+            var validation = validater.validateNote(title, consultant, location, datetime, notes);
+
+            if(validation){
+                utils.hideLoading();
+                for(var key in validation){
+                    utils.showAlert('Error!', validation[key][0]);
+                    return;
+                }
+            }
 
             Notes.addNote(uid, title, consultant, location, datetime, notes);
             utils.hideLoading();
@@ -413,7 +402,7 @@ angular.module('app.controllers', ['ionic', 'firebase', 'ngCordova'])
     }
 })
 
-.controller('editNoteCtrl', function ($scope, $state, $stateParams, utils, Notes, User, $filter) {
+.controller('editNoteCtrl', function ($scope, $state, $stateParams, utils, Notes, User, $filter, validater) {
     utils.showLoading()
 
     $scope.data = {};
@@ -454,6 +443,16 @@ angular.module('app.controllers', ['ionic', 'firebase', 'ngCordova'])
             var datetime = $scope.data.datetime;
             datetime = $filter('date')(datetime, 'hh:mm a - dd MMM yyyy');
             var notes = $scope.data.notes;
+
+            var validation = validater.validateNote(title, consultant, location, datetime, notes);
+
+            if(validation){
+                utils.hideLoading();
+                for(var key in validation){
+                    utils.showAlert('Error!', validation[key][0]);
+                    return;
+                }
+            }
 
             Notes.updateNote(uid, id, title, consultant, location, datetime, notes);
 
@@ -540,7 +539,7 @@ angular.module('app.controllers', ['ionic', 'firebase', 'ngCordova'])
 
 })
 
-.controller('bookAppointmentCtrl', function ($scope, $state, utils, User,$filter, Appointment, $ionicLoading, sharedProperties) {
+.controller('bookAppointmentCtrl', function ($scope, $state, utils, User,$filter, Appointment, $ionicLoading, sharedProperties, validater) {
 
     $scope.data = {};
 
@@ -611,6 +610,16 @@ angular.module('app.controllers', ['ionic', 'firebase', 'ngCordova'])
             var markerX = marker.getPosition().lat();
             var markerY = marker.getPosition().lng();
 
+            var validation = validater.validateAppointment(locationNow,dateTime,timestamp,descriptionNow,doctorNow,markerX,markerY);
+
+            if(validation){
+                utils.hideLoading();
+                for(var key in validation){
+                    utils.showAlert('Error!', validation[key][0]);
+                    return;
+                }
+            }
+
             Appointment.createAppointment(uid,locationNow,dateTime,timestamp,descriptionNow,doctorNow,markerX,markerY);
 
             utils.hideLoading();
@@ -658,7 +667,7 @@ angular.module('app.controllers', ['ionic', 'firebase', 'ngCordova'])
             $scope.currentUID = user.uid;
             Careplan.getCareplan(user.uid).then(function(snapshot) {
                 $scope.careplan = snapshot.val();
-                /*$scope.careplan.careplan = $scope.careplan.careplan.replace(/(?:\r\n|\r|\n)/g, '<br>');*/
+
                 if($scope.careplan != null){
                     $scope.data.careplan = $scope.careplan.careplan;
                     $scope.data.datetime = $scope.careplan.datetime;
@@ -843,7 +852,7 @@ angular.module('app.controllers', ['ionic', 'firebase', 'ngCordova'])
     }
 })
 
-.controller('addContactCtrl', function ($scope, $state, utils, Careteam) {
+.controller('addContactCtrl', function ($scope, $state, utils, Careteam, validater) {
     $scope.data = {};
 
     $scope.addContact = function(){
@@ -860,6 +869,16 @@ angular.module('app.controllers', ['ionic', 'firebase', 'ngCordova'])
             var address = $scope.data.address;
             var note = $scope.data.note;
 
+            var validation = validater.validateContact(full_name, role, email, phone_number, address, note);
+
+            if(validation){
+                utils.hideLoading();
+                for(var key in validation){
+                    utils.showAlert('Error!', validation[key][0]);
+                    return;
+                }
+            }
+
             Careteam.addContact(uid, full_name, role, email, phone_number, address, note);
             utils.hideLoading();
 
@@ -870,7 +889,7 @@ angular.module('app.controllers', ['ionic', 'firebase', 'ngCordova'])
     }
 })
 
-.controller('editContactCtrl', function ($scope, $state, $stateParams, utils, Careteam) {
+.controller('editContactCtrl', function ($scope, $state, $stateParams, utils, Careteam, validater) {
     utils.showLoading();
 
     $scope.data = {};
@@ -912,6 +931,16 @@ angular.module('app.controllers', ['ionic', 'firebase', 'ngCordova'])
             var phone_number = $scope.data.phone_number;
             var address = $scope.data.address;
             var note = $scope.data.note;
+
+            var validation = validater.validateContact(full_name, role, email, phone_number, address, note);
+
+            if(validation){
+                utils.hideLoading();
+                for(var key in validation){
+                    utils.showAlert('Error!', validation[key][0]);
+                    return;
+                }
+            }
 
             Careteam.updateContact(uid, id, full_name, role, email, phone_number, address, note);
 
@@ -1030,7 +1059,7 @@ angular.module('app.controllers', ['ionic', 'firebase', 'ngCordova'])
     });
 })
 
-.controller('addReminderCtrl', function ($scope, $state, utils, $filter, MedicationReminder, LocalNotification, $ionicPlatform, $rootScope) {
+.controller('addReminderCtrl', function ($scope, $state, utils, $filter, MedicationReminder, LocalNotification, $ionicPlatform, $rootScope, validater) {
     $scope.data = {};
 
     $scope.data.repeatEvery = 'hour';
@@ -1049,6 +1078,16 @@ angular.module('app.controllers', ['ionic', 'firebase', 'ngCordova'])
             var datetimeObject = new Date($scope.data.datetime);
             var datetimeFull = $filter('date')(datetime, 'hh:mm a - dd MMM yyyy');
             var timestamp = datetimeObject.getTime();
+
+            var validation = validater.validateReminder(medication, dosage, datetimeFull, repeatEvery);
+
+            if(validation){
+                utils.hideLoading();
+                for(var key in validation){
+                    utils.showAlert('Error!', validation[key][0]);
+                    return;
+                }
+            }
 
             MedicationReminder.generateId(user.uid, function(err, committed, ss){
                 if(err) {

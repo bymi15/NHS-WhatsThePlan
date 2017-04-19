@@ -1,0 +1,38 @@
+{
+  "name": "firebase-mock",
+  "version": "1.0.7",
+  "homepage": "https://github.com/soumak77/firebase-mock",
+  "authors": [
+    "Kato"
+  ],
+  "description": "Firebase mock library for writing unit tests",
+  "main": "./browser/firebasemock.js",
+  "moduleType": [
+    "amd",
+    "globals",
+    "node"
+  ],
+  "keywords": [
+    "firebase",
+    "mock"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "test",
+    "helpers",
+    "gulpfile.js",
+    "package.json",
+    "src"
+  ],
+  "_release": "1.0.7",
+  "_resolution": {
+    "type": "version",
+    "tag": "v1.0.7",
+    "commit": "a66b632420979168e3b314768830e1342e5bd416"
+  },
+  "_source": "https://github.com/soumak77/firebase-mock.git",
+  "_target": "^1.0.3",
+  "_originalSource": "firebase-mock"
+}

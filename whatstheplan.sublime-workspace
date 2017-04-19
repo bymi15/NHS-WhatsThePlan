@@ -4,6 +4,18 @@
 		"selected_items":
 		[
 			[
+				"getPati",
+				"getPatientAllergies"
+			],
+			[
+				"getPatient",
+				"getPatientMedications"
+			],
+			[
+				"getPatien",
+				"getPatientSurgeries"
+			],
+			[
 				"thisDe",
 				"thisDescription"
 			],
@@ -183,16 +195,7 @@
 			"file": "App/www/js/controllers.js",
 			"settings":
 			{
-				"buffer_size": 38994,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "App/www/templates/login.html",
-			"settings":
-			{
-				"buffer_size": 1387,
+				"buffer_size": 48085,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -207,29 +210,35 @@
 			}
 		},
 		{
-			"file": "App/www/js/routes.js",
+			"file": "App/www/main.html",
 			"settings":
 			{
-				"buffer_size": 5762,
+				"buffer_size": 5816,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "App/www/templates/medicalRecords.html",
+			"file": "App/www/templates/exportData.html",
 			"settings":
 			{
-				"buffer_size": 1338,
-				"encoding": "UTF-8",
+				"buffer_size": 995,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "App/www/templates/careplan.html",
+			"file": "App/www/templates/allergies.html",
 			"settings":
 			{
-				"buffer_size": 1214,
-				"encoding": "UTF-8",
+				"buffer_size": 559,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "App/www/templates/viewMedication.html",
+			"settings":
+			{
+				"buffer_size": 1134,
 				"line_ending": "Unix"
 			}
 		},
@@ -237,7 +246,7 @@
 			"file": "App/www/templates/addReminder.html",
 			"settings":
 			{
-				"buffer_size": 1412,
+				"buffer_size": 1497,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -310,50 +319,60 @@
 	[
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App",
-		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/scss",
-		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/tests",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/js",
-		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/lib"
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates"
 	],
 	"file_history":
 	[
-		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/index.html",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/bower.json",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/lib/validate/bower.json",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/exportData.html",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/editNote.html",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/viewContact.html",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/js/app.js",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/viewSurgery.html",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/surgeries.html",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/diagnosis.html",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/login.html",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/notes.html",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/medicationReminder.html",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/main.html",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/js/routes.js",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/allergies.html",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/bookAppointment.html",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/addNote.html",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/addContact.html",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/signup.html",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/appointments.html",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/viewLabTest.html",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/viewMedication.html",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/viewNote.html",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/viewDiagnosis.html",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/index.html",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/careplan.html",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/medicalRecords.html",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/mymodal.html",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/editProfile.html",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/ionic.app.scss",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/scss/ionic.app.scss",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/config.xml",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/main.html",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/js/services.js",
-		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/js/app.js",
-		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/medicationReminder.html",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/lib/firebase/initFirebase.js",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/package.json",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/ionic.config.json",
-		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/bower.json",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/gulpfile.js",
-		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/appointments.html",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/labTests.html",
-		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/viewLabTest.html",
-		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/allergies.html",
-		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/diagnosis.html",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/careteam.html",
-		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/surgeries.html",
-		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/medicalRecords.html",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/addReminder.html",
 		"/C/Users/sakan_000/Documents/Github/compilers-part2-group21/src/comp207p/main/ConstantFolder.java",
 		"/C/Users/sakan_000/Documents/Github/compilers-part2-group21/test/comp207p/target/SimpleFoldingTest.java",
 		"/C/Users/sakan_000/Documents/Github/compilers-part2-group21/test/comp207p/target/DynamicVariableFoldingTest.java",
 		"/C/Users/sakan_000/Documents/Github/compilers-part2-group21/test/comp207p/target/ConstantVariableFoldingTest.java",
-		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/login.html",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/profile.html",
-		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/js/routes.js",
-		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/addNote.html",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/medicationsMenu.html",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/tests/unit-tests.conf.js",
-		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/viewMedication.html",
-		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/viewContact.html",
-		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/viewNote.html",
 		"/C/Users/sakan_000/Documents/Github/compilers-part2-group21/src/comp207p/target/DynamicVariableFolding.java",
 		"/C/Users/sakan_000/Documents/Github/compilers-part2-group21/src/comp207p/target/ConstantVariableFolding.java",
 		"/C/Users/sakan_000/Documents/Github/compilers-part2-group21/src/comp207p/target/SimpleFolding.j",
@@ -365,7 +384,6 @@
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/tests/unit-tests/careplan.factory.tests.js",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/tests/unit-tests/careteam.factory.tests.js",
 		"/C/Users/sakan_000/Desktop/ConstantVariableFolding.java",
-		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/viewSurgery.html",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/tests/unit-tests/user.factory.tests.js",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/js/controllers.js",
 		"/C/Users/sakan_000/Documents/Github/compilers-part2-group21/src/comp207p/main/ConstantFolderOriginal.java",
@@ -374,7 +392,6 @@
 		"/C/Users/sakan_000/Desktop/comp207p-coursework2/src/comp207p/target/DynamicVariableFolding.java",
 		"/C/Users/sakan_000/Desktop/comp207p-coursework2/src/comp207p/target/ConstantVariableFolding.java",
 		"/C/Users/sakan_000/Desktop/comp207p-coursework2/src/comp207p/main/ConstantFolder.java",
-		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/editProfile.html",
 		"/C/Users/sakan_000/Desktop/ehrscape.factory.tests.js",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/tests/unit-tests/firebaseauth.tests.js",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/tests/unit-tests/ehrscape.factory.tests.js",
@@ -385,18 +402,14 @@
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/tests/unit-tests/user.service.tests.js",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/lib/angular/angular.js",
 		"/C/Users/sakan_000/Documents/Github/rota/RotaServices/Matcher/test/algroithm.spec.js",
-		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/viewDiagnosis.html",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/medications.html",
-		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/notes.html",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/medication.html",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/menu.html",
 		"/C/Users/SAKAN_~1/AppData/Local/Temp/7zO0C6DCA62/main.c",
 		"/C/Users/sakan_000/Documents/Github/bymi15.github.io/index.html",
 		"/C/Users/sakan_000/Documents/Github/bymi15.github.io/js/bxslider.js",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/openehr_archetypes.json",
-		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/mymodal.html",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/editContact.html",
-		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/addContact.html",
 		"/C/Users/sakan_000/Documents/Github/compilers-group21/src/Parser.cup",
 		"/C/Users/sakan_000/Documents/Github/compilers-group21/src/Lexer.lex",
 		"/C/Users/sakan_000/Documents/Github/compilers-group21/tests/extra_tests/p-tdef0.s",
@@ -411,7 +424,6 @@
 		"/C/Users/sakan_000/Documents/Github/compilers-group21/tests/extra_tests/p-ifelse.s",
 		"/C/Users/sakan_000/Documents/Github/compilers-group21/tests/extra_tests/p-hello_world_1.s",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/careplanMenu.html",
-		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/bookAppointment.html",
 		"/C/Users/sakan_000/Desktop/NHS-WhatsThePlan-eddy/App/www/js/controllers.js",
 		"/C/Users/sakan_000/Desktop/NHS-WhatsThePlan-eddy/App/www/templates/mymodal.html",
 		"/C/Users/sakan_000/Desktop/NHS-WhatsThePlan-eddy/App/www/templates/bookAppointment.html",
@@ -421,7 +433,6 @@
 		"/C/Users/sakan_000/Desktop/templates/contact.html",
 		"/C/Users/sakan_000/Desktop/templates/careTeam.html",
 		"/C/Users/sakan_000/Desktop/templates/carePlan.html",
-		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/careplan.html",
 		"/C/Users/sakan_000/Documents/Github/compilers-group21/tests/TestLexer.java",
 		"/C/Users/sakan_000/Documents/Github/compilers-group21/tests/lexer.jflex",
 		"/C/Users/sakan_000/Documents/Github/compilers-group21/TestLexer.java",
@@ -433,7 +444,6 @@
 		"/C/Users/sakan_000/Desktop/linkedindatamining/script.py",
 		"/C/Users/sakan_000/Desktop/linkedindatamining/auth.py",
 		"/C/Users/sakan_000/Desktop/project/lexer.lex",
-		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/editNote.html",
 		"/C/Users/sakan_000/Documents/Github/MoveAndTag-TeamOrthrus/clusterTag/src/Parser.java",
 		"/C/Users/sakan_000/Documents/Github/MoveAndTag-TeamOrthrus/clusterTag/src/Main.java",
 		"/C/Users/sakan_000/Downloads/Algorithm (1).java",
@@ -442,10 +452,7 @@
 		"/C/Users/sakan_000/Desktop/assignment1files/GomokuPlayer.class",
 		"/C/Users/sakan_000/Downloads/Main (1).java",
 		"/C/Users/sakan_000/Downloads/FileIO.java",
-		"/C/Users/sakan_000/Downloads/Main.java",
-		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/signup.html",
-		"/C/Users/sakan_000/Documents/KakaoTalk Downloads/ShapeTest.java",
-		"/C/Users/sakan_000/Documents/KakaoTalk Downloads/Cylinder.java"
+		"/C/Users/sakan_000/Downloads/Main.java"
 	],
 	"find":
 	{
@@ -465,6 +472,14 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"validation",
+			"ionicHis",
+			"ionicHistory",
+			"\\n",
+			".value",
+			"\");",
+			"',\"",
+			"$scope.createClass('.",
 			"validation",
 			"error.",
 			"reminders",
@@ -584,15 +599,7 @@
 			"instagram",
 			"apVer",
 			"prr(",
-			"function prr",
-			"prr",
-			"requre",
-			"request(",
-			"sendReq(",
-			"instagram",
-			"$this->check",
-			"#form",
-			"nxs_mkRemOptsArr"
+			"function prr"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -600,6 +607,11 @@
 		"regex": false,
 		"replace_history":
 		[
+			"}",
+			"{",
+			" {",
+			".",
+			"",
 			"guardedDeletion",
 			"binOps",
 			"opChangesStack",
@@ -660,15 +672,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 38994,
+						"buffer_size": 48085,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								34018,
-								34018
+								3429,
+								3429
 							]
 						],
 						"settings":
@@ -678,7 +690,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 23448.0,
+						"translation.y": 2306.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
@@ -686,19 +698,79 @@
 				},
 				{
 					"buffer": 1,
-					"file": "App/www/templates/login.html",
+					"file": "App/www/js/services.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1387,
+						"buffer_size": 22180,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								555,
-								555
+								12275,
+								12275
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 9874.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "App/www/main.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5816,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								913,
+								913
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 462.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "App/www/templates/exportData.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 995,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								160,
+								166
 							]
 						],
 						"settings":
@@ -711,84 +783,24 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "App/www/js/services.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 22180,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2068,
-								2068
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 1514.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "App/www/js/routes.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 5762,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								350,
-								350
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
 					"stack_index": 4,
 					"type": "text"
 				},
 				{
 					"buffer": 4,
-					"file": "App/www/templates/medicalRecords.html",
+					"file": "App/www/templates/allergies.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1338,
+						"buffer_size": 559,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								46,
-								46
+								475,
+								488
 							]
 						],
 						"settings":
@@ -806,47 +818,19 @@
 				},
 				{
 					"buffer": 5,
-					"file": "App/www/templates/careplan.html",
+					"file": "App/www/templates/viewMedication.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1214,
+						"buffer_size": 1134,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								849,
-								849
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "App/www/templates/addReminder.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1412,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1077,
-								1071
+								967,
+								989
 							]
 						],
 						"settings":
@@ -859,7 +843,37 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "App/www/templates/addReminder.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1497,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1455,
+								1347
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
 					"type": "text"
 				}
 			]
