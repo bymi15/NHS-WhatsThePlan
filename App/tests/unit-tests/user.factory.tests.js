@@ -27,7 +27,6 @@ describe('User Service (Firebase)', function(){
         firebase.auth().signInWithEmailAndPassword(email, password).then(function(){
             done();
         }).catch(function(error) {
-            console.info(error);
             done();
         });
     });

@@ -33,7 +33,6 @@ describe('Care Team / Contacts Service (Firebase)', function(){
             firebase.database().ref('careteam/' + uid).remove();
             done();
         }).catch(function(error) {
-            console.info(error);
             done();
         });
     });

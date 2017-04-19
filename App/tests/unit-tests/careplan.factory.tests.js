@@ -23,7 +23,6 @@ describe('Careplan Service (Firebase)', function(){
             firebase.database().ref('careplan/' + uid).remove();
             done();
         }).catch(function(error) {
-            console.info(error);
             done();
         });
     });

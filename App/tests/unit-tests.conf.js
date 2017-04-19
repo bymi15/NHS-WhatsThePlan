@@ -24,7 +24,7 @@ module.exports = function(config) {
       '../www/lib/underscore/underscore-min.js',
       '../www/lib/angular-underscore-module/angular-underscore-module.js',
       '../www/lib/ion-datetime-picker/release/ion-datetime-picker.min.js',
-      'http://cdnjs.cloudflare.com/ajax/libs/validate.js/0.11.1/validate.min.js',
+      '../www/lib/validate/validate.min.js',
       '../www/js/app.js',
       '../www/js/controllers.js',
       '../www/js/services.js',

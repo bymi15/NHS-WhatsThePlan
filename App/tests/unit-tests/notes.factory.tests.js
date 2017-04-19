@@ -31,7 +31,6 @@ describe('Notes Service (Firebase)', function(){
             firebase.database().ref('notes/' + uid).remove();
             done();
         }).catch(function(error) {
-            console.info(error);
             done();
         });
     });

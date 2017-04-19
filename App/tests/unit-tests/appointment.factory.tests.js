@@ -36,7 +36,6 @@ describe('Appointment Service (Firebase)', function(){
             firebase.database().ref('appointments/' + uid).remove();
             done();
         }).catch(function(error) {
-            console.info(error);
             done();
         });
     });
