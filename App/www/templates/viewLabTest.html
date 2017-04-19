@@ -1,7 +1,7 @@
 <ion-view title="Laboratory Test" style="background-color:#FFFFFF;">
   <ion-content padding="true" class="has-header">
     <ion-list>
-      <h3 style="color:#3FA9F5; display: block; text-align: center; text-decoration: underline; font-weight: normal; margin-bottom:10px; font-size: 18px;">{{testGroup[0].test_name}}</h3>
+      <h3 style="color:#3FA9F5; display: block; text-align: center; font-weight: normal; margin-bottom:10px; font-size: 18px;">{{testGroup[0].test_name}}</h3>
 
       <ion-item style="white-space: normal;" ng-repeat="test in testGroup" class="item-icon-right">
         <h2 style="white-space: normal;">{{test.result_name}}: <span style="color: #3FA9F5">{{test.result_magnitude}} ({{test.result_units}})</span></h2>

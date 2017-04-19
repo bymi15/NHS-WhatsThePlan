@@ -651,7 +651,7 @@ angular.module('app.controllers', ['ionic', 'firebase', 'ngCordova'])
 .controller('careplanMenuCtrl', function ($scope, $stateParams) {
 })
 
-.controller('careplanCtrl', function ($scope, $state, utils, Careplan, $cordovaCamera, CareplanPhotos, $filter) {
+.controller('careplanCtrl', function ($scope, $state, utils, Careplan, $cordovaCamera, CareplanPhotos, $filter, $ionicActionSheet) {
     utils.showLoading();
 
     $scope.data = {};
@@ -680,7 +680,7 @@ angular.module('app.controllers', ['ionic', 'firebase', 'ngCordova'])
 
     $scope.takePhoto = function(){
         var options = {
-            quality: 75,
+            quality: 100,
             destinationType: Camera.DestinationType.DATA_URL,
             sourceType: Camera.PictureSourceType.CAMERA,
             allowEdit: true,
@@ -706,7 +706,7 @@ angular.module('app.controllers', ['ionic', 'firebase', 'ngCordova'])
 
     $scope.choosePhoto = function () {
         var options = {
-            quality: 75,
+            quality: 100,
             destinationType: Camera.DestinationType.DATA_URL,
             sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
             allowEdit: true,
@@ -731,12 +731,22 @@ angular.module('app.controllers', ['ionic', 'firebase', 'ngCordova'])
     }
 
      $scope.deleteImage = function (imageID) {
-        var result = confirm("Are you sure you wish to delete this photo?");
-        if (result) {
-            CareplanPhotos.deleteImage($scope.currentUID, imageID);
-            $state.go($state.current, {}, {reload: true});
-            alert("The photo has been deleted.");
-        }
+        $ionicActionSheet.show({
+          destructiveText: 'Delete <i class="icon ion-trash-b">',
+          cancelText: 'Cancel',
+          cancel: function() {
+            return true;
+          },
+          destructiveButtonClicked: function() {
+            var result = confirm("Are you sure you wish to delete this photo?");
+            if (result) {
+                CareplanPhotos.deleteImage($scope.currentUID, imageID);
+                $state.go($state.current, {}, {reload: true});
+                alert("The photo has been deleted.");
+            }
+            return true;
+          }
+        });
      }
 })
 
@@ -968,24 +978,6 @@ angular.module('app.controllers', ['ionic', 'firebase', 'ngCordova'])
 .controller('medicationReminderCtrl', function ($scope, $state, utils, MedicationReminder, LocalNotification, $rootScope) {
     utils.showLoading();
 
-    //Check if user is logged in
-    firebase.auth().onAuthStateChanged(function(user) {
-        if (user) {
-            $scope.reminders = {};
-            MedicationReminder.getReminders(user.uid).once('value', function(snap){
-                snap.forEach(function(ss) {
-                    var val = ss.val();
-                    $scope.reminders[ss.key] = val;
-                });
-
-                $scope.remindersLength = (Object.keys($scope.reminders)).length;
-                utils.hideLoading();
-            });
-        }else{
-            $state.go("login");
-        }
-    });
-
     $scope.removeReminder = function(id){
         var notificationID = $scope.reminders[id].remId;
 
@@ -998,16 +990,54 @@ angular.module('app.controllers', ['ionic', 'firebase', 'ngCordova'])
             LocalNotification.cancel(notificationID);
         }
     }
+
+    //Check if user is logged in
+    firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+            $scope.reminders = {};
+            MedicationReminder.getReminders(user.uid).once('value', function(snap){
+                snap.forEach(function(ss) {
+                    var val = ss.val();
+                    $scope.reminders[ss.key] = val;
+                });
+
+                $scope.remindersLength = (Object.keys($scope.reminders)).length;
+
+                //automatically remove reminders that are expired
+                if($rootScope.notificationSupported){
+                    LocalNotification.getAll(function (notifications) {
+                        for(var key in $scope.reminders){
+                            var remId = $scope.reminders[key].remId;
+                            var found = false;
+
+                            for(var nKey in notifications){
+                                var nRemId = notifications[nKey].id;
+                                if(remId == nRemId){
+                                    found = true;
+                                }
+                            }
+
+                            if(!found){
+                                MedicationReminder.removeReminder(user.uid, key);
+                                delete $scope.reminders[key];
+                            }
+                        }
+                        utils.hideLoading();
+                    });
+                }
+
+                utils.hideLoading();
+            });
+        }else{
+            $state.go("login");
+        }
+    });
 })
 
 .controller('addReminderCtrl', function ($scope, $state, utils, $filter, MedicationReminder, LocalNotification, $ionicPlatform, $rootScope) {
     $scope.data = {};
 
     $scope.data.repeatEvery = 'hour';
-
-    /*LocalNotification.getAll(function (notifications) {
-        alert(JSON.stringify(notifications));
-    });*/
 
     $scope.addReminder = function(){
         utils.showLoading();
@@ -1034,7 +1064,11 @@ angular.module('app.controllers', ['ionic', 'firebase', 'ngCordova'])
                     MedicationReminder.addReminder(uid, remId, medication, dosage, datetimeFull, repeatEvery, timestamp);
 
                     if($rootScope.notificationSupported){
-                        LocalNotification.scheduleEvery(remId, "It's time to take your medication!", "Take " + dosage + " of " + medication, datetimeObject, repeatEvery);
+                        if(repeatEvery === 'none'){
+                            LocalNotification.schedule(remId, "It's time to take your medication!", "Take " + dosage + " of " + medication, datetimeObject);
+                        }else{
+                            LocalNotification.scheduleEvery(remId, "It's time to take your medication!", "Take " + dosage + " of " + medication, datetimeObject, repeatEvery);
+                        }
                     }
 
                     utils.hideLoading();

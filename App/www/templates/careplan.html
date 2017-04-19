@@ -11,8 +11,7 @@
       <div ng-repeat="(key, img) in images" style="text-align:center;">
         <br>
         <span style="color: #A5A5A5; font-size:12px; float:right;">Photo taken on {{img.datetime}}</span>
-        <img ng-src="{{img.data}}" style="width: 100%; max-width: 100%;">
-        <button class="button button-assertive" ng-click="deleteImage('{{key}}')">Delete Photo</button>
+        <img ng-click="deleteImage('{{key}}')" ng-src="{{img.data}}" style="width: 100%; max-width: 100%;">
       </div>
 
       <br>
