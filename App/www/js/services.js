@@ -379,7 +379,6 @@ angular.module('app.services', ['firebase'])
 
     func.validateSignup = function(email, password, confirmPassword, fullName, gender, nationality, maritalStatus, nhsNumber, gpName, gpSurgery){
         //validate
-        var genderChoices = ["Male", "Female", "MALE", "FEMALE", "male", "female"];
         var constraints = {
           email: {
             presence: true,
@@ -405,7 +404,11 @@ angular.module('app.services', ['firebase'])
           },
           gender: {
             presence: true,
-            inclusion: genderChoices
+            format: {
+              pattern: "Male|Female|MALE|FEMALE|male|female|M|F|m|f",
+              flags: "i",
+              message: "is invalid"
+            },
           },
           nationality: {
             presence: true,
@@ -456,6 +459,199 @@ angular.module('app.services', ['firebase'])
             validation  = {};
             validation.confirmPassword = "Passwords do not match";
         }
+
+        return validation;
+    }
+
+    func.validateProfile = function(fullName, gender, dateOfBirth, nationality, maritalStatus, gpName, gpSurgery){
+        //validate
+        var constraints = {
+          fullName: {
+            presence: true,
+            format: {
+              pattern: "[a-z ]+",
+              flags: "i",
+              message: "can only contain alphabet letters and spaces"
+            },
+            length: {
+              maximum: 100
+            }
+          },
+          gender: {
+            presence: true,
+            format: {
+              pattern: "Male|Female|MALE|FEMALE|male|female|M|F|m|f",
+              flags: "i",
+              message: "is invalid"
+            },
+          },
+          nationality: {
+            presence: true,
+            format: {
+              pattern: "[a-z ]+",
+              flags: "i",
+              message: "can only contain alphabet letters and spaces"
+            }
+          },
+          maritalStatus: {
+            presence: true,
+            format: {
+              pattern: "[a-z ]+",
+              flags: "i",
+              message: "can only contain alphabet letters and spaces"
+            }
+          },
+          gpName: {
+            presence: true,
+            format: {
+              pattern: "[a-z ]+",
+              flags: "i",
+              message: "can only contain alphabet letters and spaces"
+            },
+            length: {
+              maximum: 100
+            }
+          },
+          gpSurgery: {
+            presence: true,
+            length: {
+              maximum: 200
+            }
+          }
+        };
+
+        var validation = validate({fullName: fullName, gender: gender, nationality: nationality, maritalStatus: maritalStatus, gpName: gpName, gpSurgery: gpSurgery}, constraints);
+
+        return validation;
+    }
+
+    func.validateNote = function(title, consultant, location, datetime, notes){
+        //validate
+        var constraints = {
+          title: {
+            presence: true,
+            length: {
+              maximum: 100
+            }
+          },
+          consultant: {
+            presence: true,
+            format: {
+              pattern: "[a-z ]+",
+              flags: "i",
+              message: "can only contain alphabet letters and spaces"
+            },
+            length: {
+              maximum: 100
+            }
+          },
+          location: {
+            presence: true
+          },
+          datetime: {
+            presence: true
+          },
+          notes: {
+            presence: true
+          }
+        };
+
+        var validation = validate({title: title, consultant: consultant, location: location, datetime: datetime, notes: notes}, constraints);
+
+        return validation;
+    }
+
+    func.validateAppointment = function(locationNow,dateTime,timestamp,descriptionNow,doctorNow,markerX,markerY){
+        //validate
+        var constraints = {
+          Description: {
+            presence: true
+          },
+          Doctor: {
+            presence: true,
+            format: {
+              pattern: "[a-z ]+",
+              flags: "i",
+              message: "can only contain alphabet letters and spaces"
+            },
+            length: {
+              maximum: 100
+            }
+          },
+          Date: {
+            presence: true
+          },
+          Location: {
+            presence: true
+          },
+          Timestamp: {
+            presence: true
+          },
+          markerX: {
+            presence: true
+          },
+          markerY: {
+            presence: true
+          }
+        };
+
+        var validation = validate({Location: locationNow,Date: dateTime,Timestamp: timestamp,Description: descriptionNow,Doctor: doctorNow,markerX: markerX,markerY: markerY}, constraints);
+
+        return validation;
+    }
+
+    func.validateContact = function(full_name, role, email, phone_number, address, note){
+        //validate
+        var constraints = {
+          fullName: {
+            presence: true,
+            format: {
+              pattern: "[a-z ]+",
+              flags: "i",
+              message: "can only contain alphabet letters and spaces"
+            },
+            length: {
+              maximum: 100
+            }
+          },
+          role: {
+            presence: true
+          },
+          email: {
+            presence: true,
+            email: true
+          },
+          phoneNumber: {
+            presence: true
+          },
+          address: {
+            presence: true
+          }
+        };
+
+        var validation = validate({fullName: full_name, role: role, email: email, phoneNumber: phone_number, address: address}, constraints);
+
+        return validation;
+    }
+
+    func.validateReminder = function(medication, dosage, datetime, repeatEvery){
+        //validate
+        var constraints = {
+          medication: {
+            presence: true
+          },
+          dosage: {
+            presence: true,
+          },
+          datetime: {
+            presence: true
+          },
+          repeatEvery: {
+            presence: true
+          }
+        };
+
+        var validation = validate({medication: medication, dosage: dosage, datetime: datetime, repeatEvery: repeatEvery}, constraints);
 
         return validation;
     }
