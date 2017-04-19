@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"valid",
+				"validater"
+			],
+			[
 				"getPati",
 				"getPatientAllergies"
 			],
@@ -192,28 +196,19 @@
 	"buffers":
 	[
 		{
-			"file": "App/www/js/controllers.js",
-			"settings":
-			{
-				"buffer_size": 48085,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
 			"file": "App/www/js/services.js",
 			"settings":
 			{
-				"buffer_size": 22180,
+				"buffer_size": 27444,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "App/www/main.html",
+			"file": "App/www/js/controllers.js",
 			"settings":
 			{
-				"buffer_size": 5816,
+				"buffer_size": 49181,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -319,12 +314,25 @@
 	[
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/tests",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/tests/unit-tests",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/js",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates"
 	],
 	"file_history":
 	[
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/tests/unit-tests/login.controller.tests.js",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/tests/unit-tests/validater.factory.tests.js",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/tests/unit-tests/firebaseauth.tests.js",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/tests/unit-tests/notes.factory.tests.js",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/tests/unit-tests/user.factory.tests.js",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/tests/unit-tests/careteam.factory.tests.js",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/tests/unit-tests/careplan.factory.tests.js",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/tests/unit-tests/appointment.factory.tests.js",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/tests/unit-tests/validation.factory.tests.js",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/tests/unit-tests.conf.js",
+		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/main.html",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/bower.json",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/lib/validate/bower.json",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/exportData.html",
@@ -337,7 +345,6 @@
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/login.html",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/notes.html",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/medicationReminder.html",
-		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/main.html",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/js/routes.js",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/allergies.html",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/bookAppointment.html",
@@ -372,19 +379,13 @@
 		"/C/Users/sakan_000/Documents/Github/compilers-part2-group21/test/comp207p/target/ConstantVariableFoldingTest.java",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/profile.html",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/templates/medicationsMenu.html",
-		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/tests/unit-tests.conf.js",
 		"/C/Users/sakan_000/Documents/Github/compilers-part2-group21/src/comp207p/target/DynamicVariableFolding.java",
 		"/C/Users/sakan_000/Documents/Github/compilers-part2-group21/src/comp207p/target/ConstantVariableFolding.java",
 		"/C/Users/sakan_000/Documents/Github/compilers-part2-group21/src/comp207p/target/SimpleFolding.j",
 		"/C/Users/sakan_000/Documents/Github/compilers-part2-group21/test/comp207p/target/ASimpleFoldingTest.java",
 		"/C/Users/sakan_000/Documents/Github/compilers-part2-group21/src/comp207p/target/ASimpleFolding.j",
 		"/C/Users/sakan_000/Documents/Github/compilers-part2-group21/src/comp207p/main/Main.java",
-		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/tests/unit-tests/notes.factory.tests.js",
-		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/tests/unit-tests/appointment.factory.tests.js",
-		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/tests/unit-tests/careplan.factory.tests.js",
-		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/tests/unit-tests/careteam.factory.tests.js",
 		"/C/Users/sakan_000/Desktop/ConstantVariableFolding.java",
-		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/tests/unit-tests/user.factory.tests.js",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/js/controllers.js",
 		"/C/Users/sakan_000/Documents/Github/compilers-part2-group21/src/comp207p/main/ConstantFolderOriginal.java",
 		"/C/Users/sakan_000/Desktop/comp207p-coursework2/test/comp207p/target/DynamicVariableFoldingTest.java",
@@ -393,7 +394,6 @@
 		"/C/Users/sakan_000/Desktop/comp207p-coursework2/src/comp207p/target/ConstantVariableFolding.java",
 		"/C/Users/sakan_000/Desktop/comp207p-coursework2/src/comp207p/main/ConstantFolder.java",
 		"/C/Users/sakan_000/Desktop/ehrscape.factory.tests.js",
-		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/tests/unit-tests/firebaseauth.tests.js",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/tests/unit-tests/ehrscape.factory.tests.js",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/lib/firebase/firebase.js",
 		"/C/Users/sakan_000/Documents/Github/NHS-WhatsThePlan/App/www/lib/ionic/js/ionic.bundle.js",
@@ -449,10 +449,7 @@
 		"/C/Users/sakan_000/Downloads/Algorithm (1).java",
 		"/C/Users/sakan_000/Desktop/assignment1files/SequencePlayer.java",
 		"/C/Users/sakan_000/Desktop/assignment1files/RandomPlayer.java",
-		"/C/Users/sakan_000/Desktop/assignment1files/GomokuPlayer.class",
-		"/C/Users/sakan_000/Downloads/Main (1).java",
-		"/C/Users/sakan_000/Downloads/FileIO.java",
-		"/C/Users/sakan_000/Downloads/Main.java"
+		"/C/Users/sakan_000/Desktop/assignment1files/GomokuPlayer.class"
 	],
 	"find":
 	{
@@ -472,6 +469,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"info",
 			"validation",
 			"ionicHis",
 			"ionicHistory",
@@ -598,8 +596,7 @@
 			"apver",
 			"instagram",
 			"apVer",
-			"prr(",
-			"function prr"
+			"prr("
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -663,24 +660,54 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "App/www/js/controllers.js",
+					"file": "App/www/js/services.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 48085,
+						"buffer_size": 27444,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3429,
-								3429
+								16991,
+								16991
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 14355.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "App/www/js/controllers.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 49181,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								35517,
+								35517
 							]
 						],
 						"settings":
@@ -690,74 +717,14 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 2306.0,
+						"translation.y": 25142.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
 					"type": "text"
 				},
 				{
-					"buffer": 1,
-					"file": "App/www/js/services.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 22180,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								12275,
-								12275
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 9874.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
 					"buffer": 2,
-					"file": "App/www/main.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 5816,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								913,
-								913
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 462.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
 					"file": "App/www/templates/exportData.html",
 					"semi_transient": false,
 					"settings":
@@ -783,11 +750,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
-					"buffer": 4,
+					"buffer": 3,
 					"file": "App/www/templates/allergies.html",
 					"semi_transient": false,
 					"settings":
@@ -813,11 +780,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
-					"buffer": 5,
+					"buffer": 4,
 					"file": "App/www/templates/viewMedication.html",
 					"semi_transient": false,
 					"settings":
@@ -847,7 +814,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 6,
+					"buffer": 5,
 					"file": "App/www/templates/addReminder.html",
 					"semi_transient": false,
 					"settings":
@@ -873,7 +840,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 5,
 					"type": "text"
 				}
 			]
