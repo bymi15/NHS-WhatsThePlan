@@ -413,12 +413,8 @@ angular.module('app.controllers', ['ionic', 'firebase', 'ngCordova'])
     }
 })
 
-.controller('editNoteCtrl', function ($scope, $state, $stateParams, utils, Notes, User, $filter, $ionicHistory) {
-    utils.showLoading();
-
-    $scope.goBack = function(){
-        $ionicHistory.goBack();
-    }
+.controller('editNoteCtrl', function ($scope, $state, $stateParams, utils, Notes, User, $filter) {
+    utils.showLoading()
 
     $scope.data = {};
 
@@ -471,7 +467,7 @@ angular.module('app.controllers', ['ionic', 'firebase', 'ngCordova'])
 })
 
 
-.controller('appointmentsCtrl', function ($scope, $state, utils, User, $filter,$ionicHistory, Appointment, $ionicModal, $ionicPopup, sharedProperties, ClosePopupService) {
+.controller('appointmentsCtrl', function ($scope, $state, utils, User, $filter, Appointment, $ionicModal, $ionicPopup, sharedProperties, ClosePopupService) {
 
     utils.showLoading();
 
@@ -544,7 +540,7 @@ angular.module('app.controllers', ['ionic', 'firebase', 'ngCordova'])
 
 })
 
-.controller('bookAppointmentCtrl', function ($scope, $state, utils, User,$filter, $ionicHistory, Appointment, $ionicLoading, sharedProperties) {
+.controller('bookAppointmentCtrl', function ($scope, $state, utils, User,$filter, Appointment, $ionicLoading, sharedProperties) {
 
     $scope.data = {};
 
@@ -1206,4 +1202,171 @@ angular.module('app.controllers', ['ionic', 'firebase', 'ngCordova'])
     $scope.surgery = $rootScope.surgeries[surgeryID];
 
     utils.hideLoading();
+})
+
+.controller('exportDataCtrl', function ($scope, $state, utils, Notes, User, Careplan, Ehrscape, $filter, $rootScope) {
+    utils.showLoading();
+
+    $scope.data = [];
+    $scope.data.notes = true;
+    $scope.data.careplan = false;
+    $scope.data.diagnosis = false;
+    $scope.data.surgeries = false;
+    $scope.data.medications = false;
+    $scope.data.allergies = false;
+
+    $scope.goBack = function(){
+        $state.go("main");
+    }
+
+    //Check if user is logged in
+    firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+            Ehrscape.setSessionId($rootScope.sessionId);
+            Ehrscape.setEhrId($rootScope.ehrId);
+
+            Promise.all([Notes.getNotes(user.uid).then(function(snapshot){return snapshot.val();}), Careplan.getCareplan(user.uid).then(function(snapshot){return snapshot.val();}), Ehrscape.getPatientDiagnosis().then(function(res){return res.data.resultSet;}), Ehrscape.getPatientSurgeries().then(function(res){return res.data.resultSet;}), Ehrscape.getPatientMedications().then(function(res){return res.data.resultSet;}), Ehrscape.getPatientAllergies().then(function(res){return res.data.resultSet;})]).then(function(results) {
+
+                $scope.notes = results[0];
+                $scope.careplan = results[1];
+                $scope.diagnosis = results[2];
+                $scope.surgeries = results[3];
+                $scope.medications = results[4];
+                $scope.allergies = results[5];
+
+                console.log(results);
+
+                utils.hideLoading();
+            }, function(err) {
+                alert(err);
+                utils.hideLoading();
+            });
+        }else{
+            $state.go("login");
+        }
+    });
+
+    $scope.export = function(){
+        utils.showLoading();
+
+        var htmlStart = "<html><head></head><body>";
+        var htmlEnd = "</body></html>";
+        var htmlInner = "<h2 style='text-decoration:underline;text-align:center;'>What's The Plan - Export Data</h2>";
+
+        if(!$scope.data.notes && !$scope.data.careplan && !$scope.data.diagnosis && !$scope.data.surgeries && !$scope.data.medications && !$scope.data.allergies){
+            alert("Please select at least one");
+            return;
+        }
+
+        if($scope.data.notes){
+            var notesHtml = "<h3 style='text-decoration:underline;'>Consultation Notes</h3>";
+            for(var key in $scope.notes){
+                $scope.notes[key].notes = $scope.notes[key].notes.replace(/(?:\r\n|\r|\n)/g, '<br>');
+
+                var note = "<div>";
+                note = note + "<p><span style='font-weight:bold'>Title: </span>" + $scope.notes[key].title + "</p>";
+                note = note + "<p><span style='font-weight:bold'>Date/Time: </span>" + $scope.notes[key].datetime + "</p>";
+                note = note + "<p><span style='font-weight:bold'>Consultant: </span>" + $scope.notes[key].consultant + "</p>";
+                note = note + "<p><span style='font-weight:bold'>Location: </span>" + $scope.notes[key].location + "</p>";
+                note = note + "<p><span style='font-weight:bold'>Notes: </span><br>" + $scope.notes[key].notes + "</p>";
+                note = note + "</div><br>"
+
+                notesHtml = notesHtml + note;
+            }
+
+            htmlInner = htmlInner + notesHtml;
+        }
+
+        if($scope.data.careplan){
+            $scope.careplan.careplan = $scope.careplan.careplan.replace(/(?:\r\n|\r|\n)/g, '<br>');
+
+            var careplanHtml = "<h3 style='text-decoration:underline;'>Careplan</h3>";
+            careplanHtml = careplanHtml + "<div><p><span style='font-weight:bold'>Date/Time: </span>" + $scope.careplan.datetime + "</p>";
+            careplanHtml = careplanHtml + "<p>" + $scope.careplan.careplan + "</p></div>";
+
+            htmlInner = htmlInner + careplanHtml;
+        }
+
+        if($scope.data.diagnosis){
+            var diagnosisHtml = "<h3 style='text-decoration:underline;'>Diagnosis</h3>";
+            for(var key in $scope.diagnosis){
+                var datetime = $scope.diagnosis[key].onset_date;
+                $scope.diagnosis[key].datetime = $filter('date')(datetime, 'hh:mm a - dd MMM yyyy');
+
+                var diagnosis = "<div>";
+                diagnosis = diagnosis + "<p><span style='font-weight:bold'>Problem: </span>" + $scope.diagnosis[key].problem + "</p>";
+                diagnosis = diagnosis + "<p><span style='font-weight:bold'>Diagnosed on: </span>" + $scope.diagnosis[key].datetime + "</p>";
+                diagnosis = diagnosis + "<p><span style='font-weight:bold'>Author: </span>" + $scope.diagnosis[key].author + "</p>";
+                diagnosis = diagnosis + "</div><br>"
+
+                diagnosisHtml = diagnosisHtml + diagnosis;
+            }
+
+            htmlInner = htmlInner + diagnosisHtml;
+        }
+
+        if($scope.data.surgeries){
+            var surgeriesHtml = "<h3 style='text-decoration:underline;'>Surgeries</h3>";
+            for(var key in $scope.surgeries){
+                var datetime = $scope.surgeries[key].procedure_datetime;
+                $scope.surgeries[key].datetime = $filter('date')(datetime, 'hh:mm a - dd MMM yyyy');
+
+                var surgery = "<div>";
+                surgery = surgery + "<p><span style='font-weight:bold'>Surgery Name: </span>" + $scope.surgeries[key].procedure_name + "</p>";
+                surgery = surgery + "<p><span style='font-weight:bold'>Surgery Date/Time: </span>" + $scope.surgeries[key].datetime + "</p>";
+                surgery = surgery + "<p><span style='font-weight:bold'>Performer: </span>" + $scope.surgeries[key].performer + "</p>";
+                surgery = surgery + "<p><span style='font-weight:bold'>Procedure Notes: </span>" + $scope.surgeries[key].procedure_notes + "</p>";
+                surgery = surgery + "<p><span style='font-weight:bold'>Procedure Step: </span>" + $scope.surgeries[key].procedure_step + "</p>";
+                surgery = surgery + "</div><br>"
+
+                surgeriesHtml = surgeriesHtml + surgery;
+            }
+
+            htmlInner = htmlInner + surgeriesHtml;
+        }
+
+        if($scope.data.medications){
+            var medicationsHtml = "<h3 style='text-decoration:underline;'>Medications</h3>";
+            for(var key in $scope.medications){
+                var medication = "<div>";
+                medication = medication + "<p><span style='font-weight:bold'>Medication: </span>" + $scope.medications[key].Medication_item + "</p>";
+                medication = medication + "<p><span style='font-weight:bold'>Status: </span>" + $scope.medications[key].Course_status + "</p>";
+                medication = medication + "<p><span style='font-weight:bold'>Clinical Indication: </span>" + $scope.medications[key].Clinical_indication + "</p>";
+                medication = medication + "<p><span style='font-weight:bold'>Overall Directions: </span>" + $scope.medications[key].Overall_directions_description + "</p>";
+                medication = medication + "<p><span style='font-weight:bold'>Additional Instructions: </span>" + $scope.medications[key].Additional_instruction + "</p>";
+                medication = medication + "</div><br>"
+
+                medicationsHtml = medicationsHtml + medication;
+            }
+
+            htmlInner = htmlInner + medicationsHtml;
+        }
+
+        if($scope.data.allergies){
+            var allergiesHtml = "<h3 style='text-decoration:underline;'>Allergies</h3>";
+            for(var key in $scope.allergies){
+                var allergy = "<div>";
+                allergy = allergy + "<p><span style='font-weight:bold'>Allergen: </span>" + $scope.allergies[key].Causative_agent + "</p>";
+                allergy = allergy + "<p><span style='font-weight:bold'>Symptoms: </span>" + $scope.allergies[key].Manifestation + "</p>";
+                allergy = allergy + "</div><br>"
+
+                allergiesHtml = allergiesHtml + allergy;
+            }
+
+            htmlInner = htmlInner + allergiesHtml;
+        }
+
+        var htmlOutput = htmlStart + htmlInner + htmlEnd;
+        //console.log(htmlOutput);
+
+        if($rootScope.exportSupported) {
+            cordova.plugins.printer.print(htmlOutput, 'WhatsThePlan');
+            utils.hideLoading();
+            $state.go("main");
+        } else {
+            alert("Exporting is not available on device");
+            utils.hideLoading();
+            $state.go("main");
+        }
+    }
 })
