@@ -244,6 +244,14 @@ angular.module('app.routes', [])
     authRequired: true
   })
 
+  .state('exportData', {
+    url: '/exportData',
+    templateUrl: 'templates/exportData.html',
+    controller: 'exportDataCtrl',
+    cache: false,
+    authRequired: true
+  })
+
   $urlRouterProvider.otherwise(function($injector, $location) {
     var $state = $injector.get("$state");
     $state.go("main");

@@ -11,6 +11,7 @@ angular.module('app', ['ionic', 'ngCordova', 'app.controllers', 'app.routes', 'a
 
 .run(function($ionicPlatform, $state, $rootScope) {
   $rootScope.notificationSupported = false;
+  $rootScope.exportSupported = false;
 
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -22,6 +23,10 @@ angular.module('app', ['ionic', 'ngCordova', 'app.controllers', 'app.routes', 'a
     if (window.StatusBar) {
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
+    }
+
+    if(window.cordova && window.cordova.plugins.printer){
+      $rootScope.exportSupported = true;
     }
 
     if (window.cordova && window.cordova.plugins.notification) {

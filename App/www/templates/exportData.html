@@ -1,0 +1,17 @@
+<ion-view title="Export Data" style="background-color:#FFFFFF;">
+  <ion-nav-buttons side="left" class="has-header">
+    <button nav-transition="none" ng-click="goBack()" class="button button-stable icon ion-chevron-left"></button>
+  </ion-nav-buttons>
+  <ion-content padding="true" class="has-header">
+      <h4 style="color:#3FA9F5; font-weight:300;">Select the data you wish to export:</h4>
+      <ion-list>
+        <ion-checkbox ng-model="data.notes">Consultation Notes</ion-checkbox>
+        <ion-checkbox ng-model="data.careplan">Careplan</ion-checkbox>
+        <ion-checkbox ng-model="data.diagnosis">Diagnosis</ion-checkbox>
+        <ion-checkbox ng-model="data.surgeries">Surgeries</ion-checkbox>
+        <ion-checkbox ng-model="data.medications">Medications</ion-checkbox>
+        <ion-checkbox ng-model="data.allergies">Allergies</ion-checkbox>
+        <button class="button button-positive button-full" ng-click="export()">EXPORT</button>
+    </ion-list>
+  </ion-content>
+</ion-view>
