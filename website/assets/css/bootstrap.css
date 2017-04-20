@@ -1289,6 +1289,7 @@ h6,
 }
 p {
   margin: 0 0 10px;
+  text-align:left;
 }
 .lead {
   margin-bottom: 20px;

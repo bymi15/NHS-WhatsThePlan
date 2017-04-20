@@ -94,9 +94,10 @@
           <!-- Start section area -->
           <div class="welcome-area">
             <div class="title-area">
-              <h2 class="tittle"><span>TESTING</span></h2><p> Click the following buttons to jump to the corresponding sections below: </p>
+              <h2 class="tittle"><span>TESTING</span></h2><p style="text-align:center"> Click the following buttons to jump to the corresponding sections below: </p>
 			  <a class="smoothscrolldown btn btn-primary" href="#unit">Unit and Integration Testing</a>
-              <a class="smoothscrolldown btn btn-primary" href="#auto">Automated and User Acceptance Testing</a><br><br>
+              <a class="smoothscrolldown btn btn-primary" href="#auto">Automated and User Acceptance Testing</a> 
+			  <a class="smoothscrolldown btn btn-primary" href="#finaltesting">Conclusion on Testing</a><br><br>
 			  <br>
 			  <h2 id="unit" class="tittle" style="font-size:35px">Unit and Integration Testing</h2>
 			    <span class="tittle-line"></span>
@@ -125,6 +126,21 @@
             <strong>Feedback</strong> from the <strong>alpha-beta testing</strong> will be used to make improvements to the product.</p>
 				<br>
                
+			   
+			   <h2 class="tittle" id="finaltesting" style="font-size:35px">Conclusion on Testing</h2>
+			    <span class="tittle-line"></span>
+				<p>
+				Unit and Integration testing were performed using Jasmine and Karma testing frameworks. These tests were automatically executed using the gulp task runner and a report was generated after the test completed. <br><br>
+Unit testing was performed for each individual factory method in services.js which represent the model in the MVC design pattern. This ensures that the service components are functioning properly individually.<br><br>
+Integration testing was performed for the controllers to ensure that the various components of the controller worked properly together as a whole.<br><br>
+Below is a screenshot of various unit tests being passed for different features of the app to ensure integrity of the software.<br><br>
+ <img src="testing/UnitTests.PNG" height="500" width="900">
+<br><br>
+Native mobile device testing was performed on an Android device (Samsung S6), Virtual Android Device (Google Nexus 4 Emulator) and IPhone 6 Plus through the Ionic View app on IOS. Through mobile testing, we were able to detect various bugs that were absent when testing on the web browser simulation. These bugs were mainly found in native components such as the camera, local notifications and printing/exporting to PDF, as these features were not testable on the web browser simulation.<Br><Br>
+The Ehrscape API was tested using Postman, by sending certain HTTP requests and observing the JSON responses.
+
+				</p>
+			   
 		  </div>
           </div>
           

@@ -94,17 +94,21 @@
           <!-- Start section area -->
           <div class="welcome-area">
             <div class="title-area">
-              <h2 class="tittle"><span>DESIGN</span></h2><p> Click the following buttons to jump to the corresponding sections below: </p>
+              <h2 class="tittle"><span>DESIGN</span></h2><p style="text-align:center"> Click the following buttons to jump to the corresponding sections below: </p>
 			  <a class="smoothscrolldown btn btn-primary" href="#target">Target Operating System</a>
               <a class="smoothscrolldown btn btn-primary" href="#frameworks">Frameworks</a>
 			  <a class="smoothscrolldown btn btn-primary" href="#platforms">Platforms</a>
 			  <a class="smoothscrolldown btn btn-primary" href="#apis">APIs</a>
 			  <a class="smoothscrolldown btn btn-primary" href="#tools">Tools</a><br><br>
-			  <br>
+			  <a class="smoothscrolldown btn btn-primary" href="#designpatterns">Architecture Design & Design Patterns</a>
+			  <br><br>
 			  <h2 class="tittle" id="target" style="font-size:35px">Target Operating System</h2>
               <span class="tittle-line"></span>
 			  <h3 class="tittle" style="font-size:30px">Android & iOS</h3>
-				<p>According to our client's requirement: "<strong>The aim would be to prove the concept on one mobile operating system (IOS, Android or Windows) before developing other platforms.</strong>" <br><br> However, we aim to <strong>target both Android and iOS</strong> in order to reach a wide range of <strong>target users</strong> and further satisfy our client. Using the <strong>Ionic framework</strong>, a <strong>hybrid app</strong> will be created, allowing it to be deployed to both <strong>Android</strong> and <strong>IOS</strong> platforms without major changes in source code.</p>
+				<p>According to our client's requirement: "<strong>The aim would be to prove the concept on one mobile operating system (IOS, Android or Windows) before developing other platforms.</strong>" <br><br> However, we aimed to <strong>target both Android and iOS</strong> in order to reach a wide range of <strong>target users</strong> and further satisfy our client. Using the <strong>Ionic framework</strong>, a <strong>hybrid app</strong> will be created, allowing it to be deployed to both <strong>Android</strong> and <strong>IOS</strong> platforms without major changes in source code.<br><br>
+				The primary platform supported by this application is Android. We have tested the application on several Android devices (both virtual and real devices) including Google Nexus 4 and Samsung S6. The application can also be made available on other platforms including IOS and Windows Phone. However, this may require further testing on native features such as Camera, Local Notifications, and Printer/Export to PDF.
+				
+				</p>
 				<br>
 			  <h2 class="tittle" id="frameworks" style="font-size:35px">Frameworks</h2>
 			    <span class="tittle-line"></span>
@@ -161,8 +165,42 @@ EhrScape provides various service APIs such as Terminology APIs, Eletronic Healt
 				</p>
 				<br><br><br>
 				
-				<h2 class="tittle" style="font-size:35px">Design Patterns</h2>
+				<h2 class="tittle" id="designpatterns" style="font-size:35px">Architecture Design & Design Patterns</h2>
 			    <span class="tittle-line"></span>
+				<h3 class="tittle" style="font-size:30px">Architecture Design & Model View Controller (MVC)</h3>
+				<p>	
+				The mobile application was built using the Ionic framework which allowed us to build a hybrid app with HTML5 which acts like native and also gain direct access to native APIs such as the Camera. This allowed us to develop a single codebase which could be deployed to multiple platforms including Android and IOS. Ionic also provided us with various UI features such as lists and buttons which enhanced our development.
+				<br><br>
+				Ionic is built on top of Angular JS which means it follows the basic structure of the Angular JS MVC (Model-View-Controller) design pattern which we make use of in our app.
+The views are represented by HTML files located in the templates folder, the controllers are defined in the controller.js file and the models are defined in the services.js file.
+<br><br>
+In services.js, we define various factory functions which encapsulate the data model. For instance, the User factory encapsulates the User model stored in Firebase, and the Ehrscape service encapsulates the Ehrscape/OpenEHR API with various methods that allow RESTful access to the API. These services are injected into the controllers that require them. For instance, the User factory is injected into the User controller which may call the User.createUser function to create a new User entry in firebase. The controllers handle most of the logic and store the data object in the scope variable. The views make use of this data object by displaying them in HTML.
+<br><br>
+The Ehrscape API is accessed via HTTP requests which are created using the AngularJS $http service. These are all encapsulated inside the Ehrscape factory method in services.js. The requests are made asynchronously so the responses are handled with promises and callbacks which process the JSON response and store it as an object inside the Ionic scope variable. The `view` can therefore access the data via the scope variable.
+<p><strong><u>Example</u></strong></p>
+<p>Notes &ndash; factory method for Consultation Notes</p>
+<p>Methods:</p>
+<p>
+-getNotes(uid) &ndash; retrieves the consultation notes of the uid (user ID) from Firebase<br>
+-getNote(id, uid) &ndash; retrieves the consultation note with ID: id from Firebase<br>
+-addNote(uid, title, consultant, location, datetime, notes) &ndash; adds a consultation note entry to Firebase under the key: uid<br>
+-updateNote(uid, id, title, consultant, location, datetime, notes) &ndash; updates the consultation note with ID: id with new values<br>
+-removeNote(id, uid) &ndash; removes the consultation note with ID: id from Firebase<br><br>
+</p>
+<p>Injected in:</p>
+<p>
+-notesCtrl (Notes Controller)<br>
+-addNotesCtrl (Add Notes Controller)<br>
+-viewNoteCtrl (View Note Controller)<br>
+-editNoteCtrl (Edit Note Controller)<br>
+-exportDataCtrl (Export Data Controller)<br><br>
+Below is the architecture design diagram for our final Proof of Concept mobile app:
+</p>
+<br><br>
+<img src="platform/MVC.PNG" style="padding-left:50px;" height="300" width="800">
+				
+				
+				</p>
 				
 		  </div>
           </div>
