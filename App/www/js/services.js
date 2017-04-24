@@ -806,35 +806,35 @@ angular.module('app.services', ['firebase'])
     }
 
     func.getPatientAllergies = function(){
-      ehrId = "dabcbf61-94bb-45df-a472-9c7a489a200d"; //test ehrid
+      //ehrId = "dabcbf61-94bb-45df-a472-9c7a489a200d"; //test ehrid
       var aql = "select a/uid/value as compositionId, a/context/start_time/value as dateRecorded, b_a/data[at0001]/items[at0002]/value/value as Causative_agent, b_a/data[at0001]/items[at0009]/items[at0011]/value/value as Manifestation from EHR e [a/ehr_id/value = '" + ehrId + "'] contains COMPOSITION a[openEHR-EHR-COMPOSITION.adverse_reaction_list.v1] contains EVALUATION b_a[openEHR-EHR-EVALUATION.adverse_reaction_risk.v1] where a/name/value='Adverse reaction list'";
 
       return query(aql);
     }
 
     func.getPatientMedications = function(){
-      ehrId = "dabcbf61-94bb-45df-a472-9c7a489a200d"; //test ehrid
+      //ehrId = "dabcbf61-94bb-45df-a472-9c7a489a200d"; //test ehrid
       var aql = "select a/uid/value as uid, b_a/activities[at0001]/description[at0002]/items[at0070]/value/value as Medication_item, b_a/activities[at0001]/description[at0002]/items[at0009]/value/value as Overall_directions_description, b_a/activities[at0001]/description[at0002]/items[at0044]/value/value as Additional_instruction, b_a/activities[at0001]/description[at0002]/items[at0018]/value/value as Clinical_indication, b_b/items[at0001]/value/value as Course_status from EHR e [a/ehr_id/value = '" + ehrId + "'] contains COMPOSITION a[openEHR-EHR-COMPOSITION.medication_list.v0] contains ( INSTRUCTION b_a[openEHR-EHR-INSTRUCTION.medication_order.v0] or CLUSTER b_b[openEHR-EHR-CLUSTER.medication_order_summary.v0]) where a/name/value='Medication list'";
 
       return query(aql);
     }
 
     func.getLabTestResults = function(){
-      ehrId = "dabcbf61-94bb-45df-a472-9c7a489a200d"; //test ehrid
+      //ehrId = "dabcbf61-94bb-45df-a472-9c7a489a200d"; //test ehrid
       var aql = "select a/uid/value as uid, a/composer/name as author, a/context/start_time/value as date_created, a_b/data[at0001]/origin/value as sample_time, a_b/data[at0001]/events[at0002]/data[at0003]/items[at0005]/value/value as test_name, a_b/data[at0001]/events[at0002]/data[at0003]/items[at0005]/value/defining_code/code_string as test_name_code, a_b/data[at0001]/events[at0002]/data[at0003]/items[at0005]/value/defining_code/terminology_id/value as test_name_terminology, a_b/data[at0001]/events[at0002]/data[at0003]/items[at0073]/value/value as status, a_b/data[at0001]/events[at0002]/data[at0003]/items[at0057]/value/value as conclusion, a_a/items[at0002]/name/value as Laboratory_result_header, a_a/items[at0002]/items[at0001]/name/value as result_name, a_a/items[at0002]/items[at0001]/name/defining_code/code_string as result_name_code, a_a/items[at0002]/items[at0001]/name/defining_code/terminology_id/value as result_name_terminology, a_a/items[at0002]/items[at0001]/value/magnitude as result_magnitude, a_a/items[at0002]/items[at0001]/value/units as result_units, a_a/items[at0002]/items[at0001]/value/normal_range/lower/magnitude as normal_range_lower, a_a/items[at0002]/items[at0001]/value/normal_range/lower/units as normal_range_lower_units, a_a/items[at0002]/items[at0001]/value/normal_range/upper/magnitude as normal_range_upper, a_a/items[at0002]/items[at0001]/value/normal_range/upper/units as normal_range_upper_units, a_a/items[at0002]/items[at0001]/value/normal_range/lower_included as lower_included, a_a/items[at0002]/items[at0001]/value/normal_range/upper_included as upper_included, a_a/items[at0002]/items[at0001]/value/normal_range/lower_unbounded as lower_unbounded, a_a/items[at0002]/items[at0001]/value/normal_range/upper_unbounded as upper_unbounded from EHR e [a/ehr_id/value = '" + ehrId + "'] contains COMPOSITION a contains OBSERVATION a_b[openEHR-EHR-OBSERVATION.laboratory_test.v0] contains CLUSTER a_a[openEHR-EHR-CLUSTER.laboratory_test_panel.v0]";
 
       return query(aql);
     }
 
     func.getPatientSurgeries = function(){
-      ehrId = "dabcbf61-94bb-45df-a472-9c7a489a200d"; //test ehrid
+      //ehrId = "dabcbf61-94bb-45df-a472-9c7a489a200d"; //test ehrid
       var aql = "select a/uid/value as uid, a/composer/name as author, a/context/start_time/value as date_submitted, b_a/description[at0001]/items[at0002]/value/value as procedure_name, b_a/description[at0001]/items[at0002]/value/defining_code/code_string as procedure_code, b_a/description[at0001]/items[at0002]/value/defining_code/terminology_id/value as procedure_terminology, b_a/description[at0001]/items[at0049]/value/value as procedure_notes, b_a/other_participations/performer/name as performer, b_a/time/value as procedure_datetime, b_a/ism_transition/current_state/value as procedure_state, b_a/ism_transition/current_state/defining_code/code_string as procedure_state_code, b_a/ism_transition/current_state/defining_code/terminology_id/value as procedure_state_terminology, b_a/ism_transition/careflow_step/value as procedure_step, b_a/ism_transition/careflow_step/defining_code/code_string as procedure_step_code, b_a/ism_transition/careflow_step/defining_code/terminology_id/value as procedure_step_terminology from EHR e [ehr_id/value = '" + ehrId + "'] contains COMPOSITION a[openEHR-EHR-COMPOSITION.health_summary.v1] contains ACTION b_a[openEHR-EHR-ACTION.procedure.v1] where a/name/value='Procedures list'";
 
       return query(aql);
     }
 
     func.getPatientDiagnosis = function(){
-      ehrId = "dabcbf61-94bb-45df-a472-9c7a489a200d"; //test ehrid
+      //ehrId = "dabcbf61-94bb-45df-a472-9c7a489a200d"; //test ehrid
       var aql = "select a/uid/value as uid, a/composer/name as author, a/context/start_time/value as date_created, b_a/data[at0001]/items[at0002]/value/value as problem, b_a/data[at0001]/items[at0002]/value/defining_code/code_string as problem_code, b_a/data[at0001]/items[at0002]/value/defining_code/terminology_id/value as problem_terminology, b_a/data[at0001]/items[at0009]/value/value as description, b_a/data[at0001]/items[at0077]/value/value as onset_date from EHR e [ehr_id/value = '" + ehrId + "'] contains COMPOSITION a[openEHR-EHR-COMPOSITION.problem_list.v1] contains EVALUATION b_a[openEHR-EHR-EVALUATION.problem_diagnosis.v1] where a/name/value='Problem list'";
 
       return query(aql);

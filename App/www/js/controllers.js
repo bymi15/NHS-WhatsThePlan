@@ -1226,12 +1226,10 @@ angular.module('app.controllers', ['ionic', 'firebase', 'ngCordova'])
         utils.hideLoading();
     });
 
-
     $scope.goViewSurgery = function(surgeryID){
         $state.go('viewSurgery', { id: surgeryID });
     }
 })
-
 
 .controller('viewSurgeryCtrl', function ($scope, $state, $stateParams, utils, Ehrscape, $rootScope) {
     utils.showLoading();
